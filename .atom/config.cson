@@ -1,0 +1,10 @@
+'exception-reporting':
+  'userId': '7d3b60bf-c000-efe9-5b38-9e3568612a56'
+'welcome':
+  'showOnStartup': false
+'metrics':
+  'userId': '9201a0bdb25130f2fc6bbf39bfd6334aa4e3ff74'
+'editor':
+  'softWrap': true
+'core': {}
+'tree-view': {}

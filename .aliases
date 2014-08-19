@@ -1,0 +1,43 @@
+
+# Easier navigation: .., ..., ~ and -
+alias ..="cd .."
+alias cd..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+
+# Handy things
+# alias spotify="osascript ~/code/SpotifyControl/SpotifyControl.scpt"
+
+
+# List all files colorized in long format
+alias l="ls -l ${colorflag}"
+
+# List all files colorized in long format, including dot files
+alias la="ls -la ${colorflag}"
+
+# List only directories
+alias lsd='ls -l | grep "^d"'
+
+# `cat` with beautiful colors. requires Pygments installed.
+alias c='pygmentize -O style=monokai -f console256 -g'
+
+# IP addresses
+alias localip="ipconfig getifaddr en1"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
+
+# Shortcuts
+alias g="git"
+alias v="vim"
+alias gs="git status -s"
+
+alias s="spotify toggle"
+alias sp="spotify prev"
+alias sn="spotify next"
+alias s+="spotify vol up"
+alias s-="spotify vol down"
+alias spot="spotify"
+alias ss="spotify status"
