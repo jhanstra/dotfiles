@@ -32,5 +32,3 @@ setjdk 1.7
 # configure what is shown on each line
 export PS1="\W \$ "
 
-alias gs = "git status"
-

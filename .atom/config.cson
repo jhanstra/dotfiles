@@ -6,5 +6,9 @@
   'userId': '9201a0bdb25130f2fc6bbf39bfd6334aa4e3ff74'
 'editor':
   'softWrap': true
-'core': {}
+'core':
+  'themes': [
+    'seti-ui'
+    'seti-syntax'
+  ]
 'tree-view': {}

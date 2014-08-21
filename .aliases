@@ -33,7 +33,9 @@ alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 alias g="git"
 alias v="vim"
 alias gs="git status -s"
-
+alias gb="git branch"
+alias gba="git branch -a"
+alias gl="git log --pretty=oneline -n 20 --graph --abbrev-commit"
 alias s="spotify toggle"
 alias sp="spotify prev"
 alias sn="spotify next"
@@ -41,3 +43,8 @@ alias s+="spotify vol up"
 alias s-="spotify vol down"
 alias spot="spotify"
 alias ss="spotify status"
+
+
+alias tom="/Users/hanstra/apps/tomcat/tomcat/bin/startup.sh"
+alias tomstop="/Users/hanstra/apps/tomcat/tomcat/bin/shutdown.sh"
+
