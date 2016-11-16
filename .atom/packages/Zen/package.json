@@ -1,31 +1,73 @@
 {
-  "name": "Zen",
-  "main": "./lib/zen",
-  "version": "0.6.0",
-  "private": true,
-  "description": "Distraction free writing.",
-  "activationEvents": [
-    "zen:toggle"
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-78150-1tbs2wd/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-78150-1tbs2wd/package.tgz",
+        "spec": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-78150-1tbs2wd/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/apm-install-dir-1161016-78150-ghuwhr"
+    ]
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/defunkt/zen"
+  "_from": "../d-1161016-78150-1tbs2wd/package.tgz",
+  "_id": "Zen@0.16.4",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/Zen",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-78150-1tbs2wd/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-78150-1tbs2wd/package.tgz",
+    "spec": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-78150-1tbs2wd/package.tgz",
+    "type": "local"
   },
-  "license": "MIT",
-  "engines": {
-    "atom": ">0.50.0"
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-1161016-78150-1tbs2wd/package.tgz",
+  "_shasum": "8e4faa886b1afd8f9c5d87d12f1a579b630b6fad",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-78150-1tbs2wd/package.tgz",
+  "_where": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/apm-install-dir-1161016-78150-ghuwhr",
+  "activationCommands": {
+    "atom-text-editor": [
+      "zen:toggle"
+    ]
   },
-  "dependencies": {},
-  "readme": "# Zen\n\nDistraction free writing for Atom.\n\nToggle with `cmd-ctrl-z`.\n\n## Before:\n\n![](https://f.cloud.github.com/assets/2/2290454/c7304340-a01d-11e3-8b89-018775a8612b.png)\n\n## After:\n\n![](https://f.cloud.github.com/assets/2/2290455/ce99e97e-a01d-11e3-8808-ebec40e959b4.png)\n",
-  "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/defunkt/zen/issues"
   },
-  "homepage": "https://github.com/defunkt/zen",
-  "_id": "Zen@0.6.0",
-  "dist": {
-    "shasum": "b54244000cfede6e65548eecb6c80c00e0125e75"
+  "dependencies": {
+    "jquery": "2.x.x"
   },
-  "_resolved": "/var/folders/lf/04txpg295y317bjy40pwyq9rdr0lbp/T/d-114625-37921-12kj1jd/package.tgz",
-  "_from": "/var/folders/lf/04txpg295y317bjy40pwyq9rdr0lbp/T/d-114625-37921-12kj1jd/package.tgz"
+  "description": "Distraction free writing.",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/defunkt/zen#readme",
+  "keywords": [
+    "writing",
+    "zen",
+    "distraction free"
+  ],
+  "license": "MIT",
+  "main": "./lib/zen",
+  "name": "Zen",
+  "optionalDependencies": {},
+  "private": true,
+  "readme": "# Zen\n\nDistraction free writing for Atom.\n\nToggle with `cmd-ctrl-z` on OS X or by adding `shift` to your platform's\nfullscreen command:\n- `cmd-ctrl-shift-F` on OSX\n- `shift-F11` on Windows and Linux.\n\nSettings:\n- Width\n- Tabs can all be hidden, or all except the active tab\n- Optional soft wrap\n- Keep the [word count](https://atom.io/packages/wordcount) visible\n\nNote that settings are not available until the package has been activated, due to [a shortcoming in core](https://github.com/atom/settings-view/issues/356). Also, if you change themes, you might need to reload Atom for the colors to be applied correctly to all packages including Zen.\n\n## Before:\n\n![](https://f.cloud.github.com/assets/2/2290454/c7304340-a01d-11e3-8b89-018775a8612b.png)\n\n## After:\n\n![](https://f.cloud.github.com/assets/2/2290455/ce99e97e-a01d-11e3-8808-ebec40e959b4.png)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/defunkt/zen.git"
+  },
+  "version": "0.16.4"
 }

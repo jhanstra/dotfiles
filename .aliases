@@ -36,15 +36,18 @@ alias gs="git status -s"
 alias gb="git branch"
 alias gba="git branch -a"
 alias gl="git log --pretty=oneline -n 20 --graph --abbrev-commit"
-alias s="spotify toggle"
-alias sp="spotify prev"
-alias sn="spotify next"
-alias s+="spotify vol up"
-alias s-="spotify vol down"
-alias spot="spotify"
-alias ss="spotify status"
+alias gf="git fetch"
+alias grom="git rebase origin/master"
+alias gfgrom="git fetch && git rebase origin/master"
+alias ga="git add -A"
+alias gc="git commit -m"
+alias gagc="git commit -am"
+alias gpom="git push origin master"
 
+# Etc
+alias v="vim"
+alias imgur="imgur-screenshot.sh"
 
-alias tom="/Users/hanstra/apps/tomcat/tomcat/bin/startup.sh"
-alias tomstop="/Users/hanstra/apps/tomcat/tomcat/bin/shutdown.sh"
-
+# JH
+alias jh-build="gatsby build"
+alias jh-deploy="npm run deploy"

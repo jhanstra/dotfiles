@@ -1,453 +1,455 @@
 # ----------------------------------------------------------------------------
-#  ColorPicker: View
+#  Color Picker: view
 # ----------------------------------------------------------------------------
-    { View } = require 'atom'
-    Convert = require './ColorPicker-convert'
 
-    ColorPicker = null
-    SaturationSelector = null
-    HueSelector = null
-    AlphaSelector = null
+    module.exports = ->
+        Parent: null
 
-    module.exports = class ColorPickerView extends View
-        @content: ->
-            c = 'ColorPicker-'
+        SmartColor: (require './modules/SmartColor')()
+        SmartVariable: (require './modules/SmartVariable')()
+        Emitter: (require './modules/Emitter')()
 
-            @div id: 'ColorPicker', class: 'ColorPicker', =>
-                @div id: "#{ c }loader", class: "#{ c }loader", =>
-                    @div class: "#{ c }loaderDot"
-                    @div class: "#{ c }loaderDot"
-                    @div class: "#{ c }loaderDot"
+        extensions: {}
+        getExtension: (extensionName) -> @extensions[extensionName]
 
-                @div id: "#{ c }color", class: "#{ c }color", =>
-                    @div id: "#{ c }value", class: "#{ c }value"
+        isFirstOpen: yes
+        canOpen: yes
+        element: null
+        selection: null
 
-                @div id: "#{ c }initialWrapper", class: "#{ c }initialWrapper", =>
-                    @div id: "#{ c }initial", class: "#{ c }initial"
+        listeners: []
 
-                @div id: "#{ c }picker", class: "#{ c }picker", =>
-                    @div id: "#{ c }saturationSelectorWrapper", class: "#{ c }saturationSelectorWrapper", =>
-                        @div id: "#{ c }saturationSelection", class: "#{ c }saturationSelection"
-                        @canvas id: "#{ c }saturationSelector", class: "#{ c }saturationSelector", width: '180px', height: '180px'
-                    @div id: "#{ c }alphaSelectorWrapper", class: "#{ c }alphaSelectorWrapper", =>
-                        @div id: "#{ c }alphaSelection", class: "#{ c }alphaSelection"
-                        @canvas id: "#{ c }alphaSelector", class: "#{ c }alphaSelector", width: '20px', height: '180px'
-                    @div id: "#{ c }hueSelectorWrapper", class: "#{ c }hueSelectorWrapper", =>
-                        @div id: "#{ c }hueSelection", class: "#{ c }hueSelection"
-                        @canvas id: "#{ c }hueSelector", class: "#{ c }hueSelector", width: '20px', height: '180px'
+    # -------------------------------------
+    #  Create and activate Color Picker view
+    # -------------------------------------
+        activate: ->
+            _workspace = atom.workspace
+            _workspaceView = atom.views.getView _workspace
 
-        initialize: ->
-            (atom.workspaceView.find '.vertical').append this
+        #  Create element
+        # ---------------------------
+            @element =
+                el: do ->
+                    _el = document.createElement 'div'
+                    _el.classList.add 'ColorPicker'
 
-            ColorPicker = require './ColorPicker'
-            SaturationSelector = require './ColorPicker-saturationSelector'
-            AlphaSelector = require './ColorPicker-alphaSelector'
-            HueSelector = require './ColorPicker-hueSelector'
+                    return _el
+                # Utility functions
+                remove: -> @el.parentNode.removeChild @el
 
-            HueSelector.render()
+                addClass: (className) -> @el.classList.add className; return this
+                removeClass: (className) -> @el.classList.remove className; return this
+                hasClass: (className) -> @el.classList.contains className
 
-            @bind()
+                width: -> @el.offsetWidth
+                height: -> @el.offsetHeight
 
-        # Tear down any state and detach
-        destroy: ->
+                setHeight: (height) -> @el.style.height = "#{ height }px"
+
+                hasChild: (child) ->
+                    if child and _parent = child.parentNode
+                        if child is @el
+                            return true
+                        else return @hasChild _parent
+                    return false
+
+                # Open & Close the Color Picker
+                isOpen: -> @hasClass 'is--open'
+                open: -> @addClass 'is--open'
+                close: -> @removeClass 'is--open'
+
+                # Flip & Unflip the Color Picker
+                isFlipped: -> @hasClass 'is--flipped'
+                flip: -> @addClass 'is--flipped'
+                unflip: -> @removeClass 'is--flipped'
+
+                # Set Color Picker position
+                # - x {Number}
+                # - y {Number}
+                setPosition: (x, y) ->
+                    @el.style.left = "#{ x }px"
+                    @el.style.top = "#{ y }px"
+                    return this
+
+                # Add a child on the ColorPicker element
+                add: (element) ->
+                    @el.appendChild element
+                    return this
+            @loadExtensions()
+
+        #  Close the Color Picker on any activity unrelated to it
+        #  but also emit events on the Color Picker
+        # ---------------------------
+            @listeners.push ['mousedown', onMouseDown = (e) =>
+                return unless @element.isOpen()
+
+                _isPickerEvent = @element.hasChild e.target
+                @emitMouseDown e, _isPickerEvent
+                return @close() unless _isPickerEvent]
+            window.addEventListener 'mousedown', onMouseDown, true
+
+            @listeners.push ['mousemove', onMouseMove = (e) =>
+                return unless @element.isOpen()
+
+                _isPickerEvent = @element.hasChild e.target
+                @emitMouseMove e, _isPickerEvent]
+            window.addEventListener 'mousemove', onMouseMove, true
+
+            @listeners.push ['mouseup', onMouseUp = (e) =>
+                return unless @element.isOpen()
+
+                _isPickerEvent = @element.hasChild e.target
+                @emitMouseUp e, _isPickerEvent]
+            window.addEventListener 'mouseup', onMouseUp, true
+
+            @listeners.push ['mousewheel', onMouseWheel = (e) =>
+                return unless @element.isOpen()
+
+                _isPickerEvent = @element.hasChild e.target
+                @emitMouseWheel e, _isPickerEvent]
+            window.addEventListener 'mousewheel', onMouseWheel
+
+            _workspaceView.addEventListener 'keydown', (e) =>
+                return unless @element.isOpen()
+
+                _isPickerEvent = @element.hasChild e.target
+                @emitKeyDown e, _isPickerEvent
+                return @close()
+
+            # Close it on scroll also
+            atom.workspace.observeTextEditors (editor) =>
+                _editorView = atom.views.getView editor
+                _subscriptionTop = _editorView.onDidChangeScrollTop => @close()
+                _subscriptionLeft = _editorView.onDidChangeScrollLeft => @close()
+
+                editor.onDidDestroy ->
+                    _subscriptionTop.dispose()
+                    _subscriptionLeft.dispose()
+                @onBeforeDestroy ->
+                    _subscriptionTop.dispose()
+                    _subscriptionLeft.dispose()
+                return
+
+            # Close it when the window resizes
+            @listeners.push ['resize', onResize = =>
+                @close()]
+            window.addEventListener 'resize', onResize
+
+            # Close it when the active item is changed
+            _workspace.getActivePane().onDidChangeActiveItem => @close()
+
+        #  Place the Color Picker element
+        # ---------------------------
             @close()
-            this.remove()
-            @detach()
+            @canOpen = yes
+
+            # TODO: Is this really the best way to do this? Hint: Probably not
+            (@Parent = (atom.views.getView atom.workspace).querySelector '.vertical')
+                .appendChild @element.el
+            return this
 
     # -------------------------------------
-    #  Controller state storage
+    #  Destroy the view and unbind events
     # -------------------------------------
-        storage: {
-            activeView: null
-            selectedColor: null
-            pickedColor: null
+        destroy: ->
+            @emitBeforeDestroy()
 
-            saturation: x: 0, y: 0
-            hue: 0
-            alpha: 0
-        }
+            for [_event, _listener] in @listeners
+                window.removeEventListener _event, _listener
+
+            @element.remove()
+            @canOpen = no
 
     # -------------------------------------
-    #  Show or hide color picker
+    #  Load Color Picker extensions // more like dependencies
     # -------------------------------------
-        isOpen: false
+        loadExtensions: ->
+            # TODO: This is really stupid. Should this be done with `fs` or something?
+            # TODO: Extension files have pretty much the same base. Simplify?
+            for _extension in ['Arrow', 'Color', 'Body', 'Saturation', 'Alpha', 'Hue', 'Definition', 'Return', 'Format']
+                _requiredExtension = (require "./extensions/#{ _extension }")(this)
+                @extensions[_extension] = _requiredExtension
+                _requiredExtension.activate?()
+            return
 
-        reset: ->
-            this.addClass 'is--visible is--initial'
-            this.removeClass 'no--arrow is--pointer is--searching'
+    # -------------------------------------
+    #  Set up events and handling
+    # -------------------------------------
+        # Mouse events
+        emitMouseDown: (e, isOnPicker) ->
+            @Emitter.emit 'mouseDown', e, isOnPicker
+        onMouseDown: (callback) ->
+            @Emitter.on 'mouseDown', callback
 
-            (this.find '#ColorPicker-color')
-                .css 'background-color', ''
-                .css 'border-bottom-color', ''
-            (this.find '#ColorPicker-value')
-                .attr 'data-variable', ''
-                .html ''
+        emitMouseMove: (e, isOnPicker) ->
+            @Emitter.emit 'mouseMove', e, isOnPicker
+        onMouseMove: (callback) ->
+            @Emitter.on 'mouseMove', callback
 
-        open: ->
-            @isOpen = true
-            _selectedColor = @storage.selectedColor
+        emitMouseUp: (e, isOnPicker) ->
+            @Emitter.emit 'mouseUp', e, isOnPicker
+        onMouseUp: (callback) ->
+            @Emitter.on 'mouseUp', callback
 
-            if not _selectedColor or _selectedColor.hasOwnProperty 'pointer'
-                this.addClass 'is--pointer'
-            if not _selectedColor then this.addClass 'is--searching'
+        emitMouseWheel: (e, isOnPicker) ->
+            @Emitter.emit 'mouseWheel', e, isOnPicker
+        onMouseWheel: (callback) ->
+            @Emitter.on 'mouseWheel', callback
 
-            _colorPickerWidth = this.width()
-            _colorPickerHeight = this.height()
-            _halfColorPickerWidth = _colorPickerWidth / 2
+        # Key events
+        emitKeyDown: (e, isOnPicker) ->
+            @Emitter.emit 'keyDown', e, isOnPicker
+        onKeyDown: (callback) ->
+            @Emitter.on 'keyDown', callback
 
-            _pane = atom.workspaceView.getActivePaneView()
-            _paneOffset = top: _pane[0].offsetTop, left: _pane[0].offsetLeft
-            _tabBarHeight = (_pane.find '.tab-bar').height()
+        # Position Change
+        emitPositionChange: (position, colorPickerPosition) ->
+            @Emitter.emit 'positionChange', position, colorPickerPosition
+        onPositionChange: (callback) ->
+            @Emitter.on 'positionChange', callback
 
-            @storage.activeView = _view = _pane.activeView
-            _position = _view.pixelPositionForScreenPosition _view.getEditor().getCursorScreenPosition()
-            _gutterWidth = (_view.find '.gutter').width()
+        # Opening
+        emitOpen: ->
+            @Emitter.emit 'open'
+        onOpen: (callback) ->
+            @Emitter.on 'open', callback
 
-            _scroll = top: _view.scrollTop(), left: _view.scrollLeft()
-            _scrollbar = _view.verticalScrollbar
-            if _scrollbar then _scrollbar.on 'scroll.color-picker', => @scroll()
+        # Before opening
+        emitBeforeOpen: ->
+            @Emitter.emit 'beforeOpen'
+        onBeforeOpen: (callback) ->
+            @Emitter.on 'beforeOpen', callback
 
-            # Add 15 to account for the arrow on top of the color picker
-            _top = 15 + _position.top - _scroll.top + _view.lineHeight + _tabBarHeight
-            _left = _position.left - _scroll.left + _gutterWidth
+        # Closing
+        emitClose: ->
+            @Emitter.emit 'close'
+        onClose: (callback) ->
+            @Emitter.on 'close', callback
 
-            # Make adjustments based on view size: don't let the color picker
-            # disappear or overflow
-            _viewWidth = _view.width()
-            _viewHeight = _view.height()
+        # Before destroying
+        emitBeforeDestroy: ->
+            @Emitter.emit 'beforeDestroy'
+        onBeforeDestroy: (callback) ->
+            @Emitter.on 'beforeDestroy', callback
 
-            # Remove 15 to ignore the arrow on top of the color picker
-            if _top + _colorPickerHeight - 15 > _viewHeight
-                _top = _viewHeight + _tabBarHeight - _colorPickerHeight - 20
-                this.addClass 'no--arrow'
-            _top += _paneOffset.top
+        # Input Color
+        emitInputColor: (smartColor, wasFound=true) ->
+            @Emitter.emit 'inputColor', smartColor, wasFound
+        onInputColor: (callback) ->
+            @Emitter.on 'inputColor', callback
 
-            if _left + _halfColorPickerWidth > _viewWidth
-                _left = _viewWidth - _halfColorPickerWidth - 20
-                this.addClass 'no--arrow'
-            _left += _paneOffset.left - _halfColorPickerWidth
+        # Input Variable
+        emitInputVariable: (match) ->
+            @Emitter.emit 'inputVariable', match
+        onInputVariable: (callback) ->
+            @Emitter.on 'inputVariable', callback
 
-            this # Place the color picker
-                .css 'top', Math.max 20, _top
-                .css 'left', Math.max 20, _left
+        # Input Variable Color
+        emitInputVariableColor: (smartColor, pointer) ->
+            @Emitter.emit 'inputVariableColor', smartColor, pointer
+        onInputVariableColor: (callback) ->
+            @Emitter.on 'inputVariableColor', callback
 
+    # -------------------------------------
+    #  Open the Color Picker
+    # -------------------------------------
+        open: (Editor=null, Cursor=null) ->
+            return unless @canOpen
+            @emitBeforeOpen()
+
+            Editor = atom.workspace.getActiveTextEditor() unless Editor
+            EditorView = atom.views.getView Editor
+
+            return unless EditorView
+            EditorRoot = EditorView.shadowRoot or EditorView
+
+            # Reset selection
+            @selection = null
+
+        #  Find the current cursor
+        # ---------------------------
+            Cursor = Editor.getLastCursor() unless Cursor
+
+            # Fail if the cursor isn't visible
+            _visibleRowRange = EditorView.getVisibleRowRange()
+            _cursorScreenRow = Cursor.getScreenRow()
+            _cursorBufferRow = Cursor.getBufferRow()
+
+            return if (_cursorScreenRow < _visibleRowRange[0]) or (_cursorScreenRow > _visibleRowRange[1])
+
+            # Try matching the contents of the current line to color regexes
+            _lineContent = Cursor.getCurrentBufferLine()
+
+            _colorMatches = @SmartColor.find _lineContent
+            _variableMatches = @SmartVariable.find _lineContent, Editor.getPath()
+            _matches = _colorMatches.concat _variableMatches
+
+            # Figure out which of the matches is the one the user wants
+            _cursorColumn = Cursor.getBufferColumn()
+            _match = do -> for _match in _matches
+                return _match if _match.start <= _cursorColumn and _match.end >= _cursorColumn
+
+            # If we've got a match, we should select it
+            if _match
+                Editor.clearSelections()
+
+                _selection = Editor.addSelectionForBufferRange [
+                    [_cursorBufferRow, _match.start]
+                    [_cursorBufferRow, _match.end]]
+                @selection = match: _match, row: _cursorBufferRow
+            # But if we don't have a match, center the Color Picker on last cursor
+            else
+                _cursorPosition = Cursor.getPixelRect()
+                @selection = column: Cursor.getBufferColumn(), row: _cursorBufferRow
+
+        #  Emit
+        # ---------------------------
+            if _match
+                # The match is a variable. Look up the definition
+                if _match.isVariable?
+                    _match.getDefinition()
+                        .then (definition) =>
+                            _smartColor = (@SmartColor.find definition.value)[0].getSmartColor()
+                            @emitInputVariableColor _smartColor, definition.pointer
+                        .catch (error) =>
+                            @emitInputVariableColor false
+                    @emitInputVariable _match
+                # The match is a color
+                else @emitInputColor _match.getSmartColor()
+            # No match, but `randomColor` option is set
+            else if atom.config.get 'color-picker.randomColor'
+                _randomColor = @SmartColor.RGBArray [
+                    ((Math.random() * 255) + .5) << 0
+                    ((Math.random() * 255) + .5) << 0
+                    ((Math.random() * 255) + .5) << 0]
+
+                # Convert to `preferredColor`, and then emit it
+                _preferredFormat = atom.config.get 'color-picker.preferredFormat'
+                _convertedColor = _randomColor["to#{ _preferredFormat }"]()
+                _randomColor = @SmartColor[_preferredFormat](_convertedColor)
+
+                @emitInputColor _randomColor, false
+            # No match, and it's the first open
+            else if @isFirstOpen
+                _redColor = @SmartColor.HEX '#f00'
+
+                # Convert to `preferredColor`, and then emit it
+                _preferredFormat = atom.config.get 'color-picker.preferredFormat'
+
+                if _redColor.format isnt _preferredFormat
+                    _convertedColor = _redColor["to#{ _preferredFormat }"]()
+                    _redColor = @SmartColor[_preferredFormat](_convertedColor)
+                @isFirstOpen = no
+
+                @emitInputColor _redColor, false
+
+        #  After (& if) having selected text (as this might change the scroll
+        #  position) gather information about the Editor
+        # ---------------------------
+            PaneView = atom.views.getView atom.workspace.getActivePane()
+            _paneOffsetTop = PaneView.offsetTop
+            _paneOffsetLeft = PaneView.offsetLeft
+
+            _editorOffsetTop = EditorView.parentNode.offsetTop
+            _editorOffsetLeft = EditorRoot.querySelector('.scroll-view').offsetLeft
+            _editorScrollTop = EditorView.getScrollTop()
+
+            _lineHeight = Editor.getLineHeightInPixels()
+            _lineOffsetLeft = EditorRoot.querySelector('.line').offsetLeft
+
+            # Center it on the middle of the selection range
+            # TODO: There can be lines over more than one row
+            if _match
+                _rect = EditorView.pixelRectForScreenRange(_selection.getScreenRange())
+                _right = _rect.left + _rect.width
+                _cursorPosition = Cursor.getPixelRect()
+                _cursorPosition.left = _right - (_rect.width / 2)
+
+        #  Figure out where to place the Color Picker
+        # ---------------------------
+            _totalOffsetTop = _paneOffsetTop + _cursorPosition.height - _editorScrollTop + _editorOffsetTop
+            _totalOffsetLeft = _paneOffsetLeft + _editorOffsetLeft + _lineOffsetLeft
+
+            _position =
+                x: _cursorPosition.left + _totalOffsetLeft
+                y: _cursorPosition.top + _totalOffsetTop
+
+        #  Figure out where to actually place the Color Picker by
+        #  setting up boundaries and flipping it if necessary
+        # ---------------------------
+            _colorPickerPosition =
+                x: do =>
+                    _colorPickerWidth = @element.width()
+                    _halfColorPickerWidth = (_colorPickerWidth / 2) << 0
+
+                    # Make sure the Color Picker isn't too far to the left
+                    _x = Math.max 10, _position.x - _halfColorPickerWidth
+                    # Make sure the Color Picker isn't too far to the right
+                    _x = Math.min (@Parent.offsetWidth - _colorPickerWidth - 10), _x
+
+                    return _x
+                y: do =>
+                    @element.unflip()
+
+                    # TODO: It's not really working out great
+
+                    # If the color picker is too far down, flip it
+                    if @element.height() + _position.y > @Parent.offsetHeight - 32
+                        @element.flip()
+                        return _position.y - _lineHeight - @element.height()
+                    # But if it's fine, keep the Y position
+                    else return _position.y
+
+            # Set Color Picker position and emit events
+            @element.setPosition _colorPickerPosition.x, _colorPickerPosition.y
+            @emitPositionChange _position, _colorPickerPosition
+
+            # Open the Color Picker
+            requestAnimationFrame => # wait for class delay
+                @element.open()
+                @emitOpen()
+            return true
+
+    # -------------------------------------
+    #  Replace selected color
+    # -------------------------------------
+        canReplace: yes
+        replace: (color) ->
+            return unless @canReplace
+            @canReplace = no
+
+            Editor = atom.workspace.getActiveTextEditor()
+            Editor.clearSelections()
+
+            if @selection.match
+                _cursorStart = @selection.match.start
+                _cursorEnd = @selection.match.end
+            else _cursorStart = _cursorEnd = @selection.column
+
+            # Select the color we're going to replace
+            Editor.addSelectionForBufferRange [
+                [@selection.row, _cursorStart]
+                [@selection.row, _cursorEnd]]
+            Editor.replaceSelectedText null, => color
+
+            # Select the newly inserted color and move the cursor to it
+            setTimeout =>
+                Editor.setCursorBufferPosition [
+                    @selection.row, _cursorStart]
+                Editor.clearSelections()
+
+                # Update selection length
+                @selection.match?.end = _cursorStart + color.length
+
+                Editor.addSelectionForBufferRange [
+                    [@selection.row, _cursorStart]
+                    [@selection.row, _cursorStart + color.length]]
+                return setTimeout ( => @canReplace = yes), 100
+            return
+
+    # -------------------------------------
+    #  Close the Color Picker
+    # -------------------------------------
         close: ->
-            @isOpen = false
-            this.removeClass 'is--visible is--initial is--searching is--error'
-
-            return unless @storage.activeView and @storage.activeView.verticalScrollbar
-            @storage.activeView.verticalScrollbar.off 'scroll.color-picker'
-
-        error: ->
-            @storage.selectedColor = null
-
-            this
-                .removeClass 'is--searching'
-                .addClass 'is--error'
-
-        scroll: -> if @isOpen then @close()
-
-    # -------------------------------------
-    #  Bind controls
-    # -------------------------------------
-        bind: ->
-            window.onresize = => if @isOpen then @close()
-            atom.workspaceView.on 'pane:active-item-changed', => @close()
-
-            $body = this.parents 'body'
-
-            do => # Bind the color output control
-                $body.on 'mousedown', (e) =>
-                    _target = e.target
-                    _className = _target.className
-
-                    # Close unless the click target is something related to
-                    # the color picker
-                    return @close() unless /ColorPicker/.test _className
-
-                    _color = @storage.selectedColor
-
-                    switch _className
-                        when 'ColorPicker-color'
-                            if (_color?.hasOwnProperty 'pointer') and _pointer = _color.pointer
-                                (atom.workspace.open _pointer.filePath).finally =>
-                                    _editor = atom.workspace.activePaneItem
-                                    _editor.clearSelections()
-                                    _editor.setSelectedBufferRange _pointer.range
-                            else @replaceColor()
-
-                            @close()
-                        when 'ColorPicker-initialWrapper'
-                            @inputColor _color
-                            this.addClass 'is--initial'
-                .on 'keydown', (e) =>
-                    return unless @isOpen
-                    return @close() unless e.which is 13
-
-                    e.preventDefault()
-                    e.stopPropagation()
-
-                    @replaceColor()
-                    @close()
-
-            do => # Bind the saturation selector controls
-                _isGrabbingSaturationSelection = false
-
-                $body.on 'mousedown mousemove mouseup', (e) =>
-                    _offset = SaturationSelector.$el.offset()
-                    _offsetY = Math.max 1, (Math.min SaturationSelector.height, (e.pageY - _offset.top))
-                    _offsetX = Math.max 1, (Math.min SaturationSelector.width, (e.pageX - _offset.left))
-
-                    switch e.type
-                        when 'mousedown'
-                            return unless e.target.className is 'ColorPicker-saturationSelector'
-                            e.preventDefault()
-                            _isGrabbingSaturationSelection = true
-                        when 'mousemove'
-                            return unless _isGrabbingSaturationSelection
-                            e.preventDefault()
-                        when 'mouseup'
-                            _isGrabbingSaturationSelection = false
-                    return unless _isGrabbingSaturationSelection
-
-                    @setSaturation _offsetX, _offsetY
-                    @refreshColor 'saturation'
-
-            do => # Bind the alpha selector controls
-                _isGrabbingAlphaSelection = false
-
-                $body.on 'mousedown mousemove mouseup', (e) =>
-                    _offsetTop = AlphaSelector.$el.offset().top
-                    _offsetY = Math.max 1, (Math.min AlphaSelector.height, (e.pageY - _offsetTop))
-
-                    switch e.type
-                        when 'mousedown'
-                            return unless e.target.className is 'ColorPicker-alphaSelector'
-                            e.preventDefault()
-                            _isGrabbingAlphaSelection = true
-                        when 'mousemove'
-                            return unless _isGrabbingAlphaSelection
-                            e.preventDefault()
-                        when 'mouseup'
-                            _isGrabbingAlphaSelection = false
-                    return unless _isGrabbingAlphaSelection
-
-                    @setAlpha _offsetY
-                    @refreshColor 'alpha'
-
-            do => # Bind the hue selector controls
-                _isGrabbingHueSelection = false
-
-                $body.on 'mousedown mousemove mouseup', (e) =>
-                    _offsetTop = HueSelector.$el.offset().top
-                    _offsetY = Math.max 1, (Math.min HueSelector.height, (e.pageY - _offsetTop))
-
-                    switch e.type
-                        when 'mousedown'
-                            return unless e.target.className is 'ColorPicker-hueSelector'
-                            e.preventDefault()
-                            _isGrabbingHueSelection = true
-                        when 'mousemove'
-                            return unless _isGrabbingHueSelection
-                            e.preventDefault()
-                        when 'mouseup'
-                            _isGrabbingHueSelection = false
-                    return unless _isGrabbingHueSelection
-
-                    @setHue _offsetY
-                    @refreshColor 'hue'
-
-    # -------------------------------------
-    #  Saturation
-    # -------------------------------------
-        setSaturation: (positionX, positionY) ->
-            @storage.saturation.x = positionX
-            @storage.saturation.y = positionY
-
-            _percentageTop = (positionY / SaturationSelector.height) * 100
-            _percentageLeft = (positionX / SaturationSelector.width) * 100
-
-            SaturationSelector.$selection
-                .css 'top', _percentageTop + '%'
-                .css 'left', _percentageLeft + '%'
-
-        refreshSaturationCanvas: ->
-            _color = HueSelector.getColorAtPosition @storage.hue
-            SaturationSelector.render _color.color
-
-    # -------------------------------------
-    #  Alpha
-    # -------------------------------------
-        setAlpha: (positionY) ->
-            @storage.alpha = positionY
-            AlphaSelector.$selection
-                .css 'top', (positionY / AlphaSelector.height) * 100 + '%'
-
-        refreshAlphaCanvas: ->
-            _saturation = @storage.saturation
-            _color = SaturationSelector.getColorAtPosition _saturation.x, _saturation.y
-            AlphaSelector.render Convert.hexToRgb _color.color
-
-    # -------------------------------------
-    #  Hue
-    # -------------------------------------
-        setHue: (positionY) ->
-            @storage.hue = positionY
-            HueSelector.$selection
-                .css 'top', (positionY / HueSelector.height) * 100 + '%'
-
-    # -------------------------------------
-    #  Color
-    # -------------------------------------
-
-        # Set the current color after control interaction
-        setColor: (color, preferredColorType) ->
-            unless color then this.removeClass 'is--initial'
-            else _setInitialColor = true
-
-            _saturation = @storage.saturation
-            color ?= SaturationSelector.getColorAtPosition _saturation.x, _saturation.y
-            _color = _displayColor = color.color
-
-            _alphaValue = 100 - (((@storage.alpha / AlphaSelector.height) * 100) << 0)
-            _alphaFactor = _alphaValue / 100
-
-            # Spit the same color type as the input (selected) color
-            if preferredColorType
-                if preferredColorType is 'hsl' or preferredColorType is 'hsla'
-                    _hsl = Convert.hsvToHsl Convert.rgbToHsv Convert.hexToRgb _color
-                    _h = (_hsl[0]) << 0
-                    _s = (_hsl[1] * 100) << 0
-                    _l = (_hsl[2] * 100) << 0
-                else _hexRgbFragments = (Convert.hexToRgb _color).join ', '
-
-                if _alphaValue is 100 then _displayColor = switch preferredColorType
-                    when 'rgb', 'rgba' then "rgb(#{ _hexRgbFragments })"
-                    when 'hsl', 'hsla' then "hsl(#{ _h }, #{ _s }%, #{ _l }%)"
-                    else _color
-                else _displayColor = switch preferredColorType
-                    when 'rgb', 'rgba', 'hex' then "rgba(#{ _hexRgbFragments }, #{ _alphaFactor })"
-                    when 'hexa' then "rgba(#{ _color }, #{ _alphaFactor })"
-                    when 'hsl', 'hsla' then "hsla(#{ _h }, #{ _s }%, #{ _l }%, #{ _alphaFactor })"
-
-            # Translate the color to rgba if an alpha value is set
-            if _alphaValue isnt 100
-                _rgb = switch color.type
-                    when 'hexa' then Convert.hexaToRgb _color
-                    when 'hex' then Convert.hexToRgb _color
-                    when 'rgb' then _color
-                if _rgb then _color = "rgba(#{ _rgb.join ', ' }, #{ _alphaFactor })"
-
-            @storage.pickedColor = _displayColor
-
-            # Set the color
-            (this.find '#ColorPicker-color')
-                .css 'background-color', _color
-                .css 'border-bottom-color', _color
-            (this.find '#ColorPicker-value').html _displayColor
-
-            # Save the initial color this function is given it
-            if _setInitialColor
-                (this.find '#ColorPicker-initial')
-                    .css 'background-color', _color
-                    .html _displayColor
-
-            # The color is a variable
-            if color.hasOwnProperty 'pointer'
-                this.removeClass 'is--searching'
-                    .find '#ColorPicker-value'
-                    .attr 'data-variable', color.match
-
-        refreshColor: (trigger) ->
-            if trigger is 'hue' then @refreshSaturationCanvas()
-            if trigger is 'hue' or trigger is 'saturation' then @refreshAlphaCanvas()
-
-            # Send the preferred color type as well
-            @setColor undefined, @storage.selectedColor.type
-
-        # User selects a new color, reflect the change
-        inputColor: (color) ->
-            _hasClass = this[0].className.match /(is\-\-color\_(\w+))\s/
-
-            this.removeClass _hasClass[1] if _hasClass
-            this.addClass "is--color_#{ color.type }"
-
-            _color = color.color
-
-            # Convert the color to HSV
-            # _hsv needs to be an array [h, s, v]
-            _hsv = switch color.type
-                when 'hex' then Convert.rgbToHsv Convert.hexToRgb _color
-                when 'hexa' then Convert.rgbToHsv Convert.hexaToRgb _color
-                when 'rgb', 'rgba' then Convert.rgbToHsv _color
-                when 'hsl', 'hsla' then Convert.hslToHsv [
-                    (parseInt color.regexMatch[1], 10)
-                    (parseInt color.regexMatch[2], 10) / 100
-                    (parseInt color.regexMatch[3], 10) / 100]
-            return unless _hsv
-
-            # Set all controls in the right place to reflect the input color
-
-            # Get the hue. 360 is the H max
-            @setHue (HueSelector.height / 360) * _hsv[0]
-
-            # Get the saturation
-            _saturationX = Math.max 1, SaturationSelector.width * _hsv[1]
-            _saturationY = Math.max 1, SaturationSelector.height * (1 - _hsv[2])
-            @setSaturation _saturationX, _saturationY
-            @refreshSaturationCanvas()
-
-            # Get the alpha
-            _alpha = switch color.type
-                when 'rgba' then color.regexMatch[7]
-                when 'hexa' then color.regexMatch[4]
-                when 'hsla' then color.regexMatch[4]
-            # Set the alpha
-            if _alpha then @setAlpha AlphaSelector.height * (1 - parseFloat _alpha)
-            else if not _alpha then @setAlpha 0
-
-            @refreshAlphaCanvas()
-            @setColor color
-
-    # -------------------------------------
-    #  Selection
-    # -------------------------------------
-
-        # Select the color in the editor
-        selectColor: ->
-            _color = @storage.selectedColor
-            _editor = atom.workspace.getActiveEditor()
-
-            return unless _color
-
-            # Clear selections and select the color
-            _editor.clearSelections()
-            _editor.addSelectionForBufferRange
-                start:
-                    column: _color.index
-                    row: _color.row
-                end:
-                    column: _color.end
-                    row: _color.row
-
-        replaceColor: ->
-            _color = @storage.selectedColor
-            _newColor = @storage.pickedColor
-            _editor = atom.workspace.getActiveEditor()
-
-            return unless _color
-
-            @selectColor()
-
-            # Replace the text
-            _editor.replaceSelectedText null, => return _newColor
-
-            # Clear selections and select the color
-            _editor.clearSelections()
-            _editor.addSelectionForBufferRange
-                start:
-                    column: _color.index
-                    row: _color.row
-                end:
-                    column: _color.index + _newColor.length
-                    row: _color.row
+            @element.close()
+            @emitClose()

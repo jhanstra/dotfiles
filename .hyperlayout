@@ -1,0 +1,19 @@
+{
+  "name": "jh-hyperlayout",
+  "hyperlayout": {
+      "start": [
+        [[
+          "",
+          ["npm run serve", "http://localhost:3000"]
+        ]],
+        "mongod"
+      ],
+      "helloworld": {
+        "entry": "horizontal",
+        "layout": [
+          "echo 'Hello'",
+          "echo 'World'"
+        ]
+      }
+  }
+}

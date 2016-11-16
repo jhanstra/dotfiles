@@ -1,0 +1,99 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-33537-1uyf6ne/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-33537-1uyf6ne/package.tgz",
+        "spec": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-33537-1uyf6ne/package.tgz",
+        "type": "local"
+      },
+      "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/apm-install-dir-1161016-33537-1lhdzam"
+    ]
+  ],
+  "_from": "../d-1161016-33537-1uyf6ne/package.tgz",
+  "_id": "language-liquid@0.5.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/language-liquid",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-33537-1uyf6ne/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-33537-1uyf6ne/package.tgz",
+    "spec": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-33537-1uyf6ne/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-1161016-33537-1uyf6ne/package.tgz",
+  "_shasum": "00fcddb042e7062e8c943303e281d9515433de76",
+  "_shrinkwrap": null,
+  "_spec": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/d-1161016-33537-1uyf6ne/package.tgz",
+  "_where": "/private/var/folders/tr/tkvz05zd5t902qxfs1rk99zm0000gn/T/apm-install-dir-1161016-33537-1lhdzam",
+  "author": {
+    "name": "Kieran Masterton",
+    "email": "kieran@88mph.com",
+    "url": "https://github.com/kieranmasterton"
+  },
+  "bugs": {
+    "url": "https://github.com/puranjayjain/language-liquid/issues"
+  },
+  "contributors": [
+    {
+      "name": "David Calhoun",
+      "url": "https://github.com/dcalhoun"
+    },
+    {
+      "name": "Brenton Horne",
+      "url": "https://github.com/fusion809"
+    },
+    {
+      "name": "Sebastian Szturo",
+      "url": "https://github.com/SebastianSzturo"
+    },
+    {
+      "name": "Matt Mischuk",
+      "url": "https://github.com/mattmischuk"
+    },
+    {
+      "name": "Puranjay Jain",
+      "url": "https://github.com/puranjayjain"
+    },
+    {
+      "name": "David van Gemeren",
+      "url": "https://github.com/burodepeper"
+    }
+  ],
+  "dependencies": {},
+  "description": "Fork of the original Liquid language support for Atom.",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/puranjayjain/language-liquid#readme",
+  "keywords": [
+    "language",
+    "liquid",
+    "shopify",
+    "blogs",
+    "markdown",
+    "gfm"
+  ],
+  "license": "MIT",
+  "name": "language-liquid",
+  "optionalDependencies": {},
+  "private": true,
+  "readme": "# language-liquid package\n\nLiquid language support for Atom.\n\nIt works with [pull #154](https://github.com/atom/language-gfm/pull/154) on the language-gfm repository to provide syntax highlighting for Liquid embedded in markdown files (which occurs on Jekyll blogs). Here is an example markdown file with Liquid tags being highlighted by this package:\n\n![](https://cloud.githubusercontent.com/assets/4717341/15426586/c421a424-1ed2-11e6-904a-6d85786b9552.png)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puranjayjain/language-liquid.git"
+  },
+  "version": "0.5.1"
+}

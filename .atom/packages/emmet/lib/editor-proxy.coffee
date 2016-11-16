@@ -6,9 +6,13 @@ utils       = require 'emmet/lib/utils/common'
 tabStops    = require 'emmet/lib/assets/tabStops'
 resources   = require 'emmet/lib/assets/resources'
 editorUtils = require 'emmet/lib/utils/editor'
+actionUtils = require 'emmet/lib/utils/action'
 
-snippetsPath = atom.packages.resolvePackagePath('snippets')
-snippets = require snippetsPath
+insertSnippet = (snippet, editor) ->
+  atom.packages.getLoadedPackage('snippets')?.mainModule?.insert(snippet, editor)
+
+  # Fetch expansions and assign to editor
+  editor.snippetExpansion = atom.packages.getLoadedPackage('snippets')?.mainModule?.getExpansions(editor)[0]
 
 visualize = (str) ->
   str
@@ -22,13 +26,12 @@ visualize = (str) ->
 # @param  {Editor} editor Brackets editor instance
 # @return {String}
 normalize = (text, editor) ->
-  editorUtils.normalize text, 
+  editorUtils.normalize text,
     indentation: editor.getTabText(),
     newline: '\n'
 
 # Proprocess text data that should be used as snippet content
-# Currently, Atom’s snippets implementation has the following issues: 
-# * supports $N or ${N:placeholder} notation, but not ${N}
+# Currently, Atom’s snippets implementation has the following issues:
 # * multiple $0 are not treated as distinct final tabstops
 preprocessSnippet = (value) ->
   order = []
@@ -48,19 +51,18 @@ preprocessSnippet = (value) ->
         # recursively update nested tabstops
         placeholder = tabStops.processText(placeholder, tabstopOptions)
 
-      if placeholder then "${#{group}:#{placeholder}}" else "$#{group}"
-      
+      if placeholder then "${#{group}:#{placeholder}}" else "${#{group}}"
+
     escape: (ch) ->
       if ch == '$' then '\\$' else ch
 
   tabStops.processText(value, tabstopOptions)
 
 module.exports =
-  setup: (@editorView, @selectionIndex=0) ->
-    @editor = @editorView.getEditor()
+  setup: (@editor, @selectionIndex=0) ->
     buf = @editor.getBuffer()
     bufRanges = @editor.getSelectedBufferRanges()
-    @_selection = 
+    @_selection =
       index: 0
       saved: new Array(bufRanges.length)
       bufferRanges: bufRanges
@@ -71,29 +73,32 @@ module.exports =
   # Executes given function for every selection
   exec: (fn) ->
     ix = @_selection.bufferRanges.length - 1
-    @_selection.saved = new Array(@_selection.bufferRanges.length)
+    @_selection.saved = []
     success = true
     while ix >= 0
-      @_selection.index = ix--
+      @_selection.index = ix
       if fn(@_selection.index) is false
         success = false
         break
+      ix--
 
     if success and @_selection.saved.length > 1
       @_setSelectedBufferRanges(@_selection.saved)
 
   _setSelectedBufferRanges: (sels) ->
-    @editor.setSelectedBufferRanges(sels.filter (s) -> !!s)
+    filteredSels = sels.filter (s) -> !!s
+    if filteredSels.length
+      @editor.setSelectedBufferRanges(filteredSels)
 
   _saveSelection: (delta) ->
     @_selection.saved[@_selection.index] = @editor.getSelectedBufferRange()
     if delta
-      i = @_selection.index + 1
+      i = @_selection.index
       delta = Point.fromObject([delta, 0])
-      while i < @_selection.saved.length
+      while ++i < @_selection.saved.length
         range = @_selection.saved[i]
-        @_selection.saved[i] = new Range(range.start.translate(delta), range.end.translate(delta))
-        i++
+        if range
+          @_selection.saved[i] = new Range(range.start.translate(delta), range.end.translate(delta))
 
   selectionList: ->
     @_selection.indexRanges
@@ -136,7 +141,7 @@ module.exports =
   getCurrentLineRange: ->
     sel = @getSelectionBufferRange()
     row = sel.getRows()[0]
-    lineLength = @editor.lineLengthForBufferRow(row)
+    lineLength = @editor.lineTextForBufferRow(row).length
     index = @editor.getBuffer().characterIndexForPosition({row: row, column: 0})
     return {
       start: index
@@ -147,7 +152,7 @@ module.exports =
   getCurrentLine: ->
     sel = @getSelectionBufferRange()
     row = sel.getRows()[0]
-    return @editor.lineForBufferRow(row)
+    return @editor.lineTextForBufferRow(row)
 
   # Returns the editor content.
   getContent: ->
@@ -187,23 +192,45 @@ module.exports =
     # Before inserting snippet we have to reset all available selections
     # to insert snippent right in required place. Otherwise snippet
     # will be inserted for each selection in editor
-    
+
     # Right after that we should save first available selection as buffer range
     caret = buf.positionForCharacterIndex(start)
     @editor.setSelectedBufferRange(new Range(caret, caret))
-    snippets.insert preprocessSnippet(value), @editor
+    insertSnippet preprocessSnippet(value), @editor
     @_saveSelection(utils.splitByLines(value).length - utils.splitByLines(oldValue).length)
     value
 
+  getGrammar: ->
+    @editor.getGrammar().scopeName.toLowerCase()
+
   # Returns the editor's syntax mode.
   getSyntax: ->
-    @editor.getGrammar().name.toLowerCase()
+    scope = @getCurrentScope().join(' ')
+    return 'xsl' if ~scope.indexOf('xsl')
+    return 'jsx' if not /\bstring\b/.test(scope) && /\bsource\.(js|ts)x?\b/.test(scope)
+
+    sourceSyntax = scope.match(/\bsource\.([\w\-]+)/)?[0]
+
+    if not /\bstring\b/.test(scope) && sourceSyntax && resources.hasSyntax(sourceSyntax)
+      syntax = sourceSyntax;
+    else
+      # probe syntax based on current selector
+      m = scope.match(/\b(source|text)\.[\w\-\.]+/)
+      syntax = m?[0].split('.').reduceRight (result, token) ->
+          result or (token if resources.hasSyntax token)
+        , null
+
+    actionUtils.detectSyntax(@, syntax or 'html')
+
+  getCurrentScope: ->
+    range = @_selection.bufferRanges[@_selection.index]
+    @editor.scopeDescriptorForBufferPosition(range.start).getScopesArray()
 
   # Returns the current output profile name
   #
   # See emmet.setupProfile for more information.
   getProfileName: ->
-    @editor.getGrammar().name
+    return if @getCurrentScope().some((scope) -> /\bstring\.quoted\b/.test scope) then 'line' else actionUtils.detectProfile(@)
 
   # Returns the current editor's file path
   getFilePath: ->
