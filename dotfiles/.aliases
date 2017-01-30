@@ -29,9 +29,8 @@ alias localip="ipconfig getifaddr en1"
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 
-# Shortcuts
+# Git Shortcuts
 alias g="git"
-alias v="vim"
 alias gs="git status -s"
 alias gb="git branch"
 alias gba="git branch -a"
@@ -44,10 +43,10 @@ alias gc="git commit -m"
 alias gagc="git commit -am"
 alias gpom="git push origin master"
 
-# Etc
+# Other Shortcuts
 alias v="vim"
 alias imgur="imgur-screenshot.sh"
 
-# JH
+# JH Blog
 alias jh-build="gatsby build"
 alias jh-deploy="npm run deploy"
