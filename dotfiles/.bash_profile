@@ -1,1 +1,0 @@
-/Users/jhanstra/.bash_profile
