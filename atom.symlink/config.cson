@@ -1,6 +1,12 @@
 "*":
   core:
     telemetryConsent: "limited"
+    themes: [
+      "nord-atom-ui"
+      "nord-atom-syntax"
+    ]
+  editor:
+    preferredLineLength: 85
   "exception-reporting":
     userId: "41af71b1-13e2-ed69-6850-6327ffe1c9a6"
   welcome:

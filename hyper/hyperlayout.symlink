@@ -1,19 +1,21 @@
+
 {
-  "name": "jh-hyperlayout",
-  "hyperlayout": {
-      "start": [
-        [[
-          "",
-          ["npm run serve", "http://localhost:3000"]
-        ]],
-        "mongod"
-      ],
-      "helloworld": {
-        "entry": "horizontal",
-        "layout": [
-          "echo 'Hello'",
-          "echo 'World'"
-        ]
-      }
-  }
+  "fuelmade": [
+    [[
+      "cls && z inked-gaming",
+      ["atom .", "git status"]
+    ]],
+    [[
+      "cls && z rosewood-addons",
+      ["atom .", "git status"]
+    ]]
+  ],
+
+
+  "jot": [
+    [[
+      "z jot",
+      ["gs", "la"]
+    ]]
+  ]
 }

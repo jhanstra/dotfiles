@@ -9,5 +9,5 @@ linter-sass-lint
 minimap
 pigments
 pretty-json
-react
 Zen
+language-javascript-jsx

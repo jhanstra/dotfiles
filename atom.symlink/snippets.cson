@@ -19,3 +19,18 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+# Types of Snippets #
+# - Javascript (.source.js)
+# - Markdown (.source.md)
+
+
+'.source.scss':
+  'Background Image':
+    'prefix': 'bg-image'
+    'body': """
+      background-image: url('$1');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center
+    """
