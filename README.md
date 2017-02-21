@@ -39,5 +39,3 @@ To run, cd into your dotfile directory and type `scripts/install`.
 
 ##### dot
 Installs some dependencies, sets sane macOS defaults, and so on. Tweak this script, and run dot from time to time to keep your environment fresh and up-to-date. You can find this script in bin/.
-
-**Note:** this repo is configured for my personal use. It is not fully ready to be cloned and used easily. If you're interested in using these dotfiles and need help getting set up let me know at [jhanstra@gmail.com](mailto:jhanstra@gmail.com).
