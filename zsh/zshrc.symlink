@@ -1,8 +1,12 @@
-# shortcut to this dotfiles path is $ZSH
+####### User-specific settings #######
+
+# where your dotfiles are located
 export ZSH=$HOME/JH/projects/dotfiles
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/JH/projects
+
+######################################
 
 find $ZSH/bin -type f -exec chmod 755 {} \;
 
