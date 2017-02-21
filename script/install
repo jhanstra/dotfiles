@@ -12,3 +12,11 @@ brew bundle
 
 # find the installers and run them iteratively
 find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+
+# set up permissions for executable files
+cd ..
+find bin -type f -exec chmod 700 {} \;
+find functions -type f -exec chmod 700 {} \;
+chmod 700 homebrew/install.sh
+chmod 700 macos/install.sh
+chmod 700 macos/set-defaults.sh
