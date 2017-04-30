@@ -18,7 +18,7 @@ defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.5
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
 
 # Always show scrollbars
-# defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
+defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
 # Disable the “Are you sure you want to open this application?” dialog
@@ -47,8 +47,8 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 20
 
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false

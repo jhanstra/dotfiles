@@ -1,4 +1,9 @@
 "*":
+  "autocomplete-plus":
+    fileBlacklist: [
+      "*.md"
+      "*.txt"
+    ]
   core:
     telemetryConsent: "limited"
     themes: [
@@ -6,8 +11,12 @@
       "nord-atom-syntax"
     ]
   editor:
+    fontSize: 13
     preferredLineLength: 85
+    softWrap: true
   "exception-reporting":
     userId: "41af71b1-13e2-ed69-6850-6327ffe1c9a6"
+  "tree-view":
+    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false

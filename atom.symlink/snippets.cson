@@ -1,44 +1,58 @@
-# Your snippets
-#
-# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
-# expand the prefix into a larger code block with templated values.
-#
-# You can create a new snippet in this file by typing "snip" and then hitting
-# tab.
-#
-# An example CoffeeScript snippet to expand log to console.log:
-#
-# '.source.coffee':
-#   'Console log':
-#     'prefix': 'log'
-#     'body': 'console.log $1'
-#
-# Each scope (e.g. '.source.coffee' above) can only be declared once.
-#
-# This file uses CoffeeScript Object Notation (CSON).
-# If you are unfamiliar with CSON, you can read more about it in the
-# Atom Flight Manual:
-# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
-
-# Types of Snippets #
-# - Javascript (.source.js)
-# - Markdown (.source.gfm)
-
-
-'.source.scss':
-  'Background Image':
-    'prefix': 'bg-image'
-    'body': """
-      background-image: url('$1');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center
-    """
-
-'.source.gfm':
-  'Travel Log':
-    'prefix': 'tlog'
-    'body': """
+html:
+  doctype:
+    prefix: "doctype"
+    body: '''
+      <!doctype html>
+      
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+      
+          <title>$1</title>
+          <meta name="description" content="$2">
+          <meta name="author" content="$3">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+          <link rel="stylesheet" href="$4">
+      
+          <!--[if lt IE 9]>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+          <![endif]-->
+        </head>
+      
+        <body>
+          $5
+        </body>
+      </html>
+    '''
+  lor:
+    prefix: "lor"
+    body: "Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+  lorem:
+    prefix: "lorem"
+    body: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus."
+  script:
+    prefix: "script"
+    body: "<script src=\"$1\" type=\"text/javascript\"></script>"
+  style:
+    prefix: "style"
+    body: "<link rel=\"stylesheet\" href=\"$1\">"
+md:
+  hipster:
+    prefix: "hipster"
+    body: "Tilde beard sriracha, ennui 8-bit jianbing umami. Man bun mumblecore bicycle rights next level, distillery scenester fanny pack art party master cleanse. Tumblr farm-to-table artisan butcher aesthetic, umami organic forage distillery microdosing four loko whatever truffaut master cleanse. La croix williamsburg next level tumblr, cliche literally semiotics. Paleo kombucha bushwick ethical occupy. VHS vice literally hella lumbersexual. Locavore health goth cardigan, selfies iceland edison bulb sriracha cred."
+  lor:
+    prefix: "lor"
+    body: "Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+  lorem:
+    prefix: "lorem"
+    body: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus."
+  portfolio:
+    prefix: "portfolio"
+    body: ""
+  tlog:
+    prefix: "tlog"
+    body: '''
       ---
       date: 2017-$1
       layout: log
@@ -56,10 +70,315 @@
       links:
       achievements:
       personal_growth:
-      highlight:
+      places:
       description:
       private_notes:
       ---
-
+      
       $10
-    """
+    '''
+js:
+  lor:
+    prefix: "lor"
+    body: "Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+  lorem:
+    prefix: "lorem"
+    body: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus."
+  test:
+    prefix: "test"
+    body: ""
+  for:
+    prefix: "for"
+    body: '''
+      for (var ${index} = 0; ${index} < ${array}.length; ${index}++) {
+        var ${element} = ${array}[${index}];
+        $0
+      }
+    '''
+  log:
+    prefix: "log"
+    body: "console.log($1)"
+  map:
+    prefix: "map"
+    body: ""
+  shebang:
+    prefix: "shebang"
+    body: "#!/usr/bin/env node"
+  me:
+    prefix: "me"
+    body: "module.exports = $1"
+  rcc:
+    prefix: "rcc"
+    body: '''
+      export default class $1 extends React.Component {
+        constructor(props) {
+          super(props)
+        }
+      
+        render () {
+          return (
+            $2
+          )
+        }
+      }
+      
+      $1.propTypes = {
+        $3
+      };
+    '''
+  rcf:
+    prefix: "rcf"
+    body: '''
+      import React from 'react'
+      
+      const $1 = ({$2}) => {
+        let {$3} = $2
+      }
+      
+      export default $1
+      
+    '''
+txt:
+  lor:
+    prefix: "lor"
+    body: "Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+css:
+  "bg-image":
+    prefix: "bg-image"
+    body: '''
+      background-image: url('$1');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    '''
+scss:
+  "bg-image":
+    prefix: "bg-image"
+    body: '''
+      background-image: url('$1');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    '''
+less:
+  "bg-image":
+    prefix: "bg-image"
+    body: '''
+      background-image: url('$1');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    '''
+yml:
+  "shop-config":
+    prefix: "shop-config"
+    body: '''
+      development:
+        password: $1
+        theme_id: "$3"
+        store: $2.myshopify.com
+        ignore_files:
+          - config.yml
+          - Gruntfile.js
+          - package.json
+          - node_modules/
+          - .git/
+        production:
+          password: $1
+          theme_id: "$4"
+          store: $2.myshopify.com
+          timeout: 60s
+          readonly: true
+    '''
+".text.html":
+  doctype:
+    prefix: "doctype"
+    body: '''
+      <!doctype html>
+      
+      <html lang="en">
+        <head>
+          <meta charset="utf-8">
+      
+          <title>$1</title>
+          <meta name="description" content="$2">
+          <meta name="author" content="$3">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+          <link rel="stylesheet" href="$4">
+      
+          <!--[if lt IE 9]>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+          <![endif]-->
+        </head>
+      
+        <body>
+          $5
+        </body>
+      </html>
+    '''
+  lor:
+    prefix: "lor"
+    body: "Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+  lorem:
+    prefix: "lorem"
+    body: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus."
+  script:
+    prefix: "script"
+    body: "<script src=\"$1\" type=\"text/javascript\"></script>"
+  style:
+    prefix: "style"
+    body: "<link rel=\"stylesheet\" href=\"$1\">"
+".source.gfm":
+  hipster:
+    prefix: "hipster"
+    body: "Tilde beard sriracha, ennui 8-bit jianbing umami. Man bun mumblecore bicycle rights next level, distillery scenester fanny pack art party master cleanse. Tumblr farm-to-table artisan butcher aesthetic, umami organic forage distillery microdosing four loko whatever truffaut master cleanse. La croix williamsburg next level tumblr, cliche literally semiotics. Paleo kombucha bushwick ethical occupy. VHS vice literally hella lumbersexual. Locavore health goth cardigan, selfies iceland edison bulb sriracha cred."
+  lor:
+    prefix: "lor"
+    body: "Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+  lorem:
+    prefix: "lorem"
+    body: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus."
+  portfolio:
+    prefix: "portfolio"
+    body: ""
+  tlog:
+    prefix: "tlog"
+    body: '''
+      ---
+      date: 2017-$1
+      layout: log
+      location: $2
+      coffee: $3
+      office: $4
+      restaurants: $5
+      bars: $6
+      beers: $7
+      hikes:
+      movies:
+      games:
+      climbing:
+      books:
+      links:
+      achievements:
+      personal_growth:
+      places:
+      description:
+      private_notes:
+      ---
+      
+      $10
+    '''
+".source.js":
+  lor:
+    prefix: "lor"
+    body: "Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+  lorem:
+    prefix: "lorem"
+    body: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus."
+  test:
+    prefix: "test"
+    body: ""
+  for:
+    prefix: "for"
+    body: '''
+      for (var ${index} = 0; ${index} < ${array}.length; ${index}++) {
+        var ${element} = ${array}[${index}];
+        $0
+      }
+    '''
+  log:
+    prefix: "log"
+    body: "console.log($1)"
+  map:
+    prefix: "map"
+    body: ""
+  shebang:
+    prefix: "shebang"
+    body: "#!/usr/bin/env node"
+  me:
+    prefix: "me"
+    body: "module.exports = $1"
+  rcc:
+    prefix: "rcc"
+    body: '''
+      export default class $1 extends React.Component {
+        constructor(props) {
+          super(props)
+        }
+      
+        render () {
+          return (
+            $2
+          )
+        }
+      }
+      
+      $1.propTypes = {
+        $3
+      };
+    '''
+  rcf:
+    prefix: "rcf"
+    body: '''
+      import React from 'react'
+      
+      const $1 = ({$2}) => {
+        let {$3} = $2
+      }
+      
+      export default $1
+      
+    '''
+".source.txt":
+  lor:
+    prefix: "lor"
+    body: "Aenean ultricies mi vitae est. Mauris placerat eleifend leo."
+".source.css":
+  "bg-image":
+    prefix: "bg-image"
+    body: '''
+      background-image: url('$1');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    '''
+".source.scss":
+  "bg-image":
+    prefix: "bg-image"
+    body: '''
+      background-image: url('$1');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    '''
+".source.css.less":
+  "bg-image":
+    prefix: "bg-image"
+    body: '''
+      background-image: url('$1');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+    '''
+".source.yaml":
+  "shop-config":
+    prefix: "shop-config"
+    body: '''
+      development:
+        password: $1
+        theme_id: "$3"
+        store: $2.myshopify.com
+        ignore_files:
+          - config.yml
+          - Gruntfile.js
+          - package.json
+          - node_modules/
+          - .git/
+        production:
+          password: $1
+          theme_id: "$4"
+          store: $2.myshopify.com
+          timeout: 60s
+          readonly: true
+    '''
