@@ -388,10 +388,10 @@ prompt_pure_setup() {
 	[[ "$SSH_CONNECTION" != '' ]] && prompt_pure_username=' %F{242}%n@%m%f'
 
 	# show username@host if root, with username in white
-	[[ $UID -eq 0 ]] && prompt_pure_username=' %F{white}%n%f%F{242}@%m%f'
+	[[ $UID -eq 0 ]] && prompt_pure_username=' %F{white}%n%f%F{white}@%m%f'
 
 	# prompt turns red if the previous command didn't exit with 0
-	PROMPT='%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-▲}%f '
+	PROMPT='%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-▲ }%f '
 }
 
 prompt_pure_setup "$0" "$@"
