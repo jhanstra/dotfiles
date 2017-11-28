@@ -8,6 +8,9 @@ export PROJECTS=~/JH/projects
 
 ######################################
 
+# set up fasd for easy file navigation
+eval "$(fasd --init auto)"
+
 find $ZSH/bin -type f -exec chmod 755 {} \;
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
@@ -44,8 +47,7 @@ do
   source $file
 done
 
-# set up fasd for easy file navigation
-eval "$(fasd --init auto)"
+
 
 unset config_files
 

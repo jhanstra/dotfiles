@@ -4,6 +4,10 @@ alias jhd="gatsby develop"
 alias jhb="gatsby build"
 alias jhdeploy="npm run deploy"
 alias jhbd="gatsby build && npm run deploy"
-alias blog="z jh-blog && code ."
-alias dotfiles="z dotfiles && code ."
-alias work="atom ~/JH/projects/dotfiles ~/JH/projects/jh-blog"
+
+# Jump to Projects
+alias work-blog="z jh-blog && code ."
+alias work-dotfiles="z dotfiles && code ."
+alias work-snipster="z snipster && code ."
+alias work-jot="z jot && code ."
+alias work="code ~/JH/projects/dotfiles ~/JH/projects/jh-blog ~/JH/projects/snipster"

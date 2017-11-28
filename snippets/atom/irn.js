@@ -1,0 +1,1 @@
+import { StyleSheet, View, Text, $1 } from 'react-native'

@@ -1,4 +1,4 @@
-export default class $1 extends React.Component {
+class $1 extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -9,7 +9,3 @@ export default class $1 extends React.Component {
     )
   }
 }
-
-$1.propTypes = {
-  $3
-};

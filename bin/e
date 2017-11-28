@@ -14,6 +14,6 @@
 #   $ e .
 #   $ e /usr/local
 #   # => opens the specified directory in your editor
-fasd_cd -d viance
 
-# $1 && "$EDITOR" .
+
+$1 && "$EDITOR" .
