@@ -11,3 +11,7 @@ alias work-dotfiles="z dotfiles && code ."
 alias work-snipster="z snipster && code ."
 alias work-jot="z jot && code ."
 alias work="code ~/JH/projects/dotfiles ~/JH/projects/jh-blog ~/JH/projects/snipster"
+
+
+# Forever
+alias moon="cd /Users/jhanstra/JH/projects/moonbot && npm run start"
