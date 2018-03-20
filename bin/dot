@@ -11,12 +11,12 @@ export ZSH=$HOME/JH/projects/dotfiles
 $ZSH/macos/set-defaults.sh
 
 # Install homebrew
-$ZSH/homebrew/install.sh 2>&1
+$ZSH/homebrew/install-base.sh 2>&1
 
 # Upgrade homebrew
 echo "› brew update"
 brew update
 
 # Install software
-echo "› $ZSH/script/install"
+echo "› $ZSH/script/install-base"
 $ZSH/script/install
