@@ -1,0 +1,56 @@
+{
+  // Default font settings
+  "editor.fontFamily": "FiraCode-Retina",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 20,
+  "editor.fontWeight": "300",
+  "workbench.fontAliasing": "antialiased", // antialiased/default/auto
+  "editor.fontLigatures": true,
+
+  // Editor Theme
+  "workbench.colorTheme": "One Monokai",
+  "workbench.iconTheme": "vscode-icons",
+
+  // Workspace formatting
+  "editor.tabSize": 2,
+  "editor.rulers": [100],
+  "editor.minimap.enabled": true, // the small code map on the right side of the window
+  "editor.renderControlCharacters": false,
+  "editor.renderIndentGuides": true,
+  "editor.detectIndentation": false,
+  "editor.scrollBeyondLastLine": false,
+  "editor.wordWrap": "on",
+  "editor.cursorStyle": "line-thin",
+  "editor.cursorBlinking": "phase",
+  "editor.quickSuggestionsDelay": 10,
+  "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc.
+  "editor.smoothScrolling": false,
+  "editor.renderWhitespace": "boundary", // turn whitespace dots on/off - none, boundary (when not in between words), all
+  "workbench.editor.tabSizing": "shrink", // defines whether tabs show full name or abbreviation - fit/shrink
+  "workbench.panel.defaultLocation": "right", // right / bottom
+
+  // Auto-editing functionality
+  "files.trimTrailingWhitespace": true,
+  "files.autoSave": "onFocusChange",
+
+  // HTML specific
+  "html.format.wrapLineLength": 120,
+  "html.format.endWithNewline": true,
+
+  // JS specific
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  // Git settings
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+
+  // Emmet config
+  "emmet.triggerExpansionOnTab": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+  },
+
+  // Prettier config
+  //"editor.formatOnSave": true, // Turn on for Prettier auto-format
+}
