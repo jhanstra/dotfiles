@@ -1,6 +1,6 @@
 [user]
 	name = Jared Hanstra
-	email = jared.hanstra@wisc.edu
+	email = jhanstra@gmail.com
 [difftool "kdiff3"]
   path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
   trustExitCode = false

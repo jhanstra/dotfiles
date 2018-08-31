@@ -44,6 +44,16 @@ To run, cd into your dotfile directory and type `scripts/install-personal`.
 ##### dot
 Installs some dependencies, sets sane macOS defaults, and so on. Tweak this script, and run dot from time to time to keep your environment fresh and up-to-date. You can find this script in bin/.
 
+
+### how to
+
+##### add to path
+If you need to add a folder to your path, open `system/_path.zsh` and edit the `PATH` export.
+
+### faq
+> My aliases aren't working.
+Have you opened up a new tab? Is your alias in the correct format?
+
 ### todo after running scripts
 - install [firacode](https://github.com/tonsky/FiraCode#download-v1205--how-to-install--troubleshooting--news--updates) and other fonts and add to fonts (Mac HD > Library > Fonts)
 - install vscode plugins and settings

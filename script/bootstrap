@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 #
-# bootstrap installs things.
+# bootstrap does the following:
+# 1. sets up global gitconfig and writes it to gitconfig.symlink
+# 2. goes through all folders in this repo and symlinks the .symlink files to ~/
+# 3. runs the bin/dot script
 
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)

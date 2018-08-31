@@ -1,0 +1,5 @@
+alias nrd="npm run dev"
+alias nrt="npm run test"
+alias nrs="npm run start"
+alias test="npm run test"
+alias npmg="npm ls -g -depth=0"
