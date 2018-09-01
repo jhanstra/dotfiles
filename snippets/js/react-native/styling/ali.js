@@ -1,0 +1,1 @@
+alignItems: '$1'

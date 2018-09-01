@@ -1,0 +1,1 @@
+<Image style={styles.$1} resizeMode={'contain'} source={require('$2')} />

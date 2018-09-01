@@ -1,0 +1,1 @@
+<StatusBar barStyle={'light-content'} hidden$1 animated />

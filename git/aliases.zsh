@@ -26,3 +26,7 @@ alias git-undo="git reset --soft HEAD^"
 alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r' # Remove `+` and `-` from start of diff lines; just rely upon color.
 alias rename='git branch -m'
 alias pull-latest='git checkout develop && git pull && git checkout - && git merge develop'
+
+# ditto specfici
+alias gcd="git checkout develop"
+alias
