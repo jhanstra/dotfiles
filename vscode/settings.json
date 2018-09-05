@@ -4,14 +4,21 @@
   "editor.fontSize": 14,
   "editor.lineHeight": 20,
   "editor.fontWeight": "300",
-  "workbench.fontAliasing": "antialiased", // antialiased/default/auto
+  "workbench.fontAliasing": "default", // antialiased/default/auto
   "editor.fontLigatures": true,
 
   // Editor Theme
   "workbench.colorTheme": "One Monokai",
   "workbench.iconTheme": "vscode-icons",
 
+  // Terminal
+  "terminal.integrated.fontFamily": "FiraCode-Retina",
+  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontWeight": 300,
+  "terminal.integrated.fontWeightBold": 800,
+
   // Workspace formatting
+  "window.zoomLevel": -1,
   "editor.tabSize": 2,
   "editor.rulers": [100],
   "editor.minimap.enabled": true, // the small code map on the right side of the window
@@ -28,6 +35,7 @@
   "editor.renderWhitespace": "boundary", // turn whitespace dots on/off - none, boundary (when not in between words), all
   "workbench.editor.tabSizing": "shrink", // defines whether tabs show full name or abbreviation - fit/shrink
   "workbench.panel.defaultLocation": "right", // right / bottom
+  "breadcrumbs.enabled": true,
 
   // Auto-editing functionality
   "files.trimTrailingWhitespace": true,
@@ -41,16 +49,30 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
 
   // Git settings
+  "gitlens.keymap": "alternate",
   "gitlens.advanced.messages": {
     "suppressShowKeyBindingsNotice": true
   },
 
   // Emmet config
-  "emmet.triggerExpansionOnTab": false,
+  "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
+    "vue-html": "html",
+    "plaintext": "jade"
+  },
+  "emmet.syntaxProfiles": {
+    "html": {
+      "attr_quotes": "single"
+    },
+    "jsx": {
+      "self_closing_tag": true
+    }
   },
 
   // Prettier config
   //"editor.formatOnSave": true, // Turn on for Prettier auto-format
+
+  // Etc
+  "vsicons.dontShowNewVersionMessage": true,
 }

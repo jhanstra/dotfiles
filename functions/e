@@ -1,2 +1,2 @@
 # finds the project you want to open with 'z', then opens it in your editor
-fasd_cd -d $1 && code .
+fasd_cd -d $1 && code --add .
