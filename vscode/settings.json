@@ -23,20 +23,40 @@
   "editor.rulers": [100],
   "editor.minimap.enabled": true, // the small code map on the right side of the window
   "editor.renderControlCharacters": false,
-  "editor.renderIndentGuides": true,
+  "editor.renderIndentGuides": false,
   "editor.detectIndentation": false,
   "editor.scrollBeyondLastLine": false,
   "editor.wordWrap": "on",
-  "editor.cursorStyle": "line-thin",
-  "editor.cursorBlinking": "phase",
+  "editor.cursorStyle": "block",
+  "editor.cursorBlinking": "solid",
   "editor.quickSuggestionsDelay": 10,
   "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc.
   "editor.smoothScrolling": false,
-  "editor.renderWhitespace": "boundary", // turn whitespace dots on/off - none, boundary (when not in between words), all
+  "editor.renderWhitespace": "none", // turn whitespace dots on/off - none, boundary (when not in between words), all
   "workbench.editor.tabSizing": "shrink", // defines whether tabs show full name or abbreviation - fit/shrink
   "workbench.panel.defaultLocation": "right", // right / bottom
   "breadcrumbs.enabled": true,
 
+  // Vim settings
+  "editor.lineNumbers": "relative",
+  "vim.easymotion": true,
+  "vim.hlsearch": false,
+  // Number of lines to scroll with CTRL-U and CTRL-D commands.
+  "vim.scroll": 20,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [" "],
+      "after": ["leader", "leader", "leader", "b", "d", "w"]
+    },
+    {}
+  ],
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j", "j"],
+      "after": ["escape"]
+    },
+    {}
+  ],
   // Auto-editing functionality
   "files.trimTrailingWhitespace": true,
   "files.autoSave": "onFocusChange",
@@ -47,6 +67,8 @@
 
   // JS specific
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.validate.enable": false,
+  "typescript.validate.enable": false,
 
   // Git settings
   "gitlens.keymap": "alternate",
@@ -75,4 +97,5 @@
 
   // Etc
   "vsicons.dontShowNewVersionMessage": true,
+  "vim.disableExtension": true,
 }

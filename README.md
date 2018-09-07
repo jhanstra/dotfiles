@@ -67,6 +67,12 @@ open the command palette (⇧⌘P) in vscode and type 'shell command' to find th
 
 Have you opened up a new tab? Is your alias written in the correct format?
 
+
+## modifier keys
+To modify keys, go into System Preferences > Keyboard > Modifier Keys
+- change Caps Lock to Escape
+
+
 ## todo
 - add a fonts section with all my fonts. install [firacode](https://github.com/tonsky/FiraCode#download-v1205--how-to-install--troubleshooting--news--updates) and other fonts and add to fonts (Mac HD > Library > Fonts)
 
