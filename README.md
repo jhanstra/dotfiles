@@ -40,7 +40,7 @@ Installs additional personal applications with Homebrew Cask.
 
 To run, cd into your dotfile directory and type `scripts/install-personal`.
 
-##### vscode-symblink.sh
+##### vscode-symlink.sh
 Symlinks your VSCode settings to this repo so you can edit VSCode settings here.
 
 ##### dot
