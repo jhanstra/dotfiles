@@ -24,11 +24,11 @@ There are a few special files in the hierarchy.
 - **topic/\*.symlink**: Any file ending in \*.symlink gets symlinked into your $HOME. This is so you can keep all of those versioned in your dotfiles but still keep those autoloaded files in your home directory. These get symlinked in when you run script/bootstrap.
 
 ## scripts
+To run any of these scripts, cd into your dotfile directory and type `script/<script_name>`.
 
 ##### bootstrap.sh
 This is the main script to get everything set up. Sets up your gitconfig, then symlinks all `.symlink` files to your home directory. You will want to edit zsh/zshrc.symlink, which sets up a few paths that'll be different on your particular machine. Since your dotfiles are symlinked from your home folder to here, you can edit everything from here and it will take effect.
 
-To run this script, cd into your dotfile directory and type `script/bootstrap`.
 
 ##### install-base.sh
 Installs all applications in `BrewfileBase` using Homebrew Cask. These are the most common applications that are appropriate for both work and personal and goes through each topic and runs the contents of `install.sh`.
@@ -40,8 +40,8 @@ Installs additional personal applications with Homebrew Cask.
 
 To run, cd into your dotfile directory and type `scripts/install-personal`.
 
-##### vscode-symlink.sh
-Symlinks your VSCode settings to this repo so you can edit VSCode settings here.
+##### link.sh
+Symlinks your VSCode and Karabiner settings to this repo so you can edit them here.
 
 ##### dot
 Installs some dependencies, sets sane macOS defaults, and so on. Tweak this script, and run dot from time to time to keep your environment fresh and up-to-date. You can find this script in bin/.
