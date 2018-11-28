@@ -1,0 +1,14 @@
+
+#!/bin/sh
+#
+# Downloads an entire website and puts it in the offline folder
+#
+# This means that as I travel back and forth between editors, hey, I don't have
+# to re-learn any arcane commands. Neat.
+#
+# USAGE:
+#
+#   $ get https://github.com/lodash/lodash/wiki/FP-Guide
+#   # => downloads the webpage
+
+cd /Users/jaredhanstra/JH/offline/websites && wget -p -k -r --no-parent -U Mozilla "$1"

@@ -3,4 +3,5 @@ git/gitconfig.local.symlink
 .DS_Store
 
 node_modules
+npm-offline/node_modules
 npm-debug.log

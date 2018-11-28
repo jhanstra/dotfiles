@@ -1,0 +1,24 @@
+{
+  "name": "@coprime/dotfiles",
+  "version": "0.0.1",
+  "description": "dotfiles repo for new mac configuration and a whole bunch of useful scripts",
+  "main": "index.js",
+  "scripts": {
+    "bootstrap": "sh bash-scripts/bootstrap.sh",
+    "install-programs": "sh bash-scripts/install.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jhanstra/dotfiles.git"
+  },
+  "author": "jhanstra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jhanstra/dotfiles/issues"
+  },
+  "homepage": "https://github.com/jhanstra/dotfiles#readme",
+  "dependencies": {
+    "commander": "^2.19.0"
+  }
+}
