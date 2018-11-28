@@ -6,7 +6,8 @@
   "scripts": {
     "bootstrap": "sh bash-scripts/bootstrap.sh",
     "install-programs": "sh bash-scripts/install.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "misc": "node node-scripts/new-mac.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,8 @@
   },
   "homepage": "https://github.com/jhanstra/dotfiles#readme",
   "dependencies": {
-    "commander": "^2.19.0"
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0",
+    "path": "^0.12.7"
   }
 }
