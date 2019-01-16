@@ -18,10 +18,11 @@
   "terminal.integrated.fontWeightBold": 800,
 
   // Workspace formatting
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
   "window.zoomLevel": -1,
   "editor.tabSize": 2,
   "editor.rulers": [100],
-  "editor.minimap.enabled": true, // the small code map on the right side of the window
+  "editor.minimap.enabled": true,
   "editor.renderControlCharacters": false,
   "editor.renderIndentGuides": false,
   "editor.detectIndentation": false,
@@ -30,12 +31,24 @@
   "editor.cursorStyle": "block",
   "editor.cursorBlinking": "solid",
   "editor.quickSuggestionsDelay": 10,
+  "editor.formatOnSave": true,
+  "editor.snippetSuggestions": "top",
   "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc.
   "editor.smoothScrolling": false,
   "editor.renderWhitespace": "none", // turn whitespace dots on/off - none, boundary (when not in between words), all
   "workbench.editor.tabSizing": "shrink", // defines whether tabs show full name or abbreviation - fit/shrink
   "workbench.panel.defaultLocation": "right", // right / bottom
   "breadcrumbs.enabled": true,
+
+  // File List
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/.next": true
+  },
 
   // Vim settings
   "editor.lineNumbers": "relative",
@@ -70,6 +83,13 @@
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
 
+  // ESLint
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+
   // Git settings
   "gitlens.keymap": "alternate",
   "gitlens.advanced.messages": {
@@ -97,5 +117,5 @@
 
   // Etc
   "vsicons.dontShowNewVersionMessage": true,
-  "vim.disableExtension": true,
+  "vim.disableExtension": true
 }
