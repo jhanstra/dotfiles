@@ -6,22 +6,21 @@
   "editor.fontWeight": "300",
   "workbench.fontAliasing": "default", // antialiased/default/auto
   "editor.fontLigatures": true,
-
   // Editor Theme
   "workbench.colorTheme": "One Monokai",
   "workbench.iconTheme": "vscode-icons",
-
   // Terminal
   "terminal.integrated.fontFamily": "FiraCode-Retina",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontWeight": 300,
   "terminal.integrated.fontWeightBold": 800,
-
   // Workspace formatting
   "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "editor.tabSize": 2,
-  "editor.rulers": [100],
+  "editor.rulers": [
+    100
+  ],
   "editor.minimap.enabled": true,
   "editor.renderControlCharacters": false,
   "editor.renderIndentGuides": false,
@@ -36,10 +35,8 @@
   "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc.
   "editor.smoothScrolling": false,
   "editor.renderWhitespace": "none", // turn whitespace dots on/off - none, boundary (when not in between words), all
-  "workbench.editor.tabSizing": "shrink", // defines whether tabs show full name or abbreviation - fit/shrink
-  "workbench.panel.defaultLocation": "right", // right / bottom
+  "workbench.editor.tabSizing": "shrink", // right / bottom
   "breadcrumbs.enabled": true,
-
   // File List
   "files.exclude": {
     "**/.git": true,
@@ -49,7 +46,6 @@
     "**/.DS_Store": true,
     "**/.next": true
   },
-
   // Vim settings
   "editor.lineNumbers": "relative",
   "vim.easymotion": true,
@@ -58,44 +54,59 @@
   "vim.scroll": 20,
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [" "],
-      "after": ["leader", "leader", "leader", "b", "d", "w"]
+      "before": [
+        " "
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "<leader>",
+        "b",
+        "d",
+        "w"
+      ]
     },
-    {}
+    {
+      "before": [
+        "U"
+      ],
+      "after": [
+        "C-r"
+      ]
+    },
   ],
   "vim.insertModeKeyBindingsNonRecursive": [
     {
-      "before": ["j", "j"],
-      "after": ["escape"]
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<ESC>"
+      ],
     },
-    {}
   ],
   // Auto-editing functionality
   "files.trimTrailingWhitespace": true,
   "files.autoSave": "onFocusChange",
-
   // HTML specific
   "html.format.wrapLineLength": 120,
   "html.format.endWithNewline": true,
-
   // JS specific
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
-
   // ESLint
   "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
   "[javascript]": {
     "editor.formatOnSave": false
   },
-
   // Git settings
   "gitlens.keymap": "alternate",
   "gitlens.advanced.messages": {
     "suppressShowKeyBindingsNotice": true
   },
-
   // Emmet config
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
@@ -111,11 +122,10 @@
       "self_closing_tag": true
     }
   },
-
   // Prettier config
   //"editor.formatOnSave": true, // Turn on for Prettier auto-format
-
   // Etc
   "vsicons.dontShowNewVersionMessage": true,
-  "vim.disableExtension": true
+  "vim.disableExtension": true,
+  "editor.acceptSuggestionOnEnter": "off"
 }
