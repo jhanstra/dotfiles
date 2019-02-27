@@ -1,10 +1,10 @@
 ####### User-specific settings #######
 
 # where your dotfiles are located
-export ZSH=$HOME/JH/coprime/dotfiles
+export ZSH=$HOME/coprime/dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/JH/coprime
+export PROJECTS=~/coprime
 
 ######################################
 
