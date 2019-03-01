@@ -1,0 +1,1 @@
+alias z='fasd_cd -d' 
