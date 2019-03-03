@@ -7,13 +7,13 @@
   "workbench.fontAliasing": "default", // antialiased/default/auto
   "editor.fontLigatures": true,
   // Editor Theme
-  "workbench.colorTheme": "One Monokai",
+  "workbench.colorTheme": "Hopscotch",
   "workbench.iconTheme": "vscode-icons",
   // Terminal
   "terminal.integrated.fontFamily": "FiraCode-Retina",
   "terminal.integrated.fontSize": 14,
-  "terminal.integrated.fontWeight": 300,
-  "terminal.integrated.fontWeightBold": 800,
+  "terminal.integrated.fontWeight": "300",
+  "terminal.integrated.fontWeightBold": "800",
   // Workspace formatting
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "window.zoomLevel": 0,
@@ -21,7 +21,7 @@
   "editor.rulers": [
     100
   ],
-  "editor.minimap.enabled": true,
+  "editor.minimap.enabled": false,
   "editor.renderControlCharacters": false,
   "editor.renderIndentGuides": false,
   "editor.detectIndentation": false,
@@ -30,6 +30,14 @@
   "editor.cursorStyle": "block",
   "editor.cursorBlinking": "solid",
   "editor.quickSuggestionsDelay": 10,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "[markdown]": {
+    "editor.quickSuggestions": false
+  },
   "editor.formatOnSave": true,
   "editor.snippetSuggestions": "top",
   "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc.
@@ -52,6 +60,9 @@
   "vim.hlsearch": false,
   // Number of lines to scroll with CTRL-U and CTRL-D commands.
   "vim.scroll": 20,
+  "vim.handleKeys": {
+    "<C-k>": false
+  },
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
@@ -127,5 +138,9 @@
   // Etc
   "vsicons.dontShowNewVersionMessage": true,
   "vim.disableExtension": true,
-  "editor.acceptSuggestionOnEnter": "off"
+  "editor.acceptSuggestionOnEnter": "off",
+  "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
+  "workbench.activityBar.visible": true,
+  "workbench.list.keyboardNavigation": "simple",
+  "editor.suggest.localityBonus": true
 }

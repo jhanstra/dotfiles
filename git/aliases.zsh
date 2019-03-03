@@ -29,4 +29,3 @@ alias pull-latest='git checkout develop && git pull && git checkout - && git mer
 
 # ditto specfici
 alias gcd="git checkout develop"
-alias

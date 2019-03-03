@@ -4,27 +4,25 @@
 
 # this script will install all vscode extensions
 
-code --install-extension WakaTime.vscode-wakatime
-code --install-extension aalaap.theme-toothpaste
-code --install-extension aaronthomas.vscode-snazzy-operator
-code --install-extension arcticicestudio.nord-visual-studio-code
+code --install-extension aaron-bond.better-comments
+code --install-extension alefragnani.project-manager
 code --install-extension azemoh.one-monokai
-code --install-extension cometeer.spacemacs
+code --install-extension christian-kohler.path-intellisense
 code --install-extension dbaeumer.vscode-eslint
+code --install-extension donjayamanne.githistory
 code --install-extension eamodio.gitlens
-code --install-extension gerane.Theme-FlatlandMonokai
-code --install-extension gerane.Theme-peel
-code --install-extension gerane.Theme-Sourlick
-code --install-extension gerane.Theme-tonic
-code --install-extension gerane.Theme-TwoStones
-code --install-extension gerane.Theme-zacks
+code --install-extension emmanuelbeziat.vscode-great-icons
+code --install-extension esbenp.prettier-vscode
 code --install-extension idleberg.hopscotch
-code --install-extension jansenfuller.crayon-vscode
-code --install-extension joshpeng.theme-onedark-sublime
-code --install-extension rkwan94.spacemacs
+code --install-extension jpoissonnier.vscode-styled-components
+code --install-extension kumar-harsh.graphql-for-vscode
+code --install-extension mohd-akram.vscode-html-format
+code --install-extension ms-python.python
+code --install-extension neilding.language-liquid
+code --install-extension PeterJausovec.vscode-docker
 code --install-extension robertohuertasm.vscode-icons
-code --install-extension thanhtrang.theme-flatland-monokai
-code --install-extension tinkertrain.theme-panda
+code --install-extension vscodevim.vim
+code --install-extension vsmobile.vscode-react-native
+code --install-extension WakaTime.vscode-wakatime
 code --install-extension wesbos.theme-cobalt2
-code --install-extension whtsky.agila-theme
-code --install-extension zhuangtongfa.Material-theme
+code --install-extension wix.vscode-import-cost

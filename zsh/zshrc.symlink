@@ -8,8 +8,7 @@ export PROJECTS=~/coprime
 
 ######################################
 
-# set up fasd for easy file navigation
-eval "$(fasd --init auto)"
+
 
 find $ZSH/bin -type f -exec chmod 755 {} \;
 
@@ -47,7 +46,8 @@ do
   source $file
 done
 
-
+# set up fasd for easy file navigation
+eval "$(fasd --init auto)"
 
 unset config_files
 
