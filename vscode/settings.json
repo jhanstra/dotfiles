@@ -7,7 +7,7 @@
   "workbench.fontAliasing": "default", // antialiased/default/auto
   "editor.fontLigatures": true,
   // Editor Theme
-  "workbench.colorTheme": "Hopscotch",
+  "workbench.colorTheme": "Shades of Purple",
   "workbench.iconTheme": "vscode-icons",
   // Terminal
   "terminal.integrated.fontFamily": "FiraCode-Retina",
@@ -26,7 +26,6 @@
   "editor.renderIndentGuides": false,
   "editor.detectIndentation": false,
   "editor.scrollBeyondLastLine": false,
-  "editor.wordWrap": "on",
   "editor.cursorStyle": "block",
   "editor.cursorBlinking": "solid",
   "editor.quickSuggestionsDelay": 10,
@@ -58,6 +57,7 @@
   "editor.lineNumbers": "relative",
   "vim.easymotion": true,
   "vim.hlsearch": false,
+  "vim.sneak": true,
   // Number of lines to scroll with CTRL-U and CTRL-D commands.
   "vim.scroll": 20,
   "vim.handleKeys": {
@@ -86,17 +86,7 @@
       ]
     },
   ],
-  "vim.insertModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<ESC>"
-      ],
-    },
-  ],
+  "vim.insertModeKeyBindingsNonRecursive": [],
   // Auto-editing functionality
   "files.trimTrailingWhitespace": true,
   "files.autoSave": "onFocusChange",
@@ -113,11 +103,6 @@
   "[javascript]": {
     "editor.formatOnSave": false
   },
-  // Git settings
-  "gitlens.keymap": "alternate",
-  "gitlens.advanced.messages": {
-    "suppressShowKeyBindingsNotice": true
-  },
   // Emmet config
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
@@ -133,14 +118,33 @@
       "self_closing_tag": true
     }
   },
+  "beautify.language": {
+    "html": [
+      "html",
+      "php",
+      "erb"
+    ],
+    "css": [],
+    "js": []
+  },
   // Prettier config
   //"editor.formatOnSave": true, // Turn on for Prettier auto-format
   // Etc
   "vsicons.dontShowNewVersionMessage": true,
-  "vim.disableExtension": true,
   "editor.acceptSuggestionOnEnter": "off",
   "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
-  "workbench.activityBar.visible": true,
+  "workbench.activityBar.visible": false,
   "workbench.list.keyboardNavigation": "simple",
-  "editor.suggest.localityBonus": true
+  "editor.suggest.localityBonus": true,
+  "php.suggest.basic": false,
+  "files.hotExit": "onExitAndWindowClose",
+  "spotify.showSignInButton": false,
+  "spotify.showNextButton": false,
+  "spotify.showSignOutButton": false,
+  "spotify.showPlayPauseButton": false,
+  "spotify.showMuteUnmuteVolumeButton": false,
+  "spotify.showPreviousButton": false,
+  "spotify.showToggleShufflingButton": true,
+  "spotify.showLyricsButton": false,
+  "editor.wordWrap": "on",
 }
