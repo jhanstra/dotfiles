@@ -1,3 +1,4 @@
+/* eslint-disable prettier */
 {
   // Default font settings
   "editor.fontFamily": "FiraCode-Retina",
@@ -42,8 +43,7 @@
   "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc.
   "editor.smoothScrolling": false,
   "editor.renderWhitespace": "none", // turn whitespace dots on/off - none, boundary (when not in between words), all
-  "workbench.editor.tabSizing": "shrink", // right / bottom
-  "breadcrumbs.enabled": true,
+  "workbench.editor.tabSizing": "shrink",
   // File List
   "files.exclude": {
     "**/.git": true,
@@ -57,35 +57,12 @@
   "editor.lineNumbers": "relative",
   "vim.easymotion": true,
   "vim.hlsearch": false,
-  "vim.sneak": true,
+  "vim.leader": " ",
   // Number of lines to scroll with CTRL-U and CTRL-D commands.
   "vim.scroll": 20,
   "vim.handleKeys": {
     "<C-k>": false
   },
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        " "
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "<leader>",
-        "b",
-        "d",
-        "w"
-      ]
-    },
-    {
-      "before": [
-        "U"
-      ],
-      "after": [
-        "C-r"
-      ]
-    },
-  ],
   "vim.insertModeKeyBindingsNonRecursive": [],
   // Auto-editing functionality
   "files.trimTrailingWhitespace": true,
@@ -133,7 +110,7 @@
   "vsicons.dontShowNewVersionMessage": true,
   "editor.acceptSuggestionOnEnter": "off",
   "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
-  "workbench.activityBar.visible": false,
+  "workbench.activityBar.visible": true,
   "workbench.list.keyboardNavigation": "simple",
   "editor.suggest.localityBonus": true,
   "php.suggest.basic": false,
@@ -147,4 +124,236 @@
   "spotify.showToggleShufflingButton": true,
   "spotify.showLyricsButton": false,
   "editor.wordWrap": "on",
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "<leader>"
+      ],
+      "after": [
+        "<leader>",
+        "<leader>",
+        "<leader>",
+        "b",
+        "d",
+        "w"
+      ]
+    },
+    {
+      "before": [
+        "j"
+      ],
+      "after": [
+        "g",
+        "j",
+      ]
+    },
+    {
+      "before": [
+        "k"
+      ],
+      "after": [
+        "g",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "J"
+      ],
+      "after": [
+        // "<C-d>"
+        "5",
+        "j",
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "after": [
+        // "C-u"
+        "5",
+        "k",
+      ]
+    },
+    {
+      "before": [
+        "H"
+      ],
+      "after": [
+        "g",
+        "T",
+      ]
+    },
+    {
+      "before": [
+        "L"
+      ],
+      "after": [
+        "g",
+        "t",
+      ]
+    },
+    {
+      "before": [
+        "0"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<escape>",
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "["
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.fold",
+        }
+      ],
+    },
+    {
+      "before": [
+        "]",
+        "]"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.unfold",
+        }
+      ],
+    },
+    {
+      "before": [
+        "[",
+        "1",
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level1",
+        }
+      ],
+    },
+    {
+      "before": [
+        "[",
+        "2"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level2",
+        }
+      ],
+    },
+    {
+      "before": [
+        "[",
+        "3"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level3",
+        }
+      ],
+    },
+    {
+      "before": [
+        "[",
+        "4"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level4",
+        }
+      ],
+    },
+    {
+      "before": [
+        "[",
+        "5"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level5",
+        }
+      ],
+    },
+    {
+      "before": [
+        "[",
+        "6"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level6",
+        }
+      ],
+    },
+    {
+      "before": [
+        "[",
+        "a"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.foldAll",
+        }
+      ],
+    },
+    {
+      "before": [
+        "[",
+        "f"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.unfoldAll",
+        }
+      ],
+    },
+    {
+      "before": [
+        "{",
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.foldRecursively",
+        }
+      ],
+    },
+    {
+      "before": [
+        "}",
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.unfoldRecursively",
+        }
+      ],
+    },
+  ],
+  "editor.foldingStrategy": "indentation",
 }
