@@ -359,5 +359,200 @@
   {
     "key": "shift+cmd+9",
     "command": "spotify.lyrics"
+  },
+  {
+    "key": "cmd+g cmd+i",
+    "command": "git.ignore"
+  },
+  {
+    "key": "cmd+g cmd+c",
+    "command": "git.checkout"
+  },
+  {
+    "key": "cmd+g cmd+b",
+    "command": "git.branch"
+  },
+  {
+    "key": "cmd+g cmd+o",
+    "command": "git.openChange"
+  },
+  {
+    "key": "cmd+g cmd+n",
+    "command": "git.stash"
+  },
+  {
+    "key": "cmd+g cmd+m",
+    "command": "git.stashPop"
+  },
+  {
+    "key": "cmd+g cmd+t",
+    "command": "git.createTag"
+  },
+  {
+    "key": "shift+cmd+u",
+    "command": "workbench.action.compareEditor.nextChange",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "alt+f5",
+    "command": "-workbench.action.compareEditor.nextChange",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "shift+cmd+-",
+    "command": "extension.startPomodoro"
+  },
+  {
+    "key": "shift+cmd+=",
+    "command": "extension.resetPomodoro"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "search.action.collapseSearchResults"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "workbench.files.action.collapseExplorerFolders"
+  },
+  {
+    "key": "ctrl+cmd+]",
+    "command": "-spotify.next"
+  },
+  {
+    "key": "ctrl+cmd+[",
+    "command": "-spotify.previous"
+  },
+  {
+    "key": "cmd+l",
+    "command": "cursorEnd",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+right",
+    "command": "-cursorEnd",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+h",
+    "command": "cursorLeft",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "left",
+    "command": "-cursorLeft",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+h",
+    "command": "cursorLineStart",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-cursorLineStart",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+;",
+    "command": "emoji.indertEmoji"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+k cmd+k",
+    "command": "-editor.action.defineKeybinding",
+    "when": "editorTextFocus && !editorReadonly && editorLangId == 'jsonc'"
+  },
+  {
+    "key": "cmd+k cmd+k",
+    "command": "-keybindings.editor.defineKeybinding",
+    "when": "inKeybindings && keybindingFocus"
+  },
+  {
+    "key": "shift+cmd+2",
+    "command": "workbench.action.toggleMaximizedPanel",
+  },
+  {
+    "key": "shift+cmd+;",
+    "command": "-spotify.volumeDown"
+  },
+  {
+    "key": "shift+cmd+'",
+    "command": "-spotify.volumeUp"
+  },
+  {
+    "key": "shift+cmd+o",
+    "command": "-workbench.action.gotoSymbol"
+  },
+  {
+    "key": "cmd+h",
+    "command": "editor.action.openDeclarationToTheSide"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "explorer.openToSide",
+    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "ctrl+enter",
+    "command": "-explorer.openToSide",
+    "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+  },
+  {
+    "key": "l",
+    "command": "list.expandSelectionDown",
+    "when": "listFocus && listSupportsMultiselect && !inputFocus"
+  },
+  {
+    "key": "shift+down",
+    "command": "-list.expandSelectionDown",
+    "when": "listFocus && listSupportsMultiselect && !inputFocus"
+  },
+  {
+    "key": "l",
+    "command": "list.expand",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "right",
+    "command": "-list.expand",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "cmd+l",
+    "command": "list.select",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "l",
+    "command": "-list.select",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "shift+cmd+,",
+    "command": "workbench.action.openSettingsJson",
+  },
+  {
+    "key": "shift+cmd+.",
+    "command": "workbench.action.openGlobalKeybindingsFile"
+  },
+  {
+    "key": "alt+cmd+[",
+    "command": "-editor.fold",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+space",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.openRecent"
   }
 ]
