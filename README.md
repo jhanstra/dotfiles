@@ -72,6 +72,8 @@ Have you opened up a new tab? Is your alias written in the correct format?
 To modify keys, go into System Preferences > Keyboard > Modifier Keys
 - change Caps Lock to Escape
 
+## npm offline
+The `npm-offline` folder has a `package.json` that aims to list all packages I would ever want to use on a project. The packages were installed once while online, which *should* allow it to be downloaded offline from now on.
 
 ## todo
 - add a fonts section with all my fonts. install [firacode](https://github.com/tonsky/FiraCode#download-v1205--how-to-install--troubleshooting--news--updates) and other fonts and add to fonts (Mac HD > Library > Fonts)

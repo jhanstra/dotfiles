@@ -61,7 +61,7 @@
     "command": "workbench.action.toggleActivityBarVisibility"
   },
   {
-    "key": "shift+cmd+z",
+    "key": "alt+cmd+z",
     "command": "workbench.action.toggleZenMode"
   },
   {
