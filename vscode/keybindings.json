@@ -554,5 +554,5 @@
   {
     "key": "ctrl+r",
     "command": "-workbench.action.openRecent"
-  }
+  },
 ]
