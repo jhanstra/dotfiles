@@ -9,7 +9,6 @@
   "editor.fontLigatures": true,
   // Editor Theme
   "workbench.colorTheme": "Shades of Purple",
-  "workbench.iconTheme": "vscode-icons",
   // Terminal
   "terminal.integrated.fontFamily": "FiraCode-Retina",
   "terminal.integrated.fontSize": 14,
@@ -77,8 +76,9 @@
   // ESLint
   "eslint.autoFixOnSave": true,
   "eslint.alwaysShowStatus": true,
+  // this *needs* to be set to false for js
   "[javascript]": {
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
   },
   // Emmet config
   "emmet.triggerExpansionOnTab": true,
@@ -107,7 +107,6 @@
   // Prettier config
   //"editor.formatOnSave": true, // Turn on for Prettier auto-format
   // Etc
-  "vsicons.dontShowNewVersionMessage": true,
   "editor.acceptSuggestionOnEnter": "off",
   "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
   "workbench.activityBar.visible": false,
@@ -371,5 +370,5 @@
       ]
     }
   ],
-  "editor.foldingStrategy": "indentation",
+  "editor.foldingStrategy": "indentation"
 }
