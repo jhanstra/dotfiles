@@ -203,7 +203,7 @@
         }
       ],
       "name": "KB68",
-      "selected": true,
+      "selected": false,
       "simple_modifications": [],
       "virtual_hid_keyboard": {
         "country_code": 0
@@ -373,7 +373,7 @@
         }
       ],
       "name": "Internal Keyboard",
-      "selected": false,
+      "selected": true,
       "simple_modifications": [],
       "virtual_hid_keyboard": {
         "country_code": 0
