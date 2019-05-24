@@ -3,7 +3,7 @@
   "javascript.format.enable": false,
   "javascript.validate.enable": false,
   "workbench.colorCustomizations": {
-    "activityBar.background": "#0cb22d99",
-    "statusBar.background": "#0cb22d99",
+    "activityBar.background": "#00000044",
+    "statusBar.background": "#00000044",
   }
 }
