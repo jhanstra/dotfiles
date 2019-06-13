@@ -1,4 +1,5 @@
 alias dev='npm run dev'
+alias nd='npm run start:dev'
 alias tst='npm run test'
 alias start='npm run start'
 alias build='npm run build'

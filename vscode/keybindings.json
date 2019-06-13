@@ -476,7 +476,7 @@
   },
   {
     "key": "shift+cmd+2",
-    "command": "workbench.action.toggleMaximizedPanel",
+    "command": "workbench.action.toggleMaximizedPanel"
   },
   {
     "key": "shift+cmd+;",
@@ -536,7 +536,7 @@
   },
   {
     "key": "shift+cmd+,",
-    "command": "workbench.action.openSettingsJson",
+    "command": "workbench.action.openSettingsJson"
   },
   {
     "key": "shift+cmd+.",
@@ -618,5 +618,5 @@
     "key": "ctrl+alt+w ctrl+alt+down",
     "command": "-console.log.wrap.down.prefix",
     "when": "editorTextFocus"
-  },
+  }
 ]
