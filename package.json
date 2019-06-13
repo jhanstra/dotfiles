@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "bootstrap": "sh bash-scripts/bootstrap.sh",
-    "install": "sh bash-scripts/install.sh",
+    "brew": "sh bash-scripts/install.sh",
     "vscode": "node node-scripts/link.js"
   },
   "repository": {

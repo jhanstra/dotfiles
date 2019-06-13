@@ -1,10 +1,10 @@
 ####### User-specific settings #######
 
 # where your dotfiles are located
-export ZSH=$HOME/coprime/dotfiles
+export ZSH=$HOME/indeed/dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/coprime
+export PROJECTS=~/indeed
 
 ######################################
 
@@ -55,3 +55,13 @@ export NVM_DIR="/Users/jhanstra/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$HOME/.yarn/bin:$PATH"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+
+# indeed specific configuration
+
+# Single-brace syntax because this is required in bash and sh alike
+if [ -e "$HOME/env/etc/indeedrc" ]; then
+    . "$HOME/env/etc/indeedrc"
+fi
