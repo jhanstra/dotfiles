@@ -457,7 +457,7 @@
     "command": "emoji.indertEmoji"
   },
   {
-    "key": "cmd+t",
+    "key": "cmd+y",
     "command": "workbench.action.togglePanel"
   },
   {
@@ -618,5 +618,9 @@
     "key": "ctrl+alt+w ctrl+alt+down",
     "command": "-console.log.wrap.down.prefix",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.focus"
   }
 ]
