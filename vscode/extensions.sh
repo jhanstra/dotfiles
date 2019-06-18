@@ -15,7 +15,6 @@ code --install-extension earshinov.sort-lines-by-selection
 code --install-extension ericadamski.carbon-now-sh
 code --install-extension esbenp.prettier-vscode
 code --install-extension fisheva.eva-theme
-code --install-extension formulahendry.auto-rename-tag
 code --install-extension formulahendry.code-runner
 code --install-extension funkyremi.vscode-google-translate
 code --install-extension Gruntfuggly.todo-tree
