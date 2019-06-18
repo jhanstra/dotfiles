@@ -16,7 +16,7 @@
   "terminal.integrated.fontWeightBold": "800",
   // Workspace formatting
   "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "editor.tabSize": 2,
   "editor.rulers": [
     100

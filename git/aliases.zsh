@@ -25,7 +25,7 @@ alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r' # Remove 
 alias rename='git branch -m'
 alias pull-latest='git checkout develop && git pull && git checkout - && git merge develop'
 alias amend='git commit --amend'
-alias adam='git add -A && git commit -=amend'
+alias adam='git add -A && git commit --amend'
 
 # ditto specfici
 alias gcd="git checkout develop"
