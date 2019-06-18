@@ -21,5 +21,11 @@ async function karabiner() {
   await fs.symlink(`${dotfiles}/karabiner/karabiner.json`, `${home}/.config/karabiner/karabiner.json`, () => {})
 }
 
+async function hammerspoon() {
+  console.log(chalk.blue('Linking Hammerspoon settings to dotfiles'))
+  await fs.symlink(`${dotfiles}/hammerspoon`, `${home}/.hammerspoon`, () => {})
+}
+
 vscode()
 karabiner()
+hammerspoon()
