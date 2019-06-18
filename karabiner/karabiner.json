@@ -21,9 +21,7 @@
                 "from": {
                   "key_code": "caps_lock",
                   "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
@@ -35,9 +33,7 @@
                   {
                     "key_code": "escape",
                     "modifiers": {
-                      "optional": [
-                        "any"
-                      ]
+                      "optional": ["any"]
                     }
                   }
                 ],
@@ -225,9 +221,7 @@
                 "from": {
                   "key_code": "caps_lock",
                   "modifiers": {
-                    "optional": [
-                      "any"
-                    ]
+                    "optional": ["any"]
                   }
                 },
                 "to": [
@@ -372,7 +366,7 @@
           }
         }
       ],
-      "name": "Internal Keyboard",
+      "name": "Apple Keyboards",
       "selected": true,
       "simple_modifications": [],
       "virtual_hid_keyboard": {
