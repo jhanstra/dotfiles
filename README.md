@@ -1,4 +1,4 @@
-# jth dotfiles
+# 🚀 jth dotfiles
 
 **from zero to the perfect development environment in just a few commands**
 
