@@ -17,7 +17,6 @@ async function vscode() {
 
 async function karabiner() {
   console.log(chalk.blue('Linking Karabiner settings to dotfiles'))
-  await fs.unlink(`${home}/.config/karabiner/karabiner.json`, () => {})
   await fs.symlink(`${dotfiles}/karabiner/karabiner.json`, `${home}/.config/karabiner/karabiner.json`, () => {})
 }
 
