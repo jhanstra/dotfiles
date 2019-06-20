@@ -1,20 +1,8 @@
-####### User-specific settings #######
-
-# where your dotfiles are located
-export ZSH=$HOME/coprime/dotfiles
-
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/coprime
-
-######################################
-
-
-
 find $ZSH/bin -type f -exec chmod 755 {} \;
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
-# you'll have access to them in your scripts.
+# you'll have access to them in your scripts. This is where $ZSH and $PROJ
 if [[ -a ~/.localrc ]]
 then
   source ~/.localrc

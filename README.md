@@ -10,12 +10,10 @@ There are many parts to this dotfiles repo:
 - Hammerspoon config
 - VSCode settings and extensions
 - Vim config
--
-
-* Install all applications and programs you need, including GUI apps, via Homebrew and Homebrew Cask. Full list of applications that will be installed is in `BrewfileBase` and `BrewfilePersonal`.
-* Set up VSCode with all of your settings and keybindings
-* Add convenient aliases, functions, and shell programs that make development easier
-* Set up your Mac with more sensible defaults
+- Bash functions and aliases
+- Snipster snippets
+- Zsh config
+- Hyper terminal config
 
 The contents of this repo are organized by topic, inspired by Zach Holman's [dotfiles](https://github.com/holman/dotfiles). Anything in a topic folder with an extension of .zsh will get automatically included into your shell. Anything with an extension of .symlink will get symlinked without extension into \$HOME when you run script/bootstrap.
 

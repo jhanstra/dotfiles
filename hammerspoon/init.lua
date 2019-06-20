@@ -43,11 +43,7 @@ end
 -- require('keyboard.panes')
 require('super')
 require('keyboard-switcher')
--- require('input-emoji')
+require('input-emoji')
 -- require('keyboard.windows')
-hs.loadSpoon("Emojis")
 
-spoon.Emojis:bindHotkeys({
-  toggle = {{"leftshift", "rightshift"}, "e" }
-})
 hs.notify.new({title='Hammerspoon', informativeText='Ready to rock 🤘'}):send()
