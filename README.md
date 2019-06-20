@@ -31,11 +31,11 @@ There are a few special files in the hierarchy.
 
 ## scripts
 
-`sh bash-scripts/bootstrap.sh`
+`sh bootstrap`
 
 This is the main script to get everything set up. Sets up your gitconfig, then symlinks all `.symlink` files to your home directory. You will want to edit zsh/zshrc.symlink, which sets up a few paths that'll be different on your particular machine. Since your dotfiles are symlinked from your home folder to here, you can edit everything from here and it will take effect.
 
-`sh bash-scripts/install.sh`
+`sh install`
 
 Installs all applications in `Brewfile` using Homebrew and goes through each topic and runs the contents of `install.sh`.
 
