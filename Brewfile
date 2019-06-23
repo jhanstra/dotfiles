@@ -38,6 +38,7 @@ brew 'libgit2'
 brew 'llvm'
 brew 'lua'
 brew 'make'
+brew 'mas'
 brew 'memcached'
 brew 'mongodb'
 brew 'mysql'
@@ -76,35 +77,6 @@ brew 'zsh'
 brew 'zsh-syntax-highlighting'
 # browse top packages at https://formulae.brew.sh/analytics/install-on-request/365d/
 
-# from indeed's install script
-brew 'binutils'
-brew 'diffutils'
-brew 'ed'
-brew 'findutils'
-brew 'gawk'
-brew 'gnu-indent'
-brew 'gnu-sed'
-brew 'gnu-tar'
-brew 'gnu-which'
-brew 'gnutls'
-brew 'gzip'
-brew 'watch'
-brew 'wdiff'
-brew 'coreutils'
-brew 'pyenv'
-brew 'pyenv-virtualenv'
-brew 'openssl'
-brew 'openssh'
-brew 'xmlstarlet'
-brew 'gettext'
-brew 'snappy'
-brew 'cmake'
-brew 'maven'
-brew 'jq'
-brew 'docker-machine'
-brew 'openconnect'
-
-
 ###### CASKS ######
 cask '1password'
 cask 'adobe-creative-cloud'
@@ -114,6 +86,8 @@ cask 'brave-browser'
 cask 'charles'
 cask 'docker'
 cask 'dropbox'
+cask 'firefox'
+cask 'firefox-developer-edition'
 cask 'flux'
 cask 'framer'
 cask 'framer-x'
@@ -130,6 +104,7 @@ cask 'moom'
 cask 'mysqlworkbench'
 cask 'notion'
 cask 'now'
+cask 'postman'
 cask 'sip'
 cask 'sirimote'
 cask 'sketch'
@@ -141,22 +116,21 @@ cask 'virtualbox'
 cask 'visual-studio-code'
 cask 'vlc'
 
+###### MAC APP STORE ######
+mas 'Xcode', id: 497799835
+mas 'SiteSucker', id: 442168834
+mas 'Tweetbot', id: 557168941
 
 # to search for available casks, use `brew search --casks` in the terminal.
 # other applications not listed in the cask registry you may want:
-
 # carbide create
 # carbide motion
-# sitesucker
-# firefox developer edition
-
-# you'll also want to use creative cloud to download the adobe apps
 # lightroom classic
 # lightroom cc
 # photoshop cc
 # after effects
 # premiere pro
-
+# fusion 360
 
 
 
