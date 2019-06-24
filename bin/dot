@@ -5,7 +5,6 @@
 #
 # `dot` handles installation, updates, things like that. Run it periodically
 # to make sure you're on the latest and greatest.
-export ZSH=$HOME/coprime/dotfiles
 
 # Set macOS defaults
 $ZSH/macos/set-defaults.sh
@@ -18,5 +17,5 @@ echo "› brew update"
 brew update
 
 # Install software
-echo "› $ZSH/script/install-base"
-$ZSH/script/install-base
+echo "› $ZSH/install"
+$ZSH/install

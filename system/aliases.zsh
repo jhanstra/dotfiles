@@ -28,14 +28,11 @@ alias la="ls -la ${colorflag}"
 alias spotify="osascript ~/code/SpotifyControl/SpotifyControl.scpt"
 alias v="vim"
 alias subl= "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
+
 # IP addresses
 alias localip="ipconfig getifaddr en1"
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
-
-
-alias imgur="imgur-screenshot.sh"
-
 
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"

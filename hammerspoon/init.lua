@@ -1,5 +1,7 @@
 local log = hs.logger.new('init.lua', 'debug')
-
+knu = require('knu')
+guard = knu.runtime.guard
+knu.runtime.autorestart(true)
 -- Use Control+` to reload Hammerspoon config
 hs.hotkey.bind({'ctrl'}, '`', nil, function()
   hs.reload()
@@ -31,6 +33,8 @@ enableHotkeyForWindowsMatchingFilter = function(windowFilter, hotkey)
   end)
 end
 
+
+-- these all came from Jason's keyboard package but I'm not sure I need them
 -- require('keyboard.control-escape')
 -- require('keyboard.delete-words')
 -- require('keyboard.hyper')
@@ -38,6 +42,8 @@ end
 -- require('keyboard.microphone')
 -- require('keyboard.panes')
 require('super')
+require('keyboard-switcher')
+require('input-emoji')
 -- require('keyboard.windows')
 
 hs.notify.new({title='Hammerspoon', informativeText='Ready to rock 🤘'}):send()

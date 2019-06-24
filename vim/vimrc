@@ -1,0 +1,42 @@
+" my vimrc
+
+nmap 0 ^
+let mapleader = "\<Space>"
+nmap <leader>vr :sp $MYVIMRC<CR>
+nmap <leader>so :source $MYVIMRC<CR>
+
+nmap <leader>h :echo "Hello"<CR>
+imap jk <esc>
+imap kj <esc>
+
+" show line numbers on left
+set number
+
+" remember last 1000 commands
+set history=1000
+
+set scrolloff=4
+set expandtab
+
+" two spaces per tab as default
+" override per filetype via autocmd
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+" limit what modelines and autocmds can do
+set secure
+
+" write for me when I take any action
+set autowrite
+
+" allow to exit help files with q rather than :q
+autocmd Filetype help nmap <buffer> q :q<CR>
+
+" edit vimrc easily in a new tab
+map <leader>vi :tabe ~/.vimrc<CR>
+
+" move up and down regardless of wrapping lines
+map k gk
+map j gj
+

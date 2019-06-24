@@ -4,15 +4,15 @@
   "description": "dotfiles repo for new mac configuration and a whole bunch of useful scripts",
   "main": "index.js",
   "scripts": {
-    "start": "npm run bootstrap && npm run update && npm run mac-defaults && npm run vscode-install && npm run vscode",
-    "bootstrap": "sh bash-scripts/bootstrap.sh",
-    "brew": "sh bash-scripts/install.sh",
-    "update": "sh bash-scripts/install.sh && sh macos/install.sh",
+    "start": "npm run bootstrap && npm run update && npm run mac-defaults && npm run vscode-install && npm run symlink",
+    "bootstrap": "sh bootstrap",
+    "brew": "sh install",
+    "update": "sh install && sh macos/install.sh",
     "mac-defaults": "sh macos/set-defaults.sh",
-    "vscode": "node node-scripts/link.js",
+    "symlink": "node node-scripts/link.js",
     "vscode-install": "sh vscode/extensions.sh",
-    "snipster-init": "snipster init",
-    "snipster": "snipster"
+    "snipster": "snipster init",
+    "snipster-publish": "snipster publish vscode"
   },
   "repository": {
     "type": "git",

@@ -1,13 +1,19 @@
-# jared does dotfiles
+# 🚀 jth dotfiles
 
 **from zero to the perfect development environment in just a few commands**
 
-In this repo I keep everything I use to set up a new machine from scratch into the perfect dev machine. There are a ton of productivity hacks in here, including all of my aliases, settings, alfred workflows, scripts, etc. With this repo, you can:
+There are many parts to this dotfiles repo:
 
-- Install all applications and programs you need, including GUI apps, via Homebrew and Homebrew Cask. Full list of applications that will be installed is in `BrewfileBase` and `BrewfilePersonal`.
-- Set up VSCode with all of your settings and keybindings
-- Add convenient aliases, functions, and shell programs that make development easier
-- Set up your Mac with more sensible defaults
+- Programs and applications to install with Homebrew
+- Keyboard setup with Karabiner
+- Mac OS default settings
+- Hammerspoon config
+- VSCode settings and extensions
+- Vim config
+- Bash functions and aliases
+- Snipster snippets
+- Zsh config
+- Hyper terminal config
 
 The contents of this repo are organized by topic, inspired by Zach Holman's [dotfiles](https://github.com/holman/dotfiles). Anything in a topic folder with an extension of .zsh will get automatically included into your shell. Anything with an extension of .symlink will get symlinked without extension into \$HOME when you run script/bootstrap.
 
@@ -25,27 +31,31 @@ There are a few special files in the hierarchy.
 
 ## scripts
 
-##### npm run start
-
-This command should do _everything_, almost completely setting up a Mac from scratch. It will first run the bootstrap script, then install all of your programs, then set your Mac defaults, then set up VSCode and Karabiner.
-
-##### npm run bootstrap
+`sh bootstrap`
 
 This is the main script to get everything set up. Sets up your gitconfig, then symlinks all `.symlink` files to your home directory. You will want to edit zsh/zshrc.symlink, which sets up a few paths that'll be different on your particular machine. Since your dotfiles are symlinked from your home folder to here, you can edit everything from here and it will take effect.
 
-##### npm run brew
+`sh install`
+
+Installs all applications in `Brewfile` using Homebrew and goes through each topic and runs the contents of `install.sh`.
+
+`npm run start`
+
+This command should do _everything_, almost completely setting up a Mac from scratch. It will first run the bootstrap script, then install all of your programs, then set your Mac defaults, then set up VSCode and Karabiner.
+
+`npm run bootstrap`
+
+This is the main script to get everything set up. Sets up your gitconfig, then symlinks all `.symlink` files to your home directory. You will want to edit zsh/zshrc.symlink, which sets up a few paths that'll be different on your particular machine. Since your dotfiles are symlinked from your home folder to here, you can edit everything from here and it will take effect.
+
+`npm run brew`
 
 Installs all applications in `Brewfile` using Homebrew & Homebrew Cask.
 
-##### npm run vscode-install
+`npm run vscode-install`
 
 Installs all of your VSCode extensions.
 
-##### npm run vscode
-
-Symlinks your VSCode and Karabiner settings to this repo so you can edit them here.
-
-##### dot
+`dot`
 
 Installs some dependencies, sets sane macOS defaults, and so on. Tweak this script, and run dot from time to time to keep your environment fresh and up-to-date. You can find this script in bin/.
 
@@ -54,11 +64,15 @@ Installs some dependencies, sets sane macOS defaults, and so on. Tweak this scri
 **add to path**
 If you need to add a folder to your path, open `system/_path.zsh` and edit the `PATH` export.
 
-**install vscode extensions**
-Check out the `extensions.sh` script in the `vscode/` folder.
+## hammerspoon
 
-**add `code .` to path**
-open the command palette (⇧⌘P) in vscode and type 'shell command' to find the shell command
+Hammerspoon is a powerful way to interact with Mac OS, allowing you to listen for events and react to them, and much more. I don't even really know what I'm talking about because I just started using it, but it looks pretty cool.
+
+**To initialize Hammerspoon, run `npm run symlink`.**
+
+Hammerspoon is responsible for adding Super Duper mode, watching for new devices (like keyboards) to be connected to the computer, and adding emoji everywhere.
+
+=======
 
 #####
 
@@ -80,4 +94,6 @@ The `npm-offline` folder has a `package.json` that aims to list all packages I w
 
 ## todo
 
-- add a fonts section with all my fonts. install [firacode](https://github.com/tonsky/FiraCode#download-v1205--how-to-install--troubleshooting--news--updates) and other fonts and add to fonts (Mac HD > Library > Fonts)
+- more hammerspoon functionality
+- set up all keyboards I own automatically with Karabiner
+-
