@@ -5,7 +5,8 @@
 # 2. goes through all folders in this repo and symlinks the .symlink files to ~/
 # 3. runs the bin/dot script
 
-cd "$(dirname "$0")/.."
+# uncomment this if the location of this script changes
+# cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 
 set -e
@@ -30,31 +31,34 @@ fail () {
   exit
 }
 
-setup_gitconfig () {
-  if ! [ -f git/gitconfig.local.symlink ]
-  then
-    info 'setup gitconfig'
+# setup_gitconfig () {
+#   if ! [ -f git/gitconfig.local.symlink ]
+#   then
+#     info 'setup gitconfig'
 
-    git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
-    then
-      git_credential='osxkeychain'
-    fi
+#     git_credential='cache'
+#     if [ "$(uname -s)" == "Darwin" ]
+#     then
+#       git_credential='osxkeychain'
+#     fi
 
-    user ' - What is your github author name?'
-    read -e git_authorname
-    user ' - What is your github author email?'
-    read -e git_authoremail
+#     user ' - What is your github author name?'
+#     read -e git_authorname
+#     user ' - What is your github author email?'
+#     read -e git_authoremail
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
+#     sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
 
-    success 'gitconfig'
-  fi
-}
+#     success 'gitconfig'
+#   fi
+# }
 
 
 link_file () {
+  echo 'Hello'
   local src=$1 dst=$2
+  echo $src
+  echo "$dst"
 
   local overwrite= backup= skip=
   local action=
@@ -143,7 +147,7 @@ install_dotfiles () {
   done
 }
 
-setup_gitconfig
+# setup_gitconfig
 install_dotfiles
 
 # If we're on a Mac, let's install and setup homebrew.
