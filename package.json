@@ -10,7 +10,9 @@
     "update": "sh bash-scripts/install.sh && sh macos/install.sh",
     "mac-defaults": "sh macos/set-defaults.sh",
     "vscode": "node node-scripts/link.js",
-    "vscode-install": "sh vscode/extensions.sh"
+    "vscode-install": "sh vscode/extensions.sh",
+    "snipster-init": "snipster init",
+    "snipster": "snipster"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "commander": "^2.19.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "snipster": "^0.1.0"
   }
 }

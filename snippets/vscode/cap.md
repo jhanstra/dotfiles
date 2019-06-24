@@ -1,1 +1,0 @@
-<p class="caption">$1</p>
