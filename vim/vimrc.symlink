@@ -1,13 +1,45 @@
 " my vimrc
 
-nmap 0 ^
 let mapleader = "\<Space>"
-nmap <leader>vr :sp $MYVIMRC<CR>
-nmap <leader>so :source $MYVIMRC<CR>
 
-nmap <leader>h :echo "Hello"<CR>
+""""""" PLUGINS
+
+" Plugin Initialization
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'flrnprz/candid.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
+" NERDTree Settings
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+"""""" MAPPINGS 
+
+" NORMAL mode mappings
+nmap 0 ^
+nmap <leader>vr :sp $MYVIMRC<cr>
+map <leader>vi :tabe ~/.vimrc<CR>       
+nmap <leader>so :source $MYVIMRC<cr>
+map <C-n> :NERDTreeToggle<cr>
+map <leader>E :NERDTreeToggle<cr>
+map <leader>e :NERDTreeFocus<cr>
+map ; :Files<cr>
+
+" INSERT mode mappings
 imap jk <esc>
 imap kj <esc>
+imap jj <esc>
+
+
+
+
+
+"""""" SETTINGS 
 
 " show line numbers on left
 set number
@@ -33,8 +65,6 @@ set autowrite
 " allow to exit help files with q rather than :q
 autocmd Filetype help nmap <buffer> q :q<CR>
 
-" edit vimrc easily in a new tab
-map <leader>vi :tabe ~/.vimrc<CR>
 
 " move up and down regardless of wrapping lines
 map k gk
@@ -43,18 +73,13 @@ map j gj
 
 
 
+" Set Theme
+set background=dark
+syntax on
+" colorscheme candid
 
-" Plugins
-call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-call plug#end()
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-map <C-n> :NERDTreeToggle<CR>
-
-" Open splits using ctrl-j, ctrl-k, etc
+" Window management: open splits using ctrl-j, ctrl-k, etc
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
