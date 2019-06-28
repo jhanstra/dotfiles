@@ -2,14 +2,48 @@
 
 let mapleader = "\<Space>"
 
-""""""" PLUGINS
-
 " Plugin Initialization
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'flrnprz/candid.vim'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }    " file explorer in sidebar
+Plug 'junegunn/fzf'                                       " fuzzy search
+Plug 'junegunn/fzf.vim'                                   " also needed for fuzzy search
+Plug 'airblade/vim-gitgutter'                             " shows changes in git in the left sidebar
+Plug 'editorconfig/editorconfig-vim'                      " editorconfig in vim
+Plug 'itchyny/lightline.vim'                              " cool statusbar (also check out airline)
+Plug 'mattn/emmet-vim'                                    " emmet in vim
+Plug 'terryma/vim-multiple-cursors'                       " use multiple cursors in vim, like you do in VSCode or Sublime
+Plug 'tpope/vim-eunuch'                                   " vim sugar for unix shell commands directly in vim, e.g. :Move, :Chmod, :Delete, etc
+Plug 'tpope/vim-surround'                                 " easily change surrounding things - parens, brackets, quotes, etc
+Plug 'w0rp/ale'                                           " asynchronous lint engine - provide syntax checking and semantic errors
+Plug 'tpope/vim-sensible'                                 " sensible defaults for vim
+Plug 'jiangmiao/auto-pairs'                               " automatically pair paren, brackets, quotes, etc
+Plug 'nathanaelkane/vim-indent-guides'                    " indent guides to show how far you're indented
+Plug 'tpope/vim-fugitive'                                 " git wrapper to view git changes and interact with git
+Plug 'ycm-core/YouCompleteMe'                             " autocompletion engine for as-you-type suggestions
+Plug 'godlygeek/tabular'                                  " easily align items
+Plug 'junegunn/vim-easy-align'                            " another way to easily align
+Plug 'vim-syntastic/syntastic'                            " syntax checker 
+Plug 'easymotion/vim-easymotion'                          " easily find in file using <space><space>
+Plug 'kristijanhusak/vim-carbon-now-sh'                   " send code to carbon for sharing to the world
+
+" Language Syntax Support
+Plug 'pangloss/vim-javascript' 
+Plug 'groenewege/vim-less'
+Plug 'mxw/vim-jsx'
+Plug 'chase/vim-ansible-yaml'
+Plug 'moll/vim-node'
+Plug 'geekjuice/vim-mocha'
+Plug 'plasticboy/vim-markdown'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'fatih/vim-go'
+Plug 'ryanoasis/vim-devicons'
+Plug 'jparise/vim-graphql'
+
+" Color Schemes
+Plug 'junegunn/seoul256.vim'
+Plug 'rakr/vim-one'
+Plug 'tlhr/anderson.vim'
+
 call plug#end()
 
 " NERDTree Settings
@@ -17,70 +51,120 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
-"""""" MAPPINGS 
-
 " NORMAL mode mappings
-nmap 0 ^
-nmap <leader>vr :sp $MYVIMRC<cr>
-map <leader>vi :tabe ~/.vimrc<CR>       
-nmap <leader>so :source $MYVIMRC<cr>
-map <C-n> :NERDTreeToggle<cr>
-map <leader>E :NERDTreeToggle<cr>
-map <leader>e :NERDTreeFocus<cr>
-map ; :Files<cr>
+nmap 0 ^                                        " make 0 go to first word in line
+nmap <Leader>vr :sp $MYVIMRC<CR>                " open .vimrc in new split
+map <leader>vi :tabe ~/.vimrc<CR>               " open .vimrc in new tab 
+nmap <leader>so :source $MYVIMRC<cr>            " source .vimrc to reload new changes
+map <C-n> :NeRDTreeToggle<cr>                   " toggle NERDTree
+map <leader>E :NERDTreeToggle<cr>               " toggle NERDTree
+map <leader>e :NERDTreeFocus<cr>                " focus on NERDTree
+map ; :GFiles<cr>                               " fuzzy finder files
+map a; :Files<cr>                               " search all files, including gitignored files
+noremap q :wq<cr>                               " quit files faster
+nmap <leader>in :IndentGuidesToggle<cr>         " toggle showing the indent lines from vim-indent-guides
+nmap <leader>pi :PlugInstall<cr>                " install plugins with plug
+nmap <leader>co :color                          " open colorscheme picker - find a way to do this with tabbing 
+map <leader><leader> <Plug>(easymotion-prefix)
+nnoremap <leader>w <C-w>v<C-w>l                 " open a split with <leader> w
+vnoremap <leader>ss :CarbonNowSh
 
 " INSERT mode mappings
-imap jk <esc>
+imap jk <esc>                                   " map j and k combos to escape
 imap kj <esc>
 imap jj <esc>
+noremap <silent> k gk
+noremap <silent> j gj 
+nnoremap <C-J> <C-W><C-J>                       " these four are for navigating panes
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+" SETTINGS 
+set number                                      " show line numbers on left
+set history=1000                                " remember last 1000 commands
+set scrolloff=5                                 " number of context lines to see above and below cursor 
+set expandtab                                   " on pressing tab, insert 2 spaces
+set tabstop=2                                   " set tab = 2 spaces. override per filetype via autocmd
+set shiftwidth=2                                " when indenting with '>', use 2 spaces
+set softtabstop=2                               " not sure
+set secure                                      " limit what modelines and autocmds can do
+set autowrite                                   " write for me when I take any action
+set backup                                      " enable backups
+set noswapfile                                  " prevent vim from using .swp files to save edits
+set backspace=indent,eol,start                  " backspace behaves how you would expect
+set encoding=utf-8                              " set encoding
+set autoindent                                  " 'stupid' indent - copies the indentation from the previous line
+set showmode                                    " always show what mode we're in
+set showmatch                                   " show matching parentheses
+set hlsearch                                    " highlight search terms
+set incsearch                                   " show search matches as you type
+set showcmd                                     " show information about the command you're using
+set hidden                                      " opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
+set wildmenu                                    " when typing commands, press tab to see options. e.g. :color <tab> to see choices
+set wildmode=list:full                          " show full list in wildmenu?
+set wildignore=*.swp,*.bak,*.pyc,*.class        " ignore these types of files in wildmenu
+set visualbell                                  " don't beep
+set cursorline                                  " highlight the screen line of the cursor
+set ttyfast                                     " helps with scrolling?
+set ruler                                       " shows the current location of the cursor in the bottom bar
+" set relativenumber                              " displays line numbers as relative to the current line
+set lazyredraw                                  " screen will not redraw while executing macros
+set wrap                                        " wrap lines
+set textwidth=100                               " set character length of a line before it wraps
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)  " format the ruler
+set comments=sl:/*,mb:*,elx:*/                  " format comments
+set ignorecase                                  " ignore case when searching, unless...
+set smartcase                                   " don't ignore case when searching for a string with an uppercase character
+set splitbelow                                  " split below instead of on top
+set splitright                                  " split to the right rather than to the left
+
+
+au FocusLost * :wa                              " save file every time we lose focus
 
 
 
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+set viminfo+=n~/.vim/viminfo
 
+if !isdirectory(expand(&backupdir))
+  call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+  call mkdir(expand(&directory), "p")
+endif
+if !isdirectory(expand(&undodir))
+  call mkdir(expand(&undodir), "p")
+endif
 
-"""""" SETTINGS 
-
-" show line numbers on left
-set number
-
-" remember last 1000 commands
-set history=1000
-
-set scrolloff=4
-set expandtab
-
-" two spaces per tab as default
-" override per filetype via autocmd
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-
-" limit what modelines and autocmds can do
-set secure
-
-" write for me when I take any action
-set autowrite
 
 " allow to exit help files with q rather than :q
 autocmd Filetype help nmap <buffer> q :q<CR>
 
-
-" move up and down regardless of wrapping lines
-map k gk
-map j gj
-
-
-
-
 " Set Theme
 set background=dark
 syntax on
-" colorscheme candid
+syntax enable
+colorscheme one
+set guifont=Fira\ Code:h12
+set guifont=devicons
+set guioptions-=T                               " remove top toolbar
 
 
-" Window management: open splits using ctrl-j, ctrl-k, etc
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" Removes trailing spaces when vim writes
+function! TrimWhiteSpace()
+  %s/\s\+$//e
+endfunction
+
+:silent exe "g:flog_enable" 
+
+
+" Prettier integration with ale plugin
+let g:ale_fixers = {'javascript': ['eslint', 'prettier'], 'handlebars': ['ember-template-lint']}
+let g:ale_fix_on_save = 0
+
+" Carbon.now.sh options
+let g:carbon_now_sh_options = { 'ln': 'true', 't': 'paraiso-dark', 'fm': 'Fira Code' }
