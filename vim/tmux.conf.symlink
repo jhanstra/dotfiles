@@ -1,0 +1,83 @@
+
+
+# turn mouse support on
+set -g mouse on
+
+# use zsh
+set-option -g default-shell /bin/zsh
+
+# don't rename windows automatically
+set-option -g allow-rename off
+
+# make copy/paste work
+# set -g default-shell $SHELL
+# set -g default-command "reattach-to-user-namespace -l ${SHELL}"
+
+# increase scroll-back history
+set -g history-limit 5000
+
+# use vim keybindings
+setw -g mode-keys vi
+
+# decrease command delay (increases vim responsiveness)
+set -sg escape-time 1
+
+# increase repeat time for repeatable commands
+set -g repeat-time 1000
+
+# re-number windows when one is closed
+set -g renumber-windows on
+
+###### KEYBINDINGS
+
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# split panes using | and -
+bind | split-window -h
+bind - split-window -v
+
+# switch panes using alt-key
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# resize panes
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# reload config file
+bind r source-file ~/.tmux.conf
+
+# move to last window
+bind-key C-a last-window
+
+# go to beginning of line
+bind a send-prefix
+
+###########################
+# Colors
+###########################
+
+# color status bar
+# set -g status-bg colour235
+# set -g status-fg white
+
+# # highlight current window
+# set-window-option -g window-status-current-fg black
+# set-window-option -g window-status-current-bg green
+
+# # set color of active pane
+# set -g pane-border-fg colour235
+# set -g pane-border-bg black
+# set -g pane-active-border-fg green
+# set -g pane-active-border-bg black
+
+# # use 256 term for pretty colors
+# set -g default-terminal "screen-256color"
+

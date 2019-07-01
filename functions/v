@@ -1,0 +1,1 @@
+fasd_cd -d $1 && vim .

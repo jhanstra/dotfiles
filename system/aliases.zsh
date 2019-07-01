@@ -26,7 +26,6 @@ alias la="ls -la ${colorflag}"
 
 # Start Programs
 alias spotify="osascript ~/code/SpotifyControl/SpotifyControl.scpt"
-alias v="vim"
 alias subl= "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
 
 # IP addresses

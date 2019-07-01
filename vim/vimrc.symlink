@@ -5,6 +5,7 @@ let mapleader = "\<Space>"
 " Plugin Initialization
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }    " file explorer in sidebar
+Plug 'Xuyuanp/nerdtree-git-plugin'                        " shows files changed since last commit in NERDTree
 Plug 'junegunn/fzf'                                       " fuzzy search
 Plug 'junegunn/fzf.vim'                                   " also needed for fuzzy search
 Plug 'airblade/vim-gitgutter'                             " shows changes in git in the left sidebar
@@ -16,15 +17,20 @@ Plug 'tpope/vim-eunuch'                                   " vim sugar for unix s
 Plug 'tpope/vim-surround'                                 " easily change surrounding things - parens, brackets, quotes, etc
 Plug 'w0rp/ale'                                           " asynchronous lint engine - provide syntax checking and semantic errors
 Plug 'tpope/vim-sensible'                                 " sensible defaults for vim
-Plug 'jiangmiao/auto-pairs'                               " automatically pair paren, brackets, quotes, etc
+" Plug 'jiangmiao/auto-pairs'                               " automatically pair paren, brackets, quotes, etc
 Plug 'nathanaelkane/vim-indent-guides'                    " indent guides to show how far you're indented
 Plug 'tpope/vim-fugitive'                                 " git wrapper to view git changes and interact with git
-Plug 'ycm-core/YouCompleteMe'                             " autocompletion engine for as-you-type suggestions
+" Plug 'ycm-core/YouCompleteMe'                             " autocompletion engine for as-you-type suggestions
 Plug 'godlygeek/tabular'                                  " easily align items
 Plug 'junegunn/vim-easy-align'                            " another way to easily align
 Plug 'vim-syntastic/syntastic'                            " syntax checker 
 Plug 'easymotion/vim-easymotion'                          " easily find in file using <space><space>
 Plug 'kristijanhusak/vim-carbon-now-sh'                   " send code to carbon for sharing to the world
+Plug 'tomtom/tcomment_vim'                                " comment toggling
+Plug 'tpope/vim-repeat'                                   " ability to repeat the last command in plugins with .
+Plug 'SirVer/ultisnips'                                   " snippets!
+Plug 'haya14busa/vim-gtrans'                              " highlight text and google translate it
+Plug 'wakatime/vim-wakatime'                              " wakatime integration for tracking productivity
 
 " Language Syntax Support
 Plug 'pangloss/vim-javascript' 
@@ -36,7 +42,7 @@ Plug 'geekjuice/vim-mocha'
 Plug 'plasticboy/vim-markdown'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'fatih/vim-go'
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 Plug 'jparise/vim-graphql'
 
 " Color Schemes
@@ -53,79 +59,109 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " NORMAL mode mappings
 nmap 0 ^                                        " make 0 go to first word in line
+map Q @q                                        " use Q for macros
+map m :up<cr>                                   " save with 'm'
+map <leader>x :!j e
+nnoremap <C-k> <C-u>                            " fast scrolling with ctrl-j
+nnoremap <C-j> <C-d>                            " fast scrolling with ctrl-k
 nmap <Leader>vr :sp $MYVIMRC<CR>                " open .vimrc in new split
-map <leader>vi :tabe ~/.vimrc<CR>               " open .vimrc in new tab 
+map <leader>vi :vsp ~/.vimrc<CR>               " open .vimrc in new tab 
 nmap <leader>so :source $MYVIMRC<cr>            " source .vimrc to reload new changes
 map <C-n> :NeRDTreeToggle<cr>                   " toggle NERDTree
 map <leader>E :NERDTreeToggle<cr>               " toggle NERDTree
 map <leader>e :NERDTreeFocus<cr>                " focus on NERDTree
 map ; :GFiles<cr>                               " fuzzy finder files
 map a; :Files<cr>                               " search all files, including gitignored files
-noremap q :wq<cr>                               " quit files faster
+vmap <leader>so :%sort<space><cr>               " sort lines and remove duplicates
+noremap q :up<cr>:q<cr>                         " write if the file has been updated and quit
 nmap <leader>in :IndentGuidesToggle<cr>         " toggle showing the indent lines from vim-indent-guides
 nmap <leader>pi :PlugInstall<cr>                " install plugins with plug
 nmap <leader>co :color                          " open colorscheme picker - find a way to do this with tabbing 
-map <leader><leader> <Plug>(easymotion-prefix)
-nnoremap <leader>w <C-w>v<C-w>l                 " open a split with <leader> w
+map <leader><leader> <Plug>(easymotion-prefix)  " trigger easymotion
+nnoremap <leader>n <C-w>v<C-w>l                 " open a split with <leader> w
+nnoremap <leader>w <C-w>w                       " navigate through open splits
 vnoremap <leader>ss :CarbonNowSh
+vmap <leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vmap <leader>gt :Gtrans                         " translate the highlighted text
+nnoremap <leader>g :silent lgrep<Space>         " open the list of files in location list
+nnoremap <silent> [f :lprevious<cr>
+nnoremap <silent> ]f :lnext<cr>
+map <leader>o :!v con 
 
 " INSERT mode mappings
+"
 imap jk <esc>                                   " map j and k combos to escape
 imap kj <esc>
 imap jj <esc>
-noremap <silent> k gk
-noremap <silent> j gj 
-nnoremap <C-J> <C-W><C-J>                       " these four are for navigating panes
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')   " go straight up even on wrapped lines
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')   " go straight down even on wrapped lines
 
+" To find out what they mean / inspiration:
+"map <leader>co mmggVG"*y`m
+"map <leader>i mmgg=G`m
+"map <leader>l :Eval<cr>
+"map <leader>fix :cnoremap % %<cr>
+"map <leader>q :copen<cr><cr>
+"map <leader>mf mmgqap`m:w<cr>
+"map <leader>ra :%s/
+"map <leader>rs :vsp <C-r>#<cr><C-w>w
+"set gdefault
+
+
+:let NERDTreeMapPreview = 'o'
+:let NERDTreeMapActiviateNode = 'O'
 
 " SETTINGS 
-set number                                      " show line numbers on left
-set history=1000                                " remember last 1000 commands
-set scrolloff=5                                 " number of context lines to see above and below cursor 
-set expandtab                                   " on pressing tab, insert 2 spaces
-set tabstop=2                                   " set tab = 2 spaces. override per filetype via autocmd
-set shiftwidth=2                                " when indenting with '>', use 2 spaces
-set softtabstop=2                               " not sure
-set secure                                      " limit what modelines and autocmds can do
-set autowrite                                   " write for me when I take any action
-set backup                                      " enable backups
-set noswapfile                                  " prevent vim from using .swp files to save edits
-set backspace=indent,eol,start                  " backspace behaves how you would expect
-set encoding=utf-8                              " set encoding
 set autoindent                                  " 'stupid' indent - copies the indentation from the previous line
-set showmode                                    " always show what mode we're in
-set showmatch                                   " show matching parentheses
-set hlsearch                                    " highlight search terms
-set incsearch                                   " show search matches as you type
-set showcmd                                     " show information about the command you're using
-set hidden                                      " opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
-set wildmenu                                    " when typing commands, press tab to see options. e.g. :color <tab> to see choices
-set wildmode=list:full                          " show full list in wildmenu?
-set wildignore=*.swp,*.bak,*.pyc,*.class        " ignore these types of files in wildmenu
-set visualbell                                  " don't beep
-set cursorline                                  " highlight the screen line of the cursor
-set ttyfast                                     " helps with scrolling?
-set ruler                                       " shows the current location of the cursor in the bottom bar
-" set relativenumber                              " displays line numbers as relative to the current line
-set lazyredraw                                  " screen will not redraw while executing macros
-set wrap                                        " wrap lines
-set textwidth=100                               " set character length of a line before it wraps
-set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)  " format the ruler
+set autowrite                                   " write for me when I take any action
+set backspace=indent,eol,start                  " backspace behaves how you would expect
+set backup                                      " enable backups
+set belloff=all                                 " turn off annoying white flash in iterm when 'bell' rings
+set clipboard=unnamed                           " so that clipboard works in tmux
 set comments=sl:/*,mb:*,elx:*/                  " format comments
+set cursorline                                  " highlight the screen line of the cursor
+set encoding=utf-8                              " set encoding
+set expandtab                                   " on pressing tab, insert 2 spaces
+set hidden                                      " opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
+set history=1000                                " remember last 1000 commands
+set hlsearch                                    " highlight search terms
 set ignorecase                                  " ignore case when searching, unless...
+set incsearch                                   " show search matches as you type
+set lazyredraw                                  " screen will not redraw while executing macros
+set nocompatible                                " i don't really know...
+set noesckeys                                   " next 3 removes delay when hitting esc in insert mode
+set noswapfile                                  " prevent vim from using .swp files to save edits
+set notermguicolors
+set number                                      " show line numbers on left
+set ruler                                       " shows the current location of the cursor in the bottom bar
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)  " format the ruler
+set scrolloff=5                                 " number of context lines to see above and below cursor 
+set secure                                      " limit what modelines and autocmds can do
+set shiftround                                  " when at 3 spaces and I hit >>, go to 4, not 5
+set shiftwidth=2                                " when indenting with '>', use 2 spaces
+set showcmd                                     " show information about the command you're using
+set showmatch                                   " show matching parentheses
+set showmode                                    " always show what mode we're in
 set smartcase                                   " don't ignore case when searching for a string with an uppercase character
+set softtabstop=2                               " not sure
 set splitbelow                                  " split below instead of on top
 set splitright                                  " split to the right rather than to the left
-
+set tabstop=2                                   " set tab = 2 spaces. override per filetype via autocmd
+set textwidth=100                               " set character length of a line before it wraps
+set timeoutlen=500                              " don't wait super long for next keypress
+set ttimeout
+set ttimeoutlen=1
+set ttyfast                                     " helps with scrolling?
+set visualbell                                  " don't beep
+set wildignore=*.swp,*.bak,*.pyc,*.class        " ignore these types of files in wildmenu
+set wildmenu                                    " when typing commands, press tab to see options. e.g. :color <tab> to see choices
+set wildmode=list:full                          " show full list in wildmenu?
+set wrap                                        " wrap lines
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case " use ripgrep for search
 
 au FocusLost * :wa                              " save file every time we lose focus
 
-
-
-set backupdir=~/.vim/backup//
+set backupdir=~/.vim/backup//                   " set directories 
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 set viminfo+=n~/.vim/viminfo
@@ -152,6 +188,7 @@ colorscheme one
 set guifont=Fira\ Code:h12
 set guifont=devicons
 set guioptions-=T                               " remove top toolbar
+hi Normal guibg=NONE ctermbg=NONE
 
 
 " Removes trailing spaces when vim writes
@@ -160,7 +197,7 @@ function! TrimWhiteSpace()
 endfunction
 
 :silent exe "g:flog_enable" 
-
+" a third test
 
 " Prettier integration with ale plugin
 let g:ale_fixers = {'javascript': ['eslint', 'prettier'], 'handlebars': ['ember-template-lint']}
@@ -168,3 +205,10 @@ let g:ale_fix_on_save = 0
 
 " Carbon.now.sh options
 let g:carbon_now_sh_options = { 'ln': 'true', 't': 'paraiso-dark', 'fm': 'Fira Code' }
+
+" UltiSnips
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsEditSplit="vertical"
+
+let g:vim_markdown_folding_disabled = 1         " disable auto markdown formatting from vim-markdown

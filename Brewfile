@@ -58,6 +58,7 @@ brew 'r'§
 brew 'rabbitmq'
 brew 'readline'
 brew 'redis'
+brew 'ripgrep'
 brew 'rsync'
 brew 'ruby'
 brew 'ruby-build'
