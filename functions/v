@@ -1,1 +1,6 @@
-fasd_cd -d $1 && vim .
+if [ $# -eq 0 ]
+  then
+    vim .
+  else
+    fasd_cd -d $1 && vim .
+fi

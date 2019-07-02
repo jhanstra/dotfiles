@@ -87,6 +87,7 @@ nnoremap <leader>g :silent lgrep<Space>         " open the list of files in loca
 nnoremap <silent> [f :lprevious<cr>
 nnoremap <silent> ]f :lnext<cr>
 map <leader>o :!v con 
+map <leader>f :Find<space>
 
 " INSERT mode mappings
 "
@@ -157,7 +158,7 @@ set wildignore=*.swp,*.bak,*.pyc,*.class        " ignore these types of files in
 set wildmenu                                    " when typing commands, press tab to see options. e.g. :color <tab> to see choices
 set wildmode=list:full                          " show full list in wildmenu?
 set wrap                                        " wrap lines
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case " use ripgrep for search
+" set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case " use ripgrep for search
 
 au FocusLost * :wa                              " save file every time we lose focus
 
@@ -212,3 +213,5 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 let g:vim_markdown_folding_disabled = 1         " disable auto markdown formatting from vim-markdown
+
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
