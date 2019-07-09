@@ -26,11 +26,11 @@ Plug 'junegunn/vim-easy-align'                            " another way to easil
 Plug 'vim-syntastic/syntastic'                            " syntax checker 
 Plug 'easymotion/vim-easymotion'                          " easily find in file using <space><space>
 Plug 'kristijanhusak/vim-carbon-now-sh'                   " send code to carbon for sharing to the world
-Plug 'tomtom/tcomment_vim'                                " comment toggling
 Plug 'tpope/vim-repeat'                                   " ability to repeat the last command in plugins with .
 Plug 'SirVer/ultisnips'                                   " snippets!
 Plug 'haya14busa/vim-gtrans'                              " highlight text and google translate it
 Plug 'wakatime/vim-wakatime'                              " wakatime integration for tracking productivity
+Plug 'tpope/vim-commentary'                               " supports easy commenting with gcc and gc 
 
 " Language Syntax Support
 Plug 'pangloss/vim-javascript' 
@@ -80,14 +80,19 @@ nmap <leader>co :color                          " open colorscheme picker - find
 map <leader><leader> <Plug>(easymotion-prefix)  " trigger easymotion
 nnoremap <leader>n <C-w>v<C-w>l                 " open a split with <leader> w
 nnoremap <leader>w <C-w>w                       " navigate through open splits
-vnoremap <leader>ss :CarbonNowSh
+vnoremap <leader>ss :CarbonNowSh<cr>
 vmap <leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 vmap <leader>gt :Gtrans                         " translate the highlighted text
 nnoremap <leader>g :silent lgrep<Space>         " open the list of files in location list
 nnoremap <silent> [f :lprevious<cr>
 nnoremap <silent> ]f :lnext<cr>
 map <leader>o :!v con 
-map <leader>f :Find<space>
+nnoremap \ :Find<space>  
+nmap <C-_> gcc                                  " comment / uncomment
+vmap <C-_> gcc                                  " comment / uncomment
+nnoremap <leader>d :execute 'silent !drush cc all &' | redraw!
+nmap <leader>gs :Gstatus<cr>                    " git status shortcut
+
 
 " INSERT mode mappings
 "
@@ -141,7 +146,8 @@ set secure                                      " limit what modelines and autoc
 set shiftround                                  " when at 3 spaces and I hit >>, go to 4, not 5
 set shiftwidth=2                                " when indenting with '>', use 2 spaces
 set showcmd                                     " show information about the command you're using
-set showmatch                                   " show matching parentheses
+"set showmatch                                   " show matching parentheses
+
 set showmode                                    " always show what mode we're in
 set smartcase                                   " don't ignore case when searching for a string with an uppercase character
 set softtabstop=2                               " not sure
@@ -197,12 +203,12 @@ function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
-:silent exe "g:flog_enable" 
+" :silent exe "g:flog_enable" 
 " a third test
 
 " Prettier integration with ale plugin
-let g:ale_fixers = {'javascript': ['eslint', 'prettier'], 'handlebars': ['ember-template-lint']}
-let g:ale_fix_on_save = 0
+let g:ale_fixers = {'javascript': ['eslint', 'prettier']}
+let g:ale_fix_on_save = 1
 
 " Carbon.now.sh options
 let g:carbon_now_sh_options = { 'ln': 'true', 't': 'paraiso-dark', 'fm': 'Fira Code' }
@@ -214,4 +220,9 @@ let g:UltiSnipsEditSplit="vertical"
 
 let g:vim_markdown_folding_disabled = 1         " disable auto markdown formatting from vim-markdown
 
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+" Emmet Configuration
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = { 'javascript.jsx' : {  'extends' : 'jsx',  }, }
+
