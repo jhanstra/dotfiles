@@ -23,17 +23,18 @@ Plug 'tpope/vim-fugitive'                                 " git wrapper to view 
 " Plug 'ycm-core/YouCompleteMe'                             " autocompletion engine for as-you-type suggestions
 Plug 'godlygeek/tabular'                                  " easily align items
 Plug 'junegunn/vim-easy-align'                            " another way to easily align
-Plug 'vim-syntastic/syntastic'                            " syntax checker 
+Plug 'vim-syntastic/syntastic'                            " syntax checker
 Plug 'easymotion/vim-easymotion'                          " easily find in file using <space><space>
 Plug 'kristijanhusak/vim-carbon-now-sh'                   " send code to carbon for sharing to the world
 Plug 'tpope/vim-repeat'                                   " ability to repeat the last command in plugins with .
 Plug 'SirVer/ultisnips'                                   " snippets!
 Plug 'haya14busa/vim-gtrans'                              " highlight text and google translate it
 Plug 'wakatime/vim-wakatime'                              " wakatime integration for tracking productivity
-Plug 'tpope/vim-commentary'                               " supports easy commenting with gcc and gc 
+Plug 'tpope/vim-commentary'                               " supports easy commenting with gcc and gc
+Plug 'christoomey/vim-run-interactive'                    " allow you to use zsh aliases and scripts
 
 " Language Syntax Support
-Plug 'pangloss/vim-javascript' 
+Plug 'pangloss/vim-javascript'
 Plug 'groenewege/vim-less'
 Plug 'mxw/vim-jsx'
 Plug 'chase/vim-ansible-yaml'
@@ -52,56 +53,55 @@ Plug 'tlhr/anderson.vim'
 
 call plug#end()
 
-" NERDTree Settings
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+noremap Q @q                                        " use Q for macros
+noremap m :up<cr>                                   " save with 'm'
+noremap <leader>x :!j e
+noremap <leader>vi :vsp ~/.vimrc<CR>               " open .vimrc in new tab
+noremap <C-n> :NERDTreeToggle<cr>                   " toggle NERDTree
+noremap <leader>E :NERDTreeToggle<cr>               " toggle NERDTree
+oremap <leader>e :NERDTreeFocus<cr>                " focus on NERDTree
+noremap ; :GFiles<cr>                               " fuzzy finder files
+noremap a; :Files<cr>                               " search all files, including gitignored files
+noremap q :up<cr>:q<cr>                         " write if the file has been updated and quit
+" noremap <leader><leader> <Plug>(easymotion-prefix)  " trigger easymotion
+noremap <leader>x :RunInInteractiveShell<space>
+" open 'v' script to quickly launch a projectk
+noremap <leader>o :RunInInteractiveShell<space>v<space>
 
-" NORMAL mode mappings
-nmap 0 ^                                        " make 0 go to first word in line
-map Q @q                                        " use Q for macros
-map m :up<cr>                                   " save with 'm'
-map <leader>x :!j e
+nnoremap 0 ^                                        " make 0 go to first word in line
 nnoremap <C-k> <C-u>                            " fast scrolling with ctrl-j
 nnoremap <C-j> <C-d>                            " fast scrolling with ctrl-k
-nmap <Leader>vr :sp $MYVIMRC<CR>                " open .vimrc in new split
-map <leader>vi :vsp ~/.vimrc<CR>               " open .vimrc in new tab 
-nmap <leader>so :source $MYVIMRC<cr>            " source .vimrc to reload new changes
-map <C-n> :NeRDTreeToggle<cr>                   " toggle NERDTree
-map <leader>E :NERDTreeToggle<cr>               " toggle NERDTree
-map <leader>e :NERDTreeFocus<cr>                " focus on NERDTree
-map ; :GFiles<cr>                               " fuzzy finder files
-map a; :Files<cr>                               " search all files, including gitignored files
-vmap <leader>so :%sort<space><cr>               " sort lines and remove duplicates
-noremap q :up<cr>:q<cr>                         " write if the file has been updated and quit
-nmap <leader>in :IndentGuidesToggle<cr>         " toggle showing the indent lines from vim-indent-guides
-nmap <leader>pi :PlugInstall<cr>                " install plugins with plug
-nmap <leader>co :color                          " open colorscheme picker - find a way to do this with tabbing 
-map <leader><leader> <Plug>(easymotion-prefix)  " trigger easymotion
+nnoremap <leader>vr :sp $MYVIMRC<CR>                " open .vimrc in new split
+nnoremap <leader>so :source $MYVIMRC<cr>            " source .vimrc to reload new changes
+nnoremap <leader>in :IndentGuidesToggle<cr>         " toggle showing the indent lines from vim-indent-guides
+nnoremap <leader>pi :PlugInstall<cr>                " install plugins with plug
+nnoremap <leader>co :color                          " open colorscheme picker - find a way to do this with tabbing
 nnoremap <leader>n <C-w>v<C-w>l                 " open a split with <leader> w
 nnoremap <leader>w <C-w>w                       " navigate through open splits
-vnoremap <leader>ss :CarbonNowSh<cr>
-vmap <leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-vmap <leader>gt :Gtrans                         " translate the highlighted text
 nnoremap <leader>g :silent lgrep<Space>         " open the list of files in location list
 nnoremap <silent> [f :lprevious<cr>
 nnoremap <silent> ]f :lnext<cr>
-map <leader>o :!v con 
-nnoremap \ :Find<space>  
-nmap <C-_> gcc                                  " comment / uncomment
-vmap <C-_> gcc                                  " comment / uncomment
+nnoremap \ :Find<space>
+nnoremap <C-_> gcc                                  " comment / uncomment
 nnoremap <leader>d :execute 'silent !drush cc all &' | redraw!
-nmap <leader>gs :Gstatus<cr>                    " git status shortcut
-
-
-" INSERT mode mappings
-"
-imap jk <esc>                                   " map j and k combos to escape
-imap kj <esc>
-imap jj <esc>
+nnoremap <leader>gs :Gstatus<cr>                    " git status shortcut
 nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')   " go straight up even on wrapped lines
 nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')   " go straight down even on wrapped lines
 
+inoremap jk <esc>                                   " map j and k combos to escape
+inoremap kj <esc>
+inoremap jj <esc>
+
+vnoremap <C-_> gcc                                  " comment / uncomment
+vnoremap <leader>ss :CarbonNowSh<cr>
+vnoremap <leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vnoremap <leader>gt :Gtrans                         " translate the highlighted text
+vnoremap <leader>so :%sort<space><cr>               " sort lines and remove duplicates
+
+onoremap p i(                                       " operate on inner parentheses
+
+" move inside the next parentheses and enter insert mode 
+onoremap in( :<c-u>normal! f(vi(<cr>                
 " To find out what they mean / inspiration:
 "map <leader>co mmggVG"*y`m
 "map <leader>i mmgg=G`m
@@ -117,7 +117,7 @@ nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')   " go straight down even on wrapp
 :let NERDTreeMapPreview = 'o'
 :let NERDTreeMapActiviateNode = 'O'
 
-" SETTINGS 
+" SETTINGS
 set autoindent                                  " 'stupid' indent - copies the indentation from the previous line
 set autowrite                                   " write for me when I take any action
 set backspace=indent,eol,start                  " backspace behaves how you would expect
@@ -141,8 +141,9 @@ set notermguicolors
 set number                                      " show line numbers on left
 set ruler                                       " shows the current location of the cursor in the bottom bar
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)  " format the ruler
-set scrolloff=5                                 " number of context lines to see above and below cursor 
+set scrolloff=5                                 " number of context lines to see above and below cursor
 set secure                                      " limit what modelines and autocmds can do
+set shell=/usr/local/bin/zsh                    " use zsh instead of bash
 set shiftround                                  " when at 3 spaces and I hit >>, go to 4, not 5
 set shiftwidth=2                                " when indenting with '>', use 2 spaces
 set showcmd                                     " show information about the command you're using
@@ -151,6 +152,7 @@ set showcmd                                     " show information about the com
 set showmode                                    " always show what mode we're in
 set smartcase                                   " don't ignore case when searching for a string with an uppercase character
 set softtabstop=2                               " not sure
+set spell                                       " turn on spell checking
 set splitbelow                                  " split below instead of on top
 set splitright                                  " split to the right rather than to the left
 set tabstop=2                                   " set tab = 2 spaces. override per filetype via autocmd
@@ -168,7 +170,7 @@ set wrap                                        " wrap lines
 
 au FocusLost * :wa                              " save file every time we lose focus
 
-set backupdir=~/.vim/backup//                   " set directories 
+set backupdir=~/.vim/backup//                   " set directories
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 set viminfo+=n~/.vim/viminfo
@@ -197,14 +199,18 @@ set guifont=devicons
 set guioptions-=T                               " remove top toolbar
 hi Normal guibg=NONE ctermbg=NONE
 
-
 " Removes trailing spaces when vim writes
 function! TrimWhiteSpace()
   %s/\s\+$//e
 endfunction
 
-" :silent exe "g:flog_enable" 
+" :silent exe "g:flog_enable"
 " a third test
+
+" NERDTree Settings
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Prettier integration with ale plugin
 let g:ale_fixers = {'javascript': ['eslint', 'prettier']}
@@ -225,4 +231,10 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 " Emmet Configuration
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = { 'javascript.jsx' : {  'extends' : 'jsx',  }, }
+
+:iabbrev @@ jared@coprime.io
+:iabbrev @@@ jhanstra@gmail.com
+:iabbrev ssig -- <cr>Jared Hanstra<cr>jared@coprime.io
+:iabbrev teh the
+
 
