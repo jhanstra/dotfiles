@@ -89,7 +89,7 @@ nnoremap <leader>g :silent lgrep<Space>
 nnoremap <silent> [f :lprevious<cr>
 nnoremap <silent> ]f :lnext<cr>
 nnoremap \ :Find<space>
-" comment / uncomment (the _ is actually something else i think?) 
+" comment / uncomment (the _ is actually something else i think?)
 nnoremap <C-_> gcc
 nnoremap <leader>d :execute 'silent !drush cc all &' | redraw!
 " git status shortcut
@@ -115,6 +115,11 @@ onoremap p i(
 " move inside the next parentheses and enter insert mode
 onoremap in( :<c-u>normal! f(vi(<cr>
 
+<<<<<<< HEAD
+=======
+" move inside the next parentheses and enter insert mode
+onoremap in( :<c-u>normal! f(vi(<cr>
+>>>>>>> 39d05bcaa76e2a6806da259bd55491a0c9338000
 " To find out what they mean / inspiration:
 "map <leader>co mmggVG"*y`m
 "map <leader>i mmgg=G`m
