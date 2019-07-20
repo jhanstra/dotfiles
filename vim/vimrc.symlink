@@ -24,7 +24,7 @@ Plug 'tpope/vim-fugitive'                                 " git wrapper to view 
 Plug 'godlygeek/tabular'                                  " easily align items
 Plug 'junegunn/vim-easy-align'                            " another way to easily align
 Plug 'vim-syntastic/syntastic'                            " syntax checker
-Plug 'easymotion/vim-easymotion'                          " easily find in file using <space><space>
+" Plug 'easymotion/vim-easymotion'                          " easily find in file using <space><space>
 Plug 'kristijanhusak/vim-carbon-now-sh'                   " send code to carbon for sharing to the world
 Plug 'tpope/vim-repeat'                                   " ability to repeat the last command in plugins with .
 Plug 'SirVer/ultisnips'                                   " snippets!
@@ -35,73 +35,86 @@ Plug 'christoomey/vim-run-interactive'                    " allow you to use zsh
 
 " Language Syntax Support
 Plug 'pangloss/vim-javascript'
-Plug 'groenewege/vim-less'
 Plug 'mxw/vim-jsx'
-Plug 'chase/vim-ansible-yaml'
 Plug 'moll/vim-node'
-Plug 'geekjuice/vim-mocha'
+Plug 'jparise/vim-graphql'
 Plug 'plasticboy/vim-markdown'
 Plug 'heavenshell/vim-jsdoc'
-Plug 'fatih/vim-go'
+" Plug 'groenewege/vim-less'
+" Plug 'chase/vim-ansible-yaml'
+" Plug 'geekjuice/vim-mocha'
+" Plug 'fatih/vim-go'
 " Plug 'ryanoasis/vim-devicons'
-Plug 'jparise/vim-graphql'
 
 " Color Schemes
 Plug 'junegunn/seoul256.vim'
 Plug 'rakr/vim-one'
 Plug 'tlhr/anderson.vim'
-
 call plug#end()
 
-noremap Q @q                                        " use Q for macros
-noremap m :up<cr>                                   " save with 'm'
-noremap <leader>x :!j e
-noremap <leader>vi :vsp ~/.vimrc<CR>               " open .vimrc in new tab
-noremap <C-n> :NERDTreeToggle<cr>                   " toggle NERDTree
-noremap <leader>E :NERDTreeToggle<cr>               " toggle NERDTree
-oremap <leader>e :NERDTreeFocus<cr>                " focus on NERDTree
-noremap ; :GFiles<cr>                               " fuzzy finder files
-noremap a; :Files<cr>                               " search all files, including gitignored files
-noremap q :up<cr>:q<cr>                         " write if the file has been updated and quit
-" noremap <leader><leader> <Plug>(easymotion-prefix)  " trigger easymotion
+noremap Q @q
+" save with 'm'
+noremap m :up<cr>
+noremap <leader>vi :vsp ~/.vimrc<CR>
+noremap <leader>vr :sp $MYVIMRC<CR>
+noremap <leader>so :source $MYVIMRC<cr>
+noremap <leader>pi :PlugInstall<cr>
+noremap <C-n> :NERDTreeToggle<cr>
+noremap <leader>E :NERDTreeToggle<cr>
+noremap <leader>e :NERDTreeFocus<cr>
+" fuzzy finder files
+noremap ; :GFiles<cr>
+" search all files, including gitignored files
+noremap a; :Files<cr>
+" write if the file has been updated and quit
+noremap q :up<cr>:q<cr>
 noremap <leader>x :RunInInteractiveShell<space>
 " open 'v' script to quickly launch a projectk
 noremap <leader>o :RunInInteractiveShell<space>v<space>
 
-nnoremap 0 ^                                        " make 0 go to first word in line
-nnoremap <C-k> <C-u>                            " fast scrolling with ctrl-j
-nnoremap <C-j> <C-d>                            " fast scrolling with ctrl-k
-nnoremap <leader>vr :sp $MYVIMRC<CR>                " open .vimrc in new split
-nnoremap <leader>so :source $MYVIMRC<cr>            " source .vimrc to reload new changes
-nnoremap <leader>in :IndentGuidesToggle<cr>         " toggle showing the indent lines from vim-indent-guides
-nnoremap <leader>pi :PlugInstall<cr>                " install plugins with plug
-nnoremap <leader>co :color                          " open colorscheme picker - find a way to do this with tabbing
-nnoremap <leader>n <C-w>v<C-w>l                 " open a split with <leader> w
-nnoremap <leader>w <C-w>w                       " navigate through open splits
-nnoremap <leader>g :silent lgrep<Space>         " open the list of files in location list
+" make 0 go to first work in line
+nnoremap 0 ^
+" fast scrolling with ctrl-j and ctrl-k
+nnoremap <C-k> <C-u>
+nnoremap <C-j> <C-d>
+" toggle showing the indent lines from vim-indent-guides
+nnoremap <leader>in :IndentGuidesToggle<cr>
+nnoremap <leader>co :color
+" open a split with <leader>w
+nnoremap <leader>n <C-w>v<C-w>l
+" navigate through open slots
+nnoremap <leader>w <C-w>w
+" open the list of files in location list
+nnoremap <leader>g :silent lgrep<Space>
 nnoremap <silent> [f :lprevious<cr>
 nnoremap <silent> ]f :lnext<cr>
 nnoremap \ :Find<space>
-nnoremap <C-_> gcc                                  " comment / uncomment
+" comment / uncomment (the _ is actually something else i think?) 
+nnoremap <C-_> gcc
 nnoremap <leader>d :execute 'silent !drush cc all &' | redraw!
-nnoremap <leader>gs :Gstatus<cr>                    " git status shortcut
-nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')   " go straight up even on wrapped lines
-nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')   " go straight down even on wrapped lines
+" git status shortcut
+nnoremap <leader>gs :Gstatus<cr>
+" go straight up and down even on wrapped lines
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 
-inoremap jk <esc>                                   " map j and k combos to escape
+" map j and k combos to escape
+inoremap jk <esc>
 inoremap kj <esc>
 inoremap jj <esc>
 
-vnoremap <C-_> gcc                                  " comment / uncomment
+vnoremap <C-_> gcc
 vnoremap <leader>ss :CarbonNowSh<cr>
 vnoremap <leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-vnoremap <leader>gt :Gtrans                         " translate the highlighted text
-vnoremap <leader>so :%sort<space><cr>               " sort lines and remove duplicates
+" vnoremap <leader>gt :Gtrans
+" sort lines and remove duplicates
+vnoremap <leader>so :%sort<space><cr>
 
-onoremap p i(                                       " operate on inner parentheses
+" operate on inner parentheses
+onoremap p i(
+" move inside the next parentheses and enter insert mode
+onoremap in( :<c-u>normal! f(vi(<cr>
 
-" move inside the next parentheses and enter insert mode 
-onoremap in( :<c-u>normal! f(vi(<cr>                
 " To find out what they mean / inspiration:
 "map <leader>co mmggVG"*y`m
 "map <leader>i mmgg=G`m
@@ -146,9 +159,9 @@ set secure                                      " limit what modelines and autoc
 set shell=/usr/local/bin/zsh                    " use zsh instead of bash
 set shiftround                                  " when at 3 spaces and I hit >>, go to 4, not 5
 set shiftwidth=2                                " when indenting with '>', use 2 spaces
-set showcmd                                     " show information about the command you're using
-"set showmatch                                   " show matching parentheses
-
+set showcmd                                     " show information about the command you're usng
+" show matching parentheses
+"set showmatch
 set showmode                                    " always show what mode we're in
 set smartcase                                   " don't ignore case when searching for a string with an uppercase character
 set softtabstop=2                               " not sure
