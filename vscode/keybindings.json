@@ -457,7 +457,7 @@
     "command": "emoji.indertEmoji"
   },
   {
-    "key": "cmd+t",
+    "key": "cmd+y",
     "command": "workbench.action.togglePanel"
   },
   {
@@ -476,7 +476,7 @@
   },
   {
     "key": "shift+cmd+2",
-    "command": "workbench.action.toggleMaximizedPanel",
+    "command": "workbench.action.toggleMaximizedPanel"
   },
   {
     "key": "shift+cmd+;",
@@ -536,7 +536,7 @@
   },
   {
     "key": "shift+cmd+,",
-    "command": "workbench.action.openSettingsJson",
+    "command": "workbench.action.openSettingsJson"
   },
   {
     "key": "shift+cmd+.",
@@ -619,4 +619,8 @@
     "command": "-console.log.wrap.down.prefix",
     "when": "editorTextFocus"
   },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.focus"
+  }
 ]

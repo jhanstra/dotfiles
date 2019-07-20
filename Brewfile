@@ -7,7 +7,6 @@ tap 'puma/puma'
 brew 'ack'
 brew 'awk'
 brew 'awscli'
-brew 'bower'
 brew 'certbot'
 brew 'clojure'
 brew 'cmake'
@@ -21,6 +20,7 @@ brew 'emojify'
 brew 'erlang'
 brew 'fasd'
 brew 'ffmpeg'
+brew 'fzf'
 brew 'git'
 brew 'go'
 brew 'geoip'
@@ -39,6 +39,7 @@ brew 'libgit2'
 brew 'llvm'
 brew 'lua'
 brew 'make'
+brew 'mas'
 brew 'memcached'
 brew 'mongodb'
 brew 'mysql'
@@ -46,16 +47,18 @@ brew 'nginx'
 brew 'openssl'
 brew 'nmap'
 brew 'node'
+brew 'nvm'
 brew 'perl'
 brew 'phantomjs'
 brew 'pipenv'
 brew 'postgresql'
 brew 'puma/puma/puma-dev'
 brew 'python'
-brew 'r'
+brew 'r'§
 brew 'rabbitmq'
 brew 'readline'
 brew 'redis'
+brew 'ripgrep'
 brew 'rsync'
 brew 'ruby'
 brew 'ruby-build'
@@ -76,68 +79,60 @@ brew 'zsh'
 brew 'zsh-syntax-highlighting'
 # browse top packages at https://formulae.brew.sh/analytics/install-on-request/365d/
 
-
-
 ###### CASKS ######
 cask '1password'
 cask 'adobe-creative-cloud'
 cask 'aerial'
 cask 'alfred'
-cask 'android-studio'
-cask 'atom'
 cask 'brave-browser'
 cask 'charles'
-cask 'dash'
 cask 'docker'
 cask 'dropbox'
-cask 'duet'
-cask 'expo-xde'
 cask 'firefox'
+cask 'firefox-developer-edition'
 cask 'flux'
 cask 'framer'
 cask 'framer-x'
 cask 'google-chrome'
 cask 'google-drive'
 cask 'grandperspective'
-cask 'helium'
+cask 'hammerspoon'
 cask 'hyper'
 cask 'iterm2'
 cask 'karabiner-elements'
+cask 'keycastr'
 cask 'kindle'
 cask 'moom'
 cask 'mysqlworkbench'
 cask 'notion'
 cask 'now'
-cask 'private-internet-access'
-cask 'rocket'
+cask 'postman'
 cask 'sip'
+cask 'sirimote'
 cask 'sketch'
 cask 'skyfonts'
 cask 'slack'
 cask 'spectacle'
 cask 'spotify'
-cask 'sublime'
-cask 'tor-browser'
 cask 'virtualbox'
 cask 'visual-studio-code'
 cask 'vlc'
 
+###### MAC APP STORE ######
+mas 'Xcode', id: 497799835
+mas 'SiteSucker', id: 442168834
+mas 'Tweetbot', id: 557168941
 
 # to search for available casks, use `brew search --casks` in the terminal.
 # other applications not listed in the cask registry you may want:
-
 # carbide create
 # carbide motion
-# sitesucker
-# firefox developer edition
-
-# you'll also want to use creative cloud to download the adobe apps
 # lightroom classic
 # lightroom cc
 # photoshop cc
 # after effects
 # premiere pro
-
+# fusion 360
 
 
 

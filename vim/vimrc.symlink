@@ -1,0 +1,255 @@
+" my vimrc
+
+let mapleader = "\<Space>"
+
+" Plugin Initialization
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }    " file explorer in sidebar
+Plug 'Xuyuanp/nerdtree-git-plugin'                        " shows files changed since last commit in NERDTree
+Plug 'junegunn/fzf'                                       " fuzzy search
+Plug 'junegunn/fzf.vim'                                   " also needed for fuzzy search
+Plug 'airblade/vim-gitgutter'                             " shows changes in git in the left sidebar
+Plug 'editorconfig/editorconfig-vim'                      " editorconfig in vim
+Plug 'itchyny/lightline.vim'                              " cool statusbar (also check out airline)
+Plug 'mattn/emmet-vim'                                    " emmet in vim
+Plug 'terryma/vim-multiple-cursors'                       " use multiple cursors in vim, like you do in VSCode or Sublime
+Plug 'tpope/vim-eunuch'                                   " vim sugar for unix shell commands directly in vim, e.g. :Move, :Chmod, :Delete, etc
+Plug 'tpope/vim-surround'                                 " easily change surrounding things - parens, brackets, quotes, etc
+Plug 'w0rp/ale'                                           " asynchronous lint engine - provide syntax checking and semantic errors
+Plug 'tpope/vim-sensible'                                 " sensible defaults for vim
+" Plug 'jiangmiao/auto-pairs'                               " automatically pair paren, brackets, quotes, etc
+Plug 'nathanaelkane/vim-indent-guides'                    " indent guides to show how far you're indented
+Plug 'tpope/vim-fugitive'                                 " git wrapper to view git changes and interact with git
+" Plug 'ycm-core/YouCompleteMe'                             " autocompletion engine for as-you-type suggestions
+Plug 'godlygeek/tabular'                                  " easily align items
+Plug 'junegunn/vim-easy-align'                            " another way to easily align
+Plug 'vim-syntastic/syntastic'                            " syntax checker
+" Plug 'easymotion/vim-easymotion'                          " easily find in file using <space><space>
+Plug 'kristijanhusak/vim-carbon-now-sh'                   " send code to carbon for sharing to the world
+Plug 'tpope/vim-repeat'                                   " ability to repeat the last command in plugins with .
+Plug 'SirVer/ultisnips'                                   " snippets!
+Plug 'haya14busa/vim-gtrans'                              " highlight text and google translate it
+Plug 'wakatime/vim-wakatime'                              " wakatime integration for tracking productivity
+Plug 'tpope/vim-commentary'                               " supports easy commenting with gcc and gc
+Plug 'christoomey/vim-run-interactive'                    " allow you to use zsh aliases and scripts
+
+" Language Syntax Support
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'moll/vim-node'
+Plug 'jparise/vim-graphql'
+Plug 'plasticboy/vim-markdown'
+Plug 'heavenshell/vim-jsdoc'
+" Plug 'groenewege/vim-less'
+" Plug 'chase/vim-ansible-yaml'
+" Plug 'geekjuice/vim-mocha'
+" Plug 'fatih/vim-go'
+" Plug 'ryanoasis/vim-devicons'
+
+" Color Schemes
+Plug 'junegunn/seoul256.vim'
+Plug 'rakr/vim-one'
+Plug 'tlhr/anderson.vim'
+call plug#end()
+
+noremap Q @q
+" save with 'm'
+noremap m :up<cr>
+noremap <leader>vi :vsp ~/.vimrc<CR>
+noremap <leader>vr :sp $MYVIMRC<CR>
+noremap <leader>so :source $MYVIMRC<cr>
+noremap <leader>pi :PlugInstall<cr>
+noremap <C-n> :NERDTreeToggle<cr>
+noremap <leader>E :NERDTreeToggle<cr>
+noremap <leader>e :NERDTreeFocus<cr>
+" fuzzy finder files
+noremap ; :GFiles<cr>
+" search all files, including gitignored files
+noremap a; :Files<cr>
+" write if the file has been updated and quit
+noremap q :up<cr>:q<cr>
+noremap <leader>x :RunInInteractiveShell<space>
+" open 'v' script to quickly launch a projectk
+noremap <leader>o :RunInInteractiveShell<space>v<space>
+
+" make 0 go to first work in line
+nnoremap 0 ^
+" fast scrolling with ctrl-j and ctrl-k
+nnoremap <C-k> <C-u>
+nnoremap <C-j> <C-d>
+" toggle showing the indent lines from vim-indent-guides
+nnoremap <leader>in :IndentGuidesToggle<cr>
+nnoremap <leader>co :color
+" open a split with <leader>w
+nnoremap <leader>n <C-w>v<C-w>l
+" navigate through open slots
+nnoremap <leader>w <C-w>w
+" open the list of files in location list
+nnoremap <leader>g :silent lgrep<Space>
+nnoremap <silent> [f :lprevious<cr>
+nnoremap <silent> ]f :lnext<cr>
+nnoremap \ :Find<space>
+" comment / uncomment (the _ is actually something else i think?)
+nnoremap <C-_> gcc
+nnoremap <leader>d :execute 'silent !drush cc all &' | redraw!
+" git status shortcut
+nnoremap <leader>gs :Gstatus<cr>
+" go straight up and down even on wrapped lines
+nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+
+" map j and k combos to escape
+inoremap jk <esc>
+inoremap kj <esc>
+inoremap jj <esc>
+
+vnoremap <C-_> gcc
+vnoremap <leader>ss :CarbonNowSh<cr>
+vnoremap <leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+" vnoremap <leader>gt :Gtrans
+" sort lines and remove duplicates
+vnoremap <leader>so :%sort<space><cr>
+
+" operate on inner parentheses
+onoremap p i(
+" move inside the next parentheses and enter insert mode
+onoremap in( :<c-u>normal! f(vi(<cr>
+
+" move inside the next parentheses and enter insert mode
+onoremap in( :<c-u>normal! f(vi(<cr>
+" To find out what they mean / inspiration:
+"map <leader>co mmggVG"*y`m
+"map <leader>i mmgg=G`m
+"map <leader>l :Eval<cr>
+"map <leader>fix :cnoremap % %<cr>
+"map <leader>q :copen<cr><cr>
+"map <leader>mf mmgqap`m:w<cr>
+"map <leader>ra :%s/
+"map <leader>rs :vsp <C-r>#<cr><C-w>w
+"set gdefault
+
+
+:let NERDTreeMapPreview = 'o'
+:let NERDTreeMapActiviateNode = 'O'
+
+" SETTINGS
+set autoindent                                  " 'stupid' indent - copies the indentation from the previous line
+set autowrite                                   " write for me when I take any action
+set backspace=indent,eol,start                  " backspace behaves how you would expect
+set backup                                      " enable backups
+set belloff=all                                 " turn off annoying white flash in iterm when 'bell' rings
+set clipboard=unnamed                           " so that clipboard works in tmux
+set comments=sl:/*,mb:*,elx:*/                  " format comments
+set cursorline                                  " highlight the screen line of the cursor
+set encoding=utf-8                              " set encoding
+set expandtab                                   " on pressing tab, insert 2 spaces
+set hidden                                      " opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
+set history=1000                                " remember last 1000 commands
+set hlsearch                                    " highlight search terms
+set ignorecase                                  " ignore case when searching, unless...
+set incsearch                                   " show search matches as you type
+set lazyredraw                                  " screen will not redraw while executing macros
+set nocompatible                                " i don't really know...
+set noesckeys                                   " next 3 removes delay when hitting esc in insert mode
+set noswapfile                                  " prevent vim from using .swp files to save edits
+set notermguicolors
+set number                                      " show line numbers on left
+set ruler                                       " shows the current location of the cursor in the bottom bar
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)  " format the ruler
+set scrolloff=5                                 " number of context lines to see above and below cursor
+set secure                                      " limit what modelines and autocmds can do
+set shell=/usr/local/bin/zsh                    " use zsh instead of bash
+set shiftround                                  " when at 3 spaces and I hit >>, go to 4, not 5
+set shiftwidth=2                                " when indenting with '>', use 2 spaces
+set showcmd                                     " show information about the command you're usng
+" show matching parentheses
+"set showmatch
+set showmode                                    " always show what mode we're in
+set smartcase                                   " don't ignore case when searching for a string with an uppercase character
+set softtabstop=2                               " not sure
+set spell                                       " turn on spell checking
+set splitbelow                                  " split below instead of on top
+set splitright                                  " split to the right rather than to the left
+set tabstop=2                                   " set tab = 2 spaces. override per filetype via autocmd
+set textwidth=100                               " set character length of a line before it wraps
+set timeoutlen=500                              " don't wait super long for next keypress
+set ttimeout
+set ttimeoutlen=1
+set ttyfast                                     " helps with scrolling?
+set visualbell                                  " don't beep
+set wildignore=*.swp,*.bak,*.pyc,*.class        " ignore these types of files in wildmenu
+set wildmenu                                    " when typing commands, press tab to see options. e.g. :color <tab> to see choices
+set wildmode=list:full                          " show full list in wildmenu?
+set wrap                                        " wrap lines
+" set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case " use ripgrep for search
+
+au FocusLost * :wa                              " save file every time we lose focus
+
+set backupdir=~/.vim/backup//                   " set directories
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+set viminfo+=n~/.vim/viminfo
+
+if !isdirectory(expand(&backupdir))
+  call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+  call mkdir(expand(&directory), "p")
+endif
+if !isdirectory(expand(&undodir))
+  call mkdir(expand(&undodir), "p")
+endif
+
+
+" allow to exit help files with q rather than :q
+autocmd Filetype help nmap <buffer> q :q<CR>
+
+" Set Theme
+set background=dark
+syntax on
+syntax enable
+colorscheme one
+set guifont=Fira\ Code:h12
+set guifont=devicons
+set guioptions-=T                               " remove top toolbar
+hi Normal guibg=NONE ctermbg=NONE
+
+" Removes trailing spaces when vim writes
+function! TrimWhiteSpace()
+  %s/\s\+$//e
+endfunction
+
+" :silent exe "g:flog_enable"
+" a third test
+
+" NERDTree Settings
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Prettier integration with ale plugin
+let g:ale_fixers = {'javascript': ['eslint', 'prettier']}
+let g:ale_fix_on_save = 1
+
+" Carbon.now.sh options
+let g:carbon_now_sh_options = { 'ln': 'true', 't': 'paraiso-dark', 'fm': 'Fira Code' }
+
+" UltiSnips
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsEditSplit="vertical"
+
+let g:vim_markdown_folding_disabled = 1         " disable auto markdown formatting from vim-markdown
+
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+" Emmet Configuration
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = { 'javascript.jsx' : {  'extends' : 'jsx',  }, }
+
+:iabbrev @@ jared@coprime.io
+:iabbrev @@@ jhanstra@gmail.com
+:iabbrev ssig -- <cr>Jared Hanstra<cr>jared@coprime.io
+:iabbrev teh the
+
+

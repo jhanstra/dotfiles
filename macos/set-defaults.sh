@@ -50,6 +50,9 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 20
 
+# Enable key repeat in programs like VSCode
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
