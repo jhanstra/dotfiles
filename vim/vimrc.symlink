@@ -59,7 +59,7 @@ noremap <leader>x :!j e
 noremap <leader>vi :vsp ~/.vimrc<CR>               " open .vimrc in new tab
 noremap <C-n> :NERDTreeToggle<cr>                   " toggle NERDTree
 noremap <leader>E :NERDTreeToggle<cr>               " toggle NERDTree
-oremap <leader>e :NERDTreeFocus<cr>                " focus on NERDTree
+noremap <leader>e :NERDTreeFocus<cr>                " focus on NERDTree
 noremap ; :GFiles<cr>                               " fuzzy finder files
 noremap a; :Files<cr>                               " search all files, including gitignored files
 noremap q :up<cr>:q<cr>                         " write if the file has been updated and quit
@@ -100,8 +100,8 @@ vnoremap <leader>so :%sort<space><cr>               " sort lines and remove dupl
 
 onoremap p i(                                       " operate on inner parentheses
 
-" move inside the next parentheses and enter insert mode 
-onoremap in( :<c-u>normal! f(vi(<cr>                
+" move inside the next parentheses and enter insert mode
+onoremap in( :<c-u>normal! f(vi(<cr>
 " To find out what they mean / inspiration:
 "map <leader>co mmggVG"*y`m
 "map <leader>i mmgg=G`m
