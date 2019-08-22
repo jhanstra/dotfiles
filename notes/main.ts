@@ -1,3 +1,4 @@
+// use export {} to make this file a module rather than a script
 export {}
 let message = 'Welcome back'
 console.log(message)
@@ -54,11 +55,38 @@ let randomValue: any = 10
 randomValue = true
 randomValue = 'Hello'
 randomValue()
-randomValue.toUpperCase()
+randomValue.toUpperCase();
 
 // Unknown Types
 // When using 'any', Typescript will not throw an error on any of the above statements.
 // To prevent this issue, Typescript has the 'unknown' type in 3.0
 
+let myVariable: unknown = 0; // note: you need the semi-colon here because the next line is a (
+// console.log(myVariable.name) => error
+// myVariable() => error
+(myVariable as string).toUpperCase() // notice that parens used here
 
+// no types used here so this is fine
+let a
+a = 10
+a = true
+
+// but when you initialy set a type on a variable, typescript will infer the type from it and 
+// yell at you when you reassign
+let b = 20
+// b = true => error
+
+// Unions
+let multiType: number | boolean
+multiType = 20 // no error
+multiType = false // no error
+// multiType = 'Jared' // error
+
+// Unions still support intellisense
+
+// Functions
+function add(num1: number, num2: number) {
+  return num1 + num2
+}
+add(5, '10')
 
