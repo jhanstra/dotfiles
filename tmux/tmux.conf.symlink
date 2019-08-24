@@ -32,8 +32,8 @@ set -g renumber-windows on
 
 # remap prefix from 'C-b' to 'C-a'
 unbind C-b
-set-option -g prefix C-Space
-bind-key C-Space send-prefix
+set-option -g prefix C-a
+bind-key C-a send-prefix
 
 # split panes using | and -
 bind | split-window -h
