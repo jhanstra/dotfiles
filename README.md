@@ -1,4 +1,5 @@
 # 🚀 jth dotfiles
+*test*
 
 **from zero to the perfect development environment in just a few commands**
 
