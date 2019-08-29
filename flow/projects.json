@@ -1,0 +1,70 @@
+{
+  "prefs": {
+    "showSessionInProjectList": false
+  },
+  "sessions": [{
+    "name": "indeed",
+    "windows": {
+      "SKYFLIP": {
+        "root": "~/indeed/hire-client-portal-frontend",
+        "editor": true,
+        "taskHint": "jira ticket number",
+        "layout": "tiled",
+        "branch": "jira/jhanstra/SKYFLIP-<task>",
+        "scripts": [
+          "vim ."
+        ],
+        "links": [
+          "http://localhost:8080/d/requisitions",
+          "https://bugs.indeed.com/browse/SKYFLIP-<task>"
+        ]
+      },
+      "SKYFLIP-X": {
+        "default": true,
+        "skipInTaskOptions": true,
+        "root": "~/indeed/hire-client-portal-frontend",
+        "layout": "main-vertical",
+        "scriptFocus": 1,
+        "scripts": [
+          "npm run start:dev",
+          "npm run test",
+          "git status"
+        ]
+      },
+      "CANW": {
+        "root": "~/indeed/hire-candidate-webapp",
+        "branch": "jira/jhanstra/CANW-<task>",
+        "taskHint": "jira ticket number",
+        "layout": "tiled",
+        "scripts": [
+          "vim ."
+        ],
+        "links": [
+          "http://localhost:3001/candidate/application/01014aeb3e7ed57f8d274ddd75e280e9be239c45e3/interviewrequest/ddbfeff0-fd1f-4d5f-b3c8-3e75f027c37e",
+          "https://bugs.indeed.com/browse/CANW-<task>"
+        ]
+      },
+      "CANW-X": {
+        "skipInTaskOptions": true,
+        "root": "~/indeed/hire-candidate-webapp",
+        "layout": "main-vertical",
+        "scriptFocus": 2,
+        "scripts": [
+          "npm run start-non-https",
+          "npm run test",
+          "git status"
+        ]
+      },
+      "flow": {
+        "root": "~/indeed/flow",
+        "branch": "flow/<description>",
+        "layout": "main-vertical",
+        "scriptFocus": 0,
+        "scripts": [
+          "vim .",
+          "echo 'hello'"
+        ]
+      }
+    }
+  }]
+}

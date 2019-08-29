@@ -60,3 +60,5 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # if [ -e "$HOME/env/etc/indeedrc" ]; then
 #     . "$HOME/env/etc/indeedrc"
 # fi
+
+eval "$(rbenv init -)"

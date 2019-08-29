@@ -46,10 +46,10 @@ bind -n M-Up select-pane -U
 bind -n M-Down select-pane -D
 
 # resize panes
-bind -r H resize-pane -L 5
-bind -r J resize-pane -D 5
-bind -r K resize-pane -U 5
-bind -r L resize-pane -R 5
+bind -r H resize-pane -L 3
+bind -r J resize-pane -D 3
+bind -r K resize-pane -U 3
+bind -r L resize-pane -R 3
 
 # reload config file
 bind r source-file ~/.tmux.conf
@@ -81,3 +81,11 @@ bind a send-prefix
 # # use 256 term for pretty colors
 # set -g default-terminal "screen-256color"
 
+# tmux plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+# initialize tmux plugin manager
+run -b '~/.tmux/plugins/tpm/tpm'
