@@ -1,6 +1,6 @@
 [user]
 	name = Jared Hanstra
-	email = jhanstra@indeed.com
+	email = jared@coprime.io
 [difftool "kdiff3"]
   path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
   trustExitCode = false
@@ -37,7 +37,7 @@
 	excludesfile = /Users/hanstra/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
