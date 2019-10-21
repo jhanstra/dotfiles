@@ -431,7 +431,7 @@
     "keystone": "^4.0.0",
     "kinematics": "^1.0.2",
     "kleur": "^3.0.0",
-    "knex": "^0.15.2",
+    "knex": "^0.19.5",
     "knockout": "^3.4.2",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
