@@ -62,3 +62,36 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 # fi
 
 eval "$(rbenv init -)"
+
+# Indeed Stuff - not sure what it does
+# export INDEED_PROJECT_DIR='/Users/jhanstra/indeed'
+# # BEGIN env Setup -- Managed by Ansible DO NOT EDIT.
+
+# # Single-brace syntax because this is required in bash and sh alike
+# if [ -e "$HOME/env/etc/indeedrc" ]; then
+#     . "$HOME/env/etc/indeedrc"
+# fi
+# # END env Setup -- Managed by Ansible DO NOT EDIT.
+
+# From Brian Han. Should use the node version specified in an .nvmrc file in a project.
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc

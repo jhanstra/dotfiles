@@ -1,14 +1,14 @@
 /* eslint-disable prettier */
 {
   // Default font settings
-  "editor.fontFamily": "FiraCode-Retina",
+  "editor.fontFamily": "OperatorMono-Light",
   "editor.fontSize": 14,
   "editor.lineHeight": 20,
   "editor.fontWeight": "300",
   "workbench.fontAliasing": "default", // antialiased/default/auto
   "editor.fontLigatures": true,
   // Editor Theme
-  "workbench.colorTheme": "Shades of Purple",
+  "workbench.colorTheme": "Eva Dark Bold",
   // Terminal
   "terminal.integrated.fontFamily": "FiraCode-Retina",
   "terminal.integrated.fontSize": 14,
@@ -16,7 +16,7 @@
   "terminal.integrated.fontWeightBold": "800",
   // Workspace formatting
   "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 0,
   "editor.tabSize": 2,
   "editor.rulers": [
     100
