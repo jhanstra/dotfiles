@@ -183,7 +183,7 @@
         }
       ],
       "name": "KB68",
-      "selected": false,
+      "selected": true,
       "simple_modifications": [],
       "virtual_hid_keyboard": {
         "country_code": 0

@@ -32,6 +32,7 @@ Plug 'haya14busa/vim-gtrans'                              " highlight text and g
 Plug 'wakatime/vim-wakatime'                              " wakatime integration for tracking productivity
 Plug 'tpope/vim-commentary'                               " supports easy commenting with gcc and gc
 Plug 'christoomey/vim-run-interactive'                    " allow you to use zsh aliases and scripts
+Plug '907th/vim-auto-save'                                " auto-save when something is changed in normal mode and when exiting insert mode
 
 " Language Syntax Support
 Plug 'pangloss/vim-javascript'

@@ -2,7 +2,6 @@
   "eslint.enable": false,
   "javascript.format.enable": false,
   "javascript.validate.enable": false,
-  "workbench.colorTheme": "Abyss",
   "workbench.colorCustomizations": {
     "activityBar.background": "#00000044",
     "statusBar.background": "#00000044"

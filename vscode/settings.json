@@ -1,14 +1,14 @@
 /* eslint-disable prettier */
 {
   // Default font settings
-  "editor.fontFamily": "FiraCode-Retina",
+  "editor.fontFamily": "OperatorMono-Light",
   "editor.fontSize": 14,
   "editor.lineHeight": 20,
   "editor.fontWeight": "300",
   "workbench.fontAliasing": "default", // antialiased/default/auto
   "editor.fontLigatures": true,
   // Editor Theme
-  "workbench.colorTheme": "Eva Dark",
+  "workbench.colorTheme": "Eva Dark Bold",
   // Terminal
   "terminal.integrated.fontFamily": "FiraCode-Retina",
   "terminal.integrated.fontSize": 14,
@@ -16,11 +16,9 @@
   "terminal.integrated.fontWeightBold": "800",
   // Workspace formatting
   "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "editor.tabSize": 2,
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": false,
   "editor.renderIndentGuides": false,
@@ -78,7 +76,7 @@
   "eslint.alwaysShowStatus": true,
   // this *needs* to be set to false for js
   "[javascript]": {
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": false
   },
   // Emmet config
   "emmet.triggerExpansionOnTab": true,
@@ -96,11 +94,7 @@
     }
   },
   "beautify.language": {
-    "html": [
-      "html",
-      "php",
-      "erb"
-    ],
+    "html": ["html", "php", "erb"],
     "css": [],
     "js": []
   },
@@ -125,249 +119,164 @@
   "editor.wordWrap": "on",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "<leader>",
-        "<leader>"
-      ],
-      "after": [
-        "<leader>",
-        "<leader>",
-        "<leader>",
-        "b",
-        "d",
-        "w"
-      ]
+      "before": ["<leader>", "<leader>"],
+      "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"]
     },
     {
-      "before": [
-        "j"
-      ],
-      "after": [
-        "g",
-        "j",
-      ]
+      "before": ["j"],
+      "after": ["g", "j"]
     },
     {
-      "before": [
-        "k"
-      ],
-      "after": [
-        "g",
-        "k"
-      ]
+      "before": ["k"],
+      "after": ["g", "k"]
     },
     {
-      "before": [
-        "J"
-      ],
+      "before": ["J"],
       "after": [
         // "<C-d>"
         "5",
-        "j",
+        "j"
       ]
     },
     {
-      "before": [
-        "K"
-      ],
+      "before": ["K"],
       "after": [
         // "C-u"
         "5",
-        "k",
-      ]
-    },
-    {
-      "before": [
-        "H"
-      ],
-      "after": [
-        "g",
-        "T",
-      ]
-    },
-    {
-      "before": [
-        "L"
-      ],
-      "after": [
-        "g",
-        "t",
-      ]
-    },
-    {
-      "before": [
-        "U"
-      ],
-      "after": [
-        "<C-r>"
-      ],
-    },
-    {
-      "before": [
-        "0"
-      ],
-      "after": [
-        "^"
-      ]
-    },
-    {
-      "before": [
-        "j",
         "k"
-      ],
-      "after": [
-        "<escape>",
       ]
     },
     {
-      "before": [
-        "[",
-        "["
-      ],
+      "before": ["H"],
+      "after": ["g", "T"]
+    },
+    {
+      "before": ["L"],
+      "after": ["g", "t"]
+    },
+    {
+      "before": ["U"],
+      "after": ["<C-r>"]
+    },
+    {
+      "before": ["0"],
+      "after": ["^"]
+    },
+    {
+      "before": ["j", "k"],
+      "after": ["<escape>"]
+    },
+    {
+      "before": ["[", "["],
       "after": [],
       "commands": [
         {
-          "command": "editor.fold",
+          "command": "editor.fold"
         }
-      ],
-    },
-    {
-      "before": [
-        "]",
-        "]"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.unfold",
-        }
-      ],
-    },
-    {
-      "before": [
-        "[",
-        "1",
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level1",
-        }
-      ],
-    },
-    {
-      "before": [
-        "[",
-        "2"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level2",
-        }
-      ],
-    },
-    {
-      "before": [
-        "[",
-        "3"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level3",
-        }
-      ],
-    },
-    {
-      "before": [
-        "[",
-        "4"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level4",
-        }
-      ],
-    },
-    {
-      "before": [
-        "[",
-        "5"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level5",
-        }
-      ],
-    },
-    {
-      "before": [
-        "[",
-        "6"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level6",
-        }
-      ],
-    },
-    {
-      "before": [
-        "[",
-        "a"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.foldAll",
-        }
-      ],
-    },
-    {
-      "before": [
-        "[",
-        "f"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.unfoldAll",
-        }
-      ],
-    },
-    {
-      "before": [
-        "{",
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.foldRecursively",
-        }
-      ],
-    },
-    {
-      "before": [
-        "}",
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.unfoldRecursively",
-        }
-      ],
-    },
-    {
-      "before": [
-        ":"
-      ],
-      "commands": [
-        "workbench.action.showCommands",
       ]
+    },
+    {
+      "before": ["]", "]"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.unfold"
+        }
+      ]
+    },
+    {
+      "before": ["[", "1"],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level1"
+        }
+      ]
+    },
+    {
+      "before": ["[", "2"],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level2"
+        }
+      ]
+    },
+    {
+      "before": ["[", "3"],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level3"
+        }
+      ]
+    },
+    {
+      "before": ["[", "4"],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level4"
+        }
+      ]
+    },
+    {
+      "before": ["[", "5"],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level5"
+        }
+      ]
+    },
+    {
+      "before": ["[", "6"],
+      "after": [],
+      "commands": [
+        {
+          "command": "vikyd.FoldLevel.level6"
+        }
+      ]
+    },
+    {
+      "before": ["[", "a"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.foldAll"
+        }
+      ]
+    },
+    {
+      "before": ["[", "f"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.unfoldAll"
+        }
+      ]
+    },
+    {
+      "before": ["{"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.foldRecursively"
+        }
+      ]
+    },
+    {
+      "before": ["}"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.unfoldRecursively"
+        }
+      ]
+    },
+    {
+      "before": [":"],
+      "commands": ["workbench.action.showCommands"]
     }
   ],
   "editor.foldingStrategy": "indentation",
