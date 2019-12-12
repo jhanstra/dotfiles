@@ -1,0 +1,1 @@
+alias axiom="npx @coprime/axiom"

@@ -8,7 +8,7 @@
   "workbench.fontAliasing": "default", // antialiased/default/auto
   "editor.fontLigatures": true,
   // Editor Theme
-  "workbench.colorTheme": "Shades of Purple",
+  "workbench.colorTheme": "Eva Dark",
   // Terminal
   "terminal.integrated.fontFamily": "FiraCode-Retina",
   "terminal.integrated.fontSize": 14,
@@ -16,7 +16,7 @@
   "terminal.integrated.fontWeightBold": "800",
   // Workspace formatting
   "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "window.zoomLevel": -1,
+  "window.zoomLevel": 1,
   "editor.tabSize": 2,
   "editor.rulers": [
     100
