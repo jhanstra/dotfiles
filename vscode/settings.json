@@ -1,7 +1,7 @@
 /* eslint-disable prettier */
 {
   // Default font settings
-  "editor.fontFamily": "OperatorMono-Light",
+  "editor.fontFamily": "OperatorMono-Book",
   "editor.fontSize": 14,
   "editor.lineHeight": 20,
   "editor.fontWeight": "300",
@@ -28,7 +28,7 @@
   "editor.cursorBlinking": "solid",
   "editor.quickSuggestionsDelay": 10,
   "editor.quickSuggestions": {
-    "other": true,
+    "other": false,
     "comments": false,
     "strings": false
   },
