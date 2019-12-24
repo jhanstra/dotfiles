@@ -43,3 +43,8 @@ alias git-delete-local-merged="git branch -d `git branch --merged | grep -v '^*'
 # pushing and pulling
 alias gp="git pull"
 alias gpom="git push origin master"
+
+# config
+# pass the new value to either of these to update it
+alias git-email="git config --global user.email"
+alias git-name="git config --global user.name"

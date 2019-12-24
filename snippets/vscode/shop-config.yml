@@ -1,0 +1,16 @@
+development:
+  store: $1.myshopify.com
+  theme_id: "$2"
+  password: $3
+  ignore_files:
+    - config.yml
+    - Gruntfile.js
+    - package.json
+    - node_modules/
+    - .git/
+  production:
+    store: $1.myshopify.com
+    theme_id: "$4"
+    password: $3
+    timeout: 60s
+    readonly: true
