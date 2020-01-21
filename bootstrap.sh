@@ -125,7 +125,6 @@ link_file () {
   fi
 
   if [ "$skip" != "true" ]  # "false" or empty
-  then
     ln -s "$1" "$2"
     success "linked $1 to $2"
   fi
@@ -146,7 +145,7 @@ install_dotfiles () {
   done
 }
 
-# setup_gitconfig
+setup_gitconfig
 install_dotfiles
 
 # If we're on a Mac, let's install and setup homebrew.

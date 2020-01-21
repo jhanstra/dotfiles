@@ -1,284 +1,376 @@
 /* eslint-disable prettier */
 {
-  // Default font settings
-  "editor.fontFamily": "OperatorMono-Light",
-  "editor.fontSize": 14,
-  "editor.lineHeight": 20,
-  "editor.fontWeight": "300",
-  "workbench.fontAliasing": "default", // antialiased/default/auto
-  "editor.fontLigatures": true,
-  // Editor Theme
-  "workbench.colorTheme": "Eva Dark Bold",
-  // Terminal
-  "terminal.integrated.fontFamily": "FiraCode-Retina",
-  "terminal.integrated.fontSize": 14,
-  "terminal.integrated.fontWeight": "300",
-  "terminal.integrated.fontWeightBold": "800",
-  // Workspace formatting
-  "window.title": "${activeEditorMedium}${separator}${rootName}",
-  "window.zoomLevel": 0,
-  "editor.tabSize": 2,
-  "editor.rulers": [100],
-  "editor.minimap.enabled": false,
-  "editor.renderControlCharacters": false,
-  "editor.renderIndentGuides": false,
-  "editor.detectIndentation": false,
-  "editor.scrollBeyondLastLine": false,
-  "editor.cursorStyle": "block",
-  "editor.cursorBlinking": "solid",
-  "editor.quickSuggestionsDelay": 10,
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": false
-  },
-  "[markdown]": {
-    "editor.quickSuggestions": false
-  },
-  "editor.formatOnSave": true,
-  "editor.snippetSuggestions": "top",
-  "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc.
-  "editor.smoothScrolling": false,
-  "editor.renderWhitespace": "none", // turn whitespace dots on/off - none, boundary (when not in between words), all
-  "workbench.editor.tabSizing": "shrink",
-  // File List
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/.next": true
-  },
-  // Vim settings
-  "editor.lineNumbers": "relative",
-  "vim.easymotion": true,
-  "vim.hlsearch": false,
-  "vim.leader": " ",
-  // Number of lines to scroll with CTRL-U and CTRL-D commands.
-  "vim.scroll": 20,
-  "vim.handleKeys": {
-    "<C-k>": false
-  },
-  "vim.insertModeKeyBindingsNonRecursive": [],
-  // Auto-editing functionality
-  "files.trimTrailingWhitespace": true,
-  "files.autoSave": "onFocusChange",
-  // HTML specific
-  "html.format.wrapLineLength": 120,
-  "html.format.endWithNewline": true,
-  // JS specific
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "javascript.validate.enable": false,
-  "typescript.validate.enable": false,
-  // ESLint
-  "eslint.autoFixOnSave": true,
-  "eslint.alwaysShowStatus": true,
-  // this *needs* to be set to false for js
-  "[javascript]": {
-    "editor.formatOnSave": false
-  },
-  // Emmet config
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "vue-html": "html",
-    "plaintext": "jade"
-  },
-  "emmet.syntaxProfiles": {
-    "html": {
-      "attr_quotes": "single"
+    // Default font settings
+    "editor.fontFamily": "OperatorMono-Book",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 20,
+    "editor.fontWeight": "300",
+    "workbench.fontAliasing": "default", // antialiased/default/auto
+    "editor.fontLigatures": true,
+    // Editor Theme
+    "workbench.colorTheme": "Eva Dark Bold",
+    // Terminal
+    "terminal.integrated.fontFamily": "FiraCode-Retina",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.fontWeight": "300",
+    "terminal.integrated.fontWeightBold": "800",
+    // Workspace formatting
+    "window.title": "${activeEditorMedium}${separator}${rootName}",
+    "window.zoomLevel": 0,
+    "editor.tabSize": 2,
+    "editor.rulers": [
+      100
+    ],
+    "editor.minimap.enabled": false,
+    "editor.renderControlCharacters": false,
+    "editor.renderIndentGuides": false,
+    "editor.detectIndentation": false,
+    "editor.scrollBeyondLastLine": false,
+    "editor.cursorStyle": "block",
+    "editor.cursorBlinking": "solid",
+    "editor.quickSuggestionsDelay": 10,
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false
     },
-    "jsx": {
-      "self_closing_tag": true
-    }
-  },
-  "beautify.language": {
-    "html": ["html", "php", "erb"],
-    "css": [],
-    "js": []
-  },
-  // Prettier config
-  //"editor.formatOnSave": true, // Turn on for Prettier auto-format
-  // Etc
-  "editor.acceptSuggestionOnEnter": "off",
-  "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
-  "workbench.activityBar.visible": false,
-  "workbench.list.keyboardNavigation": "simple",
-  "editor.suggest.localityBonus": true,
-  "php.suggest.basic": false,
-  "files.hotExit": "onExitAndWindowClose",
-  "spotify.showSignInButton": false,
-  "spotify.showNextButton": false,
-  "spotify.showSignOutButton": false,
-  "spotify.showPlayPauseButton": false,
-  "spotify.showMuteUnmuteVolumeButton": false,
-  "spotify.showPreviousButton": false,
-  "spotify.showToggleShufflingButton": true,
-  "spotify.showLyricsButton": false,
-  "editor.wordWrap": "on",
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<leader>", "<leader>"],
-      "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"]
+    "[markdown]": {
+      "editor.quickSuggestions": false
     },
-    {
-      "before": ["j"],
-      "after": ["g", "j"]
+    "editor.formatOnSave": true,
+    "editor.snippetSuggestions": "top",
+    "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc.
+    "editor.smoothScrolling": false,
+    "editor.renderWhitespace": "none", // turn whitespace dots on/off - none, boundary (when not in between words), all
+    "workbench.editor.tabSizing": "shrink",
+    // File List
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/.next": true
     },
-    {
-      "before": ["k"],
-      "after": ["g", "k"]
+    // Vim settings
+    "editor.lineNumbers": "relative",
+    "vim.easymotion": true,
+    "vim.hlsearch": false,
+    "vim.leader": " ",
+    // Number of lines to scroll with CTRL-U and CTRL-D commands.
+    "vim.scroll": 20,
+    "vim.handleKeys": {
+      "<C-k>": false
     },
-    {
-      "before": ["J"],
-      "after": [
-        // "<C-d>"
-        "5",
-        "j"
-      ]
+    "vim.insertModeKeyBindingsNonRecursive": [],
+    // Auto-editing functionality
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "onFocusChange",
+    // HTML specific
+    "html.format.wrapLineLength": 120,
+    "html.format.endWithNewline": true,
+    // JS specific
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.validate.enable": false,
+    "typescript.validate.enable": false,
+    // ESLint
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    // this *needs* to be set to false for js
+    "[javascript]": {
+      "editor.formatOnSave": false
     },
-    {
-      "before": ["K"],
-      "after": [
-        // "C-u"
-        "5",
-        "k"
-      ]
+    // Emmet config
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+      "vue-html": "html",
+      "plaintext": "jade"
     },
-    {
-      "before": ["H"],
-      "after": ["g", "T"]
+    "emmet.syntaxProfiles": {
+      "html": {
+        "attr_quotes": "single"
+      },
+      "jsx": {
+        "self_closing_tag": true
+      }
     },
-    {
-      "before": ["L"],
-      "after": ["g", "t"]
+    "beautify.language": {
+      "html": [
+        "html",
+        "php",
+        "erb"
+      ],
+      "css": [],
+      "js": []
     },
-    {
-      "before": ["U"],
-      "after": ["<C-r>"]
-    },
-    {
-      "before": ["0"],
-      "after": ["^"]
-    },
-    {
-      "before": ["j", "k"],
-      "after": ["<escape>"]
-    },
-    {
-      "before": ["[", "["],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.fold"
-        }
-      ]
-    },
-    {
-      "before": ["]", "]"],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.unfold"
-        }
-      ]
-    },
-    {
-      "before": ["[", "1"],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level1"
-        }
-      ]
-    },
-    {
-      "before": ["[", "2"],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level2"
-        }
-      ]
-    },
-    {
-      "before": ["[", "3"],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level3"
-        }
-      ]
-    },
-    {
-      "before": ["[", "4"],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level4"
-        }
-      ]
-    },
-    {
-      "before": ["[", "5"],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level5"
-        }
-      ]
-    },
-    {
-      "before": ["[", "6"],
-      "after": [],
-      "commands": [
-        {
-          "command": "vikyd.FoldLevel.level6"
-        }
-      ]
-    },
-    {
-      "before": ["[", "a"],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.foldAll"
-        }
-      ]
-    },
-    {
-      "before": ["[", "f"],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.unfoldAll"
-        }
-      ]
-    },
-    {
-      "before": ["{"],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.foldRecursively"
-        }
-      ]
-    },
-    {
-      "before": ["}"],
-      "after": [],
-      "commands": [
-        {
-          "command": "editor.unfoldRecursively"
-        }
-      ]
-    },
-    {
-      "before": [":"],
-      "commands": ["workbench.action.showCommands"]
-    }
-  ],
-  "editor.foldingStrategy": "indentation",
-  "workbench.panel.defaultLocation": "right"
-}
+    // Prettier config
+    //"editor.formatOnSave": true, // Turn on for Prettier auto-format
+    // Etc
+    "editor.acceptSuggestionOnEnter": "smart",
+    "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
+    "workbench.activityBar.visible": false,
+    "workbench.list.keyboardNavigation": "simple",
+    "editor.suggest.localityBonus": true,
+    "php.suggest.basic": false,
+    "files.hotExit": "onExitAndWindowClose",
+    "spotify.showSignInButton": false,
+    "spotify.showNextButton": false,
+    "spotify.showSignOutButton": false,
+    "spotify.showPlayPauseButton": false,
+    "spotify.showMuteUnmuteVolumeButton": false,
+    "spotify.showPreviousButton": false,
+    "spotify.showToggleShufflingButton": true,
+    "spotify.showLyricsButton": false,
+    "editor.wordWrap": "on",
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": [
+          "<leader>",
+          "<leader>"
+        ],
+        "after": [
+          "<leader>",
+          "<leader>",
+          "<leader>",
+          "b",
+          "d",
+          "w"
+        ]
+      },
+      {
+        "before": [
+          "j"
+        ],
+        "after": [
+          "g",
+          "j"
+        ]
+      },
+      {
+        "before": [
+          "k"
+        ],
+        "after": [
+          "g",
+          "k"
+        ]
+      },
+      {
+        "before": [
+          "J"
+        ],
+        "after": [
+          // "<C-d>"
+          "5",
+          "j"
+        ]
+      },
+      {
+        "before": [
+          "K"
+        ],
+        "after": [
+          // "C-u"
+          "5",
+          "k"
+        ]
+      },
+      {
+        "before": [
+          "H"
+        ],
+        "after": [
+          "g",
+          "T"
+        ]
+      },
+      {
+        "before": [
+          "L"
+        ],
+        "after": [
+          "g",
+          "t"
+        ]
+      },
+      {
+        "before": [
+          "U"
+        ],
+        "after": [
+          "<C-r>"
+        ]
+      },
+      {
+        "before": [
+          "0"
+        ],
+        "after": [
+          "^"
+        ]
+      },
+      {
+        "before": [
+          "j",
+          "k"
+        ],
+        "after": [
+          "<escape>"
+        ]
+      },
+      {
+        "before": [
+          "[",
+          "["
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "editor.fold"
+          }
+        ]
+      },
+      {
+        "before": [
+          "]",
+          "]"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "editor.unfold"
+          }
+        ]
+      },
+      {
+        "before": [
+          "[",
+          "1"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "vikyd.FoldLevel.level1"
+          }
+        ]
+      },
+      {
+        "before": [
+          "[",
+          "2"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "vikyd.FoldLevel.level2"
+          }
+        ]
+      },
+      {
+        "before": [
+          "[",
+          "3"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "vikyd.FoldLevel.level3"
+          }
+        ]
+      },
+      {
+        "before": [
+          "[",
+          "4"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "vikyd.FoldLevel.level4"
+          }
+        ]
+      },
+      {
+        "before": [
+          "[",
+          "5"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "vikyd.FoldLevel.level5"
+          }
+        ]
+      },
+      {
+        "before": [
+          "[",
+          "6"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "vikyd.FoldLevel.level6"
+          }
+        ]
+      },
+      {
+        "before": [
+          "[",
+          "a"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "editor.foldAll"
+          }
+        ]
+      },
+      {
+        "before": [
+          "[",
+          "f"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "editor.unfoldAll"
+          }
+        ]
+      },
+      {
+        "before": [
+          "{"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "editor.foldRecursively"
+          }
+        ]
+      },
+      {
+        "before": [
+          "}"
+        ],
+        "after": [],
+        "commands": [
+          {
+            "command": "editor.unfoldRecursively"
+          }
+        ]
+      },
+      {
+        "before": [
+          ":"
+        ],
+        "commands": [
+          "workbench.action.showCommands"
+        ]
+      }
+    ],
+    "editor.foldingStrategy": "indentation",
+    "workbench.panel.defaultLocation": "right",
+    "debug.node.autoAttach": "on"
+  }

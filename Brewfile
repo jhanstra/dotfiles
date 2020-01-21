@@ -55,7 +55,7 @@ brew 'pipenv'
 brew 'postgresql'
 brew 'puma/puma/puma-dev'
 brew 'python'
-brew 'r'§
+brew 'r'
 brew 'rabbitmq'
 brew 'readline'
 brew 'redis'

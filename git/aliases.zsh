@@ -47,3 +47,6 @@ alias gpom="git push origin master"
 
 # config
 alias be-jared-in-this-repo="git config user.email jhanstra@gmail.com"
+# pass the new value to either of these to update it
+alias git-email="git config --global user.email"
+alias git-name="git config --global user.name"
