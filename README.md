@@ -1,7 +1,6 @@
 # 🚀 jth dotfiles
-*test*
 
-**from zero to the perfect development environment in just a few commands**
+**From zero to the perfect development environment in just a few commands.**
 
 There are many parts to this dotfiles repo:
 
@@ -89,12 +88,7 @@ To modify keys, go into System Preferences > Keyboard > Modifier Keys
 
 - change Caps Lock to Escape
 
-## npm offline
-
-The `npm-offline` folder has a `package.json` that aims to list all packages I would ever want to use on a project. The packages were installed once while online, which _should_ allow it to be downloaded offline from now on.
-
 ## todo
 
 - more hammerspoon functionality
 - set up all keyboards I own automatically with Karabiner
--
