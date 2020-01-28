@@ -19,9 +19,10 @@ alias gfgrom="git fetch && git rebase origin/master"
 
 # adding and committing
 alias ga="git add -A"
+alias gc="git commit"
 alias gac="git add -A && git commit"
-alias gacc="git add -A && git commit -m"
-alias gagc="git add -A && git commit"
+alias gacm="git add -A && git commit -m"
+alias gacc="git add -A && git commit"
 alias amend='git commit --amend -m'
 # gacp - check /functions dir
 
@@ -32,11 +33,20 @@ alias gu="git reset --"
 alias gb="git branch"
 alias gba="git branch -a"
 alias gcm="git checkout master"
+alias gcmp="git checkout master && git pull"
+alias gcb="git checkout -b"
 alias gnb="git checkout -b"
 alias gco="git checkout"
-alias gr='git branch -m'
+alias gbm='git branch -m'
+alias gbr='git branch -m'
 alias git-delete-local-merged="git branch -d `git branch --merged | grep -v '^*' | grep -v 'master' | tr -d '\n'`"
 
 # pushing and pulling
+alias gp="git pull"
 alias gpom="git push origin master"
-alias gcmp="git checkout master && git pull"
+
+# config
+alias be-jared-in-this-repo="git config user.email jhanstra@gmail.com"
+# pass the new value to either of these to update it
+alias git-email="git config --global user.email"
+alias git-name="git config --global user.name"

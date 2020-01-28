@@ -11,8 +11,8 @@
     "mac-defaults": "sh macos/set-defaults.sh",
     "symlink": "node node-scripts/link.js",
     "vscode-install": "sh vscode/extensions.sh",
-    "snipster": "snipster init",
-    "snipster-publish": "snipster publish vscode"
+    "snipster-init": "snipster init",
+    "snipster": "snipster publish vscode"
   },
   "repository": {
     "type": "git",

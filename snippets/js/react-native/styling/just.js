@@ -1,1 +1,0 @@
-justifyContent: '$1',

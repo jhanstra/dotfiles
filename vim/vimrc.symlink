@@ -194,9 +194,11 @@ set viminfo+=n~/.vim/viminfo
 if !isdirectory(expand(&backupdir))
   call mkdir(expand(&backupdir), "p")
 endif
+
 if !isdirectory(expand(&directory))
   call mkdir(expand(&directory), "p")
 endif
+
 if !isdirectory(expand(&undodir))
   call mkdir(expand(&undodir), "p")
 endif
@@ -209,7 +211,6 @@ autocmd Filetype help nmap <buffer> q :q<CR>
 set background=dark
 syntax on
 syntax enable
-colorscheme one
 set guifont=Fira\ Code:h12
 set guifont=devicons
 set guioptions-=T                               " remove top toolbar

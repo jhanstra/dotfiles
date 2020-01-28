@@ -89,70 +89,75 @@
     "html": {
       "attr_quotes": "single"
     },
-    "jsx": {
-      "self_closing_tag": true
-    }
-  },
-  "beautify.language": {
-    "html": ["html", "php", "erb"],
-    "css": [],
-    "js": []
-  },
-  // Prettier config
-  //"editor.formatOnSave": true, // Turn on for Prettier auto-format
-  // Etc
-  "editor.acceptSuggestionOnEnter": "off",
-  "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
-  "workbench.activityBar.visible": false,
-  "workbench.list.keyboardNavigation": "simple",
-  "editor.suggest.localityBonus": true,
-  "php.suggest.basic": false,
-  "files.hotExit": "onExitAndWindowClose",
-  "spotify.showSignInButton": false,
-  "spotify.showNextButton": false,
-  "spotify.showSignOutButton": false,
-  "spotify.showPlayPauseButton": false,
-  "spotify.showMuteUnmuteVolumeButton": false,
-  "spotify.showPreviousButton": false,
-  "spotify.showToggleShufflingButton": true,
-  "spotify.showLyricsButton": false,
-  "editor.wordWrap": "on",
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<leader>", "<leader>"],
-      "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"]
+    "[markdown]": {
+      "editor.quickSuggestions": false
     },
-    {
-      "before": ["j"],
-      "after": ["g", "j"]
+    "editor.formatOnSave": true,
+    "editor.snippetSuggestions": "top",
+    "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc.
+    "editor.smoothScrolling": false,
+    "editor.renderWhitespace": "none", // turn whitespace dots on/off - none, boundary (when not in between words), all
+    "workbench.editor.tabSizing": "shrink",
+    // File List
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/.next": true
     },
-    {
-      "before": ["k"],
-      "after": ["g", "k"]
+    // Vim settings
+    "editor.lineNumbers": "relative",
+    "vim.easymotion": true,
+    "vim.hlsearch": false,
+    "vim.leader": " ",
+    // Number of lines to scroll with CTRL-U and CTRL-D commands.
+    "vim.scroll": 20,
+    "vim.handleKeys": {
+      "<C-k>": false
     },
-    {
-      "before": ["J"],
-      "after": [
-        // "<C-d>"
-        "5",
-        "j"
-      ]
+    "vim.insertModeKeyBindingsNonRecursive": [],
+    // Auto-editing functionality
+    "files.trimTrailingWhitespace": true,
+    "files.autoSave": "onFocusChange",
+    // HTML specific
+    "html.format.wrapLineLength": 120,
+    "html.format.endWithNewline": true,
+    // JS specific
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.validate.enable": false,
+    "typescript.validate.enable": false,
+    // ESLint
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    // this *needs* to be set to false for js
+    "[javascript]": {
+      "editor.formatOnSave": false
     },
-    {
-      "before": ["K"],
-      "after": [
-        // "C-u"
-        "5",
-        "k"
-      ]
+    // Emmet config
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+      "vue-html": "html",
+      "plaintext": "jade"
     },
-    {
-      "before": ["H"],
-      "after": ["g", "T"]
+    "emmet.syntaxProfiles": {
+      "html": {
+        "attr_quotes": "single"
+      },
+      "jsx": {
+        "self_closing_tag": true
+      }
     },
-    {
-      "before": ["L"],
-      "after": ["g", "t"]
+    "beautify.language": {
+      "html": [
+        "html",
+        "php",
+        "erb"
+      ],
+      "css": [],
+      "js": []
     },
     {
       "before": ["U"],
