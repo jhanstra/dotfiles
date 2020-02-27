@@ -1,0 +1,1 @@
+alias ax-eslint="npx install-peerdeps -d @coprime/eslint-config" # upgrade your git if -sb breaks for you. it's fun.
