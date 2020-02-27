@@ -20,7 +20,8 @@ alias gfgrom="git fetch && git rebase origin/master"
 # adding and committing
 alias ga="git add -A"
 alias gc="git commit"
-alias gac="git add -A && git commit -m"
+alias gac="git add -A && git commit"
+alias gacm="git add -A && git commit -m"
 alias gacc="git add -A && git commit"
 alias amend='git commit --amend -m'
 # gacp - check /functions dir
@@ -45,6 +46,7 @@ alias gp="git pull"
 alias gpom="git push origin master"
 
 # config
+alias be-jared-in-this-repo="git config user.email jhanstra@gmail.com"
 # pass the new value to either of these to update it
 alias git-email="git config --global user.email"
 alias git-name="git config --global user.name"

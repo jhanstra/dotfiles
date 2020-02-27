@@ -18,9 +18,7 @@
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "window.zoomLevel": 0,
   "editor.tabSize": 2,
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": false,
   "editor.renderIndentGuides": false,
@@ -74,6 +72,10 @@
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   // ESLint
+  "eslint.autoFixOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   "eslint.alwaysShowStatus": true,
   // this *needs* to be set to false for js
   "[javascript]": {
@@ -202,27 +204,19 @@
       ]
     },
     {
-      "before": [
-        "0"
-      ],
-      "after": [
-        "^"
-      ]
+      "before": ["U"],
+      "after": ["<C-r>"]
     },
     {
-      "before": [
-        "j",
-        "k"
-      ],
-      "after": [
-        "<escape>"
-      ]
+      "before": ["0"],
+      "after": ["^"]
     },
     {
-      "before": [
-        "[",
-        "["
-      ],
+      "before": ["j", "k"],
+      "after": ["<escape>"]
+    },
+    {
+      "before": ["[", "["],
       "after": [],
       "commands": [
         {
@@ -231,10 +225,7 @@
       ]
     },
     {
-      "before": [
-        "]",
-        "]"
-      ],
+      "before": ["]", "]"],
       "after": [],
       "commands": [
         {
@@ -243,10 +234,7 @@
       ]
     },
     {
-      "before": [
-        "[",
-        "1"
-      ],
+      "before": ["[", "1"],
       "after": [],
       "commands": [
         {
@@ -255,10 +243,7 @@
       ]
     },
     {
-      "before": [
-        "[",
-        "2"
-      ],
+      "before": ["[", "2"],
       "after": [],
       "commands": [
         {
@@ -267,10 +252,7 @@
       ]
     },
     {
-      "before": [
-        "[",
-        "3"
-      ],
+      "before": ["[", "3"],
       "after": [],
       "commands": [
         {
@@ -279,10 +261,7 @@
       ]
     },
     {
-      "before": [
-        "[",
-        "4"
-      ],
+      "before": ["[", "4"],
       "after": [],
       "commands": [
         {
@@ -291,10 +270,7 @@
       ]
     },
     {
-      "before": [
-        "[",
-        "5"
-      ],
+      "before": ["[", "5"],
       "after": [],
       "commands": [
         {
@@ -303,10 +279,7 @@
       ]
     },
     {
-      "before": [
-        "[",
-        "6"
-      ],
+      "before": ["[", "6"],
       "after": [],
       "commands": [
         {
@@ -315,10 +288,7 @@
       ]
     },
     {
-      "before": [
-        "[",
-        "a"
-      ],
+      "before": ["[", "a"],
       "after": [],
       "commands": [
         {
@@ -327,10 +297,7 @@
       ]
     },
     {
-      "before": [
-        "[",
-        "f"
-      ],
+      "before": ["[", "f"],
       "after": [],
       "commands": [
         {
@@ -339,9 +306,7 @@
       ]
     },
     {
-      "before": [
-        "{"
-      ],
+      "before": ["{"],
       "after": [],
       "commands": [
         {
@@ -350,9 +315,7 @@
       ]
     },
     {
-      "before": [
-        "}"
-      ],
+      "before": ["}"],
       "after": [],
       "commands": [
         {
@@ -361,12 +324,8 @@
       ]
     },
     {
-      "before": [
-        ":"
-      ],
-      "commands": [
-        "workbench.action.showCommands"
-      ]
+      "before": [":"],
+      "commands": ["workbench.action.showCommands"]
     }
   ],
   "editor.foldingStrategy": "indentation",
