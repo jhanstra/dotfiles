@@ -68,10 +68,6 @@ bpatch() {
   npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
 }
 
-e() {
-  # finds the project you want to open with 'z', then opens it in your editor
-  fasd_cd -d $1 && code .
-}
 
 gacp() {
   git add -A && git commit -m $1 && git push
@@ -93,27 +89,32 @@ minor() {
   git add -A && git commit -m $1 && git push && npm version minor && npm publish
 }
 
-patch() {
-  npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
+e() {
+  # finds the project you want to open with 'z', then opens it in your editor
+  fasd_cd -d $1 && code .
 }
 
-ports() {
-  lsof -i tcp:$1
+# patch() {
+#   npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
+# }
+
+# ports() {
+#   lsof -i tcp:$1
+# }
+
+
+squash() {
+  git rebase -i HEAD~$1
 }
 
-
-# squash() {
-#   git rebase -i HEAD~$1
-# }
-
-# v() {
-#   if [ $# -eq 0 ]
-#   then
-#     vim .
-#   else
-#     fasd_cd -d $1 && vim .
-#   fi
-# }
+v() {
+  if [ $# -eq 0 ]
+  then
+    vim .
+  else
+    fasd_cd -d $1 && vim .
+  fi
+}
 
 # get() {
 #   cd /Users/jaredhanstra/JH/offline/pages && wget -p -k -r --no-parent -U Mozilla "$1"
