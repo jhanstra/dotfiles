@@ -1,1 +1,0 @@
-alias snap='jest --updateSnapshot'

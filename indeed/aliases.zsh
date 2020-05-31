@@ -1,1 +1,0 @@
-alias cdi='cd ~/indeed'

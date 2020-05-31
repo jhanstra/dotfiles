@@ -5,5 +5,9 @@
   "workbench.colorCustomizations": {
     "activityBar.background": "#00000044",
     "statusBar.background": "#00000044"
+  },
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.gitignore": true
   }
 }
