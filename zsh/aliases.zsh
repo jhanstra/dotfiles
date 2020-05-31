@@ -60,6 +60,10 @@ acp() {
   git add -A && git commit -m $1 && git push origin master
 }
 
+save() {
+  git add -A && git commit -m $1
+}
+
 bpatch() {
   npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
 }
@@ -97,9 +101,6 @@ ports() {
   lsof -i tcp:$1
 }
 
-save() {
-  git add -A && git commit -m $1
-}
 
 # squash() {
 #   git rebase -i HEAD~$1
