@@ -3,8 +3,9 @@
   "javascript.format.enable": false,
   "javascript.validate.enable": false,
   "workbench.colorCustomizations": {
-    "activityBar.background": "#00000044",
-    "statusBar.background": "#00000044"
+    "activityBar.background": "#0A689E",
+    "statusBar.background": "#0A689E",
+    "statusBar.foreground": "#ffffffcc"
   },
   "files.exclude": {
     "**/node_modules": true,

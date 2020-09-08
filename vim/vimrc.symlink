@@ -1,4 +1,4 @@
-" my vimrc
+" jth's vimrc
 
 let mapleader = "\<Space>"
 
@@ -15,11 +15,11 @@ Plug 'mattn/emmet-vim'                                    " emmet in vim
 Plug 'terryma/vim-multiple-cursors'                       " use multiple cursors in vim, like you do in VSCode or Sublime
 Plug 'tpope/vim-eunuch'                                   " vim sugar for unix shell commands directly in vim, e.g. :Move, :Chmod, :Delete, etc
 Plug 'tpope/vim-surround'                                 " easily change surrounding things - parens, brackets, quotes, etc
-Plug 'w0rp/ale'                                           " asynchronous lint engine - provide syntax checking and semantic errors
+" Plug 'w0rp/ale'                                           " asynchronous lint engine - provide syntax checking and semantic errors
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'tpope/vim-sensible'                                 " sensible defaults for vim
 Plug 'nathanaelkane/vim-indent-guides'                    " indent guides to show how far you're indented
 Plug 'tpope/vim-fugitive'                                 " git wrapper to view git changes and interact with git
-" Plug 'ycm-core/YouCompleteMe'                             " autocompletion engine for as-you-type suggestions
 Plug 'godlygeek/tabular'                                  " easily align items
 Plug 'junegunn/vim-easy-align'                            " another way to easily align
 Plug 'vim-syntastic/syntastic'                            " syntax checker
@@ -36,7 +36,7 @@ Plug '907th/vim-auto-save'                                " auto-save when somet
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'moll/vim-node'
-Plug 'jparise/vim-graphql'
+" Plug 'jparise/vim-graphql'
 Plug 'plasticboy/vim-markdown'
 " Plug 'heavenshell/vim-jsdoc'
 " Plug 'groenewege/vim-less'
@@ -49,6 +49,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'rakr/vim-one'
 Plug 'tlhr/anderson.vim'
 call plug#end()
+let g:airline_theme='one'
 
 noremap Q @q
 " save with 'm'
@@ -64,7 +65,7 @@ noremap <leader>e :NERDTreeFocus<cr>
 noremap ; :GFiles<cr>
 " search all files, including gitignored files
 noremap a; :Files<cr>
-" write if the file has been updated and quit
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }write if the file has been updated and quit
 noremap q :up<cr>:q<cr>
 noremap <leader>x :RunInInteractiveShell<space>
 " open 'v' script to quickly launch a projectk
@@ -148,6 +149,7 @@ set ignorecase                                  " ignore case when searching, un
 set incsearch                                   " show search matches as you type
 set lazyredraw                                  " screen will not redraw while executing macros
 set nocompatible                                " i don't really know...
+set nospell                                     " turn spellcheck off so there aren't annoying red highlights
 set noesckeys                                   " next 3 removes delay when hitting esc in insert mode
 set noswapfile                                  " prevent vim from using .swp files to save edits
 set notermguicolors
@@ -164,8 +166,6 @@ set showcmd                                     " show information about the com
 "set showmatch
 set showmode                                    " always show what mode we're in
 set smartcase                                   " don't ignore case when searching for a string with an uppercase character
-set softtabstop=2                               " not sure
-set spell                                       " turn on spell checking
 set splitbelow                                  " split below instead of on top
 set splitright                                  " split to the right rather than to the left
 set tabstop=2                                   " set tab = 2 spaces. override per filetype via autocmd
@@ -227,8 +227,15 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Prettier integration with ale plugin
-let g:ale_fixers = {'javascript': ['eslint', 'prettier']}
-let g:ale_fix_on_save = 1
+" let g:ale_fixers = {'javascript': ['eslint', 'prettier']}
+" let g:ale_fix_on_save = 1
+
+let g:prettier#autoformat = 0
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#autoformat_config_present = 1
+let g:prettier#autoformat_config_files = ['prettierrc.json', 'prettier.json', 'prettier.js']
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+let g:auto_save = 1
 
 " Carbon.now.sh options
 let g:carbon_now_sh_options = { 'ln': 'true', 't': 'paraiso-dark', 'fm': 'Fira Code' }

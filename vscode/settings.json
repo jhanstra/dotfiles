@@ -15,6 +15,8 @@
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontWeight": "300",
   "terminal.integrated.fontWeightBold": "800",
+  // Intellisense
+  "editor.acceptSuggestionOnCommitCharacter": false,
   // Workspace formatting
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "window.newWindowDimensions": "inherit",
@@ -82,22 +84,10 @@
     "editor.formatOnSave": false
   },
   "eslint.validate": [
-    {
-      "language": "javascript",
-      "autoFix": true
-    },
-    {
-      "language": "javascriptreact",
-      "autoFix": true
-    },
-    {
-      "language": "typescript",
-      "autoFix": false
-    },
-    {
-      "language": "typescriptreact",
-      "autoFix": true
-    }
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
   ],
   // Emmet config
   "emmet.triggerExpansionOnTab": true,
@@ -197,7 +187,7 @@
     }
   ],
   "editor.foldingStrategy": "indentation",
-  "debug.node.autoAttach": "on",
+  "debug.node.autoAttach": "off",
   // Typescript
   "typescript.disableAutomaticTypeAcquisition": true
 }
