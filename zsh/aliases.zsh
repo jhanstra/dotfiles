@@ -86,6 +86,10 @@ saveup() {
   git add -A && git commit -m $1 && git push origin
 }
 
+saveuppub() {
+  git add -A && git commit -m $1 && git push origin && npm version patch && npm publish
+}
+
 bpatch() {
   npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
 }
