@@ -7,8 +7,6 @@
   "editor.fontWeight": "300",
   "workbench.fontAliasing": "default", // antialiased/default/auto
   "editor.fontLigatures": true,
-  // Editor Theme
-  "workbench.colorTheme": "Monokai Pro (Filter Ristretto)",
   // Terminal
   "workbench.panel.defaultLocation": "right",
   "terminal.integrated.fontFamily": "FiraCode-Retina",
@@ -192,5 +190,6 @@
   "editor.foldingStrategy": "indentation",
   "debug.node.autoAttach": "off",
   // Typescript
-  "typescript.disableAutomaticTypeAcquisition": true
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "workbench.colorTheme": "Eva Dark Bold"
 }
