@@ -2,7 +2,6 @@ alias rl='. ~/.zshrc'
 # alias x='exit'
 alias cls='clear' # Good 'ol Clear Screen command
 alias md='mkdir'
-alias axiom="npx @coprime/axiom"
 alias latest="npm i @coprime/concept@latest @coprime/codash@latest @coprime/next-config@latest && npm i -D @coprime/eslint-config@latest @coprime/rollup-config@latest @coprime/next-config@latest"
 alias dot='code ~/coprime/dotfiles'
 alias cdi='cd ~/indeed'
@@ -15,7 +14,6 @@ alias prod="vc --prod"
 alias dev='npm run dev'
 alias nd='npm run start:dev'
 alias tst='npm run test'
-# alias start='npm run start'
 alias build='npm run build'
 alias lint="npm run lint"
 alias testAll="npm run test:all"
@@ -76,21 +74,22 @@ acp() {
   git add -A && git commit -m $1 && git push origin master
 }
 
+# use 'axiom installSet' or 'x is' for this now
 # i installs common sets of npm packages, e.g. all packages necessary for eslint, all packages necessary for a new Coprime project, etc
-i() {
-  if [ $1 = "eslint" ] || [ $2 = "eslint" ]
-  then
-    npm i -D @coprime/eslint-config@latest babel-eslint eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-import-resolver-webpack eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks prettier prettier-eslint eslint-plugin-mdx
-  fi
-  if [ $1 = "rollup" ] || [ $2 = "rollup" ]
-  then
-    npm i -D @coprime/rollup-config@latest @babel/core @babel/runtime @babel/plugin-proposal-object-rest-spread @babel/plugin-proposal-optional-chaining @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript babel-plugin-module-resolver babel-plugin-styled-components rollup @rollup/plugin-node-resolve @rollup/plugin-commonjs @rollup/plugin-babel
-  fi
-  if [ $1 = "standard" ] || [ $2 = "standard" ]
-  then
-    npm i @coprime/concept@latest @coprime/codash@latest @coprime/api@latest @prisma/client @zeit/next-mdx next react react-dom react-hook-form styled-components dotenv swr
-  fi
-}
+# i() {
+#   if [ $1 = "eslint" ] || [ $2 = "eslint" ]
+#   then
+#     npm i -D @coprime/eslint-config@latest babel-eslint eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-import-resolver-webpack eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks prettier prettier-eslint eslint-plugin-mdx
+#   fi
+#   if [ $1 = "rollup" ] || [ $2 = "rollup" ]
+#   then
+#     npm i -D @coprime/rollup-config@latest @babel/core @babel/runtime @babel/plugin-proposal-object-rest-spread @babel/plugin-proposal-optional-chaining @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript babel-plugin-module-resolver babel-plugin-styled-components rollup @rollup/plugin-node-resolve @rollup/plugin-commonjs @rollup/plugin-babel
+#   fi
+#   if [ $1 = "standard" ] || [ $2 = "standard" ]
+#   then
+#     npm i @coprime/concept@latest @coprime/codash@latest @coprime/api@latest @prisma/client @zeit/next-mdx next react react-dom react-hook-form styled-components dotenv swr
+#   fi
+# }
 
 
 save() {
@@ -101,13 +100,6 @@ saveup() {
   git add -A && git commit -m $1 && git push origin
 }
 
-saveuppub() {
-  git add -A && git commit -m $1 && git push origin && npm version patch && npm publish
-}
-
-bpatch() {
-  npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
-}
 
 
 
@@ -144,11 +136,17 @@ gpo() {
   git push origin $1
 }
 
-minor() {
-  git add -A && git commit -m $1 && git push && npm version minor && npm publish
-}
+# Use 'axiom publish' or 'x p' for these now
+# saveuppub() {
+#   git add -A && git commit -m $1 && git push origin && npm version patch && npm publish
+# }
 
-
-patch() {
-  npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
-}
+# bpatch() {
+#   npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
+# }
+# minor() {
+#   git add -A && git commit -m $1 && git push && npm version minor && npm publish
+# }
+# patch() {
+#   npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
+# }
