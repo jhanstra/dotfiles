@@ -1,32 +1,25 @@
-alias rl='. ~/.zshrc'
-# alias x='exit'
-alias cls='clear' # Good 'ol Clear Screen command
-alias md='mkdir'
-alias latest="npm i @coprime/concept@latest @coprime/codash@latest @coprime/next-config@latest && npm i -D @coprime/eslint-config@latest @coprime/rollup-config@latest @coprime/next-config@latest"
-alias dot='code ~/coprime/dotfiles'
-alias cdi='cd ~/indeed'
+# general linux
 alias reload="source ~/.zshrc"
 alias rl="source ~/.zshrc"
-alias vcp="vc --prod"
-alias prod="vc --prod"
+alias cls='clear' # Good 'ol Clear Screen command
+alias md='mkdir'
+alias dot='code ~/coprime/dotfiles'
+alias rl="source ~/.zshrc"
 
-# node
+# node shortcuts
 alias dev='npm run dev'
-alias nd='npm run start:dev'
-alias tst='npm run test'
+alias idev='npm i && dev'
+alias test='npm run test'
 alias build='npm run build'
 alias lint="npm run lint"
-alias testAll="npm run test:all"
-alias deploy="vercel"
+alias testall="npm run test:all"
+alias deploy="npm run deploy"
+alias prod="npm run prod"
 alias npmGlobal='npm ls -g -depth=0'
-alias bump='npm version patch --no-git-tag-version && npm publish'
-alias id='npm i && dev'
-alias bb='npm run build && bump'
-alias link='npm run link-locally'
-alias bump='npm run build && npm version patch --no-git-tag-version && npm publish'
-
-# react
 alias snap='jest --updateSnapshot'
+
+# coprime
+alias latest="npm i @coprime/concept@latest @coprime/codash@latest @coprime/next-config@latest && npm i -D @coprime/eslint-config@latest @coprime/rollup-config@latest @coprime/next-config@latest"
 
 # react native & xcode
 alias rni="react-native run-ios"
@@ -37,60 +30,43 @@ alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulato
 alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator\ \(Watch\).app"
 
 
+# Function Aliases
+
+coprime() {
+  cd ~/coprime/absolutely && code .
+  cd ~/coprime/axiom && code .
+  cd ~/coprime/codash && code .
+  cd ~/coprime/configs && code .
+  cd ~/coprime/coprime.io && code .
+  cd ~/coprime/concept && code .
+  cd ~/coprime/designer && code .
+  cd ~/coprime/dotfiles && code .
+  cd ~/coprime/firecrunch && code .
+  cd ~/coprime/hq && code .
+  cd ~/coprime/ipa && code .
+  cd ~/coprime/jot && code .
+  cd ~/coprime/jth.dev && code .
+}
 
 
-# Functions
-## Why in the world did I have all those functions in the functions folder?
-## This is so much simpler
-
+# Deno aliases
 dr() {
-  deno run -A --unstable $1
+  deno run -A $1
 }
 
 drw() {
-  denon run -A --unstable $1
+  deno run -A --watch $1
 }
 
 dt() {
-  deno test tests.ts --allow-read --allow-env --allow-write --unstable $1
-}
-
-dtw() {
-  denon test -A --unstable tests.ts
-}
-
-e() {
-  # finds the project you want to open with 'z', then opens it in your editor
-  fasd_cd -d $1 && code .
+  deno test -A tests.ts $1
 }
 
 
-
-di() {
-  deno install
-}
-
+# Git aliases
 acp() {
   git add -A && git commit -m $1 && git push origin master
 }
-
-# use 'axiom installSet' or 'x is' for this now
-# i installs common sets of npm packages, e.g. all packages necessary for eslint, all packages necessary for a new Coprime project, etc
-# i() {
-#   if [ $1 = "eslint" ] || [ $2 = "eslint" ]
-#   then
-#     npm i -D @coprime/eslint-config@latest babel-eslint eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-import eslint-import-resolver-webpack eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks prettier prettier-eslint eslint-plugin-mdx
-#   fi
-#   if [ $1 = "rollup" ] || [ $2 = "rollup" ]
-#   then
-#     npm i -D @coprime/rollup-config@latest @babel/core @babel/runtime @babel/plugin-proposal-object-rest-spread @babel/plugin-proposal-optional-chaining @babel/plugin-transform-runtime @babel/preset-env @babel/preset-react @babel/preset-typescript babel-plugin-module-resolver babel-plugin-styled-components rollup @rollup/plugin-node-resolve @rollup/plugin-commonjs @rollup/plugin-babel
-#   fi
-#   if [ $1 = "standard" ] || [ $2 = "standard" ]
-#   then
-#     npm i @coprime/concept@latest @coprime/codash@latest @coprime/api@latest @prisma/client @zeit/next-mdx next react react-dom react-hook-form styled-components dotenv swr
-#   fi
-# }
-
 
 save() {
   git add -A && git commit -m $1
@@ -100,24 +76,8 @@ saveup() {
   git add -A && git commit -m $1 && git push origin
 }
 
-
-
-
-ports() {
-  lsof -i tcp:$1
-}
-
 squash() {
   git rebase -i HEAD~$1
-}
-
-v() {
-  if [ $# -eq 0 ]
-  then
-    vim .
-  else
-    fasd_cd -d $1 && vim .
-  fi
 }
 
 gacp() {
@@ -136,17 +96,21 @@ gpo() {
   git push origin $1
 }
 
-# Use 'axiom publish' or 'x p' for these now
-# saveuppub() {
-#   git add -A && git commit -m $1 && git push origin && npm version patch && npm publish
-# }
+# Other helpers
+ports() {
+  lsof -i tcp:$1
+}
 
-# bpatch() {
-#   npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
-# }
-# minor() {
-#   git add -A && git commit -m $1 && git push && npm version minor && npm publish
-# }
-# patch() {
-#   npm run build && git add -A && git commit -m $1 && git push && npm version patch && npm publish
-# }
+e() {
+  # finds the project you want to open with 'z', then opens it in your editor
+  fasd_cd -d $1 && code .
+}
+
+v() {
+  if [ $# -eq 0 ]
+  then
+    vim .
+  else
+    fasd_cd -d $1 && vim .
+  fi
+}

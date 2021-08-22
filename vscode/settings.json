@@ -189,5 +189,7 @@
   "todo-tree.tree.showScanModeButton": false,
   "breadcrumbs.enabled": false,
   "workbench.activityBar.visible": false,
-  "javascript.suggest.autoImports": false
+  "javascript.suggest.autoImports": false,
+  "vsicons.dontShowNewVersionMessage": true,
+  "explorer.openEditors.visible": 0
 }
