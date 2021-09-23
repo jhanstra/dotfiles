@@ -25,4 +25,7 @@ if [ -d "$INDEED_JAVADEV_DIR/bin" ]; then
     PATH="$INDEED_JAVADEV_DIR/bin:$PATH"
 fi
 # END env Setup -- Managed by Ansible DO NOT EDIT.
+
+
+# Make brew available
 eval "$(/opt/homebrew/bin/brew shellenv)"

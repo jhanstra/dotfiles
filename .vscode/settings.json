@@ -1,5 +1,4 @@
 {
-  "eslint.enable": false,
   "javascript.format.enable": false,
   "javascript.validate.enable": false,
   "workbench.colorCustomizations": {
@@ -14,5 +13,6 @@
     "**/Brewfile.lock.json": true,
     "**/.vimrc": true,
     "**/.vimrc.swp": true,
+    "zsh-setup": true,
   }
 }

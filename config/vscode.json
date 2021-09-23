@@ -190,5 +190,6 @@
   "workbench.activityBar.visible": false,
   "javascript.suggest.autoImports": false,
   "vsicons.dontShowNewVersionMessage": true,
-  "explorer.openEditors.visible": 0
+  "explorer.openEditors.visible": 0,
+  "terminal.external.osxExec": "iTerm2.app"
 }

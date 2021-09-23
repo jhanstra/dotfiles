@@ -3,3 +3,4 @@ export PATH="$ZSH/bin:/usr/local/bin:/opt:/usr/local/sbin:/usr/local/mysql/bin:/
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 export ANDROID_HOME=~"/Library/Android/sdk"
 export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+export EDITOR='vscode'

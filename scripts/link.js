@@ -11,8 +11,8 @@ const dotfiles = path.join(__dirname, '..')
 
 async function vscode() {
   console.log(chalk.blue('Linking VSCode settings to dotfiles'))
-  await fs.symlink(`${dotfiles}/vscode/settings.json`, `${home}/Library/Application Support/Code/User/settings.json`, () => {})
-  await fs.symlink(`${dotfiles}/vscode/keybindings.json`, `${home}/Library/Application Support/Code/User/keybindings.json`, () => {})
+  await fs.symlink(`${dotfiles}/config/vscode.json`, `${home}/Library/Application Support/Code/User/settings.json`, () => {})
+  await fs.symlink(`${dotfiles}/config/vsc-keybindings.json`, `${home}/Library/Application Support/Code/User/keybindings.json`, () => {})
 }
 
 async function karabiner() {
@@ -20,11 +20,5 @@ async function karabiner() {
   await fs.symlink(`${dotfiles}/karabiner/karabiner.json`, `${home}/.config/karabiner/karabiner.json`, () => {})
 }
 
-async function hammerspoon() {
-  console.log(chalk.blue('Linking Hammerspoon settings to dotfiles'))
-  await fs.symlink(`${dotfiles}/hammerspoon`, `${home}/.hammerspoon`, () => {})
-}
-
 vscode()
 karabiner()
-hammerspoon()

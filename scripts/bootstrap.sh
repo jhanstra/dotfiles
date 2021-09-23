@@ -6,7 +6,7 @@
 # 3. runs the bin/dot script
 
 # uncomment this if the location of this script changes
-# cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 
 set -e
@@ -32,25 +32,25 @@ fail () {
 }
 
 setup_gitconfig () {
-  if ! [ -f git/gitconfig.local.symlink ]
+  # if ! [ -f git/gitconfig.local.symlink ]
+  # then
+  info 'setup gitconfig'
+
+  git_credential='cache'
+  if [ "$(uname -s)" == "Darwin" ]
   then
-    info 'setup gitconfig'
-
-    git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
-    then
-      git_credential='osxkeychain'
-    fi
-
-    user ' - What is your github author name?'
-    read -e git_authorname
-    user ' - What is your github author email?'
-    read -e git_authoremail
-
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
-
-    success 'gitconfig'
+    git_credential='osxkeychain'
   fi
+
+  user ' - What is your github author name?'
+  read -e git_authorname
+  user ' - What is your github author email?'
+  read -e git_authoremail
+
+  sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" config/gitconfig.local.symlink.example > config/gitconfig.local.symlink
+
+  success 'gitconfig'
+  # fi
 }
 
 
