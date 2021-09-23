@@ -3,7 +3,7 @@ cask_args appdir: '/Applications'
 tap 'homebrew/bundle'
 tap 'puma/puma'
 
-###### BREWS ######
+###### FORMULA ######
 brew 'ack'
 brew 'awk'
 brew 'awscli'
@@ -14,12 +14,11 @@ brew 'coreutils'
 brew 'cowsay'
 brew 'curl'
 brew 'docker-compose'
-brew 'elasticsearch'
 brew 'elixir'
 brew 'emojify'
 brew 'erlang'
 brew 'fasd'
-# brew 'ffmpeg'
+brew 'ffmpeg'
 brew 'fzf'
 brew 'git'
 brew 'go'
@@ -29,6 +28,7 @@ brew 'hub'
 brew 'htop'
 brew 'httpd'
 brew 'imagemagick'
+brew 'java'
 brew 'jenkins'
 brew 'jp2a'
 brew 'jq'
@@ -42,7 +42,7 @@ brew 'make'
 brew 'mas'
 brew 'memcached'
 brew 'mobile-shell'
-# brew 'mongo'
+brew 'mongocli'
 brew 'mysql'
 brew 'nginx'
 brew 'openssl'
@@ -69,7 +69,6 @@ brew 'spark'
 brew 'telnet'
 brew 'tree'
 brew 'tmux'
-brew 'unrar'
 brew 'vim'
 brew 'watchman'
 brew 'webp'
@@ -79,21 +78,58 @@ brew 'zsh'
 brew 'zsh-syntax-highlighting'
 # browse top packages at https://formulae.brew.sh/analytics/install-on-request/365d/
 
-###### MAC APP STORE ######
-# mas 'Xcode', id: 497799835
-# mas 'SiteSucker', id: 442168834
-# mas 'Tweetbot', id: 557168941
+###### CASKS ######
+cask 'visual-studio-code'
+cask 'google-chrome'
+cask 'slack'
+cask 'iterm2'
+cask 'spotify'
+cask 'tidal'
+cask 'around'
+cask 'zoom'
+cask 'loom'
+cask 'alfred'
+cask '1password'
+cask 'firefox'
+cask 'insomnia'
+cask 'brave-browser'
+cask 'notion'
+cask 'grandperspective'
+cask 'postman'
+cask 'sketch'
+cask 'sketchup-pro'
+cask 'sip'
+cask 'vlc'
+cask 'freedom'
+cask 'pop'
+cask 'sitesucker-pro'
+cask 'adobe-creative-cloud'
+cask 'imazing'
+cask 'charles'
+cask 'karabiner-elements'
+cask 'contexts'
+cask 'pictogram'
 
-# to search for available casks, use `brew search --casks` in the terminal.
-# other applications not listed in the cask registry you may want:
-# carbide create
-# carbide motion
-# lightroom classic
-# lightroom cc
-# photoshop cc
-# after effects
-# premiere pro
-# fusion 360
+##### Applications to install manually #####
+# XCode
+# Global Protect
+# Adobe products through Creative Cloud - Lightroom, Photoshop, Illustrator
 
 
-
+##### iOS Apps to maybe add
+# Youtube
+# Audible
+# Overcast
+# AllTrails
+# Disney+
+# HBOMax
+# Google Maps
+# Signal
+# Mountain Project
+# Google Sheets
+# Venmo
+# Robinhood
+# Strava
+# Coinbase
+# Kindle
+# Airbnb

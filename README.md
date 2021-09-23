@@ -92,3 +92,16 @@ To modify keys, go into System Preferences > Keyboard > Modifier Keys
 
 - more hammerspoon functionality
 - set up all keyboards I own automatically with Karabiner
+
+## New Mac Set-Up
+
+- Install Chrome extensions in Chrome
+  - 1Password
+  - Instapaper
+  - HTTPS Everywhere
+  - Fontface Ninja
+  - JSON Formatter
+  - Momentum
+  - React Dev Tools
+  - WhatRuns
+  - Wappalyzer

@@ -5,6 +5,17 @@ alias cls='clear' # Good 'ol Clear Screen command
 alias md='mkdir'
 alias dot='code ~/coprime/dotfiles'
 alias rl="source ~/.zshrc"
+alias lsd='ls -l | grep "^d"' # list only directories
+alias ..="cd .."
+alias cd..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias l="ls -l ${colorflag}"
+alias la="ls -la ${colorflag}"
+alias localip="ipconfig getifaddr en1"
+alias die-ds-store="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
+alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
 # node shortcuts
 alias dev='npm run dev'
@@ -29,9 +40,7 @@ alias rnif="rm -rf ios/build/; kill $(lsof -t -i:8081); react-native run-ios"
 alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator\ \(Watch\).app"
 
-
 # Function Aliases
-
 coprime() {
   cd ~/coprime/absolutely && code .
   cd ~/coprime/axiom && code .
