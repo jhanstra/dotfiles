@@ -9,6 +9,10 @@
   },
   "files.exclude": {
     "**/node_modules": true,
-    "**/.gitignore": true
+    "**/.gitignore": true,
+    "**/package-lock.json": true,
+    "**/Brewfile.lock.json": true,
+    "**/.vimrc": true,
+    "**/.vimrc.swp": true,
   }
 }
