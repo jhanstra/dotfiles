@@ -1,16 +1,10 @@
 {
   "name": "@coprime/dotfiles",
   "version": "0.0.1",
-  "description": "dotfiles repo for new mac configuration and a whole bunch of useful scripts",
+  "description": "dotfiles repo for new mac configuration and a whole bunch of useful scripts and aliases",
   "main": "index.js",
   "scripts": {
-    "start": "npm run bootstrap && npm run update && npm run mac-defaults && npm run vscode-install && npm run symlink",
-    "bootstrap": "sh bootstrap",
-    "brew": "sh install",
-    "update": "sh install && sh macos/install.sh",
-    "mac-defaults": "sh macos/set-defaults.sh",
-    "symlink": "node node-scripts/link.js",
-    "vscode-install": "sh vscode/extensions.sh",
+    "link": "node scripts/link.js",
     "snipster-init": "snipster init",
     "snipster": "snipster publish vscode"
   },

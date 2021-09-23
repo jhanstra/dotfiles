@@ -1,0 +1,63 @@
+# Load .localrc for info you don't want in public dotfiles
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
+
+# all of our zsh files
+typeset -U config_files
+config_files=($ZSH/**/*.zsh)
+
+# load the path files
+for file in ${(M)config_files:#*/path.zsh}
+do
+  source $file
+done
+
+# load everything but the path and completion files
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+do
+  source $file
+done
+
+# initialize autocomplete here, otherwise functions won't be loaded
+autoload -U compinit
+compinit -u
+
+# set up fasd for easy file navigation
+eval "$(fasd --init auto)"
+
+unset config_files
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PATH="$HOME/.yarn/bin:$PATH"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# for fzf and ripgrep, from https://medium.com/@crashybang/supercharge-vim-with-fzf-and-ripgrep-d4661fc853d2
+# --files: List files that would be searched but do not search
+# --hidden: Search hidden files and folders
+# --follow: Follow symlinks
+# --glob: Additional conditions for search (ignore .git)
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+
+
+# indeed specific configuration
+
+# Single-brace syntax because this is required in bash and sh alike
+# if [ -e "$HOME/env/etc/indeedrc" ]; then
+#     . "$HOME/env/etc/indeedrc"
+# fi
+
+eval "$(rbenv init -)"
+
+# Uses git's autocompletion for inner commands. Assumes an install of git's
+# bash `git-completion` script at $completion below (this is where Homebrew
+# tosses it, at least).
+completion='$(brew --prefix)/share/zsh/site-functions/_git'
+
+if test -f $completion
+then
+  source $completion
+fi

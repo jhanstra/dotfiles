@@ -1,5 +1,4 @@
 {
-  "eslint.enable": false,
   "javascript.format.enable": false,
   "javascript.validate.enable": false,
   "workbench.colorCustomizations": {
@@ -9,6 +8,11 @@
   },
   "files.exclude": {
     "**/node_modules": true,
-    "**/.gitignore": true
+    "**/.gitignore": true,
+    "**/package-lock.json": true,
+    "**/Brewfile.lock.json": true,
+    "**/.vimrc": true,
+    "**/.vimrc.swp": true,
+    "zsh-setup": true,
   }
 }

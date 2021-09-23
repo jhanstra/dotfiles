@@ -1,2 +1,0 @@
-# indeed specific
-git checkout master && git pull && git checkout jira/jhanstra/$1 || git checkout -b jira/jhanstra/$1 && git merge master
