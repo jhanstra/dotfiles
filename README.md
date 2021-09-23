@@ -18,8 +18,8 @@ There are many parts to this dotfiles repo:
 1. Set up a file at `~/.localrc` with the following (or whatever you'd like your projects folder and dotfiles location to be)
 
 ```
-export PROJECTS=~/coprime
-export ZSH=$HOME/coprime/dotfiles
+export PROJECTS=~/<your coding dir>
+export ZSH=$HOME/<your coding dir>/dotfiles
 ```
 
 2. Run `sh scripts/bootstrap.sh` to set up git config and install dotfiles (anything marked `.symlink` in this repo) in your home folder
@@ -29,7 +29,9 @@ export ZSH=$HOME/coprime/dotfiles
 6. Sign into stuff: Chrome, Slack, Spotify, 1Password
 7. Set up Snipster with `npm run snipster-init`
 8. Git clone Coprime projects and get set up with them
-9. Install Chrome extensions in Chrome
+9. Set up Alfred, turn off Spotlight
+10. Set up Contexts
+11. Install Chrome extensions in Chrome
 
 - 1Password
 - Instapaper
@@ -40,6 +42,10 @@ export ZSH=$HOME/coprime/dotfiles
 - React Dev Tools
 - WhatRuns
 - Wappalyzer
+
+## todo
+
+[] add Contexts config
 
 ## how this repo works
 

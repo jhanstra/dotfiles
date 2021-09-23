@@ -76,12 +76,12 @@
     "source.fixAll.eslint": true
   },
   "eslint.alwaysShowStatus": true,
-  // this *needs* to be set to false for js
+  // this *needs* to be set to false for js and ts
   "[javascript]": {
     "editor.formatOnSave": false
   },
   "[typescript]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": false
   },
   "eslint.validate": [
     "javascript",
@@ -181,11 +181,8 @@
     }
   ],
   "editor.foldingStrategy": "indentation",
-  "debug.node.autoAttach": "off",
-  // Typescript
   "typescript.disableAutomaticTypeAcquisition": true,
   "workbench.colorTheme": "Eva Dark Bold",
-  "todo-tree.tree.showScanModeButton": false,
   "breadcrumbs.enabled": false,
   "workbench.activityBar.visible": false,
   "javascript.suggest.autoImports": false,
