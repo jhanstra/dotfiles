@@ -113,7 +113,6 @@
   //"editor.formatOnSave": true, // Turn on for Prettier auto-format
   // Etc
   "editor.acceptSuggestionOnEnter": "smart",
-  "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
   "workbench.list.keyboardNavigation": "simple",
   "editor.suggest.localityBonus": true,
   "php.suggest.basic": false,
