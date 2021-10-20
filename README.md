@@ -61,3 +61,5 @@ If you need to add a folder to your path, open `config/_path.zsh` and edit the `
 > My aliases aren't working.
 
 Have you opened up a new tab? Is your alias written in the correct format? e.g. `alias md='mkdir'` with no spaces?
+
+Holy crap, does Github codespaces work?
