@@ -1,6 +1,4 @@
-#!/usr/bin/env bash
-
-set -e
+#!/usr/bin/env bash set -e
 
 # Run Homebrew through the Brewfile
 echo "› brew bundle"
@@ -9,9 +7,8 @@ brew bundle
 
 # set up permissions for executable files
 echo "> set mac defaults"
-cd ..
-chmod 700 scripts/mac-defaults.sh
-sh scripts/mac-defaults.sh
+cd ../
+chmod 700 scripts/mac-defaults.sh sh scripts/mac-defaults.sh
 
 # use this command to list all vscode extensions on an already configured computer:
 # code --list-extensions | xargs -L 1 echo code --install-extension

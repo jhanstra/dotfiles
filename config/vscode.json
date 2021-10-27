@@ -182,11 +182,11 @@
   ],
   "editor.foldingStrategy": "indentation",
   "typescript.disableAutomaticTypeAcquisition": true,
-  "workbench.colorTheme": "Eva Dark Bold",
   "breadcrumbs.enabled": false,
-  "workbench.activityBar.visible": false,
   "javascript.suggest.autoImports": false,
   "vsicons.dontShowNewVersionMessage": true,
   "explorer.openEditors.visible": 0,
-  "terminal.external.osxExec": "iTerm2.app"
+  "terminal.external.osxExec": "iTerm2.app",
+  "workbench.colorTheme": "Electron",
+  "workbench.activityBar.visible": false
 }
