@@ -109,8 +109,6 @@
     "css": [],
     "js": []
   },
-  // Prettier config
-  //"editor.formatOnSave": true, // Turn on for Prettier auto-format
   // Etc
   "editor.acceptSuggestionOnEnter": "smart",
   "workbench.list.keyboardNavigation": "simple",
@@ -127,10 +125,6 @@
   "spotify.showLyricsButton": false,
   "editor.wordWrap": "on",
   "vim.normalModeKeyBindingsNonRecursive": [
-    // {
-    //   "before": ["<leader>", "<leader>"],
-    //   "after": ["<leader>", "<leader>", "<leader>", "b", "d", "w"]
-    // },
     {
       "before": ["j"],
       "after": ["g", "j"]
@@ -142,7 +136,6 @@
     {
       "before": ["J"],
       "after": [
-        // "<C-d>"
         "5",
         "j"
       ]
@@ -150,7 +143,6 @@
     {
       "before": ["K"],
       "after": [
-        // "C-u"
         "5",
         "k"
       ]

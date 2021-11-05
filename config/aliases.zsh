@@ -6,13 +6,13 @@ alias md='mkdir'
 alias dot='code ~/coprime/dotfiles'
 alias rl="source ~/.zshrc"
 alias lsd='ls -l | grep "^d"' # list only directories
-alias ..="cd .."
-alias cd..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
 alias l="ls -l ${colorflag}"
 alias la="ls -la ${colorflag}"
+alias ..="cd .. && la"
+alias cd..="cd .. && la"
+alias ...="cd ../.. && la"
+alias ....="cd ../../.. && la"
+alias .....="cd ../../../.. && la"
 alias localip="ipconfig getifaddr en1"
 alias die-ds-store="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
@@ -27,6 +27,8 @@ alias deploy="npm run deploy"
 alias prod="npm run prod"
 alias npmGlobal='npm ls -g -depth=0'
 alias snap='jest --updateSnapshot'
+alias installEslint='yarn add --dev @babel/core@7.16.0 @babel/eslint-parser@7.16.0 @coprime/eslint-config@1.2.6 eslint@8.1.0 eslint-config-airbnb@18.2.1 eslint-config-prettier@8.3.0 eslint-import-resolver-webpack@0.13.2 eslint-plugin-import@2.25.2 eslint-plugin-jsx-a11y@6.4.1 eslint-plugin-mdx@1.16.0 eslint-plugin-prettier@4.0.0 eslint-plugin-react@7.26.1 eslint-plugin-react-hooks@4.2.0 prettier@2.4.1 prettier-eslint@13.0.0'
+alias esl='installEslint'
 
 # coprime
 alias latest="npm i @coprime/concept@latest @coprime/codash@latest @coprime/next-config@latest && npm i -D @coprime/eslint-config@latest @coprime/rollup-config@latest @coprime/next-config@latest"
