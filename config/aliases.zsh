@@ -27,7 +27,7 @@ alias deploy="npm run deploy"
 alias prod="npm run prod"
 alias npmGlobal='npm ls -g -depth=0'
 alias snap='jest --updateSnapshot'
-alias installEslint='yarn add --dev @babel/core@7.16.0 @babel/eslint-parser@7.16.0 @coprime/eslint-config@1.2.6 eslint@8.1.0 eslint-config-airbnb@18.2.1 eslint-config-prettier@8.3.0 eslint-import-resolver-webpack@0.13.2 eslint-plugin-import@2.25.2 eslint-plugin-jsx-a11y@6.4.1 eslint-plugin-mdx@1.16.0 eslint-plugin-prettier@4.0.0 eslint-plugin-react@7.26.1 eslint-plugin-react-hooks@4.2.0 prettier@2.4.1 prettier-eslint@13.0.0'
+alias installEslint='yarn add --dev @babel/core@7.16.0 @babel/eslint-parser@7.16.0 @coprime/eslint-config@1.2.8 eslint@8.1.0 eslint-config-airbnb@18.2.1 eslint-config-prettier@8.3.0 eslint-import-resolver-webpack@0.13.2 eslint-plugin-import@2.25.2 eslint-plugin-jsx-a11y@6.4.1 eslint-plugin-mdx@1.16.0 eslint-plugin-prettier@4.0.0 eslint-plugin-react@7.26.1 eslint-plugin-react-hooks@4.2.0 prettier@2.4.1 prettier-eslint@13.0.0'
 alias esl='installEslint'
 
 # coprime
