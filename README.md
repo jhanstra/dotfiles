@@ -15,7 +15,8 @@ There are many parts to this dotfiles repo:
 
 ## New Mac Set-Up
 
-1. Set up a file at `~/.localrc` with the following (or whatever you'd like your projects folder and dotfiles location to be)
+1. Git clone this repo. You will probably have to install Xcode tools first.
+2. Set up a file at `~/.localrc` with the following (or whatever you'd like your projects folder and dotfiles location to be)
 
 ```
 export PROJECTS=~/<your coding dir>
