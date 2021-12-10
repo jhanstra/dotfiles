@@ -32,7 +32,7 @@ brew 'java'
 brew 'jenkins'
 brew 'jp2a'
 brew 'jq'
-brew 'jupyter'
+brew 'jupyterlab'
 brew 'kotlin'
 brew 'kubernetes-cli'
 brew 'libgit2'
@@ -79,41 +79,45 @@ brew 'zsh-syntax-highlighting'
 # browse top packages at https://formulae.brew.sh/analytics/install-on-request/365d/
 
 ###### CASKS ######
-cask 'visual-studio-code'
+cask '1password'
+cask 'alfred'
+cask 'around'
+cask 'brave-browser'
+cask 'charles'
+cask 'contexts'
+cask 'firefox'
+cask 'freedom'
 cask 'google-chrome'
-cask 'slack'
+cask 'grandperspective'
+cask 'insomnia'
 cask 'iterm2'
+cask 'karabiner-elements'
+cask 'loom'
+cask 'notion'
+cask 'pictogram'
+cask 'pop'
+cask 'postman'
+cask 'sip'
+cask 'sitesucker-pro'
+cask 'sketch'
+cask 'slack'
 cask 'spotify'
 cask 'tidal'
-cask 'around'
-cask 'zoom'
-cask 'loom'
-cask 'alfred'
-cask '1password'
-cask 'firefox'
-cask 'insomnia'
-cask 'brave-browser'
-cask 'notion'
-cask 'grandperspective'
-cask 'postman'
-cask 'sketch'
-cask 'sketchup-pro'
-cask 'sip'
+cask 'visual-studio-code'
 cask 'vlc'
-cask 'freedom'
-cask 'pop'
-cask 'sitesucker-pro'
-cask 'adobe-creative-cloud'
-cask 'imazing'
-cask 'charles'
-cask 'karabiner-elements'
-cask 'contexts'
-cask 'pictogram'
+cask 'zoom'
+
+
+
+
+
+
 
 ##### Applications to install manually #####
 # XCode
 # Global Protect
-# Adobe products through Creative Cloud - Lightroom, Photoshop, Illustrator
+# Adobe Creative Cloud + Lightroom, Photoshop, Illustrator
+# Sketchup Pro
 
 
 ##### iOS Apps to maybe add
