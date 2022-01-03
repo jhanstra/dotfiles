@@ -1,6 +1,6 @@
 [user]
 	name = jhanstra
-	email = jared@coprime.io
+	email = jhanstra@indeed.com
 [difftool "kdiff3"]
   path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
   trustExitCode = false

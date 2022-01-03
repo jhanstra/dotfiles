@@ -21,6 +21,7 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 alias dev='npm run dev'
 alias tst='npm run test' # can't call this 'test' without npm yelling at me every time I open a new terminal tab
 alias build='npm run build'
+alias start='npm run start'
 alias lint="npm run lint"
 alias testall="npm run test:all"
 alias deploy="npm run deploy"
