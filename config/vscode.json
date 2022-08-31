@@ -22,7 +22,6 @@
   "editor.rulers": [100],
   "editor.minimap.enabled": false,
   "editor.renderControlCharacters": false,
-  "editor.renderIndentGuides": false,
   "editor.detectIndentation": false,
   "editor.cursorStyle": "block",
   "editor.cursorBlinking": "solid",
@@ -33,7 +32,11 @@
     "strings": false
   },
   "[markdown]": {
-    "editor.quickSuggestions": false
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
   },
   "editor.formatOnSave": true,
   "editor.snippetSuggestions": "top",
@@ -135,17 +138,11 @@
     },
     {
       "before": ["J"],
-      "after": [
-        "5",
-        "j"
-      ]
+      "after": ["5", "j"]
     },
     {
       "before": ["K"],
-      "after": [
-        "5",
-        "k"
-      ]
+      "after": ["5", "k"]
     },
     {
       "before": ["H"],
@@ -179,6 +176,8 @@
   "vsicons.dontShowNewVersionMessage": true,
   "explorer.openEditors.visible": 0,
   "terminal.external.osxExec": "iTerm2.app",
+  "workbench.activityBar.visible": false,
+  "workbench.iconTheme": "Monokai Pro Icons",
   "workbench.colorTheme": "Electron",
-  "workbench.activityBar.visible": false
+  "editor.guides.indentation": false
 }

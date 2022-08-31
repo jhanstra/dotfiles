@@ -99,9 +99,9 @@ gacp() {
   git add -A && git commit -m $1 && git push
 }
 
-gcp() {
-  git commit -m $1 && git push origin master
-}
+# gcp() {
+#   git commit -m $1 && git push origin master
+# }
 
 gnb() {
   git checkout -b $1
@@ -194,3 +194,6 @@ alias gpom="git push origin master"
 alias be-jared-in-this-repo="git config user.email jhanstra@gmail.com"
 alias git-email="git config --global user.email"
 alias git-name="git config --global user.name"
+
+
+alias usage="du -h -d1"

@@ -1,5 +1,4 @@
 # Sets reasonable macOS defaults.
-#
 # Or, in other words, set shit how I like in macOS.
 #
 # The original idea (and a couple settings) were grabbed from:
@@ -10,16 +9,6 @@
 ###############################################################################
 # General UI/UX                                                               #
 ###############################################################################
-
-# Set highlight color to green
-defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
-
-# Set sidebar icon size to medium
-defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
-
-# Always show scrollbars
-defaults write NSGlobalDomain AppleShowScrollBars -string "Automatic"
-# Possible values: `WhenScrolling`, `Automatic` and `Always`
 
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -88,13 +77,17 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+# If this is not working, you may need to delete all your .DS_Store files
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
 # Use AirDrop over every interface. srsly this should be a default.
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
 
 # Show the ~/Library folder.
 chflags nohidden ~/Library
+
+# Hide files on the Desktop
+defaults write com.apple.finder CreateDesktop false
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -103,9 +96,25 @@ chflags nohidden ~/Library
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
-# Run the screensaver if we're in the bottom-left hot corner.
-defaults write com.apple.dock wvous-bl-corner -int 5
+# Bottom left hot corner: mission control
+defaults write com.apple.dock wvous-bl-corner -int 2
 defaults write com.apple.dock wvous-bl-modifier -int 0
+
+# Bottom right hot corner: launchpad (application drawer)
+defaults write com.apple.dock wvous-br-corner -int 11
+defaults write com.apple.dock wvous-br-modifier -int 0
+
+# Top left hot corner: lock screen
+defaults write com.apple.dock wvous-tl-corner -int 13
+defaults write com.apple.dock wvous-tl-modifier -int 0
+
+# Top right hot corner: show desktop
+defaults write com.apple.dock wvous-tr-corner -int 4
+defaults write com.apple.dock wvous-tr-modifier -int 0
+
+###############################################################################
+# Other                                                                       #
+###############################################################################
 
 # Hide Safari's bookmark bar.
 defaults write com.apple.Safari ShowFavoritesBar -bool false
@@ -116,3 +125,10 @@ defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# Allow text selection in Quicklook / Preview
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# kill the Finder and Dock to make changes take effect
+killall Dock
+killall Finder
