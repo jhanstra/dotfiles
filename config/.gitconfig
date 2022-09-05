@@ -1,11 +1,13 @@
 [user]
 	name = jhanstra
-	email = jhanstra@indeed.com
+	email = jared@coprime.io
 [difftool "kdiff3"]
   path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
   trustExitCode = false
 [difftool]
   prompt = false
+[credential]
+  helper = osxkeychain
 [diff]
   tool = kdiff3
 [mergetool "kdiff3"]

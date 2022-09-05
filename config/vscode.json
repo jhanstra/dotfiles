@@ -2,7 +2,7 @@
 {
   // Default font settings
   "editor.fontFamily": "OperatorMono-Book",
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.lineHeight": 20,
   "editor.fontWeight": "300",
   "workbench.fontAliasing": "default", // antialiased/default/auto
@@ -177,7 +177,10 @@
   "explorer.openEditors.visible": 0,
   "terminal.external.osxExec": "iTerm2.app",
   "workbench.activityBar.visible": false,
+  "editor.guides.indentation": false,
+  "window.zoomLevel": 1,
+  "terminal.integrated.shellIntegration.enabled": false,
+  "terminal.integrated.defaultProfile.osx": "zsh",
   "workbench.iconTheme": "Monokai Pro Icons",
-  "workbench.colorTheme": "Electron",
-  "editor.guides.indentation": false
+  "workbench.colorTheme": "Monokai Pro"
 }

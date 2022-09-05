@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>A7ED8279-CF0E-4BC5-BB8E-A25B3C5654FE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E094A7FD-738B-43F8-B107-7409B7AC347F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string></string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Open Bookmarks spreadsheet</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://docs.google.com/spreadsheets/d/1Brshl67B0c_CUY_JV-Hm_xJsHamD0ApIuT7cMO2yA1g/edit#gid=0</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>E094A7FD-738B-43F8-B107-7409B7AC347F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>links</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open my Google Sheet for bookmarks</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>A7ED8279-CF0E-4BC5-BB8E-A25B3C5654FE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>A7ED8279-CF0E-4BC5-BB8E-A25B3C5654FE</key>
+		<dict>
+			<key>note</key>
+			<string>Type your keyword into Alfred to trigger this workflow.</string>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>75</real>
+		</dict>
+		<key>E094A7FD-738B-43F8-B107-7409B7AC347F</key>
+		<dict>
+			<key>note</key>
+			<string>The URL set here will open when you press Return after typing the keyword.</string>
+			<key>xpos</key>
+			<real>230</real>
+			<key>ypos</key>
+			<real>65</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>

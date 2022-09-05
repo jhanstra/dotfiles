@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>9B6C2927-CE82-43FD-A1F7-1D2AD4DC51F1</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gif</string>
+			<key>text</key>
+			<string>Imgur</string>
+			<key>url</key>
+			<string>https://imgur.com/search?q={query}</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -58,6 +58,12 @@ defaults write com.apple.finder ShowStatusBar -bool true
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
+# Show extension names in Finder
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Show hidden files in Finder
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
 # Display full POSIX path as Finder window title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
@@ -93,8 +99,23 @@ defaults write com.apple.finder CreateDesktop false
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
+# Place dock on the right
+defaults write com.apple.dock "orientation" -string "right"
+
+# Auto-hide the dock
+defaults write com.apple.dock autohide -bool true
+
+# Set the delay before the dock shows
+defaults write com.apple.dock autohide-delay -float "0"
+
+# Set dock tile size
+defaults write com.apple.dock tilesize -int "24"
+
+# Show recents in dock
+defaults write com.apple.dock show-recents -bool true
+
 # Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool false
+defaults write com.apple.dock mru-spaces -bool "false"
 
 # Bottom left hot corner: mission control
 defaults write com.apple.dock wvous-bl-corner -int 2
@@ -128,6 +149,30 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # Allow text selection in Quicklook / Preview
 defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# Set clock to military time
+defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
+
+# Messages: Disable automatic emoji substitution (i.e. use plain text smileys)
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Disable automatic capitalization as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# Disable smart dashes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Disable automatic period substitution as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable smart quotes as they’re annoying when typing code
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# Disable auto-correct
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # kill the Finder and Dock to make changes take effect
 killall Dock

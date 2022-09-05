@@ -32,6 +32,8 @@ alias installEslint='yarn add --dev @babel/core@7.16.0 @babel/eslint-parser@7.16
 alias esl='installEslint'
 
 # coprime
+alias coprime="code $DOTFILES/config/coprime-main.code-workspace"
+alias c="coprime"
 alias latest="npm i @coprime/concept@latest @coprime/codash@latest @coprime/next-config@latest && npm i -D @coprime/eslint-config@latest @coprime/rollup-config@latest @coprime/next-config@latest"
 
 # react native & xcode
@@ -42,93 +44,27 @@ alias rnif="rm -rf ios/build/; kill $(lsof -t -i:8081); react-native run-ios"
 alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator\ \(Watch\).app"
 
-# Function Aliases
-coprime() {
-  cd ~/coprime/absolutely && code .
-  cd ~/coprime/axiom && code .
-  cd ~/coprime/codash && code .
-  cd ~/coprime/configs && code .
-  cd ~/coprime/coprime.io && code .
-  cd ~/coprime/concept && code .
-  cd ~/coprime/designer && code .
-  cd ~/coprime/dotfiles && code .
-  cd ~/coprime/firecrunch && code .
-  cd ~/coprime/hq && code .
-  cd ~/coprime/ipa && code .
-  cd ~/coprime/jot && code .
-  cd ~/coprime/jth.dev && code .
-}
-
 # NPM aliases
-idev() {
-  npm i && npm run dev
-}
+idev() { pnpm i && pnpm run dev }
 
 # Deno aliases
-dr() {
-  deno run -A $1
-}
-
-drw() {
-  deno run -A --watch $1
-}
-
-dt() {
-  deno test -A tests.ts $1
-}
-
+dr() { deno run -A $1 }
+drw() { deno run -A --watch $1 }
+dt() { deno test -A tests.ts $1 }
 
 # Git aliases
-acp() {
-  git add -A && git commit -m $1 && git push origin master
-}
-
-save() {
-  git add -A && git commit -m $1
-}
-
-saveup() {
-  git add -A && git commit -m $1 && git push origin
-}
-
-squash() {
-  git rebase -i HEAD~$1
-}
-
-gacp() {
-  git add -A && git commit -m $1 && git push
-}
-
-# gcp() {
-#   git commit -m $1 && git push origin master
-# }
-
-gnb() {
-  git checkout -b $1
-}
-
-gpo() {
-  git push origin $1
-}
+acp() { git add -A && git commit -m $1 && git push origin master }
+save() { git add -A && git commit -m $1 }
+saveup() { git add -A && git commit -m $1 && git push origin }
+squash() { git rebase -i HEAD~$1 }
+gacp() { git add -A && git commit -m $1 && git push }
+# gcp() { git commit -m $1 && git push origin master }
+# gnb() { git checkout -b $1 }
+gpo() { git push origin $1 }
 
 # Other helpers
-ports() {
-  lsof -i tcp:$1
-}
-
-e() {
-  # finds the project you want to open with 'z', then opens it in your editor
-  fasd_cd -d $1 && code .
-}
-
-v() {
-  if [ $# -eq 0 ]
-  then
-    vim .
-  else
-    fasd_cd -d $1 && vim .
-  fi
-}
+ports() { lsof -i tcp:$1 }
+e() { fasd_cd -d $1 && code . } # finds with 'z' and opens in VSCode
 
 # MacOS commands
 alias show-hidden-files='defaults write com.apple.finder AppleShowAllFiles YES'
@@ -143,9 +79,7 @@ alias td='tmux kill-session -t flow'
 # vim aliases
 alias vimrc='vim ~/.vimrc'
 alias v='vim .'
-alias brewfile='vim ~/coprime/dotfiles/Brewfile'
-
-# git aliases
+alias brewfile='vim $DOTFILES/config/Brewfile'
 
 # Use `hub` as our git wrapper:
 #   http://defunkt.github.com/hub/
@@ -195,5 +129,11 @@ alias be-jared-in-this-repo="git config user.email jhanstra@gmail.com"
 alias git-email="git config --global user.email"
 alias git-name="git config --global user.name"
 
-
-alias usage="du -h -d1"
+# etc
+alias usage="du -h -d1 -I=/\.git/"
+alias lowpower="sudo pmset -a lowpowermode 1" # switch to Low Power mode on Mac
+alias highpower="sudo pmset -a lowpowermode 0" # switch to normal power mode
+alias islowpower="pmset -g |grep lowpowermode" # are we on Low Power mode?
+alias path="echo $PATH | tr ":" "\n" | sort" # print $PATH nicely
+alias myip="curl https://ipinfo.io/json"
+alias python="python3"

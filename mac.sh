@@ -1,6 +1,20 @@
+echo "› Let's set up your new Mac!"
+if [ ! -f ~/.dotfileconfig ]
+then
+  echo "Is this a work profile? (y/n)"
+  read -e ISWORK
+  echo "Where will your code directory be? (e.g. ~/coprime)"
+  read -e CODE
+  echo "Where will your dotfiles be located? (e.g. $CODE/dotfiles)"
+  read -e DOTFILES
+  echo "\nexport ISWORK=$ISWORK\nexport CODE=$CODE\nexport DOTFILES=$DOTFILES" > $HOME/.dotfileconfig
+else
+  echo "Using dotfile config at ~/.dotfileconfig. If you wish to start over from scratch, remove this file"
+fi
+
 if ! command -v brew &>/dev/null; then
-    echo "› install homebrew"
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  echo "› install homebrew"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 echo "› brew bundle"
@@ -21,25 +35,86 @@ then
 fi
 
 echo "› link dotfiles and other config files"
-ln -sf ~/coprime/utils/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/coprime/utils/dotfiles/config/.gitconfig ~/.gitconfig
-ln -sf ~/coprime/utils/dotfiles/config/.gitignore ~/.gitignore
-ln -sf ~/coprime/utils/dotfiles/config/vscode.json ~/Library/Application\ Support/Code/User/settings.json
-ln -sf ~/coprime/utils/dotfiles/config/vscode-keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+ln -sf $DOTFILES/.zshrc ~/.zshrc
+ln -sf $DOTFILES/config/.gitconfig ~/.gitconfig
+ln -sf $DOTFILES/config/.gitignore ~/.gitignore
+ln -sf $DOTFILES/config/vscode.json ~/Library/Application\ Support/Code/User/settings.json
+ln -sf $DOTFILES/config/vscode-keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+cp -R $DOTFILES/fonts/ ~/Library/Fonts
+
+if [ ! -d ~/.nvm ]
+then
+  echo "› set up nvm"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
+else
+  source $HOME/.nvm/nvm.sh # Load nvm
+fi
+
+if [ ! -d ~/.bun ]
+then
+  echo "› install bun"
+  curl https://bun.sh/install | bash
+fi
+
+if [ ! -d ~/.ssh ]
+then
+  echo "› set up ssh"
+  ssh-keygen -f ~/.ssh/id_rsa
+fi
 
 echo "› install pnpm global packages"
 export PNPM_HOME="~/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
-pnpm add --global trash
+cd ~/ && pnpm install --global trash-cli snipster eslint jest tldr
+rm -rf /Users/jth/~
 
-echo "› set overrides"
-echo "Is this a work profile? (y/n)"
-read -e isWork
 
-if [ "$isWork" == "y" ]
+if [ "$ISWORK" == "y" ]
 then
-    echo "Git email to use?"
-    read -e gitemail
-    git config --global user.email "$gitemail"
-    # load work-specific shell code
+  # Work-specific config
+  echo "Git email to use?"
+  read -e gitemail
+  git config --global user.email "$gitemail"
+
+   # Work repos at top level of code directory
+  for name in jot axiom concept ipa codash jth.dev; do
+    cd $CODE
+    git clone https://github.com/coprime/$name.git
+    cd $name
+    nvm use
+    pnpm install
+  done
+else
+  # Personal-specific config
+  echo "› npm login & install projects"
+  npm whoami
+  if [ $? -eq 0 ]; then
+    echo "Logged in to npm"
+  else
+    npm login
+  fi
+
+  # Main repos at top level of code directory
+  for name in jot axiom concept ipa codash jth.dev; do
+    cd $CODE
+    git clone https://github.com/coprime/$name.git
+    cd $name
+    nvm use
+    pnpm install
+  done
+
+  # Secondary repos in /etc folder in code directory
+  mkdir $CODE/etc
+  for name in eslint-config domains domains2 codra-kai firecrunch designer absolutely middleway rollup-config coprime.dev austin-medical-associates coprime.io hq; do
+    cd $CODE/etc
+    git clone https://github.com/coprime/$name.git
+    cd $name
+    nvm use
+    pnpm install
+  done
+
+  echo "› install deno binaries"
+  deno install -A -f -r -n x $CODE/axiom/mod.js
+  deno install -A -f -r $CODE/axiom/mod.js
+  deno install -A -f -r $CODE/etc/absolutely/mod.js
 fi
