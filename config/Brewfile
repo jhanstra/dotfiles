@@ -1,19 +1,14 @@
-cask_args appdir: '/Applications'
-
-tap 'homebrew/bundle'
-tap 'puma/puma'
-
-###### FORMULA ######
 brew 'ack'
 brew 'awk'
 brew 'awscli'
+brew 'bat'
 brew 'certbot'
-brew 'clojure'
 brew 'cmake'
 brew 'coreutils'
 brew 'cowsay'
 brew 'curl'
 brew 'docker-compose'
+brew 'deno'
 brew 'elixir'
 brew 'emojify'
 brew 'erlang'
@@ -28,8 +23,6 @@ brew 'hub'
 brew 'htop'
 brew 'httpd'
 brew 'imagemagick'
-brew 'java'
-brew 'jenkins'
 brew 'jp2a'
 brew 'jq'
 brew 'jupyterlab'
@@ -51,7 +44,8 @@ brew 'node'
 brew 'nvm'
 brew 'perl'
 brew 'pipenv'
-brew 'postgresql'
+brew 'pnpm'
+brew 'postgresql@14'
 brew 'puma/puma/puma-dev'
 brew 'python'
 brew 'r'
@@ -67,6 +61,7 @@ brew 'roundup'
 brew 'spaceman-diff'
 brew 'spark'
 brew 'telnet'
+brew 'thefuck'
 brew 'tree'
 brew 'tmux'
 brew 'vim'
@@ -78,62 +73,50 @@ brew 'zsh'
 brew 'zsh-syntax-highlighting'
 # browse top packages at https://formulae.brew.sh/analytics/install-on-request/365d/
 
-###### CASKS ######
+###### APPLICATIONS ######
 cask '1password'
+cask 'adobe-creative-cloud'
 cask 'alfred'
+cask 'anki'
 cask 'around'
-cask 'brave-browser'
 cask 'charles'
 cask 'contexts'
+cask 'dropzone'
 cask 'firefox'
-cask 'freedom'
 cask 'google-chrome'
 cask 'grandperspective'
 cask 'insomnia'
 cask 'iterm2'
 cask 'karabiner-elements'
+cask 'kindle'
 cask 'loom'
+cask 'microsoft-edge'
 cask 'notion'
-cask 'pictogram'
 cask 'pop'
 cask 'postman'
+cask 'signal'
 cask 'sip'
 cask 'sitesucker-pro'
 cask 'sketch'
 cask 'slack'
 cask 'spotify'
+cask 'stats'
 cask 'tidal'
+cask 'tripmode'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'zoom'
 
 
-
-
-
-
-
 ##### Applications to install manually #####
 # XCode
 # Global Protect
-# Adobe Creative Cloud + Lightroom, Photoshop, Illustrator
+# Adobe Lightroom, Photoshop, Illustrator
 # Sketchup Pro
 
 
-##### iOS Apps to maybe add
-# Youtube
-# Audible
-# Overcast
-# AllTrails
-# Disney+
-# HBOMax
-# Google Maps
-# Signal
-# Mountain Project
-# Google Sheets
-# Venmo
-# Robinhood
-# Strava
-# Coinbase
-# Kindle
+##### iOS Apps to add
 # Airbnb
+# HBOMax
+# Mountain Project
+# Overcast

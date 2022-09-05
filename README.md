@@ -1,68 +1,25 @@
 # 🚀 jth dotfiles
 
-**From zero to the perfect development environment in just a few commands.**
+**From zero to the perfect dev environment**
 
-There are many parts to this dotfiles repo:
+These dotfiles include config and settings for:
 
 - Programs and applications to install with Homebrew
 - Mac OS default settings
-- VSCode settings and extensions
-- Vim config
-- Keyboard setup with Karabiner
-- Zsh functions and aliases
+- VSCode settings, keybindings, extensions, and workspaces
+- Vim and tmux config (although I now use VSCode)
+- Zsh config and aliases
+- Alfred settings
+- iTerm settings
 - Snipster snippets
-- Zsh config
+- Fonts to install
+- Git config
 
 ## New Mac Set-Up
 
-1. Git clone this repo. You will probably have to install Xcode tools first.
-2. Set up a file at `~/.localrc` with the following (or whatever you'd like your projects folder and dotfiles location to be)
-
-```
-export PROJECTS=~/<your coding dir>
-export ZSH=$HOME/<your coding dir>/dotfiles
-```
-
-2. Install Homebrew: https://brew.sh
-3. Run `sh scripts/bootstrap.sh` to set up git config and install dotfiles (anything marked `.symlink` in this repo) in your home folder
-4. Run `sh scripts/install.sh` to install packages and apps with Homebrew. Keep an eye on the script every once in awhile because you may need to input your Mac password
-5. Run `npm run link` to symlink VSCode and Karabiner settings
-6. Go into System Preferences > Keyboard > Modifier Keys, map 'Caps Lock' to 'Escape'
-7. Sign into stuff: Chrome, Slack, Spotify, 1Password
-8. Set up Snipster with `npm run snipster-init`
-9. Git clone Coprime projects and get set up with them
-10. Set up Alfred, turn off Spotlight
-11. Set up Contexts
-12. Signing into Chrome should install your extensions, but if not, download the extensions below
-13. Copy over media from jhDrive
-
-
-Google Chrome extensions:
-- 1Password
-- Instapaper
-- HTTPS Everywhere
-- Fontface Ninja
-- JSON Formatter
-- Momentum
-- React Dev Tools
-- WhatRuns
-- Wappalyzer
-
-## todo
-
-[] add Contexts config
-
-## how this repo works
-
-Files with `.symlink` get symlinked as dotfiles to your home folder. Files with `.zsh` get loaded into your zsh shell when it starts. The files in `zsh-setup/` are fancy bash scripts that make your terminal prompt look nice.
-
-## how to
-
-**add to path**
-If you need to add a folder to your path, open `config/_path.zsh` and edit the `PATH` export.
-
-## faq
-
-> My aliases aren't working.
-
-Have you opened up a new tab? Is your alias written in the correct format? e.g. `alias md='mkdir'` with no spaces?
+1. `xcode-select --install`
+2. `cd && mkdir <your code repo>` (for me, `cd && mkdir coprime`)
+3. Log into Github and create a [personal access token](https://github.com/settings/tokens)
+4. `git clone https://github.com/jhanstra/dotfiles` in your projects directory. Use github token to auth.
+5. `cd dotfiles && sh mac.sh`. Answer the few questions in there.
+6. Continue through the rest of the manual steps that can't be automated: [[Notion]](https://www.notion.so/coprime/New-Mac-Checklist-cba48cca794d4905a12d5fad81b4b851)
