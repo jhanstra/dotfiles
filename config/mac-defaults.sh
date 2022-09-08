@@ -118,20 +118,20 @@ defaults write com.apple.dock show-recents -bool true
 defaults write com.apple.dock mru-spaces -bool "false"
 
 # Bottom left hot corner: mission control
-defaults write com.apple.dock wvous-bl-corner -int 2
-defaults write com.apple.dock wvous-bl-modifier -int 0
+# defaults write com.apple.dock wvous-bl-corner -int 2
+# defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # Bottom right hot corner: launchpad (application drawer)
 defaults write com.apple.dock wvous-br-corner -int 11
 defaults write com.apple.dock wvous-br-modifier -int 0
 
 # Top left hot corner: lock screen
-defaults write com.apple.dock wvous-tl-corner -int 13
-defaults write com.apple.dock wvous-tl-modifier -int 0
+# defaults write com.apple.dock wvous-tl-corner -int 13
+# defaults write com.apple.dock wvous-tl-modifier -int 0
 
 # Top right hot corner: show desktop
-defaults write com.apple.dock wvous-tr-corner -int 4
-defaults write com.apple.dock wvous-tr-modifier -int 0
+# defaults write com.apple.dock wvous-tr-corner -int 4
+# defaults write com.apple.dock wvous-tr-modifier -int 0
 
 ###############################################################################
 # Other                                                                       #

@@ -1,0 +1,13 @@
+cd ~/code && git clone https://code.corp.indeed.com/indeed-design-system/ipl.git
+cd ~/code && git clone https://code.corp.indeed.com/one-host/one-host.git
+cd ~/code && git clone https://code.corp.indeed.com/one-host/employer-job-search-modules.git
+cd ~/code && git clone https://code.corp.indeed.com/indeed-design-system/ifl.git
+cd ~/code && git clone https://code.corp.indeed.com/plittle/candidate-delivery-prototypes.git
+cd ~/code && git clone https://code.corp.indeed.com/hire-de/jobs-vision.git
+cd ~/code && git clone https://code.corp.indeed.com/one-host/job-posting.git
+cd ~/code && git clone https://code.corp.indeed.com/one-host/one-host-analytics.git
+cd ~/code && git clone https://code.corp.indeed.com/one-host/one-host-app-context.git
+cd ~/code && git clone https://code.corp.indeed.com/one-host/one-host-i18n.git
+cd ~/code && git clone https://code.corp.indeed.com/one-host/page-title-management.git
+cd ~/code && git clone https://code.corp.indeed.com/one-host/one-host-modal-context.git
+cd ~/code && git clone https://code.corp.indeed.com/one-host/one-host-notification-context.git
