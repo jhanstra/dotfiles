@@ -47,10 +47,16 @@ unsetopt BG_NICE # don't run background jobs at a lower priority
 source $ZSH/oh-my-zsh.sh
 
 # initialize autocomplete here, otherwise functions won't be loaded
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 source $DOTFILES/config/aliases.zsh # Add aliases
 eval "$(fasd --init auto)" # Set up fasd
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # Load nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # nvm completions
-[ -s "/Users/jth/.bun/_bun" ] && source "/Users/jth/.bun/_bun" # bun completions
+# [ -s "/Users/jth/.bun/_bun" ] && source "/Users/jth/.bun/_bun" # bun completions

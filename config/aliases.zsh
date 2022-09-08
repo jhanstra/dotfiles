@@ -86,7 +86,7 @@ alias brewfile='vim $DOTFILES/config/Brewfile'
 hub_path=$(which hub)
 if (( $+commands[hub] ))
 then
-  alias git=$hub_path
+  # alias git=$hub_path
 fi
 
 # statuses
