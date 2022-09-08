@@ -178,9 +178,9 @@
   "terminal.external.osxExec": "iTerm2.app",
   "workbench.activityBar.visible": false,
   "editor.guides.indentation": false,
-  "window.zoomLevel": 1,
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.defaultProfile.osx": "zsh",
   "workbench.iconTheme": "Monokai Pro Icons",
-  "workbench.colorTheme": "Monokai Pro"
+  "workbench.colorTheme": "Monokai Pro",
+  "window.zoomLevel": 1
 }

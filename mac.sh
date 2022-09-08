@@ -68,7 +68,6 @@ export PATH="$PNPM_HOME:$PATH"
 cd ~/ && pnpm install --global trash-cli snipster eslint jest tldr
 rm -rf /Users/jth/~
 
-
 if [ "$ISWORK" == "y" ]
 then
   # Work-specific config
