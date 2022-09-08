@@ -1,8 +1,8 @@
 echo "› Let's set up your new Mac!"
+echo "Is this a work profile? (y/n)"
+read -e ISWORK
 if [ ! -f ~/.dotfileconfig ]
 then
-  echo "Is this a work profile? (y/n)"
-  read -e ISWORK
   echo "Where will your code directory be? (e.g. ~/coprime)"
   read -e CODE
   echo "Where will your dotfiles be located? (e.g. $CODE/dotfiles)"
@@ -10,15 +10,32 @@ then
   echo "\nexport ISWORK=$ISWORK\nexport CODE=$CODE\nexport DOTFILES=$DOTFILES" > $HOME/.dotfileconfig
 else
   echo "Using dotfile config at ~/.dotfileconfig. If you wish to start over from scratch, remove this file"
+  source $HOME/.dotfileconfig
 fi
+
+echo $DOTFILES
+echo $ISWORK
 
 if ! command -v brew &>/dev/null; then
   echo "› install homebrew"
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-echo "› brew bundle"
-brew bundle install --file=./config/Brewfile
+echo "› install most important brew packages"
+# brew bundle install --file=./config/Brewfile
+# speed up dramatically by only installing these for now.
+# Run Brewfile later
+brew install deno
+brew install git
+brew install node
+brew install pnpm
+brew install ruby
+brew install thefuck
+brew install tmux
+brew install vim
+brew install yarn
+brew install zsh
+brew install zsh-syntax-highlighting
 
 echo "› set mac defaults"
 chmod 700 ./config/mac-defaults.sh
@@ -74,15 +91,6 @@ then
   echo "Git email to use?"
   read -e gitemail
   git config --global user.email "$gitemail"
-
-   # Work repos at top level of code directory
-  for name in jot axiom concept ipa codash jth.dev; do
-    cd $CODE
-    git clone https://github.com/coprime/$name.git
-    cd $name
-    nvm use
-    pnpm install
-  done
 else
   # Personal-specific config
   echo "› npm login & install projects"
