@@ -121,6 +121,7 @@ else
   done
 
   echo "› install deno binaries"
+  deno install -A -f -r -n concept $CODE/concept/cli/mod.js
   deno install -A -f -r -n x $CODE/axiom/mod.js
   deno install -A -f -r $CODE/axiom/mod.js
   deno install -A -f -r $CODE/etc/absolutely/mod.js
