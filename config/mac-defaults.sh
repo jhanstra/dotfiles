@@ -117,13 +117,14 @@ defaults write com.apple.dock show-recents -bool true
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool "false"
 
+# The following 4 settings are for hot corners, but I've found in practice they annoy me more than help me
 # Bottom left hot corner: mission control
 # defaults write com.apple.dock wvous-bl-corner -int 2
 # defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # Bottom right hot corner: launchpad (application drawer)
-defaults write com.apple.dock wvous-br-corner -int 11
-defaults write com.apple.dock wvous-br-modifier -int 0
+# defaults write com.apple.dock wvous-br-corner -int 11
+# defaults write com.apple.dock wvous-br-modifier -int 0
 
 # Top left hot corner: lock screen
 # defaults write com.apple.dock wvous-tl-corner -int 13
