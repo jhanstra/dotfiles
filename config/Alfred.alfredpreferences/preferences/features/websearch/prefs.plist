@@ -15,6 +15,39 @@
 			<key>url</key>
 			<string>https://calendar.google.com/calendar/u/0/r/week</string>
 		</dict>
+		<key>0E55D8EF-C541-405A-BE10-CBA5C962A6B2</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>chase</string>
+			<key>text</key>
+			<string>Chase Bank</string>
+			<key>url</key>
+			<string>https://www.chase.com/</string>
+		</dict>
+		<key>1791BB2F-10F7-44B8-B540-4D9F228FCDF5</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>exp</string>
+			<key>text</key>
+			<string>Expenses spreadsheet</string>
+			<key>url</key>
+			<string>https://docs.google.com/spreadsheets/d/1b3NJdkrHyuguQr2-S7OkmKuh2hnOKB3ih-23NfNUPR4/edit#gid=658214692</string>
+		</dict>
+		<key>3C3B38D3-D868-4487-8D2B-287B883430E5</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>2022</string>
+			<key>text</key>
+			<string>2022 Spreadsheet</string>
+			<key>url</key>
+			<string>https://docs.google.com/spreadsheets/d/1VaejFwVSQzfNSR9tGNKKM7Bms1w45m1Rk1xwtC_-9gw/edit#gid=0</string>
+		</dict>
 		<key>44286871-2B40-4E8C-ADAD-25D80B768CF9</key>
 		<dict>
 			<key>enabled</key>
@@ -48,6 +81,61 @@
 			<key>url</key>
 			<string>https://calendar.google.com/calendar/u/1/r/week</string>
 		</dict>
+		<key>74E8CD69-01C8-423B-9618-84D81B96C753</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>domains</string>
+			<key>text</key>
+			<string>Domains spreadsheet</string>
+			<key>url</key>
+			<string>https://docs.google.com/spreadsheets/d/1Azyw_PXxhQ1Jn_kVuEoUAY0RVhtnTAv8Pl2z_unTZDU/edit#gid=246763701</string>
+		</dict>
+		<key>76E43672-3999-4BDC-8C18-2D56464EF42C</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>ic</string>
+			<key>text</key>
+			<string>React Icons</string>
+			<key>url</key>
+			<string>https://react-icons.github.io/react-icons/search?q={query}</string>
+		</dict>
+		<key>7EE2D681-FA0B-40B0-80F0-8C96D5F2057E</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>icon</string>
+			<key>text</key>
+			<string>React Icons</string>
+			<key>url</key>
+			<string>https://react-icons.github.io/react-icons/search?q={query}</string>
+		</dict>
+		<key>82DDAEEE-E3F6-44CC-94C3-3740A777F9EC</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>movement</string>
+			<key>text</key>
+			<string>Movement Fitness Classes</string>
+			<key>url</key>
+			<string>https://movementgyms.com/baker/calendar/#activity=fitness&amp;location=baker,rino,englewood,golden&amp;class-type=strength,conditioning,active-recovery</string>
+		</dict>
+		<key>86996D0C-3A80-4090-9887-4DCABB6A3E25</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>pc</string>
+			<key>text</key>
+			<string>Personal Capital</string>
+			<key>url</key>
+			<string>https://home.personalcapital.com/page/login/app#/dashboard</string>
+		</dict>
 		<key>9B6C2927-CE82-43FD-A1F7-1D2AD4DC51F1</key>
 		<dict>
 			<key>enabled</key>
@@ -59,6 +147,17 @@
 			<key>url</key>
 			<string>https://imgur.com/search?q={query}</string>
 		</dict>
+		<key>A8083EFD-C9B6-4D70-AE70-3DE00BBB7909</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>meetup</string>
+			<key>text</key>
+			<string>Meetup events soon</string>
+			<key>url</key>
+			<string>https://www.meetup.com/home/?suggested=true&amp;source=EVENTS</string>
+		</dict>
 		<key>A9ACBAC5-DA46-4218-A4E8-D88AC822EB10</key>
 		<dict>
 			<key>enabled</key>
@@ -69,6 +168,17 @@
 			<string>NY Times</string>
 			<key>url</key>
 			<string>https://www.nytimes.com/</string>
+		</dict>
+		<key>D180C491-45F8-412B-A204-54E333B484DB</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>xcel</string>
+			<key>text</key>
+			<string>Xcel Energy</string>
+			<key>url</key>
+			<string>https://my.xcelenergy.com/MyAccount/s/</string>
 		</dict>
 		<key>D33A7842-4C09-47FC-B83E-3A65D72D0EF7</key>
 		<dict>
@@ -94,6 +204,28 @@
 			<key>url</key>
 			<string>https://docs.google.com/spreadsheets/u/0/?q={query}</string>
 		</dict>
+		<key>DF2DB623-113D-4A79-A242-F60B25296D41</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>mortgage</string>
+			<key>text</key>
+			<string>NewRez Mortgage</string>
+			<key>url</key>
+			<string>https://myaccount.newrez.com/dashboard</string>
+		</dict>
+		<key>EA75C356-2073-4F7A-BEAC-8E413A10FB71</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>heloc</string>
+			<key>text</key>
+			<string>Cenlar Heloc</string>
+			<key>url</key>
+			<string>https://www.loanadministration.com/cenlarfsb/#/dashboard</string>
+		</dict>
 		<key>F8621FCE-B2A2-46CA-B9BF-1ED52D9A865F</key>
 		<dict>
 			<key>enabled</key>
@@ -104,6 +236,17 @@
 			<string>Tailwind Colors</string>
 			<key>url</key>
 			<string>https://tailwindcss.com/docs/customizing-colors</string>
+		</dict>
+		<key>FC4FC722-7863-4A27-B333-5B7425ACE956</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>frost</string>
+			<key>text</key>
+			<string>Frost Bank</string>
+			<key>url</key>
+			<string>https://www.frostbank.com/mf/accounts/main</string>
 		</dict>
 		<key>FF438DC3-F52D-4EA8-8DC3-9BE30685E741</key>
 		<dict>

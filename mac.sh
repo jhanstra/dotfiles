@@ -44,10 +44,10 @@ echo "› link dotfiles and other config files"
 ln -sf $DOTFILES/.zshrc ~/.zshrc
 ln -sf $DOTFILES/config/.gitconfig ~/.gitconfig
 ln -sf $DOTFILES/config/.gitignore ~/.gitignore
+mkdir -p ~/.config/karabiner
 ln -sf $DOTFILES/config/karabiner.json ~/.config/karabiner/karabiner.json
 ln -sf $DOTFILES/config/vscode.json ~/Library/Application\ Support/Code/User/settings.json
 ln -sf $DOTFILES/config/vscode-keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
-ln -sf $DOTFILES/config/iina-bindings.conf ~/Library/Application\ Support/com.colliderli.iina/input_conf/iina-bindings.conf
 cp -R $DOTFILES/fonts/ ~/Library/Fonts
 
 if [ ! -d ~/.nvm ]

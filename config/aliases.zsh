@@ -19,6 +19,8 @@ alias cd..="cd .. && la"
 alias ...="cd ../.. && la"
 alias ....="cd ../../.. && la"
 alias .....="cd ../../../.. && la"
+alias co="cd $CODE && la"
+alias cop="cd $CODE && la"
 alias localip="ipconfig getifaddr en1"
 alias die-ds-store="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
