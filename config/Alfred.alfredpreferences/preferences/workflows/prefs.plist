@@ -2,11 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>hidehat</key>
-	<true/>
-	<key>hideshortcuts</key>
-	<true/>
-	<key>visibleresults</key>
-	<integer>6</integer>
+	<key>defaultBundleId</key>
+	<string>coprime</string>
+	<key>defaultCreatedBy</key>
+	<string>jth</string>
+	<key>defaultWebsite</key>
+	<string>coprime.io</string>
 </dict>
 </plist>
