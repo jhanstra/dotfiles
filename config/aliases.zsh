@@ -1,11 +1,17 @@
 # general linux
 alias reload="source ~/.zshrc"
 alias rl="source ~/.zshrc"
-alias cls='clear' # Good 'ol Clear Screen command
+alias cl='clear'
+alias cls='clear'
 alias md='mkdir'
 alias dot='code ~/coprime/dotfiles'
-alias rl="source ~/.zshrc"
+alias r="source ~/.zshrc"
+alias h="history -10"
+alias hg="history | grep"
+alias ag="alias | grep"
 alias lsd='ls -l | grep "^d"' # list only directories
+alias dot="code -n ~/coprime/dotfiles"
+alias mac="sh $DOTFILES/mac.sh"
 alias l="ls -l ${colorflag}"
 alias la="ls -la ${colorflag}"
 alias ..="cd .. && la"

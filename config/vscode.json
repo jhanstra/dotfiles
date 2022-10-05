@@ -164,10 +164,10 @@
       "before": ["0"],
       "after": ["^"]
     },
-    {
-      "before": [":"],
-      "commands": ["workbench.action.showCommands"]
-    }
+    // {
+    //   "before": [":"],
+    //   "commands": ["workbench.action.showCommands"]
+    // }
   ],
   "editor.foldingStrategy": "indentation",
   "typescript.disableAutomaticTypeAcquisition": true,
