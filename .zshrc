@@ -3,7 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 export EDITOR='vscode'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-
+ZSH_DISABLE_COMPFIX=true
 # Set up PATH
 export BUN_INSTALL="$HOME/.bun"
 CORE="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -48,12 +48,12 @@ source $ZSH/oh-my-zsh.sh
 
 # initialize autocomplete here, otherwise functions won't be loaded
 # autoload -Uz compinit && compinit
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+# if type brew &>/dev/null; then
+#   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
-  autoload -Uz compinit
-  compinit
-fi
+#   autoload -Uz compinit
+#   compinit
+# fi
 
 source $DOTFILES/config/aliases.zsh # Add aliases
 eval "$(fasd --init auto)" # Set up fasd

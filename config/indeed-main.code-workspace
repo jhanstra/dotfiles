@@ -1,0 +1,78 @@
+{
+  "folders": [
+	{
+		"path": "../../entjobs-management-modules"
+	},
+	{
+		"path": "../../employer-job-search-modules"
+	},
+	{
+		"path": "../../candidate-delivery-prototypes"
+	},
+	{
+		"path": ".."
+	}
+],
+  "settings": {
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#2e2f85",
+      "statusBar.background": "#2e2f85",
+      "statusBar.foreground": "#ffffffcc"
+    },
+    "terminals": {
+      "autorun": true,
+      "autokill": true,
+      "terminals": [
+        {
+          "name": "EMM dev",
+          "icon": "zap",
+          "color": "terminal.ansiBrightGreen",
+          "cwd": "/Users/indeed/code/entjobs-management-modules",
+          "command": "npm run start"
+        },
+        {
+          "name": "EMM cli",
+          "icon": "code",
+          "color": "terminal.ansiBrightGreen",
+          "cwd": "/Users/indeed/code/entjobs-management-modules",
+          "command": "npm run quickcheck"
+        },
+        {
+          "name": "EJSM dev",
+          "icon": "zap",
+          "color": "terminal.ansiBrightBlue",
+          "cwd": "/Users/indeed/code/employer-job-search-modules",
+          "command": "npm run start"
+        },
+        {
+          "name": "EJSM cli",
+          "icon": "code",
+          "color": "terminal.ansiBrightBlue",
+          "cwd": "/Users/indeed/code/employer-job-search-modules",
+          "command": "npm run test"
+        },
+        {
+          "name": "Table Prototype dev",
+          "icon": "zap",
+          "color": "terminal.ansiBrightRed",
+          "cwd": "/Users/indeed/code/candidate-delivery-prototypes",
+          "command": "npm run start"
+        },
+        {
+          "name": "Table Prototype cli",
+          "icon": "code",
+          "color": "terminal.ansiBrightRed",
+          "cwd": "/Users/indeed/code/candidate-delivery-prototypes",
+          "command": ""
+        },
+        {
+          "name": "dotfiles cli",
+          "icon": "code",
+          "color": "terminal.ansiBrightCyan",
+          "cwd": "/Users/jth/coprime/dotfiles",
+          "command": ""
+        },
+      ]
+    }
+  }
+}

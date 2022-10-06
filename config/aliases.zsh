@@ -36,6 +36,10 @@ alias coprime="code $DOTFILES/config/coprime-main.code-workspace"
 alias c="coprime"
 alias latest="npm i @coprime/concept@latest @coprime/codash@latest @coprime/next-config@latest && npm i -D @coprime/eslint-config@latest @coprime/rollup-config@latest @coprime/next-config@latest"
 
+# indeed
+alias indeed="code $DOTFILES/config/indeed-main.code-workspace"
+alias i="indeed"
+
 # react native & xcode
 alias rni="react-native run-ios"
 alias rna="react-native run-android"

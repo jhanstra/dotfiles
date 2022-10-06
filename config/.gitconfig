@@ -46,6 +46,7 @@
 # BEGIN Managed by shell_setup role
 [core]
     excludesfile = /Users/jhanstra/env/etc/git/gitignore_global
+	editor = vim
 
 [include]
     path = /Users/jhanstra/env/etc/git/aliases
