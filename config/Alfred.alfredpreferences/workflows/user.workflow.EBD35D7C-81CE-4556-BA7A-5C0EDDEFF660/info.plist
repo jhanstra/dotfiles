@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>coprime</string>
+	<key>connections</key>
+	<dict>
+		<key>1C595942-5F58-454D-BBA5-928245328911</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9F3479C7-0BCE-4462-A115-4FA26F2B7937</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>jth</string>
+	<key>description</key>
+	<string></string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Connect / Disconnect Airpods Max</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>paths</key>
+				<array>
+					<string>/Applications/ConnectAirpodsMax.app</string>
+				</array>
+				<key>toggle</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.launchfiles</string>
+			<key>uid</key>
+			<string>9F3479C7-0BCE-4462-A115-4FA26F2B7937</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>max</string>
+				<key>subtext</key>
+				<string>We love pandas</string>
+				<key>text</key>
+				<string>Open the Wikipedia page about pandas</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>1C595942-5F58-454D-BBA5-928245328911</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>1C595942-5F58-454D-BBA5-928245328911</key>
+		<dict>
+			<key>note</key>
+			<string>Type your keyword into Alfred to trigger this workflow.</string>
+			<key>xpos</key>
+			<real>125</real>
+			<key>ypos</key>
+			<real>235</real>
+		</dict>
+		<key>9F3479C7-0BCE-4462-A115-4FA26F2B7937</key>
+		<dict>
+			<key>xpos</key>
+			<real>465</real>
+			<key>ypos</key>
+			<real>215</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>webaddress</key>
+	<string>coprime.io</string>
+</dict>
+</plist>

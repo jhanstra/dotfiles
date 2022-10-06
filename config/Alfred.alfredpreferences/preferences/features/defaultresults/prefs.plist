@@ -10,5 +10,15 @@
 	<true/>
 	<key>showFolders</key>
 	<true/>
+	<key>showUserDefined</key>
+	<array>
+		<string>com.adobe.pdf</string>
+		<string>com.apple.protected-mpeg-4-audio-b</string>
+		<string>dyn.ah62d4rv4ge80455cre</string>
+		<string>dyn.ah62d4rv4ge80c8x1</string>
+		<string>io.iina.mkv</string>
+		<string>public.avi</string>
+		<string>public.mpeg-4</string>
+	</array>
 </dict>
 </plist>

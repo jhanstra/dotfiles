@@ -15,6 +15,28 @@
 			<key>url</key>
 			<string>https://calendar.google.com/calendar/u/0/r/week</string>
 		</dict>
+		<key>01FCC7E4-C4A2-408D-9AB2-7A741DC800D1</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>cleanshot</string>
+			<key>text</key>
+			<string>Cleanshot Cloud</string>
+			<key>url</key>
+			<string>https://cleanshot.cloud/login</string>
+		</dict>
+		<key>0298ACA1-242D-494B-A0D5-E58608B5A448</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>mdn</string>
+			<key>text</key>
+			<string>MDN Docs</string>
+			<key>url</key>
+			<string>https://developer.mozilla.org/en-US/</string>
+		</dict>
 		<key>0E55D8EF-C541-405A-BE10-CBA5C962A6B2</key>
 		<dict>
 			<key>enabled</key>
@@ -36,6 +58,28 @@
 			<string>Expenses spreadsheet</string>
 			<key>url</key>
 			<string>https://docs.google.com/spreadsheets/d/1b3NJdkrHyuguQr2-S7OkmKuh2hnOKB3ih-23NfNUPR4/edit#gid=658214692</string>
+		</dict>
+		<key>1CF73EC5-1DEB-412A-A0E0-51C0F1D17307</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>ghp</string>
+			<key>text</key>
+			<string>Github Personal</string>
+			<key>url</key>
+			<string>https://github.com/jhanstra?tab=repositories</string>
+		</dict>
+		<key>2AE8AF48-37EE-4C11-922B-F0EEF65DD261</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>weather</string>
+			<key>text</key>
+			<string>Weather - Search</string>
+			<key>url</key>
+			<string>https://www.accuweather.com/en/search-locations?query={query}</string>
 		</dict>
 		<key>3C3B38D3-D868-4487-8D2B-287B883430E5</key>
 		<dict>
@@ -70,6 +114,17 @@
 			<key>url</key>
 			<string>https://open.spotify.com/search/{query}</string>
 		</dict>
+		<key>4EC5AC4E-2E05-4B82-B64D-4C432E8ED1DB</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>we10</string>
+			<key>text</key>
+			<string>Weather - Denver - 10 Day</string>
+			<key>url</key>
+			<string>https://weather.com/weather/tenday/l/3f345b93f02bdea125a122a4798a6b17174a3153bb0f45b4d5238343613d7368</string>
+		</dict>
 		<key>63407FB6-C535-40D4-B7F6-07BBA9B24EE6</key>
 		<dict>
 			<key>enabled</key>
@@ -80,6 +135,17 @@
 			<string>Indeed Calendar</string>
 			<key>url</key>
 			<string>https://calendar.google.com/calendar/u/1/r/week</string>
+		</dict>
+		<key>68417D2C-F836-44A2-881E-BC0294FBBD3C</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>ghc</string>
+			<key>text</key>
+			<string>Github Coprime</string>
+			<key>url</key>
+			<string>https://github.com/coprime</string>
 		</dict>
 		<key>74E8CD69-01C8-423B-9618-84D81B96C753</key>
 		<dict>
@@ -169,6 +235,17 @@
 			<key>url</key>
 			<string>https://www.nytimes.com/</string>
 		</dict>
+		<key>B04A5039-8933-4D49-A7B2-B0716136CE0E</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>wetoday</string>
+			<key>text</key>
+			<string>Weather - Denver - Today</string>
+			<key>url</key>
+			<string>https://weather.com/weather/hourbyhour/l/3f345b93f02bdea125a122a4798a6b17174a3153bb0f45b4d5238343613d7368</string>
+		</dict>
 		<key>D180C491-45F8-412B-A204-54E333B484DB</key>
 		<dict>
 			<key>enabled</key>
@@ -190,6 +267,17 @@
 			<string>Indeed Google Sheets</string>
 			<key>url</key>
 			<string>https://docs.google.com/spreadsheets/u/1/?tgif=d&amp;q={query}</string>
+		</dict>
+		<key>D7CCA59D-4FAF-458D-B627-813B541FB727</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gh</string>
+			<key>text</key>
+			<string>Github Search</string>
+			<key>url</key>
+			<string>https://github.com/search?q={query}</string>
 		</dict>
 		<key>DEEAB7A3-A52C-4C7F-B084-42655DAAA67D</key>
 		<dict>
@@ -215,6 +303,39 @@
 			<key>url</key>
 			<string>https://myaccount.newrez.com/dashboard</string>
 		</dict>
+		<key>E2D9972A-6976-40B9-A703-4A38A04D4A99</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>ghn</string>
+			<key>text</key>
+			<string>Github Notifications</string>
+			<key>url</key>
+			<string>https://github.com/notifications</string>
+		</dict>
+		<key>E499C109-4348-48FB-A444-08297475D314</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>waka</string>
+			<key>text</key>
+			<string>Wakatime</string>
+			<key>url</key>
+			<string>https://wakatime.com/dashboard</string>
+		</dict>
+		<key>E689FC54-A16E-4447-90C1-70C1FFAFD0DC</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>library</string>
+			<key>text</key>
+			<string>Library: Checked Out Books</string>
+			<key>url</key>
+			<string>https://catalog.denverlibrary.org/PatronAccount/itemsout.aspx</string>
+		</dict>
 		<key>EA75C356-2073-4F7A-BEAC-8E413A10FB71</key>
 		<dict>
 			<key>enabled</key>
@@ -226,6 +347,17 @@
 			<key>url</key>
 			<string>https://www.loanadministration.com/cenlarfsb/#/dashboard</string>
 		</dict>
+		<key>F75F768C-E1E2-4ADB-B90A-13B18D2DCF25</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>lib</string>
+			<key>text</key>
+			<string>Denver Public Library Catalog</string>
+			<key>url</key>
+			<string>https://catalog.denverlibrary.org/search/searchresults.aspx?ctx=1.1033.0.0.6&amp;type=Keyword&amp;term={query}</string>
+		</dict>
 		<key>F8621FCE-B2A2-46CA-B9BF-1ED52D9A865F</key>
 		<dict>
 			<key>enabled</key>
@@ -236,6 +368,17 @@
 			<string>Tailwind Colors</string>
 			<key>url</key>
 			<string>https://tailwindcss.com/docs/customizing-colors</string>
+		</dict>
+		<key>F8B70DF3-D8CC-48F5-8B09-BD0819DF0A0B</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>mtn</string>
+			<key>text</key>
+			<string>Mountain Forecast</string>
+			<key>url</key>
+			<string>https://www.mountain-forecast.com/</string>
 		</dict>
 		<key>FC4FC722-7863-4A27-B333-5B7425ACE956</key>
 		<dict>

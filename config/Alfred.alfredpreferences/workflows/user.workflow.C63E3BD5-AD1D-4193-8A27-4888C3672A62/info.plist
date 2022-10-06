@@ -105,6 +105,30 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>6BD5CD78-74A1-4225-9F60-A436B3BD251E</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>9C60E011-DEC2-4863-A705-7702C03C8A2C</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>B4A5FD38-B590-4F35-B13F-AE6CB5104607</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>EE2E801E-F9D5-40EE-B08F-ABF03E1C2ED5</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 	</dict>
 	<key>createdby</key>
@@ -297,6 +321,34 @@
 						<key>uid</key>
 						<string>449B62C3-4E27-4D11-B950-1FCE8BCF3EC4</string>
 					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>date</string>
+						<key>outputlabel</key>
+						<string></string>
+						<key>uid</key>
+						<string>9C60E011-DEC2-4863-A705-7702C03C8A2C</string>
+					</dict>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>lo</string>
+						<key>outputlabel</key>
+						<string></string>
+						<key>uid</key>
+						<string>EE2E801E-F9D5-40EE-B08F-ABF03E1C2ED5</string>
+					</dict>
 				</array>
 				<key>elselabel</key>
 				<string>else</string>
@@ -341,7 +393,7 @@
 				<key>subtext</key>
 				<string></string>
 				<key>text</key>
-				<string>Show docs websites</string>
+				<string>Show docs websites {query}</string>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -415,6 +467,48 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://date-fns.org/docs/Getting-Started</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>6BD5CD78-74A1-4225-9F60-A436B3BD251E</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://lodash.com/docs/</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>B4A5FD38-B590-4F35-B13F-AE6CB5104607</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Keywords are one of Alfred's most commonly used and most useful ways of launching actions. Set a keyword and connect it to the action(s) you want to perform.
@@ -440,6 +534,13 @@ Type your keyword into Alfred, followed by your input text if needed, and you'll
 			<key>ypos</key>
 			<real>380</real>
 		</dict>
+		<key>6BD5CD78-74A1-4225-9F60-A436B3BD251E</key>
+		<dict>
+			<key>xpos</key>
+			<real>790</real>
+			<key>ypos</key>
+			<real>770</real>
+		</dict>
 		<key>73D648E5-9D08-4FCF-A2F3-1E4F0114576E</key>
 		<dict>
 			<key>xpos</key>
@@ -460,6 +561,13 @@ Type your keyword into Alfred, followed by your input text if needed, and you'll
 			<real>825</real>
 			<key>ypos</key>
 			<real>550</real>
+		</dict>
+		<key>B4A5FD38-B590-4F35-B13F-AE6CB5104607</key>
+		<dict>
+			<key>xpos</key>
+			<real>865</real>
+			<key>ypos</key>
+			<real>890</real>
 		</dict>
 		<key>B9E41FA6-3D37-4A83-B9A6-8B402FC6886C</key>
 		<dict>
