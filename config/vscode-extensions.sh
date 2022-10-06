@@ -17,7 +17,6 @@ code --install-extension WakaTime.vscode-wakatime
 code --install-extension wix.vscode-import-cost
 code --install-extension fabiospampinato.vscode-terminals
 
-
 # Vim
 code --install-extension vscodevim.vim
 code --install-extension yatki.vscode-surround
@@ -26,7 +25,8 @@ code --install-extension yatki.vscode-surround
 code --install-extension kumar-harsh.graphql-for-vscode
 code --install-extension mikestead.dotenv
 code --install-extension Prisma.prisma
-tode --install-extension styled-components.vscode-styled-components
+code --install-extension styled-components.vscode-styled-components
+code --install-extension bungcip.better-toml
 
 # Themes
 code --install-extension wart.ariake-dark

@@ -22,27 +22,16 @@ if ! command -v brew &>/dev/null; then
 fi
 
 echo "› install most important brew packages"
-# brew bundle install --file=./config/Brewfile
+brew bundle install --file=$DOTFILES/config/Brewfile
 # speed up dramatically by only installing these for now.
-# Run Brewfile later
-brew install deno
-brew install git
-brew install node
-brew install pnpm
-brew install ruby
-brew install thefuck
-brew install tmux
-brew install vim
-brew install yarn
-brew install zsh
-brew install zsh-syntax-highlighting
+# Run `sh config/fullBrew.sh` later on - it takes forever
 
 echo "› set mac defaults"
-chmod 700 ./config/mac-defaults.sh
-sh ./config/mac-defaults.sh
+chmod 700 $DOTFILES/config/mac-defaults.sh
+sh $DOTFILES/config/mac-defaults.sh
 
 echo "› install vscode extenions"
-source ./config/vscode-extensions.sh
+source $DOTFILES/config/vscode-extensions.sh
 
 if [ ! -d ~/.oh-my-zsh ]
 then
@@ -55,6 +44,8 @@ echo "› link dotfiles and other config files"
 ln -sf $DOTFILES/.zshrc ~/.zshrc
 ln -sf $DOTFILES/config/.gitconfig ~/.gitconfig
 ln -sf $DOTFILES/config/.gitignore ~/.gitignore
+mkdir -p ~/.config/karabiner
+ln -sf $DOTFILES/config/karabiner.json ~/.config/karabiner/karabiner.json
 ln -sf $DOTFILES/config/vscode.json ~/Library/Application\ Support/Code/User/settings.json
 ln -sf $DOTFILES/config/vscode-keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 cp -R $DOTFILES/fonts/ ~/Library/Fonts
@@ -121,6 +112,7 @@ else
   done
 
   echo "› install deno binaries"
+  deno install -A -f -r -n concept $CODE/concept/cli/mod.js
   deno install -A -f -r -n x $CODE/axiom/mod.js
   deno install -A -f -r $CODE/axiom/mod.js
   deno install -A -f -r $CODE/etc/absolutely/mod.js

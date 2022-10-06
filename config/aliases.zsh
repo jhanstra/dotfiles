@@ -1,11 +1,17 @@
 # general linux
 alias reload="source ~/.zshrc"
 alias rl="source ~/.zshrc"
-alias cls='clear' # Good 'ol Clear Screen command
+alias cl='clear'
+alias cls='clear'
 alias md='mkdir'
 alias dot='code ~/coprime/dotfiles'
-alias rl="source ~/.zshrc"
+alias r="source ~/.zshrc"
+alias h="history -10"
+alias hg="history | grep"
+alias ag="alias | grep"
 alias lsd='ls -l | grep "^d"' # list only directories
+alias dot="code -n ~/coprime/dotfiles"
+alias mac="sh $DOTFILES/mac.sh"
 alias l="ls -l ${colorflag}"
 alias la="ls -la ${colorflag}"
 alias ..="cd .. && la"
@@ -13,6 +19,8 @@ alias cd..="cd .. && la"
 alias ...="cd ../.. && la"
 alias ....="cd ../../.. && la"
 alias .....="cd ../../../.. && la"
+alias co="cd $CODE && la"
+alias cop="cd $CODE && la"
 alias localip="ipconfig getifaddr en1"
 alias die-ds-store="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"

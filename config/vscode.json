@@ -163,10 +163,6 @@
     {
       "before": ["0"],
       "after": ["^"]
-    },
-    {
-      "before": [":"],
-      "commands": ["workbench.action.showCommands"]
     }
   ],
   "editor.foldingStrategy": "indentation",
@@ -180,7 +176,7 @@
   "editor.guides.indentation": false,
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.defaultProfile.osx": "zsh",
-  "workbench.iconTheme": "Monokai Pro Icons",
-  "workbench.colorTheme": "Electron",
+  "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
+  "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
   "window.zoomLevel": 1
 }

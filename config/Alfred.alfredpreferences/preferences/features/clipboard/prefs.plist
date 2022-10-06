@@ -6,9 +6,20 @@
 	<true/>
 	<key>fastAppendPlaySound</key>
 	<false/>
+	<key>hotkey</key>
+	<dict>
+		<key>key</key>
+		<integer>8</integer>
+		<key>mod</key>
+		<integer>1179648</integer>
+		<key>string</key>
+		<string>C</string>
+	</dict>
 	<key>limit</key>
 	<integer>4</integer>
 	<key>persistFor</key>
 	<integer>2</integer>
+	<key>viewerKeyword</key>
+	<string>cliphttps://open.spotify.com/search/king%20gizzard</string>
 </dict>
 </plist>

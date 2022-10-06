@@ -1,50 +1,20 @@
 # This snippet is not working yet. Look into how to use snippets in a .gitignore file.
 
-# General #
-###########
-.gitignore
-node_modules
-npm-debug.log
-vendor
-.bundle
-*.sublime*
-
-# Compiled source #
-###################
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
-# Packages #
-############
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
-# Logs and databases #
-######################
-*.log
-*.sql
-*.sqlite
-
-# OS generated files #
-######################
+node_modules/
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+*.log
+.next/
+.build/
+lerna-debug.log
+bundle.js
+bundle.cjs
+es6-bundle.js
+.env
+.env.local
+.vercel
+.jest-cache
+coverage
+dexie-cloud.key
 
-# Other #
-#########
-wp-config.php
+
+haters/
