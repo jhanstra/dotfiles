@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Coinc</name>
+  <version>2.0.0</version>
+  <bundle>tech.tomy.coinc</bundle>
+  <updated>1648386029</updated>
+  <file>conic_v2.0.0.alfredworkflow</file>
+</workflow>

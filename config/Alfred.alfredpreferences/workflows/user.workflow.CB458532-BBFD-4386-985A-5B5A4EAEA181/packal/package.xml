@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Tailwind CSS Documentaion</name>
+  <version>2.1.1</version>
+  <bundle>com.techouse.alfred-tailwindcss-docs</bundle>
+  <updated>1652525484</updated>
+  <file>tailwindcss-docs-v2.1.1.alfredworkflow</file>
+</workflow>

@@ -1,0 +1,1 @@
+<Button $[1:clear} ${2:sm} t='${3:text}' />

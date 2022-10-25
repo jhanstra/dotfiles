@@ -1,0 +1,17 @@
+{
+  "name": "randomeverything",
+  "displayName": "Random Everything",
+  "type": "module",
+  "license": "MIT",
+  "version": "0.0.3",
+  "source": "./src/index.js",
+  "icon": "images/icon.svg",
+  "scripts": {
+    "dev": "node --experimental-modules ./src/run-all.js"
+  },
+  "dependencies": {
+    "alfy": "^0.12.2",
+    "chance": "^1.1.8",
+    "lorem-ipsum": "^2.0.4"
+  }
+}

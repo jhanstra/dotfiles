@@ -621,5 +621,45 @@
     {
       "key": "cmd+t",
       "command": "workbench.action.terminal.focus"
+    },
+    {
+      "key": "cmd+j",
+      "command": "references-view.next",
+      "when": "reference-list.hasResult && references-view.canNavigate"
+    },
+    {
+      "key": "f4",
+      "command": "-references-view.next",
+      "when": "reference-list.hasResult && references-view.canNavigate"
+    },
+    {
+      "key": "cmd+k",
+      "command": "references-view.prev",
+      "when": "reference-list.hasResult && references-view.canNavigate"
+    },
+    {
+      "key": "shift+f4",
+      "command": "-references-view.prev",
+      "when": "reference-list.hasResult && references-view.canNavigate"
+    },
+    {
+      "key": "cmd+j",
+      "command": "search.action.focusNextSearchResult",
+      "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+      "key": "f4",
+      "command": "-search.action.focusNextSearchResult",
+      "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+      "key": "cmd+k",
+      "command": "search.action.focusPreviousSearchResult",
+      "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+      "key": "shift+f4",
+      "command": "-search.action.focusPreviousSearchResult",
+      "when": "hasSearchResult || inSearchEditor"
     }
   ]

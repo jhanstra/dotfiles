@@ -213,6 +213,17 @@
 			<key>url</key>
 			<string>https://imgur.com/search?q={query}</string>
 		</dict>
+		<key>A111DE87-2166-48BD-B6FB-011125F038EE</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>coprime</string>
+			<key>text</key>
+			<string>Coprime website</string>
+			<key>url</key>
+			<string>https://coprime.io</string>
+		</dict>
 		<key>A8083EFD-C9B6-4D70-AE70-3DE00BBB7909</key>
 		<dict>
 			<key>enabled</key>
@@ -292,6 +303,17 @@
 			<key>url</key>
 			<string>https://docs.google.com/spreadsheets/u/0/?q={query}</string>
 		</dict>
+		<key>DF1229F8-D725-44E4-9B6D-81697463C42D</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>concept</string>
+			<key>text</key>
+			<string>Concept - Local</string>
+			<key>url</key>
+			<string>http://localhost:3004</string>
+		</dict>
 		<key>DF2DB623-113D-4A79-A242-F60B25296D41</key>
 		<dict>
 			<key>enabled</key>
@@ -347,6 +369,17 @@
 			<key>url</key>
 			<string>https://www.loanadministration.com/cenlarfsb/#/dashboard</string>
 		</dict>
+		<key>F4C8EBF9-00B2-4203-8F20-CDBFF00352CC</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>jotl</string>
+			<key>text</key>
+			<string>Jot - Localhost</string>
+			<key>url</key>
+			<string>http://localhost:1111/</string>
+		</dict>
 		<key>F75F768C-E1E2-4ADB-B90A-13B18D2DCF25</key>
 		<dict>
 			<key>enabled</key>
@@ -390,6 +423,17 @@
 			<string>Frost Bank</string>
 			<key>url</key>
 			<string>https://www.frostbank.com/mf/accounts/main</string>
+		</dict>
+		<key>FE08F7CB-D09F-46A1-9EC3-A58A0091D14C</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>jot</string>
+			<key>text</key>
+			<string>Jot - Production</string>
+			<key>url</key>
+			<string>https://jot.app</string>
 		</dict>
 		<key>FF438DC3-F52D-4EA8-8DC3-9BE30685E741</key>
 		<dict>

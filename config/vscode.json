@@ -75,23 +75,29 @@
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   // ESLint
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
+  "editor.codeActionsOnSave": [
+    "source.organizeImports",
+    "source.fixAll.eslint"
+  ],
   "eslint.alwaysShowStatus": true,
   // this *needs* to be set to false for js and ts
   "[javascript]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": [
+      "source.absolutely",
+      "source.organizeImports",
+      "source.fixAll.eslint"
+    ],
   },
   "[typescript]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": [
+      "source.absolutely",
+      "source.organizeImports",
+      "source.fixAll.eslint"
+    ],
   },
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   // Emmet config
   "emmet.triggerExpansionOnTab": true,
   "emmet.includeLanguages": {
@@ -168,15 +174,15 @@
   "editor.foldingStrategy": "indentation",
   "typescript.disableAutomaticTypeAcquisition": true,
   "breadcrumbs.enabled": false,
-  "javascript.suggest.autoImports": false,
   "vsicons.dontShowNewVersionMessage": true,
   "explorer.openEditors.visible": 0,
   "terminal.external.osxExec": "iTerm2.app",
-  "workbench.activityBar.visible": false,
   "editor.guides.indentation": false,
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.defaultProfile.osx": "zsh",
-  "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
-  "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
-  "window.zoomLevel": 1
+  "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+  "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+  "editor.inlineSuggest.enabled": true,
+  "workbench.activityBar.visible": false,
+  "prettier.printWidth": 1000
 }

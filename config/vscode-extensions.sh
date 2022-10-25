@@ -16,6 +16,8 @@ code --install-extension vscode-icons-team.vscode-icons
 code --install-extension WakaTime.vscode-wakatime
 code --install-extension wix.vscode-import-cost
 code --install-extension fabiospampinato.vscode-terminals
+code --install-extension github.copilot
+code --install-extension stripe.vscode-stripe
 
 # Vim
 code --install-extension vscodevim.vim

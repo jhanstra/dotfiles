@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Short URL - Short.io</name>
+  <version>1.0.0</version>
+  <bundle>dev.tanusha.short</bundle>
+  <updated>1650190944</updated>
+  <file>short_url.alfredworkflow</file>
+</workflow>

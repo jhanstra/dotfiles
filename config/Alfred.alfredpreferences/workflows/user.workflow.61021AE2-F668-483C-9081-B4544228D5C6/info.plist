@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>dev.tanusha.short</string>
+	<key>connections</key>
+	<dict>
+		<key>A2A1F205-7BA1-47E4-8C74-3E457020F8C1</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D0A2A7E1-C041-498C-BC74-14D32BFF7F96</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>D0A2A7E1-C041-498C-BC74-14D32BFF7F96</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>2222BD1D-D19A-479C-AA08-E4872C618EF9</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>EE60A70E-E9DB-4EFF-B73D-1155C902B3C7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A2A1F205-7BA1-47E4-8C74-3E457020F8C1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Tanusha Jayasinghe</string>
+	<key>description</key>
+	<string>Create a short URL from your default domain - path optional</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Short URL</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>2222BD1D-D19A-479C-AA08-E4872C618EF9</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>sh</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Shorten the URL</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>EE60A70E-E9DB-4EFF-B73D-1155C902B3C7</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>import requests
+import os
+
+url = "https://api.short.io/links"
+
+payload = {
+    "allowDuplicates": False,
+    "domain": os.getenv("DOMAIN"),
+    "originalURL": os.getenv("orgURL")
+}
+headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+    "Authorization": os.getenv("SHORT_API_KEY")
+}
+
+if(len(os.getenv("paths"))&gt;3):
+	payload['path'] = os.getenv("paths")
+
+response = requests.request("POST", url, json=payload, headers=headers)
+
+response.raise_for_status()
+data = response.json()
+
+print(response.json()['shortURL'])</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>D0A2A7E1-C041-498C-BC74-14D32BFF7F96</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string>{query}</string>
+				<key>passthroughargument</key>
+				<true/>
+				<key>variables</key>
+				<dict>
+					<key>orgURL</key>
+					<string>{clipboard}</string>
+					<key>paths</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>A2A1F205-7BA1-47E4-8C74-3E457020F8C1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Create Short URL by copying the URL to clipboard and just press "sh"
+or "sh path" to create https://example.com/path</string>
+	<key>uidata</key>
+	<dict>
+		<key>2222BD1D-D19A-479C-AA08-E4872C618EF9</key>
+		<dict>
+			<key>xpos</key>
+			<integer>625</integer>
+			<key>ypos</key>
+			<integer>195</integer>
+		</dict>
+		<key>A2A1F205-7BA1-47E4-8C74-3E457020F8C1</key>
+		<dict>
+			<key>xpos</key>
+			<integer>250</integer>
+			<key>ypos</key>
+			<integer>230</integer>
+		</dict>
+		<key>D0A2A7E1-C041-498C-BC74-14D32BFF7F96</key>
+		<dict>
+			<key>xpos</key>
+			<integer>365</integer>
+			<key>ypos</key>
+			<integer>195</integer>
+		</dict>
+		<key>EE60A70E-E9DB-4EFF-B73D-1155C902B3C7</key>
+		<dict>
+			<key>xpos</key>
+			<integer>50</integer>
+			<key>ypos</key>
+			<integer>195</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>DOMAIN</key>
+		<string></string>
+		<key>SHORT_API_KEY</key>
+		<string></string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>SHORT_API_KEY</string>
+		<string>DOMAIN</string>
+	</array>
+	<key>version</key>
+	<string>1.0.0</string>
+	<key>webaddress</key>
+	<string>https://tanusha.dev</string>
+</dict>
+</plist>
