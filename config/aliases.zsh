@@ -27,6 +27,7 @@ alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pa
 
 # node shortcuts
 alias dev='npm run dev'
+alias devt='npm run devt'
 alias tst='npm run test' # can't call this 'test' without npm yelling at me every time I open a new terminal tab
 alias build='npm run build'
 alias start='npm run start'
@@ -65,9 +66,10 @@ drw() { deno run -A --watch $1 }
 dt() { deno test -A tests.ts $1 }
 
 # Git aliases
-acp() { git add -A && git commit -m $1 && git push origin master }
+acp() { git add -A && git commit -m $1 && git push origin main }
 save() { git add -A && git commit -m $1 }
 saveup() { git add -A && git commit -m $1 && git push origin }
+sup() { git add -A && git commit -m $1 && git push origin }
 squash() { git rebase -i HEAD~$1 }
 gacp() { git add -A && git commit -m $1 && git push }
 # gcp() { git commit -m $1 && git push origin master }
@@ -135,6 +137,7 @@ alias gbr='git branch -m'
 # pushing and pulling
 alias gp="git pull"
 alias gpom="git push origin master"
+alias gpm="git push origin main"
 
 # config
 alias be-jared-in-this-repo="git config user.email jhanstra@gmail.com"
@@ -149,3 +152,15 @@ alias islowpower="pmset -g |grep lowpowermode" # are we on Low Power mode?
 alias path="echo $PATH | tr ":" "\n" | sort" # print $PATH nicely
 alias myip="curl https://ipinfo.io/json"
 alias python="python3"
+
+alias fresh-install="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'pnpm-lock.yaml' -type f -prune -exec rm '{}' + && pnpm i"
+alias fresh="fresh-install"
+
+# turbo
+alias turbo="cd ~/coprime && turbo dev"
+alias build="cd ~/coprime && turbo build"
+alias test="cd ~/coprime && turbo test"
+alias test="cd ~/coprime && turbo test"
+
+# pnpm
+alias npm=pnpm

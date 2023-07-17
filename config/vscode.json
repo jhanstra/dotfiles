@@ -1,7 +1,7 @@
 /* eslint-disable prettier */
 {
   // Default font settings
-  "editor.fontFamily": "OperatorMono-Book",
+  "editor.fontFamily": "BerkeleyMono-Regular",
   "editor.fontSize": 13,
   "editor.lineHeight": 20,
   "editor.fontWeight": "300",
@@ -75,24 +75,27 @@
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   // ESLint
-  "editor.codeActionsOnSave": [
-    "source.organizeImports",
-    "source.fixAll.eslint"
-  ],
+  // "editor.codeActionsOnSave": [
+  //   "source.organizeImports",
+  //   "source.fixAll.eslint"
+  // ],
   "eslint.alwaysShowStatus": true,
   // this *needs* to be set to false for js and ts
+  "[css]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
   "[javascript]": {
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": [
-      "source.absolutely",
       "source.organizeImports",
       "source.fixAll.eslint"
     ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[typescript]": {
     "editor.formatOnSave": false,
     "editor.codeActionsOnSave": [
-      "source.absolutely",
       "source.organizeImports",
       "source.fixAll.eslint"
     ],
@@ -120,7 +123,7 @@
   },
   // Etc
   "editor.acceptSuggestionOnEnter": "smart",
-  "workbench.list.keyboardNavigation": "simple",
+  "workbench.list.defaultFindMode": "highlight",
   "editor.suggest.localityBonus": true,
   "php.suggest.basic": false,
   "files.hotExit": "onExitAndWindowClose",
@@ -184,5 +187,13 @@
   "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
   "editor.inlineSuggest.enabled": true,
   "workbench.activityBar.visible": false,
-  "prettier.printWidth": 1000
+  "prettier.printWidth": 1000,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "yaml": false,
+    "javascript": true
+  }
 }

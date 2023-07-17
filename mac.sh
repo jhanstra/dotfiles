@@ -22,7 +22,7 @@ if ! command -v brew &>/dev/null; then
 fi
 
 echo "› install most important brew packages"
-brew bundle install --file=$DOTFILES/config/Brewfile
+# brew bundle install --file=$DOTFILES/config/Brewfile
 # speed up dramatically by only installing these for now.
 # Run `sh config/fullBrew.sh` later on - it takes forever
 
