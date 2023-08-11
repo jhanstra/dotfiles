@@ -26,28 +26,25 @@ alias die-ds-store="find . -name '*.DS_Store' -type f -ls -delete" # Recursively
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
 # node shortcuts
-alias dev='npm run dev'
-alias devt='npm run devt'
-alias tst='npm run test' # can't call this 'test' without npm yelling at me every time I open a new terminal tab
-alias build='npm run build'
-alias start='npm run start'
-alias lint="npm run lint"
-alias testall="npm run test:all"
-alias deploy="npm run deploy"
-alias prod="npm run prod"
+# alias dev='pnpm run dev'
+# alias devt='pnpm run devt'
+# alias tst='pnpm run test' # can't call this 'test' without npm yelling at me every time I open a new terminal tab
+# alias build='pnpm run build'
+# alias start='pnpm run start'
+# alias lint="pnpm run lint"
+
+# alias testall="npm run test:all"
+# alias deploy="npm run deploy"
+# alias prod="npm run prod"
 alias npmGlobal='npm ls -g -depth=0'
 alias snap='jest --updateSnapshot'
-alias installEslint='yarn add --dev @babel/core@7.16.0 @babel/eslint-parser@7.16.0 @coprime/eslint-config@1.2.8 eslint@8.1.0 eslint-config-airbnb@18.2.1 eslint-config-prettier@8.3.0 eslint-import-resolver-webpack@0.13.2 eslint-plugin-import@2.25.2 eslint-plugin-jsx-a11y@6.4.1 eslint-plugin-mdx@1.16.0 eslint-plugin-prettier@4.0.0 eslint-plugin-react@7.26.1 eslint-plugin-react-hooks@4.2.0 prettier@2.4.1 prettier-eslint@13.0.0'
-alias esl='installEslint'
 
 # coprime
 alias coprime="code $DOTFILES/config/coprime-main.code-workspace"
 alias c="coprime"
-alias latest="npm i @coprime/concept@latest @coprime/codash@latest @coprime/next-config@latest && npm i -D @coprime/eslint-config@latest @coprime/rollup-config@latest @coprime/next-config@latest"
 
 # indeed
 alias indeed="code $DOTFILES/config/indeed-main.code-workspace"
-alias i="indeed"
 
 # react native & xcode
 alias rni="react-native run-ios"
@@ -58,7 +55,7 @@ alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulato
 alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator\ \(Watch\).app"
 
 # NPM aliases
-idev() { pnpm i && pnpm run dev }
+# idev() { pnpm i && pnpm run dev }
 
 # Deno aliases
 dr() { deno run -A $1 }
@@ -68,12 +65,10 @@ dt() { deno test -A tests.ts $1 }
 # Git aliases
 acp() { git add -A && git commit -m $1 && git push origin main }
 save() { git add -A && git commit -m $1 }
-saveup() { git add -A && git commit -m $1 && git push origin }
-sup() { git add -A && git commit -m $1 && git push origin }
+saveup() { git add -A && git commit -m $1 && git push origin $(git symbolic-ref --short HEAD) }
+sup() { git add -A && git commit -m $1 && git push origin $(git symbolic-ref --short HEAD) }
 squash() { git rebase -i HEAD~$1 }
 gacp() { git add -A && git commit -m $1 && git push }
-# gcp() { git commit -m $1 && git push origin master }
-# gnb() { git checkout -b $1 }
 gpo() { git push origin $1 }
 
 # Other helpers
@@ -153,14 +148,25 @@ alias path="echo $PATH | tr ":" "\n" | sort" # print $PATH nicely
 alias myip="curl https://ipinfo.io/json"
 alias python="python3"
 
-alias fresh-install="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'pnpm-lock.yaml' -type f -prune -exec rm '{}' + && pnpm i"
+alias fresh-install="cd ~/coprime && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'pnpm-lock.yaml' -type f -prune -exec rm '{}' + && pnpm i"
+alias fresh-install-npm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'package-lock.json' -type f -prune -exec rm '{}' + && npm i"
+alias freshVercel="cd ~/coprime && find . -name '.vercel' -type d -prune -exec rm -rf '{}' +"
 alias fresh="fresh-install"
 
 # turbo
-alias turbo="cd ~/coprime && turbo dev"
-alias build="cd ~/coprime && turbo build"
-alias test="cd ~/coprime && turbo test"
-alias test="cd ~/coprime && turbo test"
 
 # pnpm
 alias npm=pnpm
+
+# axiom
+alias i="cd ~/coprime && x install"
+# alias dev="cd ~/coprime && pnpm dev"
+alias d="cd ~/coprime && pnpm dev"
+alias t="cd ~/coprime && pnpm jest && pnpm deno-test && pnpm pw"
+alias t="test"
+alias b="cd ~/coprime && pnpm build"
+alias build="b"
+alias pw="cd ~/coprime && pnpm run pw"
+alias pwh="cd ~/coprime && pnpm run pw:head"
+alias pwui="cd ~/coprime && pnpm run pw:ui"
+alias clean="cd ~/coprime && find ./* -name 'node_modules' -prune -o -type f -name 'next-env.d.ts' -delete && find ./* -name 'node_modules' -prune -o -type f -name '.gitignore' -delete && find ./* -name 'node_modules' -prune -o -type f -name '.DS_Store' -delete"
