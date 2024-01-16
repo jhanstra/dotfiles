@@ -26,16 +26,6 @@ alias die-ds-store="find . -name '*.DS_Store' -type f -ls -delete" # Recursively
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
 # node shortcuts
-# alias dev='pnpm run dev'
-# alias devt='pnpm run devt'
-# alias tst='pnpm run test' # can't call this 'test' without npm yelling at me every time I open a new terminal tab
-# alias build='pnpm run build'
-# alias start='pnpm run start'
-# alias lint="pnpm run lint"
-
-# alias testall="npm run test:all"
-# alias deploy="npm run deploy"
-# alias prod="npm run prod"
 alias npmGlobal='npm ls -g -depth=0'
 alias snap='jest --updateSnapshot'
 
@@ -73,7 +63,7 @@ gpo() { git push origin $1 }
 
 # Other helpers
 ports() { lsof -i tcp:$1 }
-e() { fasd_cd -d $1 && code . } # finds with 'z' and opens in VSCode
+# e() { fasd_cd -d $1 && code . } # finds with 'z' and opens in VSCode
 
 # MacOS commands
 alias show-hidden-files='defaults write com.apple.finder AppleShowAllFiles YES'
@@ -116,6 +106,7 @@ alias gacm="git add -A && git commit -m"
 alias gacc="git add -A && git commit"
 alias amend='git commit --amend -m'
 alias gu="git reset --" # undoing
+alias gitignore="git rm -r --cached . && git add ."
 
 # branches and checking out
 alias gb="git branch"
@@ -150,23 +141,33 @@ alias python="python3"
 
 alias fresh-install="cd ~/coprime && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'pnpm-lock.yaml' -type f -prune -exec rm '{}' + && pnpm i"
 alias fresh-install-npm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'package-lock.json' -type f -prune -exec rm '{}' + && npm i"
+alias fresh-install-bun="cd ~/coprime && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'bun.lockb' -type f -prune -exec rm '{}' + && bun install"
 alias freshVercel="cd ~/coprime && find . -name '.vercel' -type d -prune -exec rm -rf '{}' +"
 alias fresh="fresh-install"
+alias freshbun="fresh-install-bun"
 
 # turbo
 
-# pnpm
-alias npm=pnpm
+# bun
+alias npm=bun
 
 # axiom
+alias e="cd ~/coprime && code ."
 alias i="cd ~/coprime && x install"
-# alias dev="cd ~/coprime && pnpm dev"
-alias d="cd ~/coprime && pnpm dev"
-alias t="cd ~/coprime && pnpm jest && pnpm deno-test && pnpm pw"
-alias t="test"
-alias b="cd ~/coprime && pnpm build"
-alias build="b"
-alias pw="cd ~/coprime && pnpm run pw"
-alias pwh="cd ~/coprime && pnpm run pw:head"
-alias pwui="cd ~/coprime && pnpm run pw:ui"
+alias d="cd ~/coprime && bun dev"
+alias t="cd ~/coprime && bun run bun-test && bun run deno-test && bun run pw"
+alias b="cd ~/coprime && bun run build"
+alias build="bun run build"
+alias dev="bun run dev"
+alias start="bun run start"
+alias analyze="bun run analyze"
+alias ibi="cd ~/coprime && x install && bun install"
+alias pw="cd ~/coprime && bun run pw"
+alias pwh="cd ~/coprime && bun run pw:head"
+alias pwui="cd ~/coprime && bun run pw:ui"
 alias clean="cd ~/coprime && find ./* -name 'node_modules' -prune -o -type f -name 'next-env.d.ts' -delete && find ./* -name 'node_modules' -prune -o -type f -name '.gitignore' -delete && find ./* -name 'node_modules' -prune -o -type f -name '.DS_Store' -delete"
+alias cleanbun="cd ~/coprime && find ./* -name 'node_modules' -prune -o -type f -name 'next-env.d.ts' -delete && find ./* -name 'node_modules' -prune -o -type f -name '.gitignore' -delete && find ./* -name 'node_modules' -prune -o -type f -name '.DS_Store' -delete"
+alias qd="bun run build-vercel && bun run deploy-vercel"
+
+alias lines="cloc ~/coprime --exclude-dir=node_modules,dist,.next,.vercel,.turbo,.swc --not-match-f='pnpm-lock.yaml|sw.js|workbox-.*\.js|classnames.json|collisions.json|collisionsByCn.json'"
+alias local-iphone="cd && ./ngrok http 7777"

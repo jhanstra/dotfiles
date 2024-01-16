@@ -18,10 +18,6 @@
       "command": "-workbench.action.terminal.toggleTerminal"
     },
     {
-      "key": "cmd+t",
-      "command": "workbench.action.terminal.new"
-    },
-    {
       "key": "ctrl+shift+`",
       "command": "-workbench.action.terminal.new"
     },
@@ -619,7 +615,7 @@
       "when": "editorTextFocus"
     },
     {
-      "key": "cmd+t",
+      "key": "cmd+shift+t",
       "command": "workbench.action.terminal.focus"
     },
     {

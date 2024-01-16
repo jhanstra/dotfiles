@@ -18,6 +18,7 @@ export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$CORE:$DOTFILES_BIN:$HOMEBREW:$ZSH:$DENO:$MYSQL:$POSTGRES:$PNPM_HOME:$VSCODE:$BUN"
 export VERCEL_TOKEN=$(grep VERCEL_TOKEN ~/personal/dotfiles/.env | cut -d '=' -f2)
 export VERCEL_ORG_ID=$(grep VERCEL_ORG_ID ~/personal/dotfiles/.env | cut -d '=' -f2)
+export TZ="America/Denver"
 
 # oh-my-zsh plugin list
 plugins=(
@@ -26,6 +27,7 @@ plugins=(
   last-working-dir
   thefuck
   zsh-syntax-highlighting
+  zsh-wakatime
 )
 
 ZSH_THEME="robbyrussell" # Set oh-my-zsh theme

@@ -1,5 +1,5 @@
 export const $1 = () => {
   return (
-    <$2></$2>
+    <Div cn={$2}>$3</Div>
   )
 }

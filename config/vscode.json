@@ -7,6 +7,11 @@
   "editor.fontWeight": "300",
   "workbench.fontAliasing": "default", // antialiased/default/auto
   "editor.fontLigatures": true,
+  "workbench.tree.indent": 15,
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.colorCustomizations": {
+    "tree.indentGuidesStroke": "#05ef3c88"
+  },
   // Terminal
   "workbench.panel.defaultLocation": "right",
   "terminal.integrated.fontFamily": "FiraCode-Retina",
@@ -51,7 +56,6 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/.next": true
   },
   // Vim settings
   "editor.lineNumbers": "relative",
@@ -83,22 +87,16 @@
   // this *needs* to be set to false for js and ts
   "[css]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
     "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": [
-      // "source.organizeImports",
-      "source.fixAll.eslint"
-    ],
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll.eslint"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
     "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": [
-      "source.organizeImports",
-      "source.fixAll.eslint"
-    ],
+    "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll.eslint"]
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   // Emmet config
@@ -184,16 +182,16 @@
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.defaultProfile.osx": "zsh",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-  "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+  "workbench.colorTheme": "Default High Contrast Light",
   "editor.inlineSuggest.enabled": true,
-  "workbench.activityBar.visible": false,
   "prettier.printWidth": 1000,
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,
-    "markdown": false,
+    "markdown": true,
     "scminput": false,
     "yaml": false,
     "javascript": true
-  }
+  },
+  "workbench.activityBar.location": "hidden"
 }
