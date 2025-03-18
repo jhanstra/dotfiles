@@ -1,17 +1,22 @@
 # general linux
 alias reload="source ~/.zshrc"
 alias rl="source ~/.zshrc"
+alias r="source ~/.zshrc"
 alias cl='clear'
 alias cls='clear'
-alias md='mkdir'
-alias dot='code ~/coprime/dotfiles'
-alias r="source ~/.zshrc"
+
+# quickly open projects
+alias dot='cursor ~/personal/dotfiles'
+alias coprime='cursor ~/coprime'
+alias cop='cursor ~/coprime'
+alias tb='cursor ~/collab/teebox'
+
 alias h="history -10"
 alias hg="history | grep"
 alias ag="alias | grep"
-alias lsd='ls -l | grep "^d"' # list only directories
-alias dot="code -n ~/coprime/dotfiles"
-alias mac="sh $DOTFILES/mac.sh"
+
+# common shortcuts
+alias md='mkdir'
 alias l="ls -l ${colorflag}"
 alias la="ls -la ${colorflag}"
 alias ..="cd .. && la"
@@ -19,38 +24,18 @@ alias cd..="cd .. && la"
 alias ...="cd ../.. && la"
 alias ....="cd ../../.. && la"
 alias .....="cd ../../../.. && la"
-alias co="cd $CODE && la"
-alias cop="cd $CODE && la"
+alias lsd='ls -l | grep "^d"' # list only directories
+
+alias mac="sh $DOTFILES/mac.sh"
 alias localip="ipconfig getifaddr en1"
 alias die-ds-store="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
 # node shortcuts
-alias npmGlobal='npm ls -g -depth=0'
-alias snap='jest --updateSnapshot'
-
-# coprime
-alias coprime="code $DOTFILES/config/coprime-main.code-workspace"
-alias c="coprime"
-
-# indeed
-alias indeed="code $DOTFILES/config/indeed-main.code-workspace"
-
-# react native & xcode
-alias rni="react-native run-ios"
-alias rna="react-native run-android"
-alias rnx="react-native run-ios --simulator \"iPhone X\""
-alias rnif="rm -rf ios/build/; kill $(lsof -t -i:8081); react-native run-ios"
-alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
-alias watchos="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator\ \(Watch\).app"
-
-# NPM aliases
-# idev() { pnpm i && pnpm run dev }
-
-# Deno aliases
-dr() { deno run -A $1 }
-drw() { deno run -A --watch $1 }
-dt() { deno test -A tests.ts $1 }
+alias npmg='npm ls -g -depth=0'
+alias bung='bun pm ls -g'
+alias pnpmg='pnpm ls -g -depth=0'
+alias yarng='yarn global list'
 
 # Git aliases
 acp() { git add -A && git commit -m $1 && git push origin main }
@@ -139,35 +124,76 @@ alias path="echo $PATH | tr ":" "\n" | sort" # print $PATH nicely
 alias myip="curl https://ipinfo.io/json"
 alias python="python3"
 
-alias fresh-install="cd ~/coprime && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'pnpm-lock.yaml' -type f -prune -exec rm '{}' + && pnpm i"
-alias fresh-install-npm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'package-lock.json' -type f -prune -exec rm '{}' + && npm i"
-alias fresh-install-bun="cd ~/coprime && find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'bun.lockb' -type f -prune -exec rm '{}' + && bun install"
+# fresh installs / resets
+alias freshnpm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'package-lock.json' -type f -prune -exec rm '{}' + && npm i"
+alias freshpnpm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'pnpm-lock.yaml' -type f -prune -exec rm '{}' + && pnpm i"
+alias freshbun="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'bun.lock' -type f -prune -exec rm '{}' + && bun install"
 alias freshVercel="cd ~/coprime && find . -name '.vercel' -type d -prune -exec rm -rf '{}' +"
-alias fresh="fresh-install"
-alias freshbun="fresh-install-bun"
 
 # turbo
 
-# bun
-alias npm=bun
+# # bun
+# alias npm=bun
 
 # axiom
+alias b="axiom bootstrap"
+alias bi="cd ~/coprime && axiom bootstrap && bun install"
 alias e="cd ~/coprime && code ."
-alias i="cd ~/coprime && x install"
 alias d="cd ~/coprime && bun dev"
 alias t="cd ~/coprime && bun run bun-test && bun run deno-test && bun run pw"
-alias b="cd ~/coprime && bun run build"
 alias build="bun run build"
 alias dev="bun run dev"
+alias only="bun run only"
+alias devt="bun run devt"
 alias start="bun run start"
 alias analyze="bun run analyze"
-alias ibi="cd ~/coprime && x install && bun install"
+alias only="bun run only"
 alias pw="cd ~/coprime && bun run pw"
 alias pwh="cd ~/coprime && bun run pw:head"
 alias pwui="cd ~/coprime && bun run pw:ui"
-alias clean="cd ~/coprime && find ./* -name 'node_modules' -prune -o -type f -name 'next-env.d.ts' -delete && find ./* -name 'node_modules' -prune -o -type f -name '.gitignore' -delete && find ./* -name 'node_modules' -prune -o -type f -name '.DS_Store' -delete"
-alias cleanbun="cd ~/coprime && find ./* -name 'node_modules' -prune -o -type f -name 'next-env.d.ts' -delete && find ./* -name 'node_modules' -prune -o -type f -name '.gitignore' -delete && find ./* -name 'node_modules' -prune -o -type f -name '.DS_Store' -delete"
 alias qd="bun run build-vercel && bun run deploy-vercel"
 
 alias lines="cloc ~/coprime --exclude-dir=node_modules,dist,.next,.vercel,.turbo,.swc --not-match-f='pnpm-lock.yaml|sw.js|workbox-.*\.js|classnames.json|collisions.json|collisionsByCn.json'"
 alias local-iphone="cd && ./ngrok http 7777"
+
+# bun binaries
+alias axiom="bun run ~/coprime/bun/axiom/index.js"
+alias concept="bun run ~/coprime/bun/concept-cli/index.js"
+
+function startup() {
+  (cd ~/coprime &)
+  sleep 0.5
+  for dir in ~/coprime/apps/*/ ~/coprime/sites/*/ ~/collab/*/; do
+    (cd "$dir" && bun run dev &)
+  done
+}
+
+
+function shutdown() {
+  # Ports that Coprime projects can run on
+  ports=(3000 3001 3002 3003 3004 3005 3006 3007 3008 3009 3010 3011 3012 3013 3014 3015 3016 3017 7777 9000 1111 2222 9999)
+
+  for port in "${ports[@]}"; do
+    pids=$(lsof -ti :$port)
+    if [ ! -z "$pids" ]; then
+      echo "Shutting down process(es) on port $port (PIDs: $pids)"
+      echo "$pids" | xargs -r kill -15
+      # Wait a moment and force kill if still running
+      sleep 0.2
+      still_running=$(lsof -ti :$port)
+      if [ ! -z "$still_running" ]; then
+        echo "Force killing process(es) still running on port $port"
+        echo "$still_running" | xargs -r kill -9
+      fi
+    else
+      echo "No process found on port $port"
+    fi
+  done
+}
+
+alias restart="shutdown && startup"
+alias stash="git stash --include-untracked"
+
+# claude
+alias fix-types='claude --dangerously-skip-permissions -p "Fix the types in this repo. The command to check types is `pnpm run types`."'
+alias yolo='claude --dangerously-skip-permissions'

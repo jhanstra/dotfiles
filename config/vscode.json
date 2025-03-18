@@ -1,10 +1,11 @@
 /* eslint-disable prettier */
 {
   // Default font settings
-  "editor.fontFamily": "BerkeleyMono-Regular",
+  // "editor.fontFamily": "BerkeleyMono-Regular",
+  "editor.fontFamily": "Geist Mono",
   "editor.fontSize": 13,
   "editor.lineHeight": 20,
-  "editor.fontWeight": "300",
+  "editor.fontWeight": "400",
   "workbench.fontAliasing": "default", // antialiased/default/auto
   "editor.fontLigatures": true,
   "workbench.tree.indent": 15,
@@ -55,7 +56,7 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true,
+    "**/.DS_Store": true
   },
   // Vim settings
   "editor.lineNumbers": "relative",
@@ -79,10 +80,9 @@
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   // ESLint
-  // "editor.codeActionsOnSave": [
-  //   "source.organizeImports",
-  //   "source.fixAll.eslint"
-  // ],
+  "editor.codeActionsOnSave": [
+
+  "source.sortImports", "source.fixAll.eslint"],
   "eslint.alwaysShowStatus": true,
   // this *needs* to be set to false for js and ts
   "[css]": {
@@ -90,13 +90,20 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
-    "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll.eslint"],
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"]
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"]
   },
   "[typescript]": {
-    "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll.eslint"]
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"]
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"]
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   // Emmet config
@@ -113,11 +120,6 @@
     "jsx": {
       "self_closing_tag": true
     }
-  },
-  "beautify.language": {
-    "html": ["html", "php", "erb"],
-    "css": [],
-    "js": []
   },
   // Etc
   "editor.acceptSuggestionOnEnter": "smart",
@@ -181,8 +183,8 @@
   "editor.guides.indentation": false,
   "terminal.integrated.shellIntegration.enabled": false,
   "terminal.integrated.defaultProfile.osx": "zsh",
-  "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-  "workbench.colorTheme": "Default High Contrast Light",
+  "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
+  "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
   "editor.inlineSuggest.enabled": true,
   "prettier.printWidth": 1000,
   "github.copilot.enable": {
@@ -193,5 +195,8 @@
     "yaml": false,
     "javascript": true
   },
-  "workbench.activityBar.location": "hidden"
+  "workbench.activityBar.location": "hidden",
+  "prisma.showPrismaDataPlatformNotification": false,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "css.lint.unknownAtRules": "ignore"
 }

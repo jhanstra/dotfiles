@@ -136,11 +136,6 @@
       "when": "inQuickOpen"
     },
     {
-      "key": "cmd+k",
-      "command": "workbench.action.quickOpenNavigatePrevious",
-      "when": "inQuickOpen"
-    },
-    {
       "key": "cmd+j",
       "command": "selectNextSuggestion",
       "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
@@ -148,16 +143,6 @@
     {
       "key": "down",
       "command": "-selectNextSuggestion",
-      "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    },
-    {
-      "key": "cmd+k",
-      "command": "selectPrevSuggestion",
-      "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    },
-    {
-      "key": "ctrl+p",
-      "command": "-selectPrevSuggestion",
       "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
@@ -332,10 +317,6 @@
       "command": "extension.translateText"
     },
     {
-      "key": "shift+cmd+i",
-      "command": "carbon.show"
-    },
-    {
       "key": "alt+cmd+a",
       "command": "-carbon.show"
     },
@@ -449,10 +430,6 @@
     },
     {
       "key": "cmd+;",
-      "command": "emoji.indertEmoji"
-    },
-    {
-      "key": "cmd+y",
       "command": "workbench.action.togglePanel"
     },
     {
@@ -605,11 +582,6 @@
       "when": "!inDebugMode"
     },
     {
-      "key": "cmd+l",
-      "command": "console.log.wrap.down.prefix",
-      "when": "editorTextFocus"
-    },
-    {
       "key": "ctrl+alt+w ctrl+alt+down",
       "command": "-console.log.wrap.down.prefix",
       "when": "editorTextFocus"
@@ -626,16 +598,6 @@
     {
       "key": "f4",
       "command": "-references-view.next",
-      "when": "reference-list.hasResult && references-view.canNavigate"
-    },
-    {
-      "key": "cmd+k",
-      "command": "references-view.prev",
-      "when": "reference-list.hasResult && references-view.canNavigate"
-    },
-    {
-      "key": "shift+f4",
-      "command": "-references-view.prev",
       "when": "reference-list.hasResult && references-view.canNavigate"
     },
     {
@@ -657,5 +619,17 @@
       "key": "shift+f4",
       "command": "-search.action.focusPreviousSearchResult",
       "when": "hasSearchResult || inSearchEditor"
+    },
+    {
+      "key": "cmd+t",
+      "command": "-workbench.action.showAllSymbols"
+    },
+    {
+      "key": "cmd+l",
+      "command": "aichat.insertselectionintochat"
+    },
+    {
+      "key": "shift+cmd+l",
+      "command": "-aichat.insertselectionintochat"
     }
   ]

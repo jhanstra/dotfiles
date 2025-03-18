@@ -14,11 +14,12 @@ MYSQL="/usr/local/mysql/bin"
 POSTGRES="/Applications/Postgres.app/Contents/Versions/12/bin"
 VSCODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 BUN="$BUN_INSTALL/bin"
+# RUBY="/opt/homebrew/opt/ruby/bin:/usr/local/lib/ruby/gems/3.3.0/bin"
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$CORE:$DOTFILES_BIN:$HOMEBREW:$ZSH:$DENO:$MYSQL:$POSTGRES:$PNPM_HOME:$VSCODE:$BUN"
 export VERCEL_TOKEN=$(grep VERCEL_TOKEN ~/personal/dotfiles/.env | cut -d '=' -f2)
 export VERCEL_ORG_ID=$(grep VERCEL_ORG_ID ~/personal/dotfiles/.env | cut -d '=' -f2)
-export TZ="America/Denver"
+export TZ="UTC"
 
 # oh-my-zsh plugin list
 plugins=(
@@ -65,3 +66,7 @@ source $DOTFILES/config/aliases.zsh # Add aliases
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # Load nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # nvm completions
 # [ -s "/Users/jth/.bun/_bun" ] && source "/Users/jth/.bun/_bun" # bun completions
+
+# Ruby / rbenv
+eval "$(rbenv init -)"
+. "$HOME/.local/bin/env"
