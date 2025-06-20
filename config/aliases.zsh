@@ -7,6 +7,7 @@ alias cls='clear'
 
 # quickly open projects
 alias dot='cursor ~/personal/dotfiles'
+alias c='cursor ~/coprime'
 alias coprime='cursor ~/coprime'
 alias cop='cursor ~/coprime'
 alias tb='cursor ~/collab/teebox'
@@ -92,6 +93,7 @@ alias gacc="git add -A && git commit"
 alias amend='git commit --amend -m'
 alias gu="git reset --" # undoing
 alias gitignore="git rm -r --cached . && git add ."
+alias git-reset="git rm -r --cached . && git add ."
 
 # branches and checking out
 alias gb="git branch"
@@ -110,6 +112,10 @@ alias gp="git pull"
 alias gpom="git push origin master"
 alias gpm="git push origin main"
 
+# merge special main branches
+alias merge-mulligan="git fetch origin && git merge origin/mulligan"
+alias merge-dev="git fetch origin && git merge origin/dev"
+
 # config
 alias be-jared-in-this-repo="git config user.email jhanstra@gmail.com"
 alias git-email="git config --global user.email"
@@ -126,6 +132,7 @@ alias python="python3"
 
 # fresh installs / resets
 alias freshnpm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'package-lock.json' -type f -prune -exec rm '{}' + && npm i"
+alias freshyarn="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'yarn.lock' -type f -prune -exec rm '{}' + && yarn install"
 alias freshpnpm="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'pnpm-lock.yaml' -type f -prune -exec rm '{}' + && pnpm i"
 alias freshbun="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'bun.lock' -type f -prune -exec rm '{}' + && bun install"
 alias freshVercel="cd ~/coprime && find . -name '.vercel' -type d -prune -exec rm -rf '{}' +"
@@ -136,8 +143,8 @@ alias freshVercel="cd ~/coprime && find . -name '.vercel' -type d -prune -exec r
 # alias npm=bun
 
 # axiom
-alias b="axiom bootstrap"
-alias bi="cd ~/coprime && axiom bootstrap && bun install"
+alias ab="cd ~/coprime && axiom bootstrap"
+alias b="cd ~/coprime && axiom bootstrap"
 alias e="cd ~/coprime && code ."
 alias d="cd ~/coprime && bun dev"
 alias t="cd ~/coprime && bun run bun-test && bun run deno-test && bun run pw"
@@ -195,5 +202,37 @@ alias restart="shutdown && startup"
 alias stash="git stash --include-untracked"
 
 # claude
-alias fix-types='claude --dangerously-skip-permissions -p "Fix the types in this repo. The command to check types is `pnpm run types`."'
+alias fix-types='claude --dangerously-skip-permissions "Fix the types in this repo. The command to check types is `pnpm run types`."'
 alias yolo='claude --dangerously-skip-permissions'
+
+# Function to create new git branch
+branch() {
+    # Check if branch name argument is provided
+    if [ $# -eq 0 ]; then
+        echo "Usage: branch <branch-name>"
+        echo "Example: branch feature/new-feature"
+        return 1
+    fi
+
+    local BRANCH_NAME="$1"
+
+    # Check if we're in a git repository
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then
+        echo "Error: Not in a git repository"
+        return 1
+    fi
+
+    echo "Switching to main branch..."
+    git checkout main || return 1
+
+    echo "Pulling latest changes..."
+    git pull || return 1
+
+    echo "Creating and switching to new branch: $BRANCH_NAME"
+    git checkout -b "$BRANCH_NAME" || return 1
+
+    echo "Pushing new branch to remote..."
+    git push -u origin "$BRANCH_NAME" || return 1
+
+    echo "Successfully created, switched to, and pushed branch: $BRANCH_NAME"
+}

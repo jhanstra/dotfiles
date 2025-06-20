@@ -4,6 +4,9 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 export EDITOR='vscode'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 ZSH_DISABLE_COMPFIX=true
+export OPENAI_API_KEY="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"
+
+
 # Set up PATH
 export BUN_INSTALL="$HOME/.bun"
 CORE="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -18,7 +21,7 @@ BUN="$BUN_INSTALL/bin"
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$CORE:$DOTFILES_BIN:$HOMEBREW:$ZSH:$DENO:$MYSQL:$POSTGRES:$PNPM_HOME:$VSCODE:$BUN"
 export VERCEL_TOKEN=$(grep VERCEL_TOKEN ~/personal/dotfiles/.env | cut -d '=' -f2)
-export VERCEL_ORG_ID=$(grep VERCEL_ORG_ID ~/personal/dotfiles/.env | cut -d '=' -f2)
+# export VERCEL_ORG_ID=$(grep VERCEL_ORG_ID ~/personal/dotfiles/.env | cut -d '=' -f2)
 export TZ="UTC"
 
 # oh-my-zsh plugin list
