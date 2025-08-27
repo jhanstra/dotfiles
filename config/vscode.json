@@ -80,9 +80,7 @@
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   // ESLint
-  "editor.codeActionsOnSave": [
-
-  "source.sortImports", "source.fixAll.eslint"],
+  "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"],
   "eslint.alwaysShowStatus": true,
   // this *needs* to be set to false for js and ts
   "[css]": {
@@ -198,5 +196,6 @@
   "workbench.activityBar.location": "hidden",
   "prisma.showPrismaDataPlatformNotification": false,
   "github.copilot.editor.enableAutoCompletions": true,
-  "css.lint.unknownAtRules": "ignore"
+  "css.lint.unknownAtRules": "ignore",
+  "github.copilot.nextEditSuggestions.enabled": true
 }

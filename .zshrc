@@ -4,7 +4,6 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 export EDITOR='vscode'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 ZSH_DISABLE_COMPFIX=true
-export OPENAI_API_KEY="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"
 
 
 # Set up PATH
@@ -21,6 +20,14 @@ BUN="$BUN_INSTALL/bin"
 export PNPM_HOME="$HOME/Library/pnpm"
 export PATH="$CORE:$DOTFILES_BIN:$HOMEBREW:$ZSH:$DENO:$MYSQL:$POSTGRES:$PNPM_HOME:$VSCODE:$BUN"
 export VERCEL_TOKEN=$(grep VERCEL_TOKEN ~/personal/dotfiles/.env | cut -d '=' -f2)
+export OPENAI_API_KEY=$(grep OPENAI_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
+export ANTHROPIC_API_KEY=$(grep ANTHROPIC_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
+export PERPLEXITY_API_KEY=$(grep PERPLEXITY_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
+export NOTION_API_KEY=$(grep NOTION_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
+export FIRECRAWL_API_KEY=$(grep FIRECRAWL_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
+export FIGMA_API_KEY=$(grep FIGMA_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
+
+
 # export VERCEL_ORG_ID=$(grep VERCEL_ORG_ID ~/personal/dotfiles/.env | cut -d '=' -f2)
 export TZ="UTC"
 
@@ -73,3 +80,9 @@ source $DOTFILES/config/aliases.zsh # Add aliases
 # Ruby / rbenv
 eval "$(rbenv init -)"
 . "$HOME/.local/bin/env"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jth/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jth/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jth/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jth/google-cloud-sdk/completion.zsh.inc'; fi

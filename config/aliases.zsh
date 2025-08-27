@@ -204,6 +204,7 @@ alias stash="git stash --include-untracked"
 # claude
 alias fix-types='claude --dangerously-skip-permissions "Fix the types in this repo. The command to check types is `pnpm run types`."'
 alias yolo='claude --dangerously-skip-permissions'
+alias claude='claude --dangerously-skip-permissions'
 
 # Function to create new git branch
 branch() {
