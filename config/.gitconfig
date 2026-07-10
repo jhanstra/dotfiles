@@ -1,6 +1,6 @@
 [user]
 	name = jhanstra
-	email = jared@coprime.io
+	email = jared.hanstra@findheadway.com
 [difftool "kdiff3"]
   path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
   trustExitCode = false
@@ -21,6 +21,9 @@
 [alias]
 	# View abbreviated SHA, description, and history graph of latest 20 commits
 	l = log --pretty=oneline -n 100 --graph --abbrev-commit
+
+	# Shortcut for checkout
+	co = checkout
 
 	# View the current working tree status using the short format
 	s = status -s
@@ -61,3 +64,10 @@
 	ff = only
 [http]
 	postBuffer = 524288000
+[submodule]
+	recurse = true
+[trace2]
+	eventTarget = af_unix:stream:/Users/jhanstra/.git-ai/internal/daemon/trace2.sock
+	eventNesting = 10
+[credential "https://github.com"]
+	helper = !gh auth git-credential
