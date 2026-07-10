@@ -1,0 +1,22 @@
+config/.gitconfig
+  7654796a43bb12d5 25-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "5f664f986ce975d621ce46b56a97364f3267c0c5",
+  "prompts": {
+    "7654796a43bb12d5": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "1a76bb95-4e7c-48f0-9dd2-990c3f520df2",
+        "model": "default"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>",
+      "total_additions": 4,
+      "total_deletions": 1,
+      "accepted_lines": 4,
+      "overriden_lines": 0
+    }
+  }
+}
