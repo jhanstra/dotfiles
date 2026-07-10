@@ -1,4 +1,6 @@
+# source our custom .dotfileconfig set up at the start of the mac
 source $HOME/.dotfileconfig
+
 export ZSH="$HOME/.oh-my-zsh"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 export EDITOR='vscode'
@@ -8,6 +10,7 @@ ZSH_DISABLE_COMPFIX=true
 
 # Set up PATH
 export BUN_INSTALL="$HOME/.bun"
+export PNPM_HOME="$HOME/Library/pnpm"
 CORE="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 HOMEBREW="/opt/homebrew/bin:/opt/homebrew/sbin"
 DOTFILES_BIN="$DOTFILES/bin"
@@ -17,18 +20,17 @@ POSTGRES="/Applications/Postgres.app/Contents/Versions/12/bin"
 VSCODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 BUN="$BUN_INSTALL/bin"
 # RUBY="/opt/homebrew/opt/ruby/bin:/usr/local/lib/ruby/gems/3.3.0/bin"
-export PNPM_HOME="$HOME/Library/pnpm"
+
 export PATH="$CORE:$DOTFILES_BIN:$HOMEBREW:$ZSH:$DENO:$MYSQL:$POSTGRES:$PNPM_HOME:$VSCODE:$BUN"
-export VERCEL_TOKEN=$(grep VERCEL_TOKEN ~/personal/dotfiles/.env | cut -d '=' -f2)
-export OPENAI_API_KEY=$(grep OPENAI_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
-export ANTHROPIC_API_KEY=$(grep ANTHROPIC_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
-export PERPLEXITY_API_KEY=$(grep PERPLEXITY_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
-export NOTION_API_KEY=$(grep NOTION_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
-export FIRECRAWL_API_KEY=$(grep FIRECRAWL_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
-export FIGMA_API_KEY=$(grep FIGMA_API_KEY ~/personal/dotfiles/.env | cut -d '=' -f2)
+
+# Load private environment variables from our dotfiles
+if [[ -r "$DOTFILES/.env" ]]; then
+  set -a
+  source "$DOTFILES/.env"
+  set +a
+fi
 
 
-# export VERCEL_ORG_ID=$(grep VERCEL_ORG_ID ~/personal/dotfiles/.env | cut -d '=' -f2)
 export TZ="UTC"
 
 # oh-my-zsh plugin list
@@ -38,7 +40,6 @@ plugins=(
   last-working-dir
   thefuck
   zsh-syntax-highlighting
-  zsh-wakatime
 )
 
 ZSH_THEME="robbyrussell" # Set oh-my-zsh theme
@@ -70,19 +71,71 @@ source $ZSH/oh-my-zsh.sh
 #   compinit
 # fi
 
-eval "$(fasd --init auto)" # Set up fasd
-unalias d
+# eval "$(fasd --init auto)" # Set up fasd
+eval "$(zoxide init zsh)"
 source $DOTFILES/config/aliases.zsh # Add aliases
+# Remove zoxide's 'd' alias if it exists, since we have our own 'd' alias
+unalias d 2>/dev/null || true
 [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh # Load nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # nvm completions
 # [ -s "/Users/jth/.bun/_bun" ] && source "/Users/jth/.bun/_bun" # bun completions
 
 # Ruby / rbenv
-eval "$(rbenv init -)"
-. "$HOME/.local/bin/env"
+# eval "$(rbenv init -)"
+# . "$HOME/.local/bin/env"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/jth/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jth/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/jth/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jth/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="$HOME/.local/bin:$PATH"
+
+# =============================
+# Added via mac_setup.sh:
+
+# Apple Silicon-friendly Node version manager
+eval "$(fnm env --use-on-cd --version-file-strategy recursive)"
+
+# This loads zsh completions for Brew packages
+# https://docs.brew.sh/Shell-Completion
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+autoload -Uz compinit
+compinit
+
+export PYCURL_SSL_LIBRARY=openssl
+export LDFLAGS="-L$(brew --prefix)/opt/openssl/lib"
+export CPPFLAGS="-I/$(brew --prefix)/opt/openssl/include"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+
+plugin=(
+  pyenv
+)
+
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+# =============================
+alias python=python3
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+
+work() {
+  if [[ "$1" == "sw" || "$1" == "switch" ]]; then
+    local output
+    output=$(command work "$@")
+    if [[ -d "$output" ]]; then
+      cd "$output"
+    else
+      echo "$output"
+    fi
+  else
+    command work "$@"
+  fi
+}
+export JIRA_USER_EMAIL="jared.hanstra@findheadway.com"
+# Added by git-ai installer on Fri Mar  6 16:57:37 UTC 2026
+export PATH="/Users/jhanstra/.git-ai/bin:$PATH"
