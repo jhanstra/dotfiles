@@ -1,0 +1,23 @@
+config/homebrew/Brewfile
+  s_a327d79d5e45b6::t_8474d20a37b30a 1-82
+config/homebrew/Brewfile.lock.json
+  s_a327d79d5e45b6::t_3483cd585754a0 1-2990
+config/homebrew/fullBrew.sh
+  s_a327d79d5e45b6::t_60b81eb4c0263a 1-85
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f425c1eab25b28e57d2f55f3c3445e6849d5d544",
+  "prompts": {},
+  "sessions": {
+    "s_a327d79d5e45b6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3b1b0b1c-c7c7-4f85-b16e-761e575b7296",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
