@@ -62,6 +62,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export TZ="UTC"
 
 # Load other configuration files
-source "$DOTFILES/config/zsh-completions.zsh"
-source "$DOTFILES/config/oh-my-zsh.zsh"
-source "$DOTFILES/config/aliases.zsh"
+source "$DOTFILES/config/zsh/completions.zsh"
+source "$DOTFILES/config/zsh/oh-my-zsh.zsh"
+source "$DOTFILES/config/zsh/aliases.zsh"

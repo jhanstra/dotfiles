@@ -1,12 +1,13 @@
 # general linux
-alias reload="source ~/.zshrc"
 alias rl="source ~/.zshrc"
-alias r="source ~/.zshrc"
 alias cl='clear'
-alias cls='clear'
+
+# tmux
+alias th="tmux a -t headway"
+alias tc="tmux a -t coprime"
 
 # quickly open projects
-alias dot='cursor ~/personal/dotfiles'
+alias dot='cursor ~/headway/dotfiles'
 alias c='cursor ~/coprime'
 alias coprime='cursor ~/coprime'
 alias cop='cursor ~/coprime'
@@ -31,6 +32,8 @@ alias mac="sh $DOTFILES/mac.sh"
 alias localip="ipconfig getifaddr en1"
 alias die-ds-store="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+
+alias python=python3
 
 # node shortcuts
 alias npmg='npm ls -g -depth=0'
@@ -62,9 +65,22 @@ alias tn='tmux new'
 alias td='tmux kill-session -t flow'
 
 # vim aliases
-alias vimrc='vim ~/.vimrc'
-alias v='vim .'
-alias brewfile='vim $DOTFILES/config/Brewfile'
+# alias vimrc='vim ~/.vimrc'
+# alias v='vim .'
+# alias brewfile='vim $DOTFILES/config/homebrew/Brewfile'
+
+# use neovim now
+alias nvc='nvim ~/.config/nvim/init.lua'
+openvim() {
+    if [ $# -eq 1 ] && [ -f "$1" ]; then
+        nvim "$1"
+    else
+        nvim .
+    fi
+}
+alias v='openvim'
+alias vim='openvim'
+alias brewfile='nvim $DOTFILES/config/homebrew/Brewfile'
 
 # Use `hub` as our git wrapper:
 #   http://defunkt.github.com/hub/
@@ -105,15 +121,19 @@ alias gnb="git checkout -b"
 alias gco="git checkout"
 alias gbm='git branch -m'
 alias gbr='git branch -m'
+
+# rebasing
+alias rebase='git fetch && git rebase origin/main'
+alias continue='git add -A && git rebase --continue'
+alias push='git push --force-with-lease'
 # alias git-delete-local-merged="git branch -d `git branch --merged | grep -v '^*' | grep -v 'master' | tr -d '\n'`"
 
 # pushing and pulling
 alias gp="git pull"
-alias gpom="git push origin master"
+alias gpom="git pull origin main && git pull"
 alias gpm="git push origin main"
 
 # merge special main branches
-alias merge-mulligan="git fetch origin && git merge origin/mulligan"
 alias merge-dev="git fetch origin && git merge origin/dev"
 
 # config
@@ -204,7 +224,7 @@ alias stash="git stash --include-untracked"
 # claude
 alias fix-types='claude --dangerously-skip-permissions "Fix the types in this repo. The command to check types is `pnpm run types`."'
 alias yolo='claude --dangerously-skip-permissions'
-alias claude='claude --dangerously-skip-permissions'
+# alias claude='claude --dangerously-skip-permissions'
 
 # Function to create new git branch
 branch() {
@@ -236,4 +256,17 @@ branch() {
     git push -u origin "$BRANCH_NAME" || return 1
 
     echo "Successfully created, switched to, and pushed branch: $BRANCH_NAME"
+}
+
+# nv - create a new file or directory and open it in neovim
+nv() {
+    if [[ "$1" == *"."* ]]; then
+        # Has a dot - treat as file
+        mkdir -p "$(dirname "$1")"
+        nvim "$1"
+    else
+        # No dot - treat as directory
+        mkdir -p "$1"
+        nvim "$1"
+    fi
 }
