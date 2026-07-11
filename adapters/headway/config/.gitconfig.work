@@ -1,0 +1,7 @@
+# this is automatically linked by mac.sh - no need to link it in adapt.sh
+[include]
+	path = ~/.config/git/config
+
+[user]
+	name = jhanstra
+	email = jared.hanstra@findheadway.com

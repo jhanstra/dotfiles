@@ -1,0 +1,44 @@
+###### APPLICATIONS ######
+brew 'mas' # install Mac App Store applications
+brew 'xcodes' # install and manage full Xcode versions
+
+mas 'System Color Picker', id: 1545870783
+
+cask '1password'
+cask 'adobe-creative-cloud'
+cask 'alfred'
+cask 'anki'
+cask 'appcleaner'
+cask 'bartender'
+cask 'charles'
+cask 'cleanshot'
+cask 'cheatsheet'
+cask 'contexts'
+cask 'downie'
+cask 'dropzone'
+cask 'firefox'
+cask 'google-chrome'
+cask 'grandperspective'
+cask 'insomnia'
+cask 'iterm2'
+cask 'karabiner-elements'
+cask 'loom'
+cask 'microsoft-edge'
+cask 'miro'
+cask 'notion'
+cask 'permute'
+cask 'postman'
+cask 'rectangle'
+cask 'signal'
+cask 'sip'
+cask 'sitesucker-pro'
+cask 'slack'
+cask 'spotify'
+cask 'stats'
+cask 'tidal'
+cask 'tripmode'
+cask 'visual-studio-code'
+cask 'vlc'
+cask 'zoom'
+
+

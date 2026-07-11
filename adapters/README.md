@@ -7,18 +7,21 @@ required shell configuration.
 
 ## Directory Convention
 
-Each company gets a self-contained directory with repository-owned names:
+Each company gets a self-contained directory with repository-owned names. It should at minimum look like this:
 
 ```text
 adapters/
-  example-company/
-    config.zsh
-    install.sh
+  my-company/
+    config/
+      .gitconfig.work
+      Brewfile.work
+      zsh-config.zsh
+    adapt.sh
 ```
 
-- `config.zsh` configures the company overlay and sources this repository's
+- `config/zsh-config.zsh` configures the company overlay and sources this repository's
   canonical `config/zsh/zshrc.zsh`.
-- `install.sh` connects `config.zsh` to the extension point supported by the
+- `adapt.sh` connects `config/zsh-config.zsh` to the extension point supported by the
   company.
 - Source filenames should stay generic. The install target may use a
   company-required name such as `~/.zshrc.d/95.example-company.zsh` when load
@@ -26,7 +29,7 @@ adapters/
 
 Keep secrets and proprietary company configuration out of this repository.
 Store those in the company secret manager or an untracked local file loaded by
-`config.zsh`.
+`config/zsh-config.zsh`.
 
 ## Create an Adapter with an Agent
 
@@ -44,7 +47,7 @@ First, inspect the active shell and dotfile setup read-only. Determine:
 - which PATH, prompt, history, completion, version-manager, Git, and package
   settings the company already owns.
 
-Create adapters/<company>/config.zsh and install.sh.
+Create adapters/<company>/config/zsh-config.zsh and adapt.sh.
 
 Requirements:
 - source this repository's canonical config/zsh/zshrc.zsh rather than copying
@@ -54,25 +57,17 @@ Requirements:
 - disable portable modules that conflict with company-managed equivalents;
 - use generic filenames inside this repository even if the installed target
   requires a company-specific or numerically ordered name;
-- keep company-only values in config.zsh and secrets outside Git;
-- make install.sh idempotent, support --dry-run, quote paths, and refuse to
-  overwrite an unknown existing file;
+- keep company-only values in config/zsh-config.zsh and secrets outside Git;
+- keep adapt.sh small, direct, idempotent, and correctly quote paths;
 - detect missing company prerequisites and explain how to install them;
-- report every proposed destination and why it is safe;
-- run syntax and smoke tests without applying the adapter;
-- do not run install.sh without my explicit approval.
+- explain every destination and why it is safe;
+- run syntax checks before applying the adapter.
 ```
 
-Review the generated files and dry-run the installer:
+After reviewing the adapter, run:
 
 ```sh
-adapters/<company>/install.sh --dry-run
-```
-
-Only after reviewing the destinations and conflicts should you run:
-
-```sh
-adapters/<company>/install.sh
+adapters/<company>/adapt.sh
 ```
 
 ## Chezmoi-Managed Companies

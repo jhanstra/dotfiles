@@ -1,0 +1,6 @@
+[include]
+	path = ~/.config/git/config
+
+[user]
+	name = jhanstra
+	email = jared@coprime.io

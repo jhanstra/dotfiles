@@ -28,7 +28,7 @@ alias ....="cd ../../.. && la"
 alias .....="cd ../../../.. && la"
 alias lsd='ls -l | grep "^d"' # list only directories
 
-alias mac="sh $DOTFILES/mac.sh"
+alias mac='bash "$DOTFILES/mac.sh"'
 alias localip="ipconfig getifaddr en1"
 alias die-ds-store="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
@@ -64,26 +64,23 @@ alias tl='tmux ls'
 alias tn='tmux new'
 alias td='tmux kill-session -t flow'
 
-# vim aliases
-# alias vimrc='vim ~/.vimrc'
-# alias v='vim .'
-# alias brewfile='vim $DOTFILES/config/homebrew/Brewfile'
-
-# use neovim now
+# Neovim
 alias nvc='nvim ~/.config/nvim/init.lua'
+
 openvim() {
-    if [ $# -eq 1 ] && [ -f "$1" ]; then
-        nvim "$1"
-    else
-        nvim .
-    fi
+  if (( $# == 0 )); then
+    nvim .
+  else
+    nvim "$@"
+  fi
 }
+
 alias v='openvim'
 alias vim='openvim'
-alias brewfile='nvim $DOTFILES/config/homebrew/Brewfile'
+alias brewfile='nvim "$DOTFILES/config/homebrew/Brewfile.common"'
+alias brewapps='nvim "$DOTFILES/config/homebrew/Brewfile.personal"'
 
-# Use `hub` as our git wrapper:
-#   http://defunkt.github.com/hub/
+# Use `hub` as our git wrapper / http://defunkt.github.com/hub/
 hub_path=$(which hub)
 if (( $+commands[hub] ))
 then
@@ -222,7 +219,7 @@ alias restart="shutdown && startup"
 alias stash="git stash --include-untracked"
 
 # claude
-alias fix-types='claude --dangerously-skip-permissions "Fix the types in this repo. The command to check types is `pnpm run types`."'
+alias fix-types='claude --dangerously-skip-permissions "Fix the types in this repo. The command to check types is `bun run types`."'
 alias yolo='claude --dangerously-skip-permissions'
 # alias claude='claude --dangerously-skip-permissions'
 

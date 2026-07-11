@@ -1,6 +1,3 @@
-[user]
-	name = jhanstra
-	email = jared.hanstra@findheadway.com
 [difftool "kdiff3"]
   path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
   trustExitCode = false
@@ -17,12 +14,25 @@
   keepBackup = false
 [merge]
   tool = kdiff3
-
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[pull]
+	ff = only
+[http]
+	postBuffer = 524288000
+[submodule]
+	recurse = true
+[credential "https://github.com"]
+	helper = !gh auth git-credential
 [alias]
 	# View abbreviated SHA, description, and history graph of latest 20 commits
 	l = log --pretty=oneline -n 100 --graph --abbrev-commit
-
-	# Shortcut for checkout
 	co = checkout
 
 	# View the current working tree status using the short format
@@ -38,36 +48,3 @@
 	tags = tag -l
 	branches = branch -a
 	remotes = remote -v
-[core]
-	excludesfile = /Users/hanstra/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-# BEGIN Managed by shell_setup role
-[core]
-    excludesfile = /Users/jhanstra/env/etc/git/gitignore_global
-	editor = vim
-
-[include]
-    path = /Users/jhanstra/env/etc/git/aliases
-    path = /Users/jhanstra/env/etc/git/general-config
-
-    path = /Users/jhanstra/env/etc/git/skynet/aliases
-    path = /Users/jhanstra/env/etc/git/skynet/general-config
-# END Managed by shell_setup role
-[credential "https://dev.azure.com"]
-	useHttpPath = true
-[pull]
-	ff = only
-[http]
-	postBuffer = 524288000
-[submodule]
-	recurse = true
-[trace2]
-	eventTarget = af_unix:stream:/Users/jhanstra/.git-ai/internal/daemon/trace2.sock
-	eventNesting = 10
-[credential "https://github.com"]
-	helper = !gh auth git-credential
