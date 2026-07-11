@@ -1,0 +1,29 @@
+config/karabiner/bun.lock
+  s_a327d79d5e45b6::t_5047326e3f7fc8 3,11,16,18,20,22,24,26,28,30,32,34,36-40,42,44,46,48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80-84,86,132
+config/vscode.json
+  s_b6bc9888fa4307::t_3fa0bf7c071eed 83-84,201-210
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "41aa64d4f02a86bf4917d858b0dbbdebc06e525e",
+  "prompts": {},
+  "sessions": {
+    "s_a327d79d5e45b6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3b1b0b1c-c7c7-4f85-b16e-761e575b7296",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    },
+    "s_b6bc9888fa4307": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4b0553df-3107-4ed0-9166-8f688fad0a07",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
