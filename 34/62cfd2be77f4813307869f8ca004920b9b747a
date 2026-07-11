@@ -1,0 +1,21 @@
+personal/offline/packages.txt
+  s_a327d79d5e45b6::t_2f36dc637ec343 1-298
+personal/offline/repos.tsv
+  s_a327d79d5e45b6::t_c1cb94a8a800c8 1-437
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "3462cfd2be77f4813307869f8ca004920b9b747a",
+  "prompts": {},
+  "sessions": {
+    "s_a327d79d5e45b6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3b1b0b1c-c7c7-4f85-b16e-761e575b7296",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
