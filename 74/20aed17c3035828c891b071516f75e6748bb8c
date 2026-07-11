@@ -1,0 +1,19 @@
+config/karabiner/karabiner.json
+  s_a327d79d5e45b6::t_e4ec411713b14c 1-4236
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "7420aed17c3035828c891b071516f75e6748bb8c",
+  "prompts": {},
+  "sessions": {
+    "s_a327d79d5e45b6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3b1b0b1c-c7c7-4f85-b16e-761e575b7296",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
