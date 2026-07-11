@@ -1,0 +1,82 @@
+brew 'bun' # js runtime, package manager, alternative to node
+brew 'curl' # http client
+brew 'deno' # js runtime, node alternative
+brew 'fzf' # fuzzy finder
+brew 'git' # distributed version control system
+brew 'htop' # terminal process monitor
+brew 'libpq' # postgresql client
+brew 'mise' # language and tool version manager
+brew 'mysql-client' # mysql client
+brew 'neovim' # vim alternative
+brew 'node' # js runtime, package manager
+brew 'pnpm' # js package manager, alternative to npm
+brew 'ripgrep' # faster grep alternative
+brew 'ruby' # ruby programming language
+brew 'stripe/stripe-cli/stripe' # stripe cli
+brew 'thefuck' # corrects previous console command
+brew 'tree' # list directory contents in a tree-like format
+brew 'tmux' # terminal multiplexer
+brew 'uv' # python package manager, alternative to pip
+brew 'vim' # vim text editor
+brew 'watchman' # file system watcher
+brew 'yarn' # js package manager, alternative to npm
+brew 'zoxide' # replaces fasd, fast 'z' directory switching
+brew 'zsh-syntax-highlighting' # zsh syntax highlighting
+
+###### APPLICATIONS ######
+# cask '1password'
+# cask 'adobe-creative-cloud'
+cask 'alfred'
+# cask 'anki'
+# cask 'appcleaner'
+# cask 'around'
+cask 'bartender'
+# cask 'charles'
+cask 'cleanshot'
+cask 'cheatsheet'
+cask 'contexts'
+cask 'downie'
+cask 'dropzone'
+cask 'firefox'
+cask 'gcloud-cli'
+cask 'google-chrome'
+# cask 'grandperspective'
+cask 'iina'
+cask 'insomnia'
+cask 'iterm2'
+cask 'karabiner-elements'
+# cask 'kindle'
+cask 'loom'
+cask 'microsoft-edge'
+# cask 'permute'
+# cask 'pop'
+cask 'postman'
+cask 'rectangle'
+# cask 'signal'
+cask 'sip'
+# cask 'sitesucker-pro'
+# cask 'sketch'
+# cask 'slack'
+cask 'spotify'
+cask 'stats'
+# cask 'tidal'
+# cask 'tripmode'
+cask 'visual-studio-code'
+# cask 'vlc'
+# cask 'zoom'
+
+
+##### Applications to install manually #####
+# Notion
+# XCode
+# Global Protect
+# Adobe Lightroom, Photoshop, Illustrator
+# Sketchup Pro
+# System Color Picker
+
+
+##### iOS Apps to add
+# Airbnb
+# HBOMax
+# Mountain Project
+# Overcast
