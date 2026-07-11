@@ -17,7 +17,7 @@ adapters/
 ```
 
 - `config.zsh` configures the company overlay and sources this repository's
-  canonical `.zshrc`.
+  canonical `config/zsh/zshrc.zsh`.
 - `install.sh` connects `config.zsh` to the extension point supported by the
   company.
 - Source filenames should stay generic. The install target may use a
@@ -47,7 +47,8 @@ First, inspect the active shell and dotfile setup read-only. Determine:
 Create adapters/<company>/config.zsh and install.sh.
 
 Requirements:
-- source this repository's canonical .zshrc rather than copying its contents;
+- source this repository's canonical config/zsh/zshrc.zsh rather than copying
+  its contents;
 - never overwrite or edit company-managed source files;
 - use a supported unmanaged extension point whenever possible;
 - disable portable modules that conflict with company-managed equivalents;

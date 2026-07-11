@@ -9,7 +9,7 @@ unset ADAPTER_SOURCE
 # Headway owns the prompt, completion initialization, and other shell framework
 # behavior. Load the portable dotfiles configuration without a second Oh My Zsh.
 export DOTFILES_ENABLE_OH_MY_ZSH=0
-source "$DOTFILES/.zshrc"
+source "$DOTFILES/config/zsh/zshrc.zsh"
 
 # Headway-specific environment values that should not load on personal Macs.
 export JIRA_USER_EMAIL="jared.hanstra@findheadway.com"
