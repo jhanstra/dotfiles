@@ -188,4 +188,4 @@ const output =  {
 }
 
 console.log(JSON.stringify(output, null, 2))
-fs.writeFileSync("/Users/jhanstra/headway/dotfiles/config/karabiner.json", JSON.stringify(output, null, 2))
+fs.writeFileSync(new URL("./karabiner.json", import.meta.url), JSON.stringify(output, null, 2))
