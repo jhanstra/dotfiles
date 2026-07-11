@@ -1,21 +1,21 @@
 # 🚀 jth dotfiles
 
-**From zero to the perfect dev environment**
+**from zero to the perfect dev environment**
 
-These dotfiles include config and settings for:
+config and settings for:
 
-- Programs and applications to install with Homebrew
-- Mac OS default settings
-- VSCode settings, keybindings, extensions, and workspaces
-- Vim and tmux config (although I now use VSCode)
-- Zsh config and aliases
+- programs and applications to install with homebrew
+- macos default settings
+- cursor / vscode settings, keybindings, extensions, and workspaces
+- neovim and tmux configuration
+- zsh config and aliases
 - Alfred settings
-- iTerm settings
-- Snipster snippets
-- Fonts to install
-- Git config
+- iterm settings
+- snipster snippets
+- fonts to install
+- git config
 
-## New Mac Set-Up
+## new mac set-up
 
 1. `xcode-select --install`
 2. `cd && mkdir <your code repo>` (for me, `cd && mkdir coprime`)

@@ -83,6 +83,12 @@ config/
   homebrew/
     Brewfile                   # Common CLI dependencies
     Brewfile.personal          # Optional personal applications
+  vim+tmux/
+    nvim.lua                   # Canonical Neovim configuration
+    neovim-plugins.json        # Pinned Neovim plugin versions
+    .tmux.conf                 # tmux configuration
+    vimrc.vim                  # Archived Vim configuration
+    plugins.vim                # Archived Vim plugin list
 adapters/
   standalone-macos.sh          # Link repo config on personal Macs
   zshrc-d.sh                   # Install a source hook for managed shells
@@ -147,9 +153,8 @@ Candidates already identified:
 - `config/offline-git.sh`
 - `config/offline-pnpm.sh`
 - `config/homebrew/fullBrew.sh`
-- Broken `config/karabiner/karabiner.json` symlink
+- Duplicate/broken Karabiner JSON location
 - Duplicate Karabiner lockfiles
-- Legacy Vim configuration
 - Old Indeed profile files
 - Unused Alfred workflows, iTerm exports, snippets, and fonts after verification
 
