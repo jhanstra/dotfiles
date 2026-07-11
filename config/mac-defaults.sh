@@ -1,10 +1,5 @@
-# Sets reasonable macOS defaults.
-# Or, in other words, set shit how I like in macOS.
-#
-# The original idea (and a couple settings) were grabbed from:
-#   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
-#
-# Run ./set-defaults.sh and you'll be good to go.
+# mac-defaults.sh: set reasonable macOS defaults
+# Original idea: https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -116,23 +111,6 @@ defaults write com.apple.dock show-recents -bool true
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool "false"
-
-# The following 4 settings are for hot corners, but I've found in practice they annoy me more than help me
-# Bottom left hot corner: mission control
-# defaults write com.apple.dock wvous-bl-corner -int 2
-# defaults write com.apple.dock wvous-bl-modifier -int 0
-
-# Bottom right hot corner: launchpad (application drawer)
-# defaults write com.apple.dock wvous-br-corner -int 11
-# defaults write com.apple.dock wvous-br-modifier -int 0
-
-# Top left hot corner: lock screen
-# defaults write com.apple.dock wvous-tl-corner -int 13
-# defaults write com.apple.dock wvous-tl-modifier -int 0
-
-# Top right hot corner: show desktop
-# defaults write com.apple.dock wvous-tr-corner -int 4
-# defaults write com.apple.dock wvous-tr-modifier -int 0
 
 ###############################################################################
 # Other                                                                       #
