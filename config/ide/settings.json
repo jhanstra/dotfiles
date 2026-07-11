@@ -1,4 +1,3 @@
-/* eslint-disable prettier */
 {
   // Default font settings
   // "editor.fontFamily": "BerkeleyMono-Regular",
@@ -81,6 +80,8 @@
   "typescript.validate.enable": false,
   // ESLint
   "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"],
+  "editor.codeActionsOnSaveTimeout": 750,
+
   "eslint.alwaysShowStatus": true,
   // this *needs* to be set to false for js and ts
   "[css]": {
@@ -197,5 +198,14 @@
   "prisma.showPrismaDataPlatformNotification": false,
   "github.copilot.editor.enableAutoCompletions": true,
   "css.lint.unknownAtRules": "ignore",
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "makefile.configureOnOpen": true,
+  "git.path": "/Users/jhanstra/.local/share/mise/installs/github-git-ai-project-git-ai/latest/git",
+  "chat.hookFilesLocations": {
+    "~/.github/hooks": true
+  },
+  "chat.useHooks": true,
+  "cursor.composer.shouldChimeAfterChatFinishes": true,
+  "window.autoDetectColorScheme": false,
+  "extensions.installCooldownHours": 168
 }

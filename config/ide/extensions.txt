@@ -1,0 +1,45 @@
+# General
+BriteSnow.vscode-toggle-quotes
+christian-kohler.path-intellisense
+dbaeumer.vscode-eslint
+eamodio.gitlens
+earshinov.sort-lines-by-selection
+ericadamski.carbon-now-sh
+esbenp.prettier-vscode
+formulahendry.code-runner
+naumovs.color-highlight
+quicktype.quicktype
+samundrak.esdoc-mdn
+shyykoserhiy.vscode-spotify
+vikyd.vscode-fold-level
+vscode-icons-team.vscode-icons
+WakaTime.vscode-wakatime
+wix.vscode-import-cost
+fabiospampinato.vscode-terminals
+github.copilot
+stripe.vscode-stripe
+
+# Vim
+vscodevim.vim
+yatki.vscode-surround
+
+# Syntax highlighting
+kumar-harsh.graphql-for-vscode
+mikestead.dotenv
+Prisma.prisma
+styled-components.vscode-styled-components
+bungcip.better-toml
+
+# Themes
+wart.ariake-dark
+wesbos.theme-cobalt2
+sdras.night-owl
+monokai.theme-monokai-pro-vscode
+fisheva.eva-theme
+ahmadawais.shades-of-purple
+azemoh.one-monokai
+idleberg.hopscotch
+dustinsanders.an-old-hope-theme-vscode
+kuscamara.electron
+thomaspink.theme-github
+will-stone.plastic
