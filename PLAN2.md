@@ -15,7 +15,7 @@ the recommended order for finishing the repository.
   - Neovim headless startup
   - IDE extension installer dry run
   - Personal offline installer dry run
-  - Headway adapter dry run
+  - Headway adapter syntax
 
 Before pushing, finish or split the current work into coherent commits, then
 integrate the remote commit without discarding local changes.
@@ -84,7 +84,7 @@ integrate the remote commit without discarding local changes.
 - [x] Legacy pnpm commands were migrated to Bun.
 - [x] Package and repository lists are declarative.
 - [x] The installer is optional and never part of normal bootstrap.
-- [x] Actual writes require `DOTFILES_CTX=personal`.
+- [x] Actual writes require `DOT_CTX=personal`.
 - [x] Work and unknown contexts are rejected.
 - [x] Dry-run, package-only, and repository-only modes are supported.
 
@@ -126,11 +126,17 @@ integrate the remote commit without discarding local changes.
 
 ### Homebrew and tool ownership
 
-- [ ] Split the current Brewfile into common CLI tools and personal GUI apps.
+- [x] Split the current Brewfile into core CLI tools and personal GUI apps.
+- [x] Consolidate non-Homebrew setup in `config/install.sh`.
+- [x] Remove duplicate nvm/Bun installers and Git-cloned syntax highlighting;
+      Homebrew/mise now own those tools.
+- [x] Keep personal defaults, fonts, and non-Homebrew installers out of work
+      context.
 - [ ] Remove tools now owned by mise or no longer used, including likely
       candidates such as direct Node, pnpm, Ruby, Vim, Yarn, and duplicate
       syntax-highlighting installation.
-- [ ] Review every cask against software actually used.
+- [x] Review every cask against software actually used.
+- [ ] Add new casks and cli tools I don't have in there yet
 - [ ] Resolve renamed/deprecated casks.
 - [ ] Decide whether `fullBrew.sh` should be deleted; it remains as legacy
       content.
@@ -148,21 +154,21 @@ integrate the remote commit without discarding local changes.
 
 The current `mac.sh` is still the largest reliability gap.
 
-- [ ] Add an explicit Bash shebang and strict/error-aware structure.
-- [ ] Make Homebrew available in the current process immediately after install.
+- [x] Add an explicit Bash shebang and strict/error-aware structure.
+- [x] Make Homebrew available in the current process immediately after install.
 - [ ] Stop running personal package/app setup before context branching.
 - [ ] On work Macs, run only the selected company adapter.
 - [ ] On personal Macs, run the full personal installer.
-- [ ] Add `--dry-run`.
+- [x] Keep the main bootstrap linear and free of command-line modes.
 - [ ] Back up or refuse unknown files before replacing them.
-- [ ] Create required VS Code/Cursor parent directories.
+- [x] Create required VS Code/Cursor parent directories.
 - [ ] Make every operation safe to repeat.
 - [ ] Replace `curl | shell` installers where practical.
 - [ ] Remove nvm installation because mise is the chosen version manager.
 - [ ] Reconcile Bun, pnpm globals, and mise ownership.
-- [ ] Remove the stale `rm -rf /Users/jth/~` line.
+- [x] Remove the stale `rm -rf /Users/jth/~` line.
 - [ ] Generate an Ed25519 SSH key only when no suitable key exists.
-- [ ] Stop prompting for or overwriting company-managed global Git identity.
+- [x] Stop prompting for or overwriting company-managed global Git identity.
 - [ ] Make macOS defaults and font installation explicit opt-ins.
 
 ### Personal Mac adapter
@@ -175,20 +181,20 @@ The current `mac.sh` is still the largest reliability gap.
 
 ### Git configuration
 
-- [ ] Update `mac.sh`; it still points to the now-missing
-      `config/.gitconfig` and `config/.gitignore`.
-- [ ] Separate portable Git aliases/settings from work identity and
+- [x] Update `mac.sh` to use `config/git/.gitconfig` and
+      `config/git/.gitignore` only for personal Macs.
+- [x] Separate portable Git aliases/settings from work identity and
       company-managed includes.
-- [ ] Use `.gitconfig.local` or `includeIf` for personal identity.
-- [ ] Create a Git adapter for managed work environments.
+- [x] Use `.gitconfig.local` and Git's native include mechanism for identity.
+- [x] Link context-specific Git identity directly from `mac.sh`.
 - [ ] Remove stale KDiff3, SourceTree, Indeed, and wrong-user paths after
       confirming they are unused.
 
 ### tmux
 
 - [x] Decide whether tmux is still actively used - yes
-- [ ] If yes, link `config/vim+tmux/.tmux.conf` and install/configure TPM.
-- [ ] If no, mark it archived in the folder README.
+- [x] Link `config/vim+tmux/.tmux.conf` and install/configure TPM.
+- [x] Keep tmux active rather than marking it archived in the folder README.
 
 ### macOS defaults
 

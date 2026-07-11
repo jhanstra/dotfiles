@@ -19,7 +19,7 @@ Work integrations should use small adapters that connect employer-managed system
 5. Adapters should create links or source hooks, not copies.
 6. Keep machine, employer, and secret values outside the public repository.
 7. Prefer capability flags over assuming every work or personal Mac is configured identically.
-8. Make installers idempotent and support a dry-run mode.
+8. Make installers idempotent and keep their control flow explicit.
 9. Review and approve each cleanup phase before applying it.
 
 ## Intended Loading Model
@@ -61,7 +61,7 @@ Machine-specific configuration should live outside this repository:
 Possible profile settings:
 
 ```zsh
-export DOTFILES_CONTEXT="work"
+export DOT_CTX="work"
 export CODE_ROOT="$HOME/headway"
 export DOTFILES_INSTALL_PACKAGES=0
 export DOTFILES_ENABLE_PERSONAL_APPS=0
@@ -81,8 +81,9 @@ config/
     completions.zsh            # Zsh completion paths and integrations
     oh-my-zsh.zsh              # Oh My Zsh plugins and theme
   homebrew/
-    Brewfile                   # Common CLI dependencies
+    Brewfile.core            # Core CLI dependencies
     Brewfile.personal          # Optional personal applications
+  install.sh                    # Non-Homebrew installation steps
   vim+tmux/
     nvim.lua                   # Canonical Neovim configuration
     neovim-plugins.json        # Pinned Neovim plugin versions
@@ -93,6 +94,11 @@ adapters/
   standalone-macos.sh          # Link repo config on personal Macs
   zshrc-d.sh                   # Install a source hook for managed shells
   gitconfig-local.sh           # Use a supported Git override
+personal/
+  offline/
+    install.sh                 # Explicit, guarded personal offline setup
+    packages.txt               # Packages to cache with Bun
+    repos.tsv                  # Public repositories to clone
 mac.sh                         # Bootstrap/orchestrate installation
 ```
 
@@ -129,14 +135,15 @@ The exact structure can evolve as each phase is approved.
 - Symlink `config/zsh/zshrc.zsh` to `~/.zshrc`.
 - Back up an existing unmanaged file before replacing it.
 - Link other personal configs only when this repository owns them.
-- Add dry-run and repeated-run safety.
+- Add repeated-run safety.
 
-### Phase 5: Separate Common and Profile-Specific Setup
+### Phase 5: Separate Core and Profile-Specific Setup
 
-- Keep universal CLI packages in the common Brewfile.
+- Keep universal CLI packages in the core Brewfile.
 - Move personal GUI applications to a personal Brewfile.
 - Let employer automation own required work packages.
 - Use local capability/profile settings to choose optional setup.
+- Keep large offline caches personal-only and explicitly invoked.
 
 ### Phase 6: Handle Other Configuration Safely
 
@@ -150,8 +157,6 @@ The exact structure can evolve as each phase is approved.
 Candidates already identified:
 
 - `config/indeedRepos.sh`
-- `config/offline-git.sh`
-- `config/offline-pnpm.sh`
 - `config/homebrew/fullBrew.sh`
 - Duplicate/broken Karabiner JSON location
 - Duplicate Karabiner lockfiles
