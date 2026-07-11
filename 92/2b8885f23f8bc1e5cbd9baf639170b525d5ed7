@@ -1,0 +1,29 @@
+config/ide/install-extensions.sh
+  s_a327d79d5e45b6::t_d747753c72a377 1-35
+config/ide/settings.json
+  s_b6bc9888fa4307::t_dab2447d5692fa 83-84,201-210
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "922b8885f23f8bc1e5cbd9baf639170b525d5ed7",
+  "prompts": {},
+  "sessions": {
+    "s_a327d79d5e45b6": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3b1b0b1c-c7c7-4f85-b16e-761e575b7296",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    },
+    "s_b6bc9888fa4307": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "4b0553df-3107-4ed0-9166-8f688fad0a07",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
