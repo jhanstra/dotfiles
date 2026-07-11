@@ -14,14 +14,14 @@ Best way to go about using this if you want to? Probably delete all the sublayer
 
 ## Development
 
-```
-yarn run build
+```sh
+bun run build
 ```
 
 builds the `karabiner.json` from the `rules.ts`.
 
-```
-yarn run watch
+```sh
+bun run watch
 ```
 
 watches the TypeScript files and rebuilds whenever they change.
