@@ -17,3 +17,12 @@
 # Top right hot corner: show desktop
 # defaults write com.apple.dock wvous-tr-corner -int 4
 # defaults write com.apple.dock wvous-tr-modifier -int 0
+
+# Quick Look text selection: no-op on modern macOS (selection is built in)
+# defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# Safari internal debug menu: Develop menu covers day-to-day needs
+# defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+
+# Legacy WebKit2 preference key; replaced by WebKitDeveloperExtras above
+# defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true

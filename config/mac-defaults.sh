@@ -1,9 +1,8 @@
 # mac-defaults.sh: set reasonable macOS defaults
 # Original idea: https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
-###############################################################################
-# General UI/UX                                                               #
-###############################################################################
+
+# --- General UI/UX ---
 
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -11,38 +10,31 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
-# Disable smart quotes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable smart dashes as they’re annoying when typing code
+# Disable text substitutions that fight coding:
+# capitalization, smart dashes/quotes, double-space periods, and autocorrect
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 
-###############################################################################
-# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
-###############################################################################
+# --- Trackpad, mouse, keyboard, Bluetooth accessories, and input ---
 
 # Trackpad: enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Disable press-and-hold for keys in favor of key repeat.
-defaults write -g ApplePressAndHoldEnabled -bool false
+# Disable press-and-hold for keys in favor of key repeat (also helps VS Code)
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 20
 
-# Enable key repeat in programs like VSCode
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-###############################################################################
-# Finder                                                                      #
-###############################################################################
+# --- Finder ---
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
@@ -76,83 +68,57 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-# If this is not working, you may need to delete all your .DS_Store files
+# Use column view in all Finder windows by default
+# Four-letter codes for the other view modes: `icnv`, `Nlsv`, `Flwv`
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
-# Use AirDrop over every interface. srsly this should be a default.
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
+# Use AirDrop over every interface, not just wifi and bluetooth
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
-# Show the ~/Library folder.
+# Show the ~/Library folder
 chflags nohidden ~/Library
 
 # Hide files on the Desktop
-defaults write com.apple.finder CreateDesktop false
+defaults write com.apple.finder CreateDesktop -bool false
 
-###############################################################################
-# Dock, Dashboard, and hot corners                                            #
-###############################################################################
+
+# --- Dock and Spaces ---
 
 # Place dock on the right
-defaults write com.apple.dock "orientation" -string "right"
+defaults write com.apple.dock orientation -string "right"
 
 # Auto-hide the dock
 defaults write com.apple.dock autohide -bool true
 
 # Set the delay before the dock shows
-defaults write com.apple.dock autohide-delay -float "0"
+defaults write com.apple.dock autohide-delay -float 0
 
 # Set dock tile size
-defaults write com.apple.dock tilesize -int "24"
+defaults write com.apple.dock tilesize -int 24
 
 # Show recents in dock
 defaults write com.apple.dock show-recents -bool true
 
 # Don’t automatically rearrange Spaces based on most recent use
-defaults write com.apple.dock mru-spaces -bool "false"
+defaults write com.apple.dock mru-spaces -bool false
 
-###############################################################################
-# Other                                                                       #
-###############################################################################
 
-# Hide Safari's bookmark bar.
+# --- Safari, Messages, menu bar ---
+
+# Hide Safari's bookmark bar
 defaults write com.apple.Safari ShowFavoritesBar -bool false
 
-# Set up Safari for development.
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+# Set up Safari for development
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-# Allow text selection in Quicklook / Preview
-defaults write com.apple.finder QLEnableTextSelection -bool true
-
 # Set clock to military time
-defaults write com.apple.menuextra.clock "DateFormat" -string "\"EEE d MMM HH:mm:ss\""
+defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm:ss"
 
-# Messages: Disable automatic emoji substitution (i.e. use plain text smileys)
+# Messages: disable automatic emoji substitution
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 
-# Disable the “Are you sure you want to open this application?” dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-
-# Disable automatic capitalization as it’s annoying when typing code
-defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
-
-# Disable smart dashes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-# Disable automatic period substitution as it’s annoying when typing code
-defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
-
-# Disable smart quotes as they’re annoying when typing code
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-# kill the Finder and Dock to make changes take effect
+# Restart Finder and Dock so changes take effect
 killall Dock
 killall Finder
