@@ -7,8 +7,7 @@ the recommended order for finishing the repository.
 ## Current State
 
 - Branch: `master`
-- Remote divergence: 9 commits ahead of and 1 commit behind `origin/master`
-- There are additional unstaged and untracked changes.
+- In sync with `origin/master`.
 - The current smoke suite passes:
   - Bash and Zsh syntax checks
   - Karabiner generation with Bun
@@ -16,9 +15,6 @@ the recommended order for finishing the repository.
   - IDE extension installer dry run
   - Personal offline installer dry run
   - Headway adapter syntax
-
-Before pushing, finish or split the current work into coherent commits, then
-integrate the remote commit without discarding local changes.
 
 ## What Is Done
 
@@ -164,7 +160,7 @@ The current `mac.sh` is still the largest reliability gap.
 - [x] Create required VS Code/Cursor parent directories.
 - [ ] Make every operation safe to repeat.
 - [ ] Replace `curl | shell` installers where practical.
-- [ ] Remove nvm installation because mise is the chosen version manager.
+- [x] Remove nvm installation because mise is the chosen version manager.
 - [ ] Reconcile Bun, pnpm globals, and mise ownership.
 - [x] Remove the stale `rm -rf /Users/jth/~` line.
 - [ ] Generate an Ed25519 SSH key only when no suitable key exists.
@@ -187,8 +183,7 @@ The current `mac.sh` is still the largest reliability gap.
       company-managed includes.
 - [x] Use `.gitconfig.local` and Git's native include mechanism for identity.
 - [x] Link context-specific Git identity directly from `mac.sh`.
-- [ ] Remove stale KDiff3, SourceTree, Indeed, and wrong-user paths after
-      confirming they are unused.
+- [x] Remove stale KDiff3, SourceTree, Indeed, and wrong-user paths.
 
 ### tmux
 
@@ -199,7 +194,8 @@ The current `mac.sh` is still the largest reliability gap.
 ### macOS defaults
 
 - [ ] Review every default against current macOS.
-- [ ] Remove duplicated and obsolete settings.
+- [x] Remove duplicated and obsolete settings; unused defaults live in
+      `config/archived/mac-defaults-archived.sh`.
 - [ ] Make the defaults script opt-in rather than unconditional.
 
 ### Validation and documentation
@@ -222,17 +218,15 @@ The current `mac.sh` is still the largest reliability gap.
 
 ## Recommended Next Order
 
-1. Fix the broken Git paths in `mac.sh`.
-2. Finish the Headway adapter migration and remove duplicated `90.my-config`.
-3. Rewrite `mac.sh` into a context-aware, idempotent orchestrator.
-4. Create the standalone personal Mac adapter.
-5. Split Homebrew into common and personal profiles.
-6. Finish the aliases and Git configuration audits.
-7. Decide tmux, Alfred, fonts, workspace, and other legacy content.
-8. Add tests and run a clean personal-Mac installation.
-9. Update the main README to match the final workflow.
-10. With a clean working tree, integrate the one remote commit and push the
-    local commit series.
+1. Finish the Headway adapter: source `aliases.zsh`, install it, remove
+   duplicated `90.my-config`.
+2. Rewrite `mac.sh` into a context-aware, idempotent orchestrator.
+3. Create the standalone personal Mac adapter.
+4. Finish the aliases audit and Brewfile cleanup (mise-owned tools, deprecated
+   casks, new tools).
+5. Decide Alfred, fonts, workspace, `fullBrew.sh`, and other legacy content.
+6. Add tests and run a clean personal-Mac installation.
+7. Update the main README to match the final workflow.
 
 ## Definition of Done
 

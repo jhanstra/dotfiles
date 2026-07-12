@@ -1,10 +1,9 @@
 # Git Configuration
 
-`.gitconfig` contains portable Git behavior shared across machines. Setup links
+`.gitconfig` contains git config I want on both personal and work contexts. mac.sh links
 it to Git's native XDG location at `~/.config/git/config`.
 
-Personal identity lives in `.gitconfig.personal`. Work identity lives with each
-company adapter, such as `adapters/headway/config/.gitconfig.work`.
+Personal overrides live in `.gitconfig.personal` for things like name and email updates. Work identity lives inside each company adapter in the config folder, e.g. `adapters/headway/config/.gitconfig.work`.
 
 On a personal Mac, `mac.sh` links:
 
