@@ -132,15 +132,15 @@ the recommended order for finishing the repository.
       candidates such as direct Node, pnpm, Ruby, Vim, Yarn, and duplicate
       syntax-highlighting installation.
 - [x] Review every cask against software actually used.
-- [ ] Add new casks and cli tools I don't have in there yet
-- [ ] Resolve renamed/deprecated casks.
-- [ ] Decide whether `fullBrew.sh` should be deleted; it remains as legacy
+- [x] Add new casks and cli tools I don't have in there yet
+- [x] Resolve renamed/deprecated casks.
+- [x] Decide whether `fullBrew.sh` should be deleted; it remains as legacy
       content.
 
 ### IDE profile behavior
 
-- [ ] Decide whether work and personal machines need different IDE settings.
-- [ ] If so, generate merged settings from shared and profile-specific inputs
+- [x] Decide whether work and personal machines need different IDE settings.
+- [x] If so, generate merged settings from shared and profile-specific inputs
       instead of linking one file everywhere.
 - [ ] Review the old Coprime workspace and either archive or delete it.
 
