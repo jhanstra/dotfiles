@@ -2,6 +2,10 @@
 [include]
 	path = ~/.config/git/config
 
+# Keep Azure DevOps credentials separate for each organization/repository URL.
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+
 [user]
 	name = jhanstra
 	email = jared.hanstra@findheadway.com

@@ -1,50 +1,48 @@
-[difftool "kdiff3"]
-  path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
-  trustExitCode = false
-[difftool]
-  prompt = false
+# Fallback for non-github repos
 [credential]
   helper = osxkeychain
-[diff]
-  tool = kdiff3
-[mergetool "kdiff3"]
-  path = /Applications/kdiff3.app/Contents/MacOS/kdiff3
-  trustExitCode = false
-[mergetool]
-  keepBackup = false
-[merge]
-  tool = kdiff3
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[credential "https://dev.azure.com"]
-	useHttpPath = true
-[pull]
-	ff = only
-[http]
-	postBuffer = 524288000
-[submodule]
-	recurse = true
+
+# Allows cloning with https for github repos
 [credential "https://github.com"]
 	helper = !gh auth git-credential
-[alias]
-	# View abbreviated SHA, description, and history graph of latest 20 commits
-	l = log --pretty=oneline -n 100 --graph --abbrev-commit
-	co = checkout
 
-	# View the current working tree status using the short format
-	s = status -s
+[init]
+	defaultBranch = main
 
-	# Show the diff between the latest commit and the current state
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+[pull]
+	# Replay local commits on top of fetched commits instead of creating a merge
+	rebase = true # true / false / merges / interactive
 
-	# Switch to a branch, creating it if necessary
-	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+[fetch]
+	# Drop stale remote-tracking branches that were deleted upstream
+	prune = true
 
-	# Show verbose output about tags, branches, or remotes
-	tags = tag -l
-	branches = branch -a
-	remotes = remote -v
+[rebase]
+	# Temporarily stash a dirty working tree before rebasing, then restore it.
+	autoStash = true
+	# Keep intermediate branch tips updated when rebasing stacked branches
+	updateRefs = true
+
+[rerere]
+	# If you already fixed a merge conflict and it shows again, auto-fix with that
+	enabled = true
+
+[merge]
+	# Show base + both sides in conflict markers
+	conflictstyle = zdiff3
+
+[diff]
+	algorithm = histogram
+	colorMoved = default
+
+[commit]
+	# Show the staged diff in the commit message editor
+	verbose = true
+
+[push]
+	# Removes need to run `git push -u origin main` after creating a new branch
+	autoSetupRemote = true
+
+[submodule]
+	# Recurse into submodules by default for commands that support it.
+	recurse = true
