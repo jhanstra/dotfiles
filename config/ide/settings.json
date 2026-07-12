@@ -82,7 +82,7 @@
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   // ESLint
-  "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"],
+  "editor.codeActionsOnSave": ["source.fixAll.eslint"],
   "editor.codeActionsOnSaveTimeout": 750,
 
   "eslint.alwaysShowStatus": true,
@@ -210,5 +210,13 @@
   "chat.useHooks": true,
   "cursor.composer.shouldChimeAfterChatFinishes": true,
   "window.autoDetectColorScheme": false,
-  "extensions.installCooldownHours": 168
+  "extensions.installCooldownHours": 168,
+  "yaml.disableSchemaDetection": [
+    "**/.github/workflows/*.yml",
+    "**/.github/workflows/*.yaml",
+    "**/.gitea/workflows/*.yml",
+    "**/.gitea/workflows/*.yaml",
+    "**/.forgejo/workflows/*.yml",
+    "**/.forgejo/workflows/*.yaml"
+  ]
 }

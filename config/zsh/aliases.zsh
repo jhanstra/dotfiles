@@ -111,13 +111,21 @@ alias git-reset="git rm -r --cached . && git add ."
 # branches and checking out
 alias gb="git branch"
 alias gba="git branch -a"
+alias branches="git branch -a"
 alias gcm="git checkout master"
 alias gcmp="git checkout master && git pull"
 alias gcb="git checkout -b"
 alias gnb="git checkout -b"
+alias co="git checkout"
 alias gco="git checkout"
 alias gbm='git branch -m'
 alias gbr='git branch -m'
+alias tags="git tag -l"
+alias remotes="git remote -v"
+# Create branch if missing, otherwise switch to it (avoid naming this `go` — conflicts with Go).
+ggo() { git checkout -b "$1" 2>/dev/null || git checkout "$1"; }
+# Clear when dirty, then show patch + file stats (no pager).
+gds() { git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat; }
 
 # rebasing
 alias rebase='git fetch && git rebase origin/main'
@@ -155,6 +163,29 @@ alias freshbun="find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + &
 alias freshVercel="cd ~/coprime && find . -name '.vercel' -type d -prune -exec rm -rf '{}' +"
 
 # turbo
+alias build-actions="bun run build-actions"
+alias build-github-actions="bun run build-github-actions"
+alias types="bun run types"
+alias lint="bun run lint"
+alias fmt="bun run fmt"
+alias fmt:check="bun run fmt:check"
+alias test="bun run test"
+alias pw:install="bun run pw:install"
+alias pw:ci="bun run pw:ci"
+alias pw:basic="bun run pw:basic"
+alias pw:app="bun run pw:app"
+alias build-preview="bun run build-preview"
+alias build-prod="bun run build-prod"
+alias deploy-preview="bun run deploy-preview"
+alias deploy-prod="bun run deploy-prod"
+alias hook-user-prompt-submit="bun run hook-user-prompt-submit"
+alias hook-pre-tool-use="bun run hook-pre-tool-use"
+alias hook-notification="bun run hook-notification"
+alias hook-stop="bun run hook-stop"
+alias hook-sub-agent-stop="bun run hook-sub-agent-stop"
+alias hook-pre-compact="bun run hook-pre-compact"
+alias hook-cursor-stop="bun run hook-cursor-stop"
+alias check="cd ~/coprime && axiom check"
 
 # # bun
 # alias npm=bun
@@ -267,3 +298,5 @@ nv() {
         nvim "$1"
     fi
 }
+
+alias checks="cd ~/coprime && axiom check"

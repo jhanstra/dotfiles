@@ -10,6 +10,7 @@ path+=(
   "$HOME/Library/pnpm" # pnpm binaries
   "$HOME/.bun/bin" # bun binaries
   "$HOME/.deno/bin" # deno binaries
+  "$HOME/.antigravity-ide/antigravity-ide/bin" # antigravity ide
 )
 
 # Add Homebrew paths
