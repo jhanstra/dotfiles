@@ -1,0 +1,83 @@
+# Brewfile.cli: all other cli tools i might want on all machines
+brew 'ack' # grep-like search optimized for source code
+brew 'actionlint' # static checker for GitHub Actions workflows
+brew 'awk' # text processing language
+brew 'awscli' # official Amazon AWS CLI
+brew 'bat' # cat clone with syntax highlighting
+brew 'bun' # js runtime, package manager, alternative to node
+brew 'certbot' # Let's Encrypt certificate tooling
+brew 'cloc' # count lines of code
+brew 'cmake' # cross-platform build system generator
+brew 'coreutils' # GNU file, shell, and text utilities
+brew 'cowsay' # configurable talking cow
+brew 'deno' # js runtime, node alternative
+brew 'docker-compose' # define and run multi-container Docker apps
+brew 'elixir' # functional language on the Erlang VM
+brew 'emojify' # emoji on the command line
+brew 'erlang' # programming language for concurrent systems
+brew 'fasd' # CLI for quick access to files and directories
+brew 'ffmpeg' # record, convert, and stream audio and video
+brew 'geoip' # GeoIP legacy library and tools
+brew 'gh' # GitHub CLI
+brew 'go' # Go programming language
+brew 'graphviz' # graph visualization software
+brew 'grep' # GNU grep
+brew 'guile' # GNU Ubiquitous Intelligent Language for Extensions
+brew 'htop' # terminal process monitor
+brew 'httpd' # Apache HTTP server
+brew 'hub' # GitHub extension for git (prefer gh for new use)
+brew 'imagemagick' # image processing tools
+brew 'jenkins' # open source automation server
+brew 'jp2a' # convert JPEG images to ASCII
+brew 'jq' # lightweight JSON processor
+brew 'jupyterlab' # interactive computing environments
+brew 'kotlin' # statically typed language for the JVM
+brew 'kubernetes-cli' # Kubernetes command-line tool (kubectl)
+brew 'libgit2' # C library of Git core methods
+brew 'libpq' # postgresql client
+brew 'llvm' # next-gen compiler infrastructure
+brew 'lua' # powerful, lightweight programming language
+brew 'make' # build automation tool
+brew 'memcached' # high-performance distributed memory object caching
+brew 'mongocli' # MongoDB CLI
+brew 'mosh' # mobile shell, remote terminal resilient to roaming
+brew 'mysql' # open source relational database
+brew 'mysql-client' # mysql client
+brew 'nginx' # HTTP server and reverse proxy
+brew 'nmap' # network exploration and security auditing
+brew 'nvm' # node version manager
+brew 'openssl' # cryptography and SSL/TLS toolkit
+brew 'perl' # highly capable scripting language
+brew 'pipenv' # python dependency management
+brew 'pnpm' # js package manager, alternative to npm
+brew 'postgresql@17' # object-relational database
+brew 'puma/puma/puma-dev' # local HTTPS proxy for Rack apps
+brew 'python' # Python programming language
+brew 'r' # statistical computing environment
+brew 'rabbitmq' # messaging and streaming broker
+brew 'rbenv' # ruby version manager
+brew 'readline' # library for command-line editing
+brew 'redis' # in-memory key-value store
+brew 'roundup' # unit testing tool for shell scripts
+brew 'rsync' # fast incremental file transfer
+brew 'ruby' # ruby programming language
+brew 'ruby-build' # install various Ruby versions and implementations
+brew 'spaceman-diff' # diff images from the command line
+brew 'spark' # sparklines for your shell
+brew 'stripe/stripe-cli/stripe' # stripe cli
+brew 'supabase/tap/supabase' # supabase cli
+brew 'telnet' # user interface to the TELNET protocol
+brew 'thefuck' # corrects previous console command
+brew 'tlrc' # official tldr client (replaces unmaintained tldr formula)
+brew 'tree' # list directory contents in a tree-like format
+brew 'uv' # python package manager, alternative to pip
+brew 'vim' # vim text editor
+brew 'watchman' # file system watcher
+brew 'webp' # image format providing lossless and lossy compression
+brew 'wget' # internet file retriever
+brew 'yarn' # js package manager, alternative to npm
+brew 'zsh' # UNIX shell
+brew 'zsh-completions' # additional completion definitions for zsh
+
+# Google Cloud distributes its CLI as a cask.
+cask 'gcloud-cli'

@@ -1,0 +1,13 @@
+# Brewfile.bootstrap: basic cli deps mac.sh needs to run and not stall for a million downloads
+brew 'curl' # http client
+brew 'fzf' # fuzzy finder
+brew 'git' # distributed version control system
+brew 'mas' # install Mac App Store applications
+brew 'mise' # language and tool version manager
+brew 'neovim' # vim alternative
+brew 'node' # js runtime, package manager (npm login in mac.sh)
+brew 'ripgrep' # faster grep alternative
+brew 'tmux' # terminal multiplexer
+brew 'xcodes' # install and manage full Xcode versions
+brew 'zoxide' # replaces fasd, fast 'z' directory switching
+brew 'zsh-syntax-highlighting' # zsh syntax highlighting

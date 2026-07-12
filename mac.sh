@@ -27,8 +27,9 @@ fi
 
 # Derive useful paths after loading the repository location
 DOT_CFG="$DOTFILES/config"
-MAC_CFG="$HOME/.config"
+MAC_CFG="$HOME/.config" # XDG config home
 APP_SUP="$HOME/Library/Application Support"
+DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}" # XDG data home
 
 # Save the resolved machine profile to ~/.dotfileconfig
 printf 'export DOT_CTX=%q\nexport CODE=%q\nexport DOTFILES=%q\n' \
@@ -58,9 +59,10 @@ if ! command -v brew >/dev/null 2>&1; then
   fi
 fi
 
-# Install core cli tools with homebrew
-echo "› install core homebrew packages"
-brew bundle install --file="$DOTFILES/config/homebrew/Brewfile.core"
+# Install bootstrap tools first so later mac.sh steps and linked configs work
+echo "› install bootstrap homebrew packages"
+brew bundle install --file="$DOT_CFG/homebrew/Brewfile.bootstrap"
+
 
 # Apply our preferred macOS system defaults
 echo "› set macos defaults"
@@ -75,7 +77,9 @@ fi
 
 # Link all of our config files
 echo "› link config files"
-mkdir -p "$MAC_CFG/karabiner" "$MAC_CFG/nvim" "$APP_SUP/Code/User" "$APP_SUP/Cursor/User" "$MAC_CFG/git"
+mkdir -p "$MAC_CFG/karabiner" "$MAC_CFG/nvim" "$MAC_CFG/tmux" \
+  "$APP_SUP/Code/User" "$APP_SUP/Cursor/User" "$MAC_CFG/git" \
+  "$DATA_HOME/tmux/plugins"
 ln -sf "$DOT_CFG/zsh/zshrc.zsh" "$HOME/.zshrc"
 ln -sf "$DOT_CFG/zsh/zprofile.zsh" "$HOME/.zprofile"
 ln -sf "$DOT_CFG/git/.gitconfig" "$MAC_CFG/git/config"
@@ -83,10 +87,17 @@ ln -sf "$DOT_CFG/git/.gitignore" "$MAC_CFG/git/ignore"
 ln -sf "$DOT_CFG/karabiner/karabiner.json" "$MAC_CFG/karabiner/karabiner.json"
 ln -sf "$DOT_CFG/vim+tmux/nvim.lua" "$MAC_CFG/nvim/init.lua"
 ln -sf "$DOT_CFG/vim+tmux/neovim-plugins.json" "$MAC_CFG/nvim/lazy-lock.json"
+ln -sf "$DOT_CFG/vim+tmux/.tmux.conf" "$MAC_CFG/tmux/tmux.conf"
 ln -sf "$DOT_CFG/ide/settings.json" "$APP_SUP/Code/User/settings.json"
 ln -sf "$DOT_CFG/ide/keybindings.json" "$APP_SUP/Code/User/keybindings.json"
 ln -sf "$DOT_CFG/ide/settings.json" "$APP_SUP/Cursor/User/settings.json"
 ln -sf "$DOT_CFG/ide/keybindings.json" "$APP_SUP/Cursor/User/keybindings.json"
+
+# Install TPM under XDG data home when missing
+if [[ ! -d "$DATA_HOME/tmux/plugins/tpm" ]]; then
+  echo "› install tmux plugin manager"
+  git clone https://github.com/tmux-plugins/tpm "$DATA_HOME/tmux/plugins/tpm"
+fi
 
 # Create an ssh key
 if [[ ! -d "$HOME/.ssh" ]]; then
@@ -102,10 +113,17 @@ else
   npm login
 fi
 
-# Install optional gui apps only on personal macs
+# Install everything with homebrew
+echo "› install cli homebrew packages"
+brew bundle install --file="$DOT_CFG/homebrew/Brewfile.cli"
+echo "› install homebrew apps"
+brew bundle install --file="$DOT_CFG/homebrew/Brewfile.apps"
 if [[ "$DOT_CTX" == "personal" ]]; then
   echo "› install personal homebrew apps"
-  brew bundle install --file="$DOT_CFG/homebrew/Brewfile.personal"
+  brew bundle install --file="$DOT_CFG/homebrew/Brewfile.apps.personal"
+else
+  echo "› install work homebrew apps"
+  brew bundle install --file="$DOTFILES/adapters/headway/config/Brewfile.apps.work"
 fi
 
 # Copy bundled fonts into the current user's font library

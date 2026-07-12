@@ -14,7 +14,7 @@ adapters/
   my-company/
     config/
       .gitconfig.work
-      Brewfile.work
+      Brewfile.apps.work
       zsh-config.zsh
     adapt.sh
 ```

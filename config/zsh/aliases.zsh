@@ -77,8 +77,8 @@ openvim() {
 
 alias v='openvim'
 alias vim='openvim'
-alias brewfile='nvim "$DOTFILES/config/homebrew/Brewfile.common"'
-alias brewapps='nvim "$DOTFILES/config/homebrew/Brewfile.personal"'
+alias brewfile='nvim "$DOTFILES/config/homebrew/Brewfile.cli"'
+alias brewapps='nvim "$DOTFILES/config/homebrew/Brewfile.apps"'
 
 # Use `hub` as our git wrapper / http://defunkt.github.com/hub/
 hub_path=$(which hub)
