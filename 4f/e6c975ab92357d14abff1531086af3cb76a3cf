@@ -1,0 +1,23 @@
+config/homebrew/Brewfile.bootstrap
+  s_308ee11d0199d2::t_3499077bf21cac 3,13-14
+config/zsh/aliases.zsh
+  s_308ee11d0199d2::t_db2007e6efbeb0 2,7-18,26,86-88
+config/zsh/zshrc.zsh
+  s_308ee11d0199d2::t_3bc03d88af68c9 15,17,19-21,49,55-56,67-68,76-87
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "4fe6c975ab92357d14abff1531086af3cb76a3cf",
+  "prompts": {},
+  "sessions": {
+    "s_308ee11d0199d2": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6deb1906-7bcf-404d-8d31-d1f3137dc76b",
+        "model": "unknown"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
