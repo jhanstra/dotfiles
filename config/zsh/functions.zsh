@@ -22,7 +22,7 @@ sup() { # 'save + up'
         if ($1 ~ /^[0-9]+$/) additions += $1
         if ($2 ~ /^[0-9]+$/) deletions += $2
       }
-      END { printf "%d file%s, +%d/-%d", files, files == 1 ? "" : "s", additions, deletions }
+      END { printf "%d file%s, +%d/-%d", files, (files == 1 ? "" : "s"), additions, deletions }
     ') &&
     echo "✓ committed $(git rev-parse --short HEAD): $* ($stats)" &&
     git push --quiet origin "$(git symbolic-ref --short HEAD)" &&
