@@ -1,0 +1,5 @@
+# Brewfile.fonts: fonts for editors and terminals
+cask 'font-fira-code' # coding font with ligatures
+cask 'font-geist-mono' # monospace coding font
+cask 'font-hack' # monospace coding font
+cask 'font-input' # input mono, sans, and serif families
