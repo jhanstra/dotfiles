@@ -1,7 +1,4 @@
 # Brewfile.apps: gui apps for every machine
-mas 'Amphetamine', id: 937984704 # keep the mac awake
-mas 'System Color Picker', id: 1545870783 # inspect and copy screen colors
-
 cask '1password' # password manager
 cask 'alfred' # launcher and workflow automation
 cask 'android-studio' # android development environment

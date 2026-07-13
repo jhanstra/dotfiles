@@ -1,0 +1,4 @@
+# Context	GitHub repository or pattern	Destination under $HOME
+personal	jhanstra/*	personal
+personal	coprime/coprime	coprime
+personal	teeboxgolf/teebox	collab/teebox

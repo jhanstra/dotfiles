@@ -21,7 +21,7 @@ set_finder_icon_grid() {
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
-/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -r -domain local -domain system -domain user
 
 # Disable text substitutions that fight coding:
 # capitalization, smart dashes/quotes, double-space periods, and autocorrect
@@ -116,14 +116,10 @@ defaults write com.apple.dock show-recents -bool true
 defaults write com.apple.dock mru-spaces -bool false
 
 
-# --- Safari, Messages, menu bar ---
+# --- Browser development, Messages, menu bar ---
 
-# Hide Safari's bookmark bar
-defaults write com.apple.Safari ShowFavoritesBar -bool false
-
-# Set up Safari for development
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+# Safari's sandbox blocks command-line writes to its preferences on modern macOS.
+# Enable its Develop menu and hide its favorites bar from Safari's Settings UI.
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # Set clock to military time

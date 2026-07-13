@@ -3,7 +3,6 @@ brew 'curl' # http client
 brew 'fzf' # fuzzy finder
 brew 'gh' # github cli and git credential helper
 brew 'git' # distributed version control system
-brew 'mas' # install Mac App Store applications
 brew 'mise' # language and tool version manager
 brew 'neovim' # vim alternative
 brew 'ripgrep' # faster grep alternative

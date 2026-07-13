@@ -1,18 +1,37 @@
 #!/usr/bin/env bash
 # mac.sh - entry point - set up a new mac from scratch - fully idempotent
 
-set -euo pipefail # exit on errors
+set -uo pipefail # continue setup so all failures can be reported together
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/scripts/utils.sh"
+
+RUN_INTERACTIVE=false
+if [[ ${1:-} == "-i" ]]; then RUN_INTERACTIVE=true; shift; fi # '-i' runs interactive
+(($# == 0)) || { echo "usage: ${0##*/} [-i]" >&2; exit 2; } # no other arguments allowed
+
+ERRORS=()
+record_error() {
+  local status=$?
+  local line="${BASH_LINENO[0]:-unknown}"
+  local command="${BASH_COMMAND:-unknown}"
+  ERRORS+=("line $line: $command (exit $status)")
+}
+trap record_error ERR
+trap 'exit 130' INT # allow ctrl-c to exit
 
 # Initialize machine profile values before loading saved configuration
 DOT_CTX="" CODE="" DOTFILES=""
+HOMEBREW_NO_INSTALL_CLEANUP=1
 
-echo "› let's set up your new mac!"
-
-# Load the saved user profile or collect it
 if [[ -f "$HOME/.dotfileconfig" ]]; then
-  echo "using profile at ~/.dotfileconfig"
+  banner "updating your mac!"
+  success "using profile at ~/.dotfileconfig"
   source "$HOME/.dotfileconfig"
 else
+  RUN_INTERACTIVE=true
+  banner "let's set up your new mac!"
+
   read -rp "which context is this mac? [personal/work] " DOT_CTX
   DOT_CTX="${DOT_CTX:-personal}"
 
@@ -33,7 +52,10 @@ fi
 DOT_CFG="$DOTFILES/config"
 MAC_CFG="$HOME/.config" # XDG config home
 APP_SUP="$HOME/Library/Application Support"
-source "$DOTFILES/scripts/utils.sh"
+SUDO_BREWFILE="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles/Brewfile.sudo"
+export SUDO_BREWFILE
+mkdir -p "${SUDO_BREWFILE%/*}"
+: > "$SUDO_BREWFILE"
 
 # Save the resolved machine profile to ~/.dotfileconfig
 printf 'export DOT_CTX=%q\nexport CODE=%q\nexport DOTFILES=%q\n' \
@@ -41,8 +63,8 @@ printf 'export DOT_CTX=%q\nexport CODE=%q\nexport DOTFILES=%q\n' \
 chmod 600 "$HOME/.dotfileconfig"
 
 # Print the resolved repository and context
-echo "DOTFILES: $DOTFILES"
-echo "CONTEXT: $DOT_CTX"
+printf '  %-9s %s\n' "dotfiles" "$DOTFILES" "context" "$DOT_CTX"
+echo
 
 # Check for xcode cli tools
 if ! xcode-select -p >/dev/null 2>&1; then
@@ -54,7 +76,7 @@ fi
 # Install homebrew when it is not already available
 if ! command -v brew >/dev/null 2>&1 &&
    [[ ! -x /opt/homebrew/bin/brew && ! -x /usr/local/bin/brew ]]; then
-  echo "› install homebrew"
+  step "install homebrew"
   safe_install https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh /bin/bash
 fi
 
@@ -66,8 +88,17 @@ elif [[ -x /usr/local/bin/brew ]]; then # intel
 fi
 
 # Install only needed tools initially
-echo "› install bootstrap homebrew packages"
-brew bundle install --file="$DOT_CFG/homebrew/Brewfile.bootstrap"
+step "update homebrew and install essential packages"
+timed 15m brew update
+timed 2m brew trust --formula puma/puma/puma-dev
+timed 2m brew trust --formula stripe/stripe-cli/stripe
+timed 2m brew trust --formula supabase/tap/supabase
+timed 10m brew bundle install --file="$DOT_CFG/homebrew/Brewfile.bootstrap"
+
+# Xcode installation and updates can require password
+if $RUN_INTERACTIVE; then
+  update_xcode
+fi
 
 # Install Node before the interactive npm authentication step uses it
 mkdir -p "$MAC_CFG/mise"
@@ -76,10 +107,14 @@ mise trust "$MAC_CFG/mise/config.toml"
 mise install node@24.18.0
 
 # Complete all setup tasks that require user input
-bash "$DOTFILES/scripts/interactive.sh"
+if $RUN_INTERACTIVE; then
+  bash "$DOTFILES/scripts/interactive.sh"
+else
+  step "skip interactive setup (use -i to run)"
+fi
 
 # Apply our preferred macOS system defaults
-echo "› set macos defaults"
+step "set macos defaults"
 sh "$DOTFILES/scripts/mac-defaults.sh"
 
 # Create needed directories
@@ -91,7 +126,7 @@ mkdir -p \
   "$HOME"/{.cursor/plugins/local,.claude/skills,.codex,.agents/skills}
 
 # Link config files shared by personal and work Macs
-echo "› link shared config files"
+step "link shared config files"
 safe_link "$DOT_CFG/git/.gitconfig" "$MAC_CFG/git/config"
 safe_link "$DOT_CFG/git/.gitignore" "$MAC_CFG/git/ignore"
 safe_link "$DOT_CFG/karabiner/karabiner.json" "$MAC_CFG/karabiner/karabiner.json"
@@ -114,46 +149,69 @@ link_dir "$DOT_CFG/ai/generated/skills" "$HOME/.claude/skills"
 link_dir "$DOT_CFG/ai/generated/skills" "$HOME/.agents/skills"
 
 # Install the rest of the languages with mise
-echo "› install language runtimes with mise"
+step "install language runtimes with mise"
 mise install
 
 # Install everything with homebrew
-echo "› install cli homebrew packages"
-brew bundle install --file="$DOT_CFG/homebrew/Brewfile.cli"
+step "install cli homebrew packages"
+timed 30m brew bundle install --file="$DOT_CFG/homebrew/Brewfile.cli"
 
-echo "› install homebrew apps"
-brew bundle install --file="$DOT_CFG/homebrew/Brewfile.apps"
+step "install homebrew apps"
+install_app_bundle "$DOT_CFG/homebrew/Brewfile.apps"
 
-echo "› configure app settings"
+step "configure app settings"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool false
+bash "$DOT_CFG/contexts/settings.sh"
 bash "$DOT_CFG/rectangle/settings.sh"
 
-echo "› install fonts"
-brew bundle install --file="$DOT_CFG/homebrew/Brewfile.fonts"
+step "install fonts"
+timed 30m brew bundle install --file="$DOT_CFG/homebrew/Brewfile.fonts"
 
-echo "› install other things homebrew doesn't do"
+step "install other things homebrew doesn't do"
 bash "$DOTFILES/scripts/install.sh"
 
 # Install extensions after vscode and cursor are available
-echo "› install ide extensions"
+step "install ide extensions"
 "$DOT_CFG/ide/install-extensions.sh"
 
 # Personal-only steps
 if [[ "$DOT_CTX" == "personal" ]]; then
-  echo "› install personal homebrew apps and run personal-only steps"
+  step "install personal homebrew apps and run personal-only steps"
   safe_link "$DOT_CFG/zsh/zshrc.zsh" "$HOME/.zshrc"
   safe_link "$DOT_CFG/zsh/zprofile.zsh" "$HOME/.zprofile"
   safe_link "$DOT_CFG/git/.gitconfig.personal" "$HOME/.gitconfig"
-  brew bundle install --file="$DOT_CFG/homebrew/Brewfile.apps.personal"
-fi
-
-# Work-only steps
-if [[ "$DOT_CTX" == "work" ]]; then
-  echo "› install work homebrew apps and run work-only steps"
+  install_app_bundle "$DOT_CFG/homebrew/Brewfile.apps.personal"
+else
+  step "install work homebrew apps and run work-only steps"
   safe_link "$DOTFILES/adapters/headway/config/.gitconfig.work" "$HOME/.gitconfig.local"
-  brew bundle install --file="$DOTFILES/adapters/headway/config/Brewfile.apps.work"
+  install_app_bundle "$DOTFILES/adapters/headway/config/Brewfile.apps.work"
   "$DOTFILES/adapters/headway/adapt.sh"
 fi
 
-# Success!
-echo "› setup complete! enjoy your mac!"
+step "configure startup apps and services"
+mkdir -p "$HOME/Library/LaunchAgents"
+link_dir "$DOT_CFG/launchd" "$HOME/Library/LaunchAgents"
+
+while IFS=$'\t' read -r context startup_type name _target || [[ -n "$context" ]]; do
+  [[ -z "$context" || "$context" == \#* ]] && continue
+  [[ "$context" == "all" || "$context" == "$DOT_CTX" ]] || continue
+  [[ "$startup_type" == "service" ]] || continue
+
+  timed 5m brew services start "$name"
+done < "$DOT_CFG/startup.tsv"
+
+step "cleanup homebrew"
+timed 15m brew cleanup
+
+if [[ -s "$SUDO_BREWFILE" ]]; then
+  step "administrator-required setup remains"
+  printf '  Run: bash %q\n' "$DOTFILES/sudo.sh"
+fi
+
+if ((${#ERRORS[@]} > 0)); then
+  step "setup finished with ${#ERRORS[@]} error(s):" >&2
+  printf '  - %s\n' "${ERRORS[@]}" >&2
+  exit 1
+fi
+
+success "setup complete! enjoy your mac!"

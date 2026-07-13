@@ -23,4 +23,4 @@ safe_link "$SCRIPT_DIR/config/zsh-config.zsh" "$TARGET"
 
 # Git config automatically linked by mac.sh - no need to link it here
 
-echo "› overlaid Headway config: $TARGET"
+success "overlaid Headway config: $TARGET"

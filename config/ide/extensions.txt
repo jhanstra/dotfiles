@@ -16,7 +16,7 @@ vscode-icons-team.vscode-icons
 WakaTime.vscode-wakatime
 wix.vscode-import-cost
 fabiospampinato.vscode-terminals
-github.copilot
+github.copilot-chat
 stripe.vscode-stripe
 
 # Vim

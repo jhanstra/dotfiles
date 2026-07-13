@@ -1,6 +1,4 @@
 # Brewfile.apps.personal: personal mac apps only
-mas 'Amazon Kindle', id: 302584613
-
 cask 'ableton-live-standard'
 cask 'adobe-creative-cloud'
 cask 'downie'

@@ -1,0 +1,4 @@
+# Brewfile.mas: Mac App Store apps for every machine
+mas 'Amphetamine', id: 937984704 # keep the mac awake
+mas 'System Color Picker', id: 1545870783 # inspect and copy screen colors
+mas 'Amazon Kindle', id: 302584613

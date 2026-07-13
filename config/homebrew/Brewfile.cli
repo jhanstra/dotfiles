@@ -32,6 +32,7 @@ brew 'libpq' # postgresql client
 brew 'llvm' # next-gen compiler infrastructure
 brew 'lua' # powerful, lightweight programming language
 brew 'make' # build automation tool
+brew 'mas' # install mac app store apps with brew
 brew 'memcached' # high-performance distributed memory object caching
 brew 'mongocli' # MongoDB CLI
 brew 'mosh' # mobile shell, remote terminal resilient to roaming

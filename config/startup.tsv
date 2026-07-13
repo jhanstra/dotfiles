@@ -1,0 +1,27 @@
+# context	type	name	optional target
+# Separate columns with tabs.
+# context: all, personal, or work
+# type: app opens the named macOS app at login, optionally with a file or folder
+#       service runs `brew services start <name>` during mac.sh
+# Examples:
+# personal	app	Spotify
+# personal	app	Cursor	~/coprime
+# all	service	redis
+
+# not used right now
+# all	app	CleanShot X
+# all	app	logioptionsplus
+# all	app	Loom
+
+all	app	Notion
+all	app	Stats
+all	app	Wispr Flow
+all	app	CheatSheet
+all	app	Rectangle
+all	app	Bartender 4
+all	app	Alfred 5
+all	app	Contexts
+all	app	Arc
+all	app	Ghostty
+personal	app	Cursor	~/coprime
+personal	app	Spotify
