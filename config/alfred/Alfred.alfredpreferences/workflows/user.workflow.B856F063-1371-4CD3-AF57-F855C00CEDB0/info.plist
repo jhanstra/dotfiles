@@ -575,10 +575,12 @@ A free API key for OMDb is provided, but you may set your own in the Workflow En
 		<key>locale</key>
 		<string>US</string>
 		<key>omdb_api_key</key>
-		<string>1bf8d40a</string>
+		<string></string>
 	</dict>
 	<key>variablesdontexport</key>
-	<array/>
+	<array>
+		<string>omdb_api_key</string>
+	</array>
 	<key>version</key>
 	<string>2.11.1</string>
 	<key>webaddress</key>

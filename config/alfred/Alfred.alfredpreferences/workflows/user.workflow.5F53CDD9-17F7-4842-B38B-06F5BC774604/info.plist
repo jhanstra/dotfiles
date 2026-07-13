@@ -254,7 +254,7 @@ Thanks!</string>
 	<key>variables</key>
 	<dict>
 		<key>cookie</key>
-		<string>notion_browser_id=49d9fc77-a7cd-407c-b554-5cee5c5bdfa1; notion_experiment_device_id=f2dbb2b2-f387-449f-8571-a1708f2acf12; intercom-id-gpfdrxfd=96f772a4-ef6b-4904-856a-15e586413536; NEXT_LOCALE=en-US; token_v2=ed0020755ea3704107da98e5b26ab9b5f65a825ff2569f4959e47183f5b37e37f18e10833d4e00f638ca1d83f2e23a1909b1762b181f7f4b8200e0f86fc7ea7e74ee31d1ae702aef6dac5fb14da2; notion_user_id=dfaf39c9-edbb-4c07-8aea-2c6a6fa41291; notion_users=["dfaf39c9-edbb-4c07-8aea-2c6a6fa41291"]; mutiny.defaultOptOut=true; mutiny.optOut=; mutiny.optIn=true; _gcl_au=1.1.718419510.1662476916; _ga_9ZJ8CB186L=GS1.1.1662476916.1.0.1662476916.60.0.0; _ga=GA1.1.1100757861.1662476916; _mkto_trk=id:414-XMY-838&amp;token:_mch-www.notion.so-1662476916595-78236; cb_user_id=null; cb_group_id=null; cb_anonymous_id="9cb5244d-73af-41cc-952c-a1c875cdda22"; ajs_anonymous_id=49d9fc77a7cd407cb5545cee5c5bdfa1; notion_locale=en-US/legacy; notion_check_cookie_consent=false; __cf_bm=0fz.OlyjZStstBjC1zOhwpAmnDX98589S_79JUZ7h14-1665360378-0-Ac6AZPkyfJNFpnp/cz5qfJyMkCihKQquJi66hz1mmQF3nxJbDRlPUZ+KIExz7Nzq+9e4zng4cPa2i7p4hR32wWw=; intercom-session-gpfdrxfd=RVE3WGZ1QzdCUkNWN2tIYmlBeGpOM1pTdGtTMjVWYk1VbDRySlMyZU4vRDMzN3ZscmFFMllHR2JIUDBjdDFycS0tcHJZWGtEdkpyc2pmVzBPVkJpUHRlQT09--9cee6f85751724d8885ecd8de4793066ec08b377; amp_af43d4=49d9fc77a7cd407cb5545cee5c5bdfa1.ZGZhZjM5YzllZGJiNGMwNzhhZWEyYzZhNmZhNDEyOTE=..1gevjgl3n.1gevk3p21.3l0.qo.4fo</string>
+		<string></string>
 		<key>enableIcons</key>
 		<string>True</string>
 		<key>isNavigableOnly</key>
