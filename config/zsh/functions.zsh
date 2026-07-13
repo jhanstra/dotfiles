@@ -14,7 +14,9 @@ save() {
 sup() { # 'save + up'
   git add -A &&
     git commit --quiet -m "$*" &&
-    git push --quiet origin "$(git symbolic-ref --short HEAD)"
+    echo "✓ committed $(git rev-parse --short HEAD): $*" &&
+    git push --quiet origin "$(git symbolic-ref --short HEAD)" &&
+    echo "✓ pushed to origin/$(git symbolic-ref --short HEAD)"
 }
 
 # Process management
