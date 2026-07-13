@@ -13,7 +13,10 @@ save() {
 
 sup() { # 'save + up'
   local branch commit_hash message stats upstream
-  local -i push_started push_elapsed
+  local -F push_started
+  local -i push_elapsed_ms
+
+  zmodload zsh/datetime || return
 
   message="$*"
   if [[ -z "$message" ]]; then
@@ -52,15 +55,15 @@ sup() { # 'save + up'
   ')
   print -r -- "✓ committed $commit_hash: $message ($stats)"
 
-  push_started=$SECONDS
+  push_started=$EPOCHREALTIME
   if ! git push --quiet; then
     print -u2 "✗ commit $commit_hash is saved locally; retry with: git push"
     return 1
   fi
-  push_elapsed=$((SECONDS - push_started))
+  push_elapsed_ms=$(((EPOCHREALTIME - push_started) * 1000))
 
   upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null)
-  print "✓ pushed $branch → ${upstream:-upstream} (${push_elapsed}s)"
+  print "✓ pushed $branch → ${upstream:-upstream} (${push_elapsed_ms}ms)"
 }
 
 # Process management

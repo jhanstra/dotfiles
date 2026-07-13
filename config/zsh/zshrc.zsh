@@ -32,6 +32,7 @@ fi
 
 # General zsh settings
 unsetopt CORRECT # Turn off auto spell-correct
+unsetopt BANG_HIST # Treat exclamation points literally instead of expanding history
 setopt AUTO_CD # Type the name of a folder to automatically cd into it
 setopt NO_CASE_GLOB # Case-insensitive globbing
 HISTFILE=~/.zsh_history # location of the history flile to save past commands
