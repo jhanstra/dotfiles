@@ -13,8 +13,8 @@ save() {
 
 sup() { # 'save + up'
   git add -A &&
-    git commit -m "$*" &&
-    git push origin "$(git symbolic-ref --short HEAD)"
+    git commit --quiet -m "$*" &&
+    git push --quiet origin "$(git symbolic-ref --short HEAD)"
 }
 
 # Process management
