@@ -12,21 +12,55 @@ save() {
 }
 
 sup() { # 'save + up'
-  local stats
+  local branch commit_hash message stats upstream
+  local -i push_started push_elapsed
 
-  git add -A &&
-    git commit --quiet -m "$*" &&
-    stats=$(git show --numstat --format= HEAD | awk '
-      NF >= 3 {
-        files++
-        if ($1 ~ /^[0-9]+$/) additions += $1
-        if ($2 ~ /^[0-9]+$/) deletions += $2
-      }
-      END { printf "%d file%s, +%d/-%d", files, (files == 1 ? "" : "s"), additions, deletions }
-    ') &&
-    echo "✓ committed $(git rev-parse --short HEAD): $* ($stats)" &&
-    git push --quiet origin "$(git symbolic-ref --short HEAD)" &&
-    echo "✓ pushed to origin/$(git symbolic-ref --short HEAD)"
+  message="$*"
+  if [[ -z "$message" ]]; then
+    print -u2 "usage: sup <commit message>"
+    return 2
+  fi
+
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    print -u2 "sup: not inside a Git repository"
+    return 1
+  fi
+
+  branch=$(git branch --show-current)
+  if [[ -z "$branch" ]]; then
+    print -u2 "sup: cannot push from a detached HEAD"
+    return 1
+  fi
+
+  git add -A || return
+
+  if git diff --cached --quiet; then
+    print "✓ nothing to commit"
+    return 0
+  fi
+
+  git commit --quiet -m "$message" || return
+
+  commit_hash=$(git rev-parse --short HEAD)
+  stats=$(git show --numstat --format= HEAD | awk '
+    NF >= 3 {
+      files++
+      if ($1 ~ /^[0-9]+$/) additions += $1
+      if ($2 ~ /^[0-9]+$/) deletions += $2
+    }
+    END { printf "%d file%s, +%d/-%d", files, (files == 1 ? "" : "s"), additions, deletions }
+  ')
+  print -r -- "✓ committed $commit_hash: $message ($stats)"
+
+  push_started=$SECONDS
+  if ! git push --quiet; then
+    print -u2 "✗ commit $commit_hash is saved locally; retry with: git push"
+    return 1
+  fi
+  push_elapsed=$((SECONDS - push_started))
+
+  upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null)
+  print "✓ pushed $branch → ${upstream:-upstream} (${push_elapsed}s)"
 }
 
 # Process management
