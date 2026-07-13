@@ -207,6 +207,7 @@
     "~/.github/hooks": true
   },
   "chat.useHooks": true,
+  "cursor.composer.editorConversationDensity": "detailed",
   "cursor.composer.shouldChimeAfterChatFinishes": true,
   "window.autoDetectColorScheme": false,
   "extensions.installCooldownHours": 168,
