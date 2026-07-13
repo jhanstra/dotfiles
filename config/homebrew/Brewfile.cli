@@ -15,7 +15,6 @@ brew 'docker-compose' # define and run multi-container Docker apps
 brew 'emojify' # emoji on the command line
 brew 'ffmpeg' # record, convert, and stream audio and video
 brew 'geoip' # GeoIP legacy library and tools
-brew 'gh' # GitHub CLI
 brew 'graphviz' # graph visualization software
 brew 'grep' # GNU grep
 brew 'guile' # GNU Ubiquitous Intelligent Language for Extensions

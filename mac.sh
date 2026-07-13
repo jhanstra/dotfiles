@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# mac.sh - entry point - set up a new mac from scratch
+# mac.sh - entry point - set up a new mac from scratch - fully idempotent
 
 set -euo pipefail # exit on errors
 
@@ -33,7 +33,7 @@ fi
 DOT_CFG="$DOTFILES/config"
 MAC_CFG="$HOME/.config" # XDG config home
 APP_SUP="$HOME/Library/Application Support"
-source "$DOT_CFG/scripts/utils.sh"
+source "$DOTFILES/scripts/utils.sh"
 
 # Save the resolved machine profile to ~/.dotfileconfig
 printf 'export DOT_CTX=%q\nexport CODE=%q\nexport DOTFILES=%q\n' \
@@ -69,16 +69,26 @@ fi
 echo "› install bootstrap homebrew packages"
 brew bundle install --file="$DOT_CFG/homebrew/Brewfile.bootstrap"
 
+# Install Node before the interactive npm authentication step uses it
+mkdir -p "$MAC_CFG/mise"
+safe_link "$DOT_CFG/mise/config.toml" "$MAC_CFG/mise/config.toml"
+mise trust "$MAC_CFG/mise/config.toml"
+mise install node@24.18.0
+
 # Complete all setup tasks that require user input
-bash "$DOT_CFG/scripts/interactive.sh"
+bash "$DOTFILES/scripts/interactive.sh"
 
 # Apply our preferred macOS system defaults
 echo "› set macos defaults"
-sh "$DOT_CFG/scripts/mac-defaults.sh"
+sh "$DOTFILES/scripts/mac-defaults.sh"
 
 # Create needed directories
-mkdir -p "$MAC_CFG/karabiner" "$MAC_CFG/nvim" "$MAC_CFG/tmux" \
-  "$APP_SUP/Code/User" "$APP_SUP/Cursor/User" "$MAC_CFG/git" "$MAC_CFG/mise"
+mkdir -p \
+  "$MAC_CFG"/{karabiner,nvim,tmux,git,mise,opencode,zed} \
+  "$APP_SUP"/{Code,Cursor}/User \
+  "$APP_SUP/com.mitchellh.ghostty" \
+  "$APP_SUP/iTerm2/DynamicProfiles" \
+  "$HOME"/{.cursor/plugins/local,.claude/skills,.codex,.agents/skills}
 
 # Link config files shared by personal and work Macs
 echo "› link shared config files"
@@ -92,11 +102,19 @@ safe_link "$DOT_CFG/ide/settings.json" "$APP_SUP/Code/User/settings.json"
 safe_link "$DOT_CFG/ide/keybindings.json" "$APP_SUP/Code/User/keybindings.json"
 safe_link "$DOT_CFG/ide/settings.json" "$APP_SUP/Cursor/User/settings.json"
 safe_link "$DOT_CFG/ide/keybindings.json" "$APP_SUP/Cursor/User/keybindings.json"
-safe_link "$DOT_CFG/mise/config.toml" "$MAC_CFG/mise/config.toml"
+safe_link "$DOT_CFG/zed/settings.json" "$MAC_CFG/zed/settings.json"
+safe_link "$DOT_CFG/ghostty/config" "$APP_SUP/com.mitchellh.ghostty/config"
+safe_link "$DOT_CFG/iterm2/profiles.json" "$APP_SUP/iTerm2/DynamicProfiles/jth.json"
+# Link AI configuration
+safe_link "$DOT_CFG/ai/generated/cursor" "$HOME/.cursor/plugins/local/jth"
+safe_link "$DOT_CFG/ai/generated/shared/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+safe_link "$DOT_CFG/ai/generated/shared/AGENTS.md" "$HOME/.codex/AGENTS.md"
+safe_link "$DOT_CFG/ai/generated/shared/AGENTS.md" "$MAC_CFG/opencode/AGENTS.md"
+link_dir "$DOT_CFG/ai/generated/skills" "$HOME/.claude/skills"
+link_dir "$DOT_CFG/ai/generated/skills" "$HOME/.agents/skills"
 
-# Set up mise for language runtime management
-echo "› set up mise and install language runtimes"
-mise trust "$MAC_CFG/mise/config.toml"
+# Install the rest of the languages with mise
+echo "› install language runtimes with mise"
 mise install
 
 # Install everything with homebrew
@@ -106,15 +124,15 @@ brew bundle install --file="$DOT_CFG/homebrew/Brewfile.cli"
 echo "› install homebrew apps"
 brew bundle install --file="$DOT_CFG/homebrew/Brewfile.apps"
 
-echo "› install other things homebrew doesn't do"
-bash "$DOT_CFG/scripts/install.sh"
+echo "› configure app settings"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool false
+bash "$DOT_CFG/rectangle/settings.sh"
 
-# Install fonts
 echo "› install fonts"
-mkdir -p "$HOME/Library/Fonts"
-while IFS= read -r -d '' FONT; do
-  safe_copy "$FONT" "$HOME/Library/Fonts/${FONT##*/}"
-done < <(find "$DOTFILES/fonts" -type f \( -name '*.ttf' -o -name '*.otf' -o -name '*.ttc' \) -print0)
+brew bundle install --file="$DOT_CFG/homebrew/Brewfile.fonts"
+
+echo "› install other things homebrew doesn't do"
+bash "$DOTFILES/scripts/install.sh"
 
 # Install extensions after vscode and cursor are available
 echo "› install ide extensions"

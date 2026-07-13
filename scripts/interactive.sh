@@ -9,7 +9,14 @@ source "$SCRIPT_DIR/utils.sh"
 echo "› complete interactive setup"
 
 # Sign in before Homebrew installs Mac App Store apps
-if ! mas account >/dev/null 2>&1; then
+MAS_ACCOUNT_OUTPUT=""
+if MAS_ACCOUNT_OUTPUT="$(mas account 2>&1)"; then
+  :
+elif [[ "$MAS_ACCOUNT_OUTPUT" == *"not supported on this macOS version"* ]]; then
+  echo "› mas cannot verify App Store sign-in on this macOS version"
+  open -a "App Store"
+  read -rp "Confirm the App Store is signed in, then press Enter. "
+else
   echo "› sign in to the App Store, then return here"
   open -a "App Store"
   read -rp "Press Enter after signing in to the App Store. "
@@ -18,6 +25,12 @@ if ! mas account >/dev/null 2>&1; then
     echo "App Store sign-in was not completed" >&2
     exit 1
   fi
+fi
+
+# Authenticate the credential helper configured in config/git/.gitconfig
+if ! gh auth status --hostname github.com >/dev/null 2>&1; then
+  echo "› log in to github"
+  gh auth login --hostname github.com --git-protocol https --web
 fi
 
 # Create an Ed25519 SSH key when no suitable key exists

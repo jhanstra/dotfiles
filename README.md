@@ -8,6 +8,7 @@ config and setup for:
 - language runtimes with mise (node, ruby, python, etc)
 - better macos default settings
 - cursor / vscode settings, keybindings, extensions
+- portable agent rules, skills, hooks, etc
 - neovim and tmux configuration
 - zsh config and aliases
 - git config
@@ -76,26 +77,31 @@ the included headway adapter uses its supported `~/.zshrc.d` extension point as 
 
 interactive steps are checked and skipped when already complete:
 
-- app store is signed in
+- app store is signed in, or confirmed when `mas` cannot inspect the account
+- github is authenticated
 - an ed25519 ssh key exists
 - npm is authenticated
 - oh my zsh is installed
 - xcode is installed
 
-homebrew bundles, mise, defaults, fonts, and editor extensions still run their checks. they should not duplicate existing state, but homebrew packages and mise tools set to `latest` may update over time
+homebrew bundles, mise, defaults, fonts, and editor extensions still run their checks. they should not duplicate existing state. homebrew packages may update over time; mise runtimes change only when their pinned versions are updated
 
-unknown files, different symlinks, changed same-named fonts, and partial installs are refused instead of overwritten
+unknown files, different symlinks, and partial installs are refused instead of overwritten
 
 ## updating the setup
 
 - shared bootstrap tools: `config/homebrew/Brewfile.bootstrap`
 - shared cli tools: `config/homebrew/Brewfile.cli`
 - shared apps: `config/homebrew/Brewfile.apps`
+- shared fonts: `config/homebrew/Brewfile.fonts`
 - personal apps: `config/homebrew/Brewfile.apps.personal`
 - work apps and config: `adapters/<company>/`
 - default language versions: `config/mise/config.toml`
 - shell setup and aliases: `config/zsh/`
 - cursor / vscode settings and extensions: `config/ide/`
+- app settings: `config/{alfred,ghostty,iterm2,rectangle,zed}/`
+- optional ollama models: `config/ollama/models.txt`
+- portable ai rules and skills: `config/ai/`
 - interactive setup: `scripts/interactive.sh`
 - other non-homebrew setup: `scripts/install.sh`
 
@@ -117,8 +123,17 @@ to change the saved machine context or paths, edit or remove `~/.dotfileconfig`,
 - neovim config applies on the next launch
 - tmux config applies after `tmux source-file ~/.config/tmux/tmux.conf` or a restart
 - cursor / vscode usually reload linked settings automatically; use `reload window` if needed
+- Ghostty, iTerm2, Rectangle, and Zed settings apply after restarting the app
+- Alfred requires the one-time sync-folder selection documented in `config/alfred/README.md`
+- ai guidance changes apply in new agent sessions; Cursor also needs `developer: reload window` or a restart
 - mise version changes require `mise install`
 - brewfiles, extension lists, fonts, defaults, installers, and adapter installation changes require `bash mac.sh`
+
+Ollama models are large and intentionally optional. After launching Ollama, install the declared models with:
+
+```sh
+bash scripts/install-ollama-models.sh
+```
 
 ## env setup
 

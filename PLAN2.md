@@ -128,7 +128,7 @@ the recommended order for finishing the repository.
       Homebrew/mise now own those tools.
 - [x] Keep personal defaults, fonts, and non-Homebrew installers out of work
       context.
-- [ ] Remove tools now owned by mise or no longer used, including likely
+- [x] Remove tools now owned by mise or no longer used, including likely
       candidates such as direct Node, pnpm, Ruby, Vim, Yarn, and duplicate
       syntax-highlighting installation.
 - [x] Review every cask against software actually used.
@@ -152,16 +152,14 @@ The current `mac.sh` is still the largest reliability gap.
 
 - [x] Add an explicit Bash shebang and strict/error-aware structure.
 - [x] Make Homebrew available in the current process immediately after install.
-- [ ] Stop running personal package/app setup before context branching.
-- [ ] On work Macs, run only the selected company adapter.
-- [ ] On personal Macs, run the full personal installer.
 - [x] Keep the main bootstrap linear and free of command-line modes.
 - [ ] Back up or refuse unknown files before replacing them.
 - [x] Create required VS Code/Cursor parent directories.
 - [x] Make every operation safe to repeat.
 - [x] Replace `curl | shell` installers where practical.
 - [x] Remove nvm installation because mise is the chosen version manager.
-- [ ] Reconcile Bun, pnpm globals, and mise ownership.
+- [x] Reconcile Bun, pnpm globals, and mise ownership: mise owns Node, Bun,
+      and pnpm; JavaScript project tools are not installed globally.
 - [x] Remove the stale `rm -rf /Users/jth/~` line.
 - [x] Generate an Ed25519 SSH key only when no suitable key exists.
 - [x] Stop prompting for or overwriting company-managed global Git identity.
