@@ -1,4 +1,4 @@
-# This snippet is not working yet. Look into how to use snippets in a .gitignore file.
+# This snippet is not working yet. Look into how to use snippets in a .gitignore file
 
 node_modules/
 .DS_Store
