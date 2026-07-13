@@ -12,9 +12,19 @@ save() {
 }
 
 sup() { # 'save + up'
+  local stats
+
   git add -A &&
     git commit --quiet -m "$*" &&
-    echo "✓ committed $(git rev-parse --short HEAD): $*" &&
+    stats=$(git show --numstat --format= HEAD | awk '
+      NF >= 3 {
+        files++
+        if ($1 ~ /^[0-9]+$/) additions += $1
+        if ($2 ~ /^[0-9]+$/) deletions += $2
+      }
+      END { printf "%d file%s, +%d/-%d", files, files == 1 ? "" : "s", additions, deletions }
+    ') &&
+    echo "✓ committed $(git rev-parse --short HEAD): $* ($stats)" &&
     git push --quiet origin "$(git symbolic-ref --short HEAD)" &&
     echo "✓ pushed to origin/$(git symbolic-ref --short HEAD)"
 }
