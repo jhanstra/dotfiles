@@ -1,0 +1,15 @@
+{
+  "source": "coprime",
+  "command": "bun run ai-export",
+  "rules": [
+    "AGENTS.md"
+  ],
+  "skills": [
+    ".claude/skills/delegation/SKILL.md",
+    ".claude/skills/git-and-github/SKILL.md",
+    ".claude/skills/oxlint-rules/SKILL.md",
+    ".claude/skills/tailwind-styling/SKILL.md",
+    ".claude/skills/testing/SKILL.md"
+  ],
+  "copies": []
+}
