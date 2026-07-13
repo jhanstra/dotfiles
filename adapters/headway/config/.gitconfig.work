@@ -1,6 +1,4 @@
 # this is automatically linked by mac.sh - no need to link it in adapt.sh
-[include]
-	path = ~/.config/git/config
 
 # Keep Azure DevOps credentials separate for each organization/repository URL
 [credential "https://dev.azure.com"]

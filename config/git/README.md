@@ -11,8 +11,8 @@ On a personal Mac, `mac.sh` links:
 - `.gitignore` to `~/.config/git/ignore`
 - `.gitconfig.personal` to `~/.gitconfig`
 
-The personal identity file includes its sibling `.gitconfig`, so Git loads both
-the shared behavior and personal identity.
+Git automatically loads both XDG config and `~/.gitconfig`, combining the shared
+behavior with the personal identity.
 
 On a work Mac, the company owns `~/.gitconfig`. `mac.sh` links the shared config
 and ignore files into the XDG locations and links the selected adapter's
