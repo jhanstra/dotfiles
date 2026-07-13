@@ -1,0 +1,33 @@
+README.md
+  s_308ee11d0199d2::t_ac2e977c29d253 21,35,39,48-50,55,60-61,63-68,77-78,83-84,93-98,102-103,113,129,153,179-181
+adapters/README.md
+  s_308ee11d0199d2::t_d728eff1e89168 18,22-23,36,48,66,69-70,76
+adapters/headway/adapt.sh
+  s_308ee11d0199d2::t_97670a8bd6d769 4,15-17,19-20,22
+adapters/headway/config/.gitconfig.work
+  s_308ee11d0199d2::t_3124c4d6feeea3 1
+adapters/headway/config/Brewfile.apps.work
+  s_308ee11d0199d2::t_b85c78a3259be1 2
+adapters/headway/config/functions.zsh
+  s_308ee11d0199d2::t_ad411de22b1639 1,38-41,129-131
+adapters/headway/config/zshrc.work.zsh
+  s_308ee11d0199d2::t_dd79bc522ccd55 2,4,6,8,10
+config/git/README.md
+  s_308ee11d0199d2::t_893698ebeea8fd 3-4,17-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "5675cf5aec7dc18dee1214a83ab152f542d3b962",
+  "prompts": {},
+  "sessions": {
+    "s_308ee11d0199d2": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6deb1906-7bcf-404d-8d31-d1f3137dc76b",
+        "model": "unknown"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
