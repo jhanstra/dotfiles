@@ -1,0 +1,19 @@
+config/zed/settings.json
+  s_97e8027e66e720::t_94cb50fe3c6af1 17,20,23,35,38,45-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "c076501257e76bce499e320be19a24c9a2de8864",
+  "prompts": {},
+  "sessions": {
+    "s_97e8027e66e720": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "2fc57c43-3ed5-4b2e-b84e-c2897de40f0f",
+        "model": "unknown"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
