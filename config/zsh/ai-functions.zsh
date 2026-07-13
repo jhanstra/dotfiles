@@ -24,7 +24,7 @@ aicommit() {
 }
 
 commit() {
-  local branch upstream
+  local branch
 
   if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     print -u2 "commit: not inside a Git repository"
@@ -37,14 +37,9 @@ commit() {
     return 1
   fi
 
-  _cursor_agent --force "/commit" || return
+  _cursor_agent --model composer-2.5-fast --force "/commit" || return
 
-  upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null)
-  if [[ -n "$upstream" ]]; then
-    git push
-  else
-    git push --set-upstream origin "$branch"
-  fi
+  push_current_branch
 }
 
 aifix() {

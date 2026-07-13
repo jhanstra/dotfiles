@@ -11,12 +11,37 @@ save() {
     git commit -m "$*"
 }
 
-sup() { # 'save + up'
-  local branch commit_hash message stats upstream
+push_current_branch() {
+  local branch upstream
+  local -a push_args
   local -F push_started
   local -i push_elapsed_ms
 
   zmodload zsh/datetime || return
+
+  branch=$(git branch --show-current)
+  if [[ -z "$branch" ]]; then
+    print -u2 "push: cannot push from a detached HEAD"
+    return 1
+  fi
+
+  upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null)
+  push_started=$EPOCHREALTIME
+  if [[ -z "$upstream" ]]; then
+    push_args=(--set-upstream origin "$branch")
+  fi
+  if ! git push --quiet "${push_args[@]}"; then
+    print -u2 "✗ changes are saved locally; retry with: git push"
+    return 1
+  fi
+
+  upstream="${upstream:-origin/$branch}"
+  push_elapsed_ms=$(((EPOCHREALTIME - push_started) * 1000))
+  print "✓ pushed $branch → $upstream (${push_elapsed_ms}ms)"
+}
+
+sup() { # 'save + up'
+  local branch commit_hash message stats
 
   message="$*"
   if [[ -z "$message" ]]; then
@@ -55,15 +80,7 @@ sup() { # 'save + up'
   ')
   print -r -- "✓ committed $commit_hash: $message ($stats)"
 
-  push_started=$EPOCHREALTIME
-  if ! git push --quiet; then
-    print -u2 "✗ commit $commit_hash is saved locally; retry with: git push"
-    return 1
-  fi
-  push_elapsed_ms=$(((EPOCHREALTIME - push_started) * 1000))
-
-  upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null)
-  print "✓ pushed $branch → ${upstream:-upstream} (${push_elapsed_ms}ms)"
+  push_current_branch
 }
 
 # Process management
