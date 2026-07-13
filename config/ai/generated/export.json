@@ -11,5 +11,12 @@
     ".claude/skills/tailwind-styling/SKILL.md",
     ".claude/skills/testing/SKILL.md"
   ],
-  "copies": []
+  "copies": [
+    {
+      "source": "ai/cursor/commands/commit.md",
+      "targets": [
+        "cursor/commands/commit.md"
+      ]
+    }
+  ]
 }
