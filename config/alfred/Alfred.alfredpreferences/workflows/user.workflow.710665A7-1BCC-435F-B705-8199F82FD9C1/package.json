@@ -13,5 +13,13 @@
     "alfy": "^0.12.2",
     "chance": "^1.1.8",
     "lorem-ipsum": "^2.0.4"
+  },
+  "resolutions": {
+    "minimist": "^1.2.8",
+    "plist": "^3.1.0"
+  },
+  "overrides": {
+    "minimist": "^1.2.8",
+    "plist": "^3.1.0"
   }
 }
