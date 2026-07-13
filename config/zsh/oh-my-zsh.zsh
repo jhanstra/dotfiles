@@ -15,7 +15,6 @@ plugins=(
   colored-man-pages # Add colors to man-page headings and examples
   last-working-dir # Reopen new shells in the last directory used by the previous shell
   thefuck # Enable aliases and correction support for thefuck command
-  zsh-syntax-highlighting # Highlight valid commands and shell syntax as they are typed
 )
 
 # Use oh-my-zsh's built-in robbyrussell prompt theme

@@ -1,5 +1,6 @@
 # Brewfile.bootstrap: basic cli deps mac.sh needs to run and not stall for a million downloads
 brew 'curl' # http client
+brew 'eza' # modern ls replacement with icons and git status
 brew 'fzf' # fuzzy finder
 brew 'gh' # github cli and git credential helper
 brew 'git' # distributed version control system
@@ -9,4 +10,6 @@ brew 'ripgrep' # faster grep alternative
 brew 'tmux' # terminal multiplexer
 brew 'xcodes' # install and manage full Xcode versions
 brew 'zoxide' # replaces fasd, fast 'z' directory switching
+brew 'zsh-autopair' # automatically close quotes, brackets, and parentheses
+brew 'zsh-autosuggestions' # suggest commands from shell history while typing
 brew 'zsh-syntax-highlighting' # zsh syntax highlighting

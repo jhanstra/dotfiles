@@ -12,11 +12,13 @@ path+=(
 )
 
 # Add Homebrew paths
+ZSH_HOMEBREW_PREFIX=""
 if (( $+commands[brew] )); then # check that brew is installed
+  ZSH_HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-$(brew --prefix)}"
   path+=(
-    "$(brew --prefix)/opt/mysql-client/bin" # mysql client binaries
-    "$(brew --prefix)/opt/libpq/bin" # postgresql client binaries
-    "$(brew --prefix)/share/google-cloud-sdk/bin" # optional gcloud components
+    "$ZSH_HOMEBREW_PREFIX/opt/mysql-client/bin" # mysql client binaries
+    "$ZSH_HOMEBREW_PREFIX/opt/libpq/bin" # postgresql client binaries
+    "$ZSH_HOMEBREW_PREFIX/share/google-cloud-sdk/bin" # optional gcloud components
   )
 fi
 
@@ -44,12 +46,14 @@ setopt INC_APPEND_HISTORY # add commands to history as they're typed
 setopt APPEND_HISTORY # append to history
 setopt HIST_EXPIRE_DUPS_FIRST # expire duplicates first
 setopt HIST_IGNORE_DUPS # do not store duplications
+setopt HIST_IGNORE_SPACE # do not save commands that begin with a space
 setopt HIST_FIND_NO_DUPS #ignore duplicates when searching
 setopt HIST_REDUCE_BLANKS # removes blank lines from history
 unsetopt BG_NICE # don't run background jobs at a lower priority
 
 # Add zoxide for fast 'z' directory switching
-if command -v zoxide >/dev/null 2>&1; then
+if command -v zoxide >/dev/null 2>&1 &&
+   (( ! $+functions[__zoxide_z] )); then
   eval "$(zoxide init zsh)"
 fi
 
@@ -60,10 +64,8 @@ export TZ="UTC"
 
 # Register homebrew's completion functions before oh-my-zsh initializes compinit
 typeset -U fpath FPATH
-if command -v brew >/dev/null 2>&1; then
-  HOMEBREW_PREFIX="$(brew --prefix)"
-  fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
-  unset HOMEBREW_PREFIX
+if [[ -n "$ZSH_HOMEBREW_PREFIX" ]]; then
+  fpath=("$ZSH_HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
 fi
 
 # Load other configuration files
@@ -71,3 +73,15 @@ source "$DOTFILES/config/zsh/oh-my-zsh.zsh"
 source "$DOTFILES/config/zsh/aliases.zsh"
 source "$DOTFILES/config/zsh/functions.zsh"
 source "$DOTFILES/config/zsh/ai-functions.zsh"
+
+# Load lightweight interactive plugins directly from Homebrew. Syntax
+# highlighting must load last so it can wrap every existing line-editor widget.
+if [[ -n "$ZSH_HOMEBREW_PREFIX" ]]; then
+  [[ -r "$ZSH_HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
+    source "$ZSH_HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  [[ -r "$ZSH_HOMEBREW_PREFIX/share/zsh-autopair/autopair.zsh" ]] &&
+    source "$ZSH_HOMEBREW_PREFIX/share/zsh-autopair/autopair.zsh"
+  [[ -r "$ZSH_HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
+    source "$ZSH_HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi
+unset ZSH_HOMEBREW_PREFIX

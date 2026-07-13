@@ -1,18 +1,28 @@
 # shell and navigation
-alias rl='source ~/.zshrc' # reload the zshrc file
+alias rl='exec zsh' # start a clean shell without initializing plugins twice
 alias cl='clear' # clear the screen
 alias h='history -10' # show last 10 commands
 alias hg='history | grep' # search history for a command
 
-alias l='ls -l ${colorflag}' # list files and directories in long format
-alias la='ls -la ${colorflag}' # list all files and directories
-alias lsd='ls -l | grep "^d"' # list only directories
+# alias l='ls -l ${colorflag}' # list files and directories in long format
+# alias la='ls -la ${colorflag}' # list all files and directories
+# alias lsd='ls -l | grep "^d"' # list only directories
+if (( $+commands[eza] )); then
+  alias ls='eza --hyperlink --icons=auto'
+  alias l='eza -l --hyperlink --icons=auto --group-directories-first --git'
+  alias la='eza -la --hyperlink --icons=auto --group-directories-first --git'
+  alias lsd='eza -l --only-dirs --hyperlink --icons=auto'
+  alias ll='ls -l --group-directories-first --git'
+  alias lt='ls --tree'
+  alias llt='ll --tree'
+fi
 alias cd..='cd .. && la'
 alias ..='cd .. && la'
 alias ...='cd ../.. && la'
 alias ....='cd ../../.. && la'
 alias .....='cd ../../../.. && la'
 alias o='open .'
+
 
 # projects
 alias dot='cursor "$DOTFILES"'
@@ -73,6 +83,9 @@ alias tc='tmux a -t coprime'
 
 # mac utils
 alias mac='bash "$DOTFILES/mac.sh"'
+alias mac-i='bash "$DOTFILES/mac.sh" -i'
+alias mac-f='bash "$DOTFILES/mac.sh" -f'
+alias mac-if='bash "$DOTFILES/mac.sh" -i -f'
 alias update-mac='sudo softwareupdate -i -a'
 alias ds-store='find "$HOME" \( -path "$HOME/Library" -o -path "$HOME/Music" -o -path "$HOME/Movies" -o -path "$HOME/Pictures" -o -path "$HOME/Dropbox" -o -path "$HOME/Google Drive" -o -path "$HOME/OneDrive" -o -name ".git" -o -name "node_modules" -o -name ".cache" \) -prune -o -name ".DS_Store" -type f -exec rm -f {} +'
 alias pubkey="pbcopy < ~/.ssh/id_ed25519.pub && echo '=> Public key copied to pasteboard'"
