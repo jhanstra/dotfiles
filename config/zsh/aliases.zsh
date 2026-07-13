@@ -117,8 +117,6 @@ alias tags="git tag -l"
 alias remotes="git remote -v"
 # Create branch if missing, otherwise switch to it (avoid naming this `go` — conflicts with Go)
 ggo() { git checkout -b "$1" 2>/dev/null || git checkout "$1"; }
-# Clear when dirty, then show patch + file stats (no pager)
-gds() { git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat; }
 
 # rebasing
 alias rebase='git fetch && git rebase origin/main'
