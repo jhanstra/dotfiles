@@ -1,61 +1,61 @@
 # Brewfile.apps: gui apps for every machine
-mas 'Amphetamine', id: 937984704
-mas 'System Color Picker', id: 1545870783
+mas 'Amphetamine', id: 937984704 # keep the mac awake
+mas 'System Color Picker', id: 1545870783 # inspect and copy screen colors
 
-cask '1password'
-cask 'alfred'
-cask 'android-studio'
-cask 'anki'
-cask 'antigravity'
-cask 'anythingllm'
-cask 'anytype'
-cask 'appcleaner'
-cask 'arc'
-cask 'bartender'
-cask 'charles'
-cask 'claude'
-cask 'cleanshot'
-cask 'cloudflare-warp'
-cask 'contexts'
-cask 'cursor'
-cask 'devutils'
-cask 'discord'
-cask 'dropzone'
-cask 'expo-orbit'
-cask 'figma'
-cask 'firefox'
-cask 'ghostty'
-cask 'google-chrome'
-cask 'grandperspective'
-cask 'homerow'
-cask 'insomnia'
-cask 'iterm2'
-cask 'karabiner-elements'
-cask 'linear'
-cask 'lm-studio'
-cask 'loom'
-cask 'microsoft-edge'
-cask 'miro'
-cask 'ngrok'
-cask 'notion'
-cask 'ollama-app'
-cask 'pop-app'
-cask 'postico'
-cask 'postman'
-cask 'rectangle'
-cask 'signal'
-cask 'sip-app'
-cask 'sitesucker-pro'
-cask 'sizzy'
-cask 'sketch'
-cask 'slack'
-cask 'stats'
-cask 'sublime-text'
-cask 'tailscale-app'
-cask 'thebrowsercompany-dia'
-cask 'tripmode'
-cask 'visual-studio-code'
-cask 'wispr-flow'
-cask 'yaak'
-cask 'zed'
-cask 'zoom'
+cask '1password' # password manager
+cask 'alfred' # launcher and workflow automation
+cask 'android-studio' # android development environment
+cask 'anki' # spaced-repetition flashcards
+cask 'antigravity' # ai development environment
+cask 'anythingllm' # local ai workspace
+cask 'anytype' # local-first notes and knowledge base
+cask 'appcleaner' # uninstall apps and related files
+cask 'arc' # web browser
+cask 'bartender' # menu bar organizer
+cask 'charles' # http debugging proxy
+cask 'claude' # claude desktop client
+cask 'cleanshot' # screenshots and screen recording
+cask 'cloudflare-warp' # cloudflare vpn client
+cask 'contexts' # window switcher
+cask 'cursor' # ai code editor
+cask 'devutils' # offline developer utilities
+cask 'discord' # chat and communities
+cask 'dropzone' # drag-and-drop file actions
+cask 'expo-orbit' # expo development tools
+cask 'figma' # interface design
+cask 'firefox' # web browser
+cask 'ghostty' # terminal emulator
+cask 'google-chrome' # web browser
+cask 'grandperspective' # disk usage visualizer
+cask 'homerow' # keyboard-driven macos navigation
+cask 'insomnia' # api client
+cask 'iterm2' # terminal emulator
+cask 'karabiner-elements' # keyboard remapping
+cask 'linear' # issue tracking
+cask 'lm-studio' # run local language models
+cask 'loom' # screen recording and sharing
+cask 'microsoft-edge' # web browser
+cask 'miro' # collaborative whiteboard
+cask 'ngrok' # secure localhost tunnels
+cask 'notion' # notes and project workspace
+cask 'ollama-app' # run local language models
+cask 'pop-app' # screen recording
+cask 'postico' # postgresql client
+cask 'postman' # api client
+cask 'rectangle' # window management
+cask 'signal' # private messaging
+cask 'sip-app' # color picker
+cask 'sitesucker-pro' # download websites
+cask 'sizzy' # responsive browser testing
+cask 'sketch' # interface design
+cask 'slack' # team chat
+cask 'stats' # system monitor
+cask 'sublime-text' # text editor
+cask 'tailscale-app' # mesh vpn client
+cask 'thebrowsercompany-dia' # ai web browser
+cask 'tripmode' # network usage control
+cask 'visual-studio-code' # code editor
+cask 'wispr-flow' # voice dictation
+cask 'yaak' # api client
+cask 'zed' # code editor
+cask 'zoom' # video conferencing
