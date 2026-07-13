@@ -7,6 +7,7 @@
 typeset -U path PATH
 path+=(
   "$HOME/.local/bin" # local bin
+  "$HOME/.bun/bin" # globally installed Bun package binaries
   "$HOME/.antigravity-ide/antigravity-ide/bin" # antigravity ide
 )
 
@@ -67,3 +68,5 @@ fi
 # Load other configuration files
 source "$DOTFILES/config/zsh/oh-my-zsh.zsh"
 source "$DOTFILES/config/zsh/aliases.zsh"
+source "$DOTFILES/config/zsh/functions.zsh"
+source "$DOTFILES/config/zsh/ai-functions.zsh"
