@@ -1,6 +1,19 @@
 # mac-defaults.sh: set reasonable macOS defaults
 # Original idea: https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
+set_finder_icon_grid() {
+  local view_settings="$1"
+  local finder_plist="$HOME/Library/Preferences/com.apple.finder.plist"
+
+  /usr/libexec/PlistBuddy -c "Add :$view_settings dict" "$finder_plist" 2>/dev/null || true
+  /usr/libexec/PlistBuddy -c "Add :$view_settings:IconViewSettings dict" "$finder_plist" 2>/dev/null || true
+
+  if ! /usr/libexec/PlistBuddy \
+    -c "Set :$view_settings:IconViewSettings:arrangeBy grid" "$finder_plist" 2>/dev/null; then
+    /usr/libexec/PlistBuddy \
+      -c "Add :$view_settings:IconViewSettings:arrangeBy string grid" "$finder_plist"
+  fi
+}
 
 # --- General UI/UX ---
 
@@ -64,9 +77,9 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 # Enable snap-to-grid for icons on the desktop and in other icon views
-/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
-/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+set_finder_icon_grid DesktopViewSettings
+set_finder_icon_grid FK_StandardViewSettings
+set_finder_icon_grid StandardViewSettings
 
 # Use column view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `Nlsv`, `Flwv`
