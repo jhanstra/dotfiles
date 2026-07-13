@@ -1,12 +1,12 @@
 # Default language runtimes. Homebrew owns all other CLI tools
 # Projects can override these versions in their own mise.toml files
 [tools]
-node = "24"
-ruby = "latest"
-python = "latest"
-rust = "latest"
-go = "latest"
-zig = "latest"
-php = "latest"
-erlang = "latest"
-elixir = "latest"
+node = "24.18.0"
+ruby = "4.0.5"
+python = "3.14.6"
+rust = "1.97.0"
+go = "1.26.5"
+zig = "0.16.0"
+php = "8.5.8"
+erlang = "29.0.3"
+elixir = "1.20.2-otp-29"
