@@ -14,13 +14,13 @@
     }
   },
   "project_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "outline_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "collaboration_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "agent": {
     "default_model": {
@@ -32,17 +32,17 @@
     "sidebar_side": "right",
     "dock": "right",
     "favorite_models": [],
-    "model_parameters": [],
+    "model_parameters": []
   },
   "git_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "theme": "Sandcastle",
   "buffer_font_size": 15,
   "vim_mode": true,
   "languages": {
     "Python": {
-      "language_servers": ["pylsp", "!ruff"],
-    },
-  },
+      "language_servers": ["pylsp", "!ruff"]
+    }
+  }
 }
