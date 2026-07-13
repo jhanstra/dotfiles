@@ -6,9 +6,17 @@ set -uo pipefail # continue setup so all failures can be reported together
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/scripts/utils.sh"
 
-RUN_INTERACTIVE=false
-if [[ ${1:-} == "-i" ]]; then RUN_INTERACTIVE=true; shift; fi # '-i' runs interactive
-(($# == 0)) || { echo "usage: ${0##*/} [-i]" >&2; exit 2; } # no other arguments allowed
+RUN_INTERACTIVE=false # skip interactive steps by default unless -i or first-time run
+DOTFILES_FORCE_LINKS=0 # use safe_link to not replace existing files unless -f
+while (($# > 0)); do
+  case "$1" in
+    -i) RUN_INTERACTIVE=true ;;
+    -f|--force) DOTFILES_FORCE_LINKS=1 ;;
+    *) echo "usage: ${0##*/} [-i] [-f|--force]" >&2; exit 2 ;;
+  esac
+  shift
+done
+export DOTFILES_FORCE_LINKS
 
 ERRORS=()
 record_error() {
@@ -52,10 +60,6 @@ fi
 DOT_CFG="$DOTFILES/config"
 MAC_CFG="$HOME/.config" # XDG config home
 APP_SUP="$HOME/Library/Application Support"
-SUDO_BREWFILE="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles/Brewfile.sudo"
-export SUDO_BREWFILE
-mkdir -p "${SUDO_BREWFILE%/*}"
-: > "$SUDO_BREWFILE"
 
 # Save the resolved machine profile to ~/.dotfileconfig
 printf 'export DOT_CTX=%q\nexport CODE=%q\nexport DOTFILES=%q\n' \
@@ -65,6 +69,12 @@ chmod 600 "$HOME/.dotfileconfig"
 # Print the resolved repository and context
 printf '  %-9s %s\n' "dotfiles" "$DOTFILES" "context" "$DOT_CTX"
 echo
+
+# Track privileged casks deferred by the shared application allowlist
+SUDO_BREWFILE="${XDG_CACHE_HOME:-$HOME/.cache}/dotfiles/Brewfile.sudo"
+export SUDO_BREWFILE
+mkdir -p "${SUDO_BREWFILE%/*}"
+: > "$SUDO_BREWFILE"
 
 # Check for xcode cli tools
 if ! xcode-select -p >/dev/null 2>&1; then
@@ -100,10 +110,16 @@ if $RUN_INTERACTIVE; then
   update_xcode
 fi
 
-# Install Node before the interactive npm authentication step uses it
+# Install node with mise before the interactive npm authentication step uses it
 mkdir -p "$MAC_CFG/mise"
-safe_link "$DOT_CFG/mise/config.toml" "$MAC_CFG/mise/config.toml"
-mise trust "$MAC_CFG/mise/config.toml"
+if [[ "$DOT_CTX" == "personal" ]]; then
+  safe_link "$DOT_CFG/mise/config.toml" "$MAC_CFG/mise/config.toml"
+  mise trust "$MAC_CFG/mise/config.toml"
+else
+  mkdir -p "$MAC_CFG/mise/conf.d"
+  safe_link "$DOT_CFG/mise/config.toml" "$MAC_CFG/mise/conf.d/90.jhanstra.toml"
+fi
+
 mise install node@24.18.0
 
 # Complete all setup tasks that require user input
@@ -174,6 +190,19 @@ bash "$DOTFILES/scripts/install.sh"
 step "install ide extensions"
 "$DOT_CFG/ide/install-extensions.sh"
 
+# Configure shared and context-specific apps and services that start on login
+step "configure startup apps and services"
+mkdir -p "$HOME/Library/LaunchAgents"
+link_dir "$DOT_CFG/launchd" "$HOME/Library/LaunchAgents"
+
+while IFS=$'\t' read -r context startup_type name _target || [[ -n "$context" ]]; do
+  [[ -z "$context" || "$context" == \#* ]] && continue
+  [[ "$context" == "all" || "$context" == "$DOT_CTX" ]] || continue
+  [[ "$startup_type" == "service" ]] || continue
+
+  timed 5m brew services start "$name"
+done < "$DOT_CFG/startup.tsv"
+
 # Personal-only steps
 if [[ "$DOT_CTX" == "personal" ]]; then
   step "install personal homebrew apps and run personal-only steps"
@@ -188,23 +217,12 @@ else
   "$DOTFILES/adapters/headway/adapt.sh"
 fi
 
-step "configure startup apps and services"
-mkdir -p "$HOME/Library/LaunchAgents"
-link_dir "$DOT_CFG/launchd" "$HOME/Library/LaunchAgents"
-
-while IFS=$'\t' read -r context startup_type name _target || [[ -n "$context" ]]; do
-  [[ -z "$context" || "$context" == \#* ]] && continue
-  [[ "$context" == "all" || "$context" == "$DOT_CTX" ]] || continue
-  [[ "$startup_type" == "service" ]] || continue
-
-  timed 5m brew services start "$name"
-done < "$DOT_CFG/startup.tsv"
-
+# cleanup items and readout
 step "cleanup homebrew"
 timed 15m brew cleanup
 
 if [[ -s "$SUDO_BREWFILE" ]]; then
-  step "administrator-required setup remains"
+  step "sudo-required setup remains"
   printf '  Run: bash %q\n' "$DOTFILES/sudo.sh"
 fi
 

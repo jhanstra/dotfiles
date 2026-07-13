@@ -114,8 +114,19 @@ print("\n".join(cask["name"] for cask in json.load(sys.stdin)["casks"]))
   timed "$timeout" brew bundle install --file="$brewfile"
 )
 
-# Link a file without replacing unknown user or company files
+# Link a file, replacing existing files or symlinks only when explicitly forced
 safe_link() {
+  local force="${DOTFILES_FORCE_LINKS:-0}"
+  if [[ ${1:-} == "-f" ]]; then
+    force=1
+    shift
+  fi
+
+  if (($# != 2)); then
+    echo "usage: safe_link [-f] source target" >&2
+    return 2
+  fi
+
   local source_path="$1"
   local target_path="$2"
 
@@ -129,9 +140,13 @@ safe_link() {
       return 0
     fi
 
-    echo "Refusing to replace unknown symlink: $target_path" >&2
-    echo "Current target: $(readlink "$target_path")" >&2
-    return 1
+    if [[ "$force" == "1" ]]; then
+      rm "$target_path"
+    else
+      echo "Refusing to replace unknown symlink: $target_path" >&2
+      echo "Current target: $(readlink "$target_path")" >&2
+      return 1
+    fi
   fi
 
   # Adopt empty placeholders and identical regular files without losing data.
@@ -141,8 +156,12 @@ safe_link() {
   fi
 
   if [[ -e "$target_path" ]]; then
-    echo "Refusing to replace existing file: $target_path" >&2
-    return 1
+    if [[ "$force" == "1" && -f "$target_path" ]]; then
+      rm "$target_path"
+    else
+      echo "Refusing to replace existing path: $target_path" >&2
+      return 1
+    fi
   fi
 
   ln -s "$source_path" "$target_path"

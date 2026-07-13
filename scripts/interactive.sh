@@ -43,7 +43,7 @@ if [[ ! -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]]; then
     exit 1
   fi
 
-    step "install oh-my-zsh"
+  step "install oh-my-zsh"
   RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
     safe_install https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh sh
 fi
