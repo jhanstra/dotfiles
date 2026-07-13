@@ -1,4 +1,4 @@
-# Git URL<TAB>destination under the offline repositories directory.
+# Git URL<TAB>destination under the offline repositories directory
 https://github.com/facebook/react	facebook/react
 https://github.com/preactjs/preact	preactjs/preact
 https://github.com/testing-library/testing-library-docs	testing-library/testing-library-docs

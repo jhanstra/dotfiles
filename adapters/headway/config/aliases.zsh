@@ -1,4 +1,4 @@
-# Headway-only aliases and functions migrated from 90.my-config.zsh.
+# Headway-only aliases and functions migrated from 90.my-config.zsh
 
 # work - cd into the directory when switching workspaces
 work() {
@@ -15,9 +15,9 @@ work() {
   fi
 }
 
-# Headway: bring up the full local stack via Tilt without interactive prompts.
+# Headway: bring up the full local stack via Tilt without interactive prompts
 # Tilt's docker-compose resources hang silently if Docker Desktop isn't running,
-# so boot it first and wait for the daemon socket before invoking hw.
+# so boot it first and wait for the daemon socket before invoking hw
 hw-start() {
     if ! docker info >/dev/null 2>&1; then
         echo "Docker daemon not reachable; starting Docker Desktop..."
@@ -37,14 +37,14 @@ hw-start() {
 }
 alias hw-stop='hw local stop -y'
 
-# Headway: bring up the full BACKEND stack via Tilt (no frontend apps).
+# Headway: bring up the full BACKEND stack via Tilt (no frontend apps)
 # The installed hw CLI has no `local` subcommand, so this drives Tilt directly,
-# which is the canonical orchestrator for every backend service.
+# which is the canonical orchestrator for every backend service
 hw-backend() {
     # Tilt's docker-compose resources hang silently if the Docker daemon socket
     # isn't up yet, so require Docker first. Do NOT auto-launch Docker Desktop:
     # launching it from a non-GUI shell reliably crashes its Electron tray and
-    # leaves it half-started, so prompt for a Finder/Spotlight launch instead.
+    # leaves it half-started, so prompt for a Finder/Spotlight launch instead
     if ! docker info >/dev/null 2>&1; then
         echo "Docker daemon not reachable. Please start Docker Desktop from Finder/Spotlight (Cmd-Space -> Docker)." >&2
         echo "Waiting for the Docker engine..." >&2
@@ -63,7 +63,7 @@ hw-backend() {
     # Backend-only Tilt overlay: keep every backend service (database, redis,
     # valkey, s3, elasticsearch, kafka, temporal + workers, eda, ld-server,
     # mamba, celery, celery-beat) and disable the six frontend apps. Lives
-    # outside the repo so it never shows up as an untracked file.
+    # outside the repo so it never shows up as an untracked file
     local cfg="$HOME/.config/headway/tilt-backend-only.yaml"
     if [ ! -f "$cfg" ]; then
         mkdir -p "$(dirname "$cfg")"

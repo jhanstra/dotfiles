@@ -12,20 +12,15 @@ brew 'coreutils' # GNU file, shell, and text utilities
 brew 'cowsay' # configurable talking cow
 brew 'deno' # js runtime, node alternative
 brew 'docker-compose' # define and run multi-container Docker apps
-brew 'elixir' # functional language on the Erlang VM
 brew 'emojify' # emoji on the command line
-brew 'erlang' # programming language for concurrent systems
-brew 'fasd' # CLI for quick access to files and directories
 brew 'ffmpeg' # record, convert, and stream audio and video
 brew 'geoip' # GeoIP legacy library and tools
 brew 'gh' # GitHub CLI
-brew 'go' # Go programming language
 brew 'graphviz' # graph visualization software
 brew 'grep' # GNU grep
 brew 'guile' # GNU Ubiquitous Intelligent Language for Extensions
 brew 'htop' # terminal process monitor
 brew 'httpd' # Apache HTTP server
-brew 'hub' # GitHub extension for git (prefer gh for new use)
 brew 'imagemagick' # image processing tools
 brew 'jenkins' # open source automation server
 brew 'jp2a' # convert JPEG images to ASCII
@@ -45,23 +40,17 @@ brew 'mysql' # open source relational database
 brew 'mysql-client' # mysql client
 brew 'nginx' # HTTP server and reverse proxy
 brew 'nmap' # network exploration and security auditing
-brew 'nvm' # node version manager
 brew 'openssl' # cryptography and SSL/TLS toolkit
 brew 'perl' # highly capable scripting language
-brew 'pipenv' # python dependency management
 brew 'pnpm' # js package manager, alternative to npm
 brew 'postgresql@17' # object-relational database
 brew 'puma/puma/puma-dev' # local HTTPS proxy for Rack apps
-brew 'python' # Python programming language
 brew 'r' # statistical computing environment
 brew 'rabbitmq' # messaging and streaming broker
-brew 'rbenv' # ruby version manager
 brew 'readline' # library for command-line editing
 brew 'redis' # in-memory key-value store
 brew 'roundup' # unit testing tool for shell scripts
 brew 'rsync' # fast incremental file transfer
-brew 'ruby' # ruby programming language
-brew 'ruby-build' # install various Ruby versions and implementations
 brew 'spaceman-diff' # diff images from the command line
 brew 'spark' # sparklines for your shell
 brew 'stripe/stripe-cli/stripe' # stripe cli
@@ -79,5 +68,11 @@ brew 'yarn' # js package manager, alternative to npm
 brew 'zsh' # UNIX shell
 brew 'zsh-completions' # additional completion definitions for zsh
 
-# Google Cloud distributes its CLI as a cask.
+# Google Cloud distributes its CLI as a cask
 cask 'gcloud-cli'
+
+# Intentionally not added:
+# - nvm, pipenv, rbenv (mise replaces)
+# - node, ruby, python, rust, go, zig, php, erlang, elixir (mise manages versions)
+# - tldr (not maintained)
+# - fasd (zoxide replaces)

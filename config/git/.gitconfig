@@ -18,7 +18,7 @@
 	prune = true
 
 [rebase]
-	# Temporarily stash a dirty working tree before rebasing, then restore it.
+	# Temporarily stash a dirty working tree before rebasing, then restore it
 	autoStash = true
 	# Keep intermediate branch tips updated when rebasing stacked branches
 	updateRefs = true
@@ -44,5 +44,5 @@
 	autoSetupRemote = true
 
 [submodule]
-	# Recurse into submodules by default for commands that support it.
+	# Recurse into submodules by default for commands that support it
 	recurse = true

@@ -5,7 +5,6 @@ brew 'git' # distributed version control system
 brew 'mas' # install Mac App Store applications
 brew 'mise' # language and tool version manager
 brew 'neovim' # vim alternative
-brew 'node' # js runtime, package manager (npm login in mac.sh)
 brew 'ripgrep' # faster grep alternative
 brew 'tmux' # terminal multiplexer
 brew 'xcodes' # install and manage full Xcode versions

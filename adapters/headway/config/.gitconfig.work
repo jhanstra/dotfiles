@@ -2,7 +2,7 @@
 [include]
 	path = ~/.config/git/config
 
-# Keep Azure DevOps credentials separate for each organization/repository URL.
+# Keep Azure DevOps credentials separate for each organization/repository URL
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 

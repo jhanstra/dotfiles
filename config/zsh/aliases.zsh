@@ -31,7 +31,7 @@ alias lsd='ls -l | grep "^d"' # list only directories
 alias mac='bash "$DOTFILES/mac.sh"'
 alias localip="ipconfig getifaddr en1"
 alias die-ds-store="find . -name '*.DS_Store' -type f -ls -delete" # Recursively delete `.DS_Store` files
-alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
+alias pubkey="pbcopy < ~/.ssh/id_ed25519.pub && echo '=> Public key copied to pasteboard'"
 
 alias python=python3
 
@@ -80,17 +80,10 @@ alias vim='openvim'
 alias brewfile='nvim "$DOTFILES/config/homebrew/Brewfile.cli"'
 alias brewapps='nvim "$DOTFILES/config/homebrew/Brewfile.apps"'
 
-# Use `hub` as our git wrapper / http://defunkt.github.com/hub/
-hub_path=$(which hub)
-if (( $+commands[hub] ))
-then
-  # alias git=$hub_path
-fi
-
 # statuses
-alias gs="git status -sb" # upgrade your git if -sb breaks for you. it's fun.
+alias gs="git status -sb" # upgrade your git if -sb breaks for you. it's fun
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s%Creset %Cgreen(%cr)%Creset%C(yellow)%d%Creset' --abbrev-commit --date=relative"
-alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r' # Remove `+` and `-` from start of diff lines; just rely upon color.
+alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r' # Remove `+` and `-` from start of diff lines; just rely upon color
 
 # fetching and rebasing
 alias gf="git fetch"
@@ -122,9 +115,9 @@ alias gbm='git branch -m'
 alias gbr='git branch -m'
 alias tags="git tag -l"
 alias remotes="git remote -v"
-# Create branch if missing, otherwise switch to it (avoid naming this `go` — conflicts with Go).
+# Create branch if missing, otherwise switch to it (avoid naming this `go` — conflicts with Go)
 ggo() { git checkout -b "$1" 2>/dev/null || git checkout "$1"; }
-# Clear when dirty, then show patch + file stats (no pager).
+# Clear when dirty, then show patch + file stats (no pager)
 gds() { git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat; }
 
 # rebasing

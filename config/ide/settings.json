@@ -48,7 +48,7 @@
   },
   "editor.formatOnSave": true,
   "editor.snippetSuggestions": "top",
-  "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc.
+  "workbench.statusBar.visible": true, // the status bar at the bottom with language info, etc
   "editor.smoothScrolling": false,
   "editor.renderWhitespace": "none", // turn whitespace dots on/off - none, boundary (when not in between words), all
   "workbench.editor.tabSizing": "shrink",
@@ -65,7 +65,7 @@
   "vim.easymotion": true,
   "vim.hlsearch": false,
   "vim.leader": " ",
-  // Number of lines to scroll with CTRL-U and CTRL-D commands.
+  // Number of lines to scroll with CTRL-U and CTRL-D commands
   "vim.scroll": 20,
   "vim.handleKeys": {
     "<C-k>": false
@@ -203,7 +203,6 @@
   "css.lint.unknownAtRules": "ignore",
   "github.copilot.nextEditSuggestions.enabled": true,
   "makefile.configureOnOpen": true,
-  "git.path": "/Users/jhanstra/.local/share/mise/installs/github-git-ai-project-git-ai/latest/git",
   "chat.hookFilesLocations": {
     "~/.github/hooks": true
   },

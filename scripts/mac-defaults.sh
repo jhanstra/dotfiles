@@ -120,5 +120,5 @@ defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm:ss"
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 
 # Restart Finder and Dock so changes take effect
-killall Dock
-killall Finder
+killall Dock 2>/dev/null || true
+killall Finder 2>/dev/null || true

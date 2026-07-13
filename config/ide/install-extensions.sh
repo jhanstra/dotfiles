@@ -23,7 +23,7 @@ for editor in "${EDITORS[@]}"; do
   echo "Installing extensions for $editor"
 
   while IFS= read -r extension || [[ -n "$extension" ]]; do
-    # Skip blank lines and comments.
+    # Skip blank lines and comments
     [[ -z "$extension" || "$extension" == \#* ]] && continue
 
     if [[ "$DRY_RUN" == true ]]; then

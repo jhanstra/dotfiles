@@ -7,9 +7,6 @@
 typeset -U path PATH
 path+=(
   "$HOME/.local/bin" # local bin
-  "$HOME/Library/pnpm" # pnpm binaries
-  "$HOME/.bun/bin" # bun binaries
-  "$HOME/.deno/bin" # deno binaries
   "$HOME/.antigravity-ide/antigravity-ide/bin" # antigravity ide
 )
 
@@ -22,17 +19,14 @@ if (( $+commands[brew] )); then # check that brew is installed
   )
 fi
 
-# Let mise manage language and tool versions unless the host already activated it.
-# Replaces nvm, fnm, pyenv, rbenv, etc.
+# Enable mise-managed language versions
 if command -v mise >/dev/null 2>&1 && [[ -z "${MISE_SHELL:-}" ]]; then
   eval "$(mise activate zsh)"
 fi
 
 # Load private environment variables from our dotfiles .env
 if [[ -r "$DOTFILES/.env" ]]; then
-  set -a
-  source "$DOTFILES/.env"
-  set +a
+  set -a; source "$DOTFILES/.env"; set +a
 fi
 
 # General zsh settings
@@ -62,7 +56,14 @@ export EDITOR='cursor --wait'
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 export TZ="UTC"
 
+# Register homebrew's completion functions before oh-my-zsh initializes compinit
+typeset -U fpath FPATH
+if command -v brew >/dev/null 2>&1; then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+  fpath=("$HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
+  unset HOMEBREW_PREFIX
+fi
+
 # Load other configuration files
-source "$DOTFILES/config/zsh/completions.zsh"
 source "$DOTFILES/config/zsh/oh-my-zsh.zsh"
 source "$DOTFILES/config/zsh/aliases.zsh"
