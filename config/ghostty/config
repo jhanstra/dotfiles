@@ -1,0 +1,29 @@
+keybind = shift+enter=text:\n
+
+# Typography
+font-family = Fira Code
+font-style = Retina
+font-size = 16
+adjust-cell-height = 25%
+
+# Window spacing
+window-padding-x = 10
+window-padding-y = 8
+window-padding-balance = true
+
+# Appearance
+theme = light:GitHub Light High Contrast,dark:GitHub Dark High Contrast
+mouse-hide-while-typing = true
+cursor-style-blink = false
+background-opacity = 1
+
+# macOS behavior
+window-save-state = always
+macos-option-as-alt = left
+
+# Global drop-down terminal
+keybind = global:ctrl+backquote=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-size = 35%
+quick-terminal-screen = mouse
+quick-terminal-autohide = true
