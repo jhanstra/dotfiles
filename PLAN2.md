@@ -45,8 +45,8 @@ the recommended order for finishing the repository.
 - [x] Git config lives in `config/git/`.
 - [x] IDE config lives in `config/ide/`.
 - [x] Zsh config lives in `config/zsh/`.
-- [x] Vim, Neovim, and tmux files live in `config/vim+tmux/`.
-- [x] Old Vim configuration is preserved but inactive.
+- [x] Neovim and tmux files live in `config/vim+tmux/`.
+- [x] Old Vim configuration is preserved but inactive in `config/archived/`.
 - [x] Old iTerm, IINA, and snippet data is archived.
 
 ### Karabiner
@@ -123,7 +123,7 @@ the recommended order for finishing the repository.
 ### Homebrew and tool ownership
 
 - [x] Split the current Brewfile into core CLI tools and personal GUI apps.
-- [x] Consolidate non-Homebrew setup in `config/install.sh`.
+- [x] Consolidate non-Homebrew setup in `scripts/install.sh`.
 - [x] Remove duplicate nvm/Bun installers and Git-cloned syntax highlighting;
       Homebrew/mise now own those tools.
 - [x] Keep personal defaults, fonts, and non-Homebrew installers out of work
@@ -142,7 +142,7 @@ the recommended order for finishing the repository.
 - [x] Decide whether work and personal machines need different IDE settings.
 - [x] If so, generate merged settings from shared and profile-specific inputs
       instead of linking one file everywhere.
-- [ ] Review the old Coprime workspace and either archive or delete it.
+- [x] Review the old Coprime workspace and either archive or delete it.
 
 ## What Is Not Done
 
@@ -158,22 +158,14 @@ The current `mac.sh` is still the largest reliability gap.
 - [x] Keep the main bootstrap linear and free of command-line modes.
 - [ ] Back up or refuse unknown files before replacing them.
 - [x] Create required VS Code/Cursor parent directories.
-- [ ] Make every operation safe to repeat.
-- [ ] Replace `curl | shell` installers where practical.
+- [x] Make every operation safe to repeat.
+- [x] Replace `curl | shell` installers where practical.
 - [x] Remove nvm installation because mise is the chosen version manager.
 - [ ] Reconcile Bun, pnpm globals, and mise ownership.
 - [x] Remove the stale `rm -rf /Users/jth/~` line.
-- [ ] Generate an Ed25519 SSH key only when no suitable key exists.
+- [x] Generate an Ed25519 SSH key only when no suitable key exists.
 - [x] Stop prompting for or overwriting company-managed global Git identity.
-- [ ] Make macOS defaults and font installation explicit opt-ins.
-
-### Personal Mac adapter
-
-- [ ] Create a dedicated personal/standalone adapter.
-- [ ] Link Zsh, Git, Neovim, tmux, IDE settings, and Karabiner only where this
-      repository is intended to own them.
-- [ ] Preserve existing unmanaged files through backups or refusal.
-- [ ] Verify a second run makes no changes.
+- [x] Make macOS defaults and font installation explicit opt-ins.
 
 ### Git configuration
 
@@ -196,7 +188,6 @@ The current `mac.sh` is still the largest reliability gap.
 - [ ] Review every default against current macOS.
 - [x] Remove duplicated and obsolete settings; unused defaults live in
       `config/archived/mac-defaults-archived.sh`.
-- [ ] Make the defaults script opt-in rather than unconditional.
 
 ### Validation and documentation
 
@@ -212,9 +203,9 @@ The current `mac.sh` is still the largest reliability gap.
 - [ ] Alfred preferences: approximately 110 MB and not currently configured as
       an active sync folder.
 - [ ] Fonts: approximately 27 MB; verify which families are still used.
-- [ ] `config/homebrew/fullBrew.sh`: legacy package dump.
-- [ ] Coprime workspace: stale paths and old startup commands.
-- [ ] Archived content: retain intentionally or move to a separate archive.
+- [x] `config/homebrew/fullBrew.sh`: legacy package dump.
+- [x] Coprime workspace: stale paths and old startup commands.
+- [x] Archived content: retain intentionally or move to a separate archive.
 
 ## Recommended Next Order
 

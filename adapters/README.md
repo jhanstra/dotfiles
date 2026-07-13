@@ -21,11 +21,27 @@ adapters/
 
 - `config/zsh-config.zsh` configures the company overlay and sources this repository's
   canonical `config/zsh/zshrc.zsh`.
-- `adapt.sh` connects `config/zsh-config.zsh` to the extension point supported by the
-  company.
+- `adapt.sh` owns work shell integration because each company manages shell startup
+  differently.
 - Source filenames should stay generic. The install target may use a
   company-required name such as `~/.zshrc.d/95.example-company.zsh` when load
   ordering requires it.
+
+## Shell Integration
+
+Do not assume every company manages `~/.zshrc` like Headway does. The adapter
+must choose the strategy supported by that company's environment:
+
+- If the company manages `~/.zshrc`, use its documented extension point to load
+  `config/zsh-config.zsh`.
+- If the company does not manage Zsh startup files, use the repository's
+  `safe_link` helper to link the canonical `zshrc.zsh` and `zprofile.zsh`.
+- If ownership is unclear or a destination contains an unknown file, refuse to
+  replace it and explain the conflict.
+
+`mac.sh` intentionally does not link personal Zsh entry points in work context.
+The selected work adapter is responsible for making the shared shell config
+available safely.
 
 Keep secrets and proprietary company configuration out of this repository.
 Store those in the company secret manager or an untracked local file loaded by

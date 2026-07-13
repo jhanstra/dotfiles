@@ -83,13 +83,18 @@ config/
   homebrew/
     Brewfile.core            # Core CLI dependencies
     Brewfile.personal          # Optional personal applications
-  install.sh                    # Non-Homebrew installation steps
   vim+tmux/
     nvim.lua                   # Canonical Neovim configuration
     neovim-plugins.json        # Pinned Neovim plugin versions
     .tmux.conf                 # tmux configuration
+  archived/
     vimrc.vim                  # Archived Vim configuration
-    plugins.vim                # Archived Vim plugin list
+    vim-plugins.vim            # Archived Vim plugin list
+scripts/
+  install.sh                  # Non-Homebrew installation steps
+  interactive.sh              # Interactive setup tasks
+  mac-defaults.sh             # macOS defaults
+  utils.sh                    # Shared shell utilities
 adapters/
   standalone-macos.sh          # Link repo config on personal Macs
   zshrc-d.sh                   # Install a source hook for managed shells
