@@ -29,6 +29,7 @@ startup-web() {
   done
 }
 
+# test
 startup-mobile() {
   local app="${1:-}"
 
