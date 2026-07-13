@@ -23,6 +23,30 @@ aicommit() {
     "Review all in-progress changes and create small, self-contained commits grouped by purpose. Match the repository's existing commit-message style, exclude secrets and unrelated changes, and do not push."
 }
 
+commit() {
+  local branch upstream
+
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    print -u2 "commit: not inside a Git repository"
+    return 1
+  fi
+
+  branch=$(git branch --show-current)
+  if [[ -z "$branch" ]]; then
+    print -u2 "commit: cannot push from a detached HEAD"
+    return 1
+  fi
+
+  _cursor_agent --force "/commit" || return
+
+  upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null)
+  if [[ -n "$upstream" ]]; then
+    git push
+  else
+    git push --set-upstream origin "$branch"
+  fi
+}
+
 aifix() {
   local context="${*:-Diagnose the repository's current test, type-check, or lint failures.}"
 
