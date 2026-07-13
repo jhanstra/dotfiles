@@ -30,14 +30,15 @@ config and setup for:
 
 4. run `bash mac.sh`
 5. choose `personal` or `work` and confirm the code and dotfiles paths
-6. stick around for the interactive setup near the beginning:
-   - app store sign-in
+6. stick around for setup steps that may request input near the beginning:
+   - xcode update and initialization
    - ssh key creation
    - npm login
    - oh my zsh installation
-   - xcode installation
 7. once the interactive setup finishes, walk away while the remaining tools, apps, runtimes, fonts, and editor extensions install
-8. open a new terminal after setup completes
+8. if setup reports that administrator-required work remains, run `bash sudo.sh`
+9. open a new terminal after setup completes
+10. run `agent login` once to authenticate the Cursor Agent CLI
 
 the answers are saved in `~/.dotfileconfig`, so rerunning `bash mac.sh` reuses the same context and paths
 
@@ -49,6 +50,8 @@ personal macs also:
 
 - link the personal git identity
 - install `config/homebrew/Brewfile.apps.personal`
+- clone the repositories configured for the personal context in `config/repos.tsv`; `owner/*` rows expand GitHub usernames or organizations into a folder, while `owner/repo` rows select individual repositories
+- globally install configured repositories whose root `package.json` declares command-line binaries
 
 work macs also:
 
@@ -75,16 +78,16 @@ the included headway adapter uses its supported `~/.zshrc.d` extension point as 
 
 `bash mac.sh` is safe to rerun on a mac with the same context, repo path, and company adapter
 
-interactive steps are checked and skipped when already complete:
+interactive setup always runs on the initial setup and is skipped on later runs. use `bash mac.sh -i` to run it again; completed steps are detected and skipped:
 
-- app store is signed in, or confirmed when `mas` cannot inspect the account
 - github is authenticated
 - an ed25519 ssh key exists
 - npm is authenticated
 - oh my zsh is installed
-- xcode is installed
 
-homebrew bundles, mise, defaults, fonts, and editor extensions still run their checks. they should not duplicate existing state. homebrew packages may update over time; mise runtimes change only when their pinned versions are updated
+Xcode, Homebrew bundles, mise, defaults, fonts, and editor extensions still run their checks. Xcode is updated to the latest release before Homebrew validates the build tools. these steps should not duplicate existing state. homebrew packages may update over time; mise runtimes change only when their pinned versions are updated
+
+GUI bundles inspect current Homebrew metadata and defer missing or outdated casks backed by privileged `.pkg` installers. `sudo.sh` installs the collected leftovers as a separate interactive step.
 
 unknown files, different symlinks, and partial installs are refused instead of overwritten
 
@@ -93,6 +96,7 @@ unknown files, different symlinks, and partial installs are refused instead of o
 - shared bootstrap tools: `config/homebrew/Brewfile.bootstrap`
 - shared cli tools: `config/homebrew/Brewfile.cli`
 - shared apps: `config/homebrew/Brewfile.apps`
+- shared Mac App Store apps: `config/homebrew/Brewfile.mas`
 - shared fonts: `config/homebrew/Brewfile.fonts`
 - personal apps: `config/homebrew/Brewfile.apps.personal`
 - work apps and config: `adapters/<company>/`
@@ -101,9 +105,18 @@ unknown files, different symlinks, and partial installs are refused instead of o
 - cursor / vscode settings and extensions: `config/ide/`
 - app settings: `config/{alfred,ghostty,iterm2,rectangle,zed}/`
 - optional ollama models: `config/ollama/models.txt`
+- repositories to clone: `config/repos.tsv`
+- apps and brew services started at login: `config/startup.tsv`
+- custom background processes: `config/launchd/`
 - portable ai rules and skills: `config/ai/`
 - interactive setup: `scripts/interactive.sh`
 - other non-homebrew setup: `scripts/install.sh`
+
+Startup entries use `all`, `personal`, or `work` in the first TSV column and
+`app` or `service` in the second. App rows can include a file or folder to open
+in the optional fourth column. Add a LaunchAgent plist to `config/launchd/` for
+a process that is not managed by Homebrew. Rerun `bash mac.sh` after adding a
+plist or service.
 
 pull and apply future updates with:
 
@@ -114,6 +127,15 @@ bash mac.sh
 ```
 
 to change the saved machine context or paths, edit or remove `~/.dotfileconfig`, then rerun setup
+
+### Mac App Store apps
+
+Mac App Store installs and updates require `sudo`, so they are intentionally
+separate from `mac.sh`. Run these interactively when wanted:
+
+```sh
+brew bundle install --file="$DOTFILES/config/homebrew/Brewfile.mas"
+```
 
 ### when changes go live
 
@@ -128,11 +150,12 @@ to change the saved machine context or paths, edit or remove `~/.dotfileconfig`,
 - ai guidance changes apply in new agent sessions; Cursor also needs `developer: reload window` or a restart
 - mise version changes require `mise install`
 - brewfiles, extension lists, fonts, defaults, installers, and adapter installation changes require `bash mac.sh`
+- startup app list changes apply at the next login; new launch agents require `bash mac.sh` first
 
 Ollama models are large and intentionally optional. After launching Ollama, install the declared models with:
 
 ```sh
-bash scripts/install-ollama-models.sh
+bash scripts/ollama.sh
 ```
 
 ## env setup

@@ -6,15 +6,14 @@ the recommended order for finishing the repository.
 
 ## Current State
 
-- Branch: `master`
-- In sync with `origin/master`.
-- The current smoke suite passes:
-  - Bash and Zsh syntax checks
-  - Karabiner generation with Bun
-  - Neovim headless startup
-  - IDE extension installer dry run
-  - Personal offline installer dry run
-  - Headway adapter syntax
+- Development branch: `main`.
+- The full personal setup completed successfully on this Mac on July 13, 2026.
+- `mac.sh` is now the context-aware entry point for personal and work setup.
+- The personal path is implemented and real-machine validated.
+- The Headway/work path is implemented but has not yet been installed and
+  validated on the work Mac.
+- Validation is currently manual; there is not yet a committed automated smoke
+  test runner.
 
 ## What Is Done
 
@@ -37,7 +36,8 @@ the recommended order for finishing the repository.
 - [x] zoxide replaces fasd.
 - [x] Completions are centralized without running `compinit` twice.
 - [x] Oh My Zsh is isolated and can be disabled by an adapter.
-- [x] Personal and managed-shell loading paths pass smoke tests.
+- [x] The personal shell-loading path completed a real-machine run.
+- [ ] Validate the managed-shell loading path on the work Mac.
 
 ### Repository organization
 
@@ -84,6 +84,24 @@ the recommended order for finishing the repository.
 - [x] Work and unknown contexts are rejected.
 - [x] Dry-run, package-only, and repository-only modes are supported.
 
+### Personal bootstrap and automation
+
+- [x] One `mac.sh` entry point configures a personal Mac.
+- [x] Personal context is persisted in `~/.dotfileconfig`.
+- [x] The full personal path completed successfully on this Mac.
+- [x] Repository cloning is declarative through `config/repos.tsv`.
+- [x] Login/startup apps are declarative through `config/startup.tsv`.
+- [x] Startup apps can be maintained by the launchd agent in
+      `config/launchd/com.jth.dotfiles.startup-apps.plist`.
+- [x] Context-specific settings live in `config/contexts/settings.sh`.
+- [x] Homebrew is split into bootstrap, CLI, app, personal app, font, and Mac
+      App Store manifests.
+- [x] Password-requiring package casks are deferred to `sudo.sh`.
+- [x] Shared AI configuration, shell functions, and AI shell functions are
+      linked from the repository.
+- [x] Ollama model installation is available as an optional script rather than
+      running during normal bootstrap.
+
 ### Adapter framework
 
 - [x] `adapters/README.md` documents how an agent should inspect a new company
@@ -93,17 +111,18 @@ the recommended order for finishing the repository.
 - [x] Company context is explicitly set to `work`.
 - [ ] The Headway adapter has not been installed.
 - [ ] The existing `~/.zshrc.d/90.my-config.zsh` still contains copied config.
+- [ ] The Headway-specific `aliases.zsh` exists but is not yet sourced by the
+      adapter configuration.
 
 ## What Is Partially Done
 
 ### Shell portability
 
-- [ ] Load optional local profile, override, and secret files from documented
+- [x] Load optional local profile, override, and secret files from documented
       paths.
-- [ ] Separate personal history ownership from employer-managed history.
-- [ ] Decide whether to remove `ZSH_DISABLE_COMPFIX`; current completion
-      permissions passed `compaudit`.
-- [ ] Finish auditing aliases for Coprime paths, obsolete tools, duplicate
+- [x] Separate personal history ownership from employer-managed history.
+- [x] Remove `ZSH_DISABLE_COMPFIX`; completion permissions pass `compaudit`.
+- [x] Finish auditing aliases for Coprime paths, obsolete tools, duplicate
       aliases, destructive Git shortcuts, and GNU-only flags.
 - [ ] Move general environment values into a focused environment module if
       continued modularization is useful.
@@ -128,32 +147,30 @@ the recommended order for finishing the repository.
       Homebrew/mise now own those tools.
 - [x] Keep personal defaults, fonts, and non-Homebrew installers out of work
       context.
-- [x] Remove tools now owned by mise or no longer used, including likely
-      candidates such as direct Node, pnpm, Ruby, Vim, Yarn, and duplicate
-      syntax-highlighting installation.
+- [x] Finish reviewing CLI packages that may overlap with mise or no longer be
+      needed, including pnpm, Vim, and Yarn.
 - [x] Review every cask against software actually used.
 - [x] Add new casks and cli tools I don't have in there yet
 - [x] Resolve renamed/deprecated casks.
-- [x] Decide whether `fullBrew.sh` should be deleted; it remains as legacy
-      content.
+- [x] Delete the legacy `fullBrew.sh` package dump.
 
 ### IDE profile behavior
 
-- [x] Decide whether work and personal machines need different IDE settings.
-- [x] If so, generate merged settings from shared and profile-specific inputs
-      instead of linking one file everywhere.
+- [x] Decide that work and personal machines can use one shared IDE profile.
+- [x] Link the shared settings and keybindings without per-context generation.
 - [x] Review the old Coprime workspace and either archive or delete it.
 
 ## What Is Not Done
 
 ### Safe bootstrap architecture
 
-The current `mac.sh` is still the largest reliability gap.
+The personal bootstrap architecture is implemented and has completed a
+real-machine run.
 
 - [x] Add an explicit Bash shebang and strict/error-aware structure.
 - [x] Make Homebrew available in the current process immediately after install.
 - [x] Keep the main bootstrap linear and free of command-line modes.
-- [ ] Back up or refuse unknown files before replacing them.
+- [x] Refuse unknown files instead of replacing them.
 - [x] Create required VS Code/Cursor parent directories.
 - [x] Make every operation safe to repeat.
 - [x] Replace `curl | shell` installers where practical.
@@ -183,16 +200,17 @@ The current `mac.sh` is still the largest reliability gap.
 
 ### macOS defaults
 
-- [ ] Review every default against current macOS.
+- [x] Review every default against current macOS.
 - [x] Remove duplicated and obsolete settings; unused defaults live in
       `config/archived/mac-defaults-archived.sh`.
 
 ### Validation and documentation
 
-- [ ] Replace the stale Coprime-era new-Mac instructions in `README.md`.
-- [ ] Document personal setup separately from company adapter setup.
+- [x] Replace the stale Coprime-era new-Mac instructions in `README.md`.
+- [x] Document personal setup separately from company adapter setup.
 - [ ] Add automated shell/config smoke tests.
 - [ ] Add a command that checks for broken symlinks and missing dependencies.
+- [x] Complete a successful full personal setup on this Mac.
 - [ ] Test a clean personal installation in a VM or disposable account.
 - [ ] Test rerunning the installer.
 
@@ -201,28 +219,27 @@ The current `mac.sh` is still the largest reliability gap.
 - [ ] Alfred preferences: approximately 110 MB and not currently configured as
       an active sync folder.
 - [ ] Fonts: approximately 27 MB; verify which families are still used.
-- [x] `config/homebrew/fullBrew.sh`: legacy package dump.
+- [x] Remove `config/homebrew/fullBrew.sh`.
 - [x] Coprime workspace: stale paths and old startup commands.
 - [x] Archived content: retain intentionally or move to a separate archive.
 
 ## Recommended Next Order
 
-1. Finish the Headway adapter: source `aliases.zsh`, install it, remove
-   duplicated `90.my-config`.
-2. Rewrite `mac.sh` into a context-aware, idempotent orchestrator.
-3. Create the standalone personal Mac adapter.
-4. Finish the aliases audit and Brewfile cleanup (mise-owned tools, deprecated
-   casks, new tools).
-5. Decide Alfred, fonts, workspace, `fullBrew.sh`, and other legacy content.
-6. Add tests and run a clean personal-Mac installation.
-7. Update the main README to match the final workflow.
+1. Finish the Headway adapter: source its Headway-only aliases, install it,
+   remove duplicated `90.my-config`, and verify it survives chezmoi apply.
+2. Finish the aliases, local-profile, history, and completion-permissions audit.
+3. Add an automated smoke runner plus broken-symlink and dependency checks.
+4. Rerun the personal installer, then test from a VM or disposable account.
+5. Review current macOS defaults and decide whether defaults/fonts need
+   explicit opt-in flags.
+6. Decide what to retain from Alfred preferences and the remaining font set.
 
 ## Definition of Done
 
-- One command safely configures a personal Mac.
-- A work Mac runs only a company adapter and never overwrites managed files.
-- Shared configuration has one source of truth.
-- Machine, company, and secret values are layered separately.
-- Running setup twice is harmless.
-- A clean personal environment passes automated smoke tests.
-- Documentation accurately describes both personal and work setup.
+- [x] One command safely configures a personal Mac.
+- [ ] A work Mac runs only a company adapter and never overwrites managed files.
+- [x] Shared configuration has one source of truth.
+- [ ] Machine, company, and secret values are fully layered separately.
+- [ ] Running setup twice has been explicitly validated.
+- [ ] A clean personal environment passes automated smoke tests.
+- [x] Documentation describes both personal and work setup.
