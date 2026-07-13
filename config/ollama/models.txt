@@ -1,0 +1,2 @@
+# One model per line. Model downloads are intentionally not part of mac.sh.
+qwen3:32b
