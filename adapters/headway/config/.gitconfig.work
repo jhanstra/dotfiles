@@ -1,4 +1,4 @@
-# this is automatically linked by mac.sh - no need to link it in adapt.sh
+# Linked to ~/.gitconfig.local by the Headway setup adapter.
 
 # Keep Azure DevOps credentials separate for each organization/repository URL
 [credential "https://dev.azure.com"]

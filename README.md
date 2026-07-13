@@ -18,7 +18,7 @@ config and setup for:
 
 ## new mac setup
 
-1. on a work mac, run the company's official bootstrap first and configure a company adapter as described below
+1. on a work mac, run the company's official bootstrap first
 2. make sure `git` works; on a fresh personal mac, run `xcode-select --install` and wait for it to finish
 3. clone this repo:
 
@@ -32,10 +32,11 @@ config and setup for:
 5. choose `personal` or `work` and confirm the code and dotfiles paths
 6. stick around for setup steps that may request input near the beginning:
    - xcode update and initialization
+   - github login
    - ssh key creation
    - npm login
    - oh my zsh installation
-7. once the interactive setup finishes, walk away while the remaining tools, apps, runtimes, fonts, and editor extensions install
+7. the remaining tools, apps, runtimes, fonts, and editor extensions install after the interactive steps
 8. if setup reports that administrator-required work remains, run `bash sudo.sh`
 9. open a new terminal after setup completes
 10. run `agent login` once to authenticate the Cursor Agent CLI
@@ -44,39 +45,43 @@ the answers are saved in `~/.dotfileconfig`, so rerunning `bash mac.sh` reuses t
 
 ## personal vs work
 
-both contexts install the shared brewfiles, shell tools, runtimes, config, fonts, and editor setup
+both contexts run the shared bootstrap: homebrew bootstrap and cli packages,
+`Brewfile.apps`, fonts, runtimes, editor extensions, application configuration,
+macos preferences, repository installers, ai configuration, and startup items.
 
 personal macs also:
 
 - link the personal git identity
+- link the canonical zsh and mise configuration
 - install `config/homebrew/Brewfile.apps.personal`
 - clone the repositories configured for the personal context in `config/repos.tsv`; `owner/*` rows expand GitHub usernames or organizations into a folder, while `owner/repo` rows select individual repositories
 - globally install configured repositories whose root `package.json` declares command-line binaries
 
-work macs also:
+work macs run the same shared setup, but the selected company adapter uses
+supported extension points for locations owned by the company:
 
-- link company-specific git config without replacing the company-managed global identity
-- install company-specific apps
-- run the company adapter
+- layers work identity over the company-managed git baseline
+- layers shared runtime defaults without replacing company-managed mise config
+- loads canonical personal zsh preferences through the company's supported
+  shell extension point while disabling conflicting features
+- leaves company-managed shell entry points, frameworks, and configuration
+  files untouched
 
 ### work adapters
 
 an adapter connects the shared dotfiles to extension points supported by a company-managed mac. it should not replace the company's bootstrap, managed files, security controls, or version managers
 
-`adapters/headway/` is the adapter for the owner of this repo, not a default for other users. if you fork this repo for another company:
-
 1. run the company's official setup first
 2. inspect which shell, git, package, and dotfile locations it manages
 3. create `adapters/<company>/` using the structure and safety checklist in `adapters/README.md`
-4. include an `adapt.sh`, `config/.gitconfig.work`, `config/Brewfile.apps.work`, and `config/zsh-config.zsh`
-5. update the work-only paths at the bottom of `mac.sh` from `adapters/headway/` to your adapter
+4. include `adapt.sh`, `config/.gitconfig.work`, `config/Brewfile.apps.work`, and `config/zshrc.work.zsh`
+5. update the work-only block near the bottom of `mac.sh`
 6. keep company secrets and proprietary config out of this repo
-
-the included headway adapter uses its supported `~/.zshrc.d` extension point as an example
 
 ## rerunning setup
 
-`bash mac.sh` is safe to rerun on a mac with the same context, repo path, and company adapter
+`bash mac.sh` is safe to rerun on a mac with the same context and repository
+path.
 
 interactive setup always runs on the initial setup and is skipped on later runs. use `bash mac.sh -i` to run it again; completed steps are detected and skipped:
 
@@ -85,11 +90,17 @@ interactive setup always runs on the initial setup and is skipped on later runs.
 - npm is authenticated
 - oh my zsh is installed
 
-Xcode, Homebrew bundles, mise, defaults, fonts, and editor extensions still run their checks. Xcode is updated to the latest release before Homebrew validates the build tools. these steps should not duplicate existing state. homebrew packages may update over time; mise runtimes change only when their pinned versions are updated
+use `bash mac.sh -f` to replace existing regular files or symlinks at
+repository-owned configuration targets. real directories are still refused.
+`-i` and `-f` can be combined in either order.
+
+xcode, homebrew bundles, mise, defaults, fonts, and editor extensions still run
+their checks in both contexts. company-managed files are not replaced.
 
 GUI bundles inspect current Homebrew metadata and defer missing or outdated casks backed by privileged `.pkg` installers. `sudo.sh` installs the collected leftovers as a separate interactive step.
 
-unknown files, different symlinks, and partial installs are refused instead of overwritten
+unknown files, different symlinks, and partial installs are refused unless
+`-f` is explicitly provided
 
 ## updating the setup
 
@@ -99,7 +110,7 @@ unknown files, different symlinks, and partial installs are refused instead of o
 - shared Mac App Store apps: `config/homebrew/Brewfile.mas`
 - shared fonts: `config/homebrew/Brewfile.fonts`
 - personal apps: `config/homebrew/Brewfile.apps.personal`
-- work apps and config: `adapters/<company>/`
+- work overlay configuration: `adapters/<company>/`
 - default language versions: `config/mise/config.toml`
 - shell setup and aliases: `config/zsh/`
 - cursor / vscode settings and extensions: `config/ide/`
@@ -115,8 +126,7 @@ unknown files, different symlinks, and partial installs are refused instead of o
 Startup entries use `all`, `personal`, or `work` in the first TSV column and
 `app` or `service` in the second. App rows can include a file or folder to open
 in the optional fourth column. Add a LaunchAgent plist to `config/launchd/` for
-a process that is not managed by Homebrew. Rerun `bash mac.sh` after adding a
-plist or service.
+a process that is not managed by Homebrew.
 
 pull and apply future updates with:
 
@@ -140,7 +150,7 @@ brew bundle install --file="$DOTFILES/config/homebrew/Brewfile.mas"
 ### when changes go live
 
 - git config changes apply on the next git command
-- zsh, aliases, `.env`, and adapter shell config apply in a new terminal or after `source ~/.zshrc`
+- zsh, aliases, `.env`, and adapter shell config apply in a new terminal or after `exec zsh`
 - zprofile changes apply in a new login shell
 - neovim config applies on the next launch
 - tmux config applies after `tmux source-file ~/.config/tmux/tmux.conf` or a restart
@@ -166,6 +176,8 @@ copy the example, add only the values this machine needs, and never commit the r
 cp .env.example .env
 ```
 
-`config/zsh/zshrc.zsh` loads `.env` and exports its values to commands started from the shell. open a new terminal after changing it
+the personal zsh configuration and selected work adapter both load `.env` and
+export its values to commands started from the shell. open a new terminal after
+changing it.
 
 update `.env.example` when adding a new supported variable, but leave real tokens in the ignored `.env`

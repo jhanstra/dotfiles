@@ -1,4 +1,4 @@
-# Headway-only aliases and functions migrated from 90.my-config.zsh
+# Headway-only functions migrated from 90.my-config.zsh
 
 # work - cd into the directory when switching workspaces
 work() {
@@ -35,7 +35,10 @@ hw-start() {
     fi
     hw local start --stack-name all-services --runner tilt --use-env-defaults "$@"
 }
-alias hw-stop='hw local stop -y'
+
+hw-stop() {
+    hw local stop -y "$@"
+}
 
 # Headway: bring up the full BACKEND stack via Tilt (no frontend apps)
 # The installed hw CLI has no `local` subcommand, so this drives Tilt directly,
@@ -123,4 +126,6 @@ hw-reset() {
     echo "🎉 Local database completely reset and seeded successfully!"
 }
 
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+tailscale() {
+    "/Applications/Tailscale.app/Contents/MacOS/Tailscale" "$@"
+}

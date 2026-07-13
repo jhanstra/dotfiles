@@ -15,12 +15,12 @@ adapters/
     config/
       .gitconfig.work
       Brewfile.apps.work
-      zsh-config.zsh
+      zshrc.work.zsh
     adapt.sh
 ```
 
-- `config/zsh-config.zsh` configures the company overlay and sources this repository's
-  canonical `config/zsh/zshrc.zsh`.
+- `config/zshrc.work.zsh` loads the repository's canonical
+  `config/zsh/zshrc.zsh` after required company-managed modules.
 - `adapt.sh` owns work shell integration because each company manages shell startup
   differently.
 - Source filenames should stay generic. The install target may use a
@@ -33,7 +33,7 @@ Do not assume every company manages `~/.zshrc` like Headway does. The adapter
 must choose the strategy supported by that company's environment:
 
 - If the company manages `~/.zshrc`, use its documented extension point to load
-  `config/zsh-config.zsh`.
+  `config/zshrc.work.zsh`.
 - If the company does not manage Zsh startup files, use the repository's
   `safe_link` helper to link the canonical `zshrc.zsh` and `zprofile.zsh`.
 - If ownership is unclear or a destination contains an unknown file, refuse to
@@ -45,7 +45,7 @@ available safely.
 
 Keep secrets and proprietary company configuration out of this repository.
 Store those in the company secret manager or an untracked local file loaded by
-`config/zsh-config.zsh`.
+`config/zshrc.work.zsh`.
 
 ## Create an Adapter with an Agent
 
@@ -63,17 +63,17 @@ First, inspect the active shell and dotfile setup read-only. Determine:
 - which PATH, prompt, history, completion, version-manager, Git, and package
   settings the company already owns.
 
-Create adapters/<company>/config/zsh-config.zsh and adapt.sh.
+Create adapters/<company>/config/zshrc.work.zsh and adapt.sh.
 
 Requirements:
-- source this repository's canonical config/zsh/zshrc.zsh rather than copying
-  its contents;
+- disable shell features that conflict with company-managed equivalents before
+  sourcing the canonical zsh configuration;
 - never overwrite or edit company-managed source files;
 - use a supported unmanaged extension point whenever possible;
 - disable portable modules that conflict with company-managed equivalents;
 - use generic filenames inside this repository even if the installed target
   requires a company-specific or numerically ordered name;
-- keep company-only values in config/zsh-config.zsh and secrets outside Git;
+- keep company-only values in config/zshrc.work.zsh and secrets outside Git;
 - keep adapt.sh small, direct, idempotent, and correctly quote paths;
 - detect missing company prerequisites and explain how to install them;
 - explain every destination and why it is safe;
