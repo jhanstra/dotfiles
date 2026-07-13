@@ -1,0 +1,23 @@
+mac.sh
+  s_308ee11d0199d2::t_2a98078eafe15d 9-19,73-78,113,115-122,193-205,220,225
+scripts/interactive.sh
+  s_308ee11d0199d2::t_c71ec364b8f9c2 46
+scripts/utils.sh
+  s_308ee11d0199d2::t_994c104f1b6fc0 117,119-129,143-149,159-164
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.12",
+  "base_commit_sha": "11691a5b6a89eb3b683f378ffe83bbd439ef9bb7",
+  "prompts": {},
+  "sessions": {
+    "s_308ee11d0199d2": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "6deb1906-7bcf-404d-8d31-d1f3137dc76b",
+        "model": "unknown"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
