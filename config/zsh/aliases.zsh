@@ -47,6 +47,7 @@ alias simplify='axiom ai simplify'
 alias docs='axiom ai docs'
 alias recap='axiom ai recap'
 alias pr='axiom ai pr'
+alias rebase='axiom ai rebase'
 
 # git status and history
 alias gs='git status -sb'
@@ -55,7 +56,7 @@ alias gl='gll -10'
 alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 
 # git changes and branches
-alias rebase='git fetch && git rebase origin/main'
+alias gr='git fetch && git rebase origin/main'
 alias gcont='git add -A && git rebase --continue'
 alias ga='git add -A'
 alias git-reset='git rm -r --cached . && git add .'
