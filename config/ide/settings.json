@@ -89,7 +89,7 @@
   // this *needs* to be set to false for js and ts
   "[css]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.css-language-features"
   },
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
@@ -188,7 +188,6 @@
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
   "editor.inlineSuggest.enabled": true,
-  "prettier.printWidth": 1000,
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,

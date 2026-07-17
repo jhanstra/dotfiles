@@ -4,8 +4,6 @@ christian-kohler.path-intellisense
 dbaeumer.vscode-eslint
 eamodio.gitlens
 earshinov.sort-lines-by-selection
-ericadamski.carbon-now-sh
-esbenp.prettier-vscode
 formulahendry.code-runner
 naumovs.color-highlight
 quicktype.quicktype
