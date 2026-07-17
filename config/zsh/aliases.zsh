@@ -9,10 +9,10 @@ alias hg='history | grep' # search history for a command
 # alias lsd='ls -l | grep "^d"' # list only directories
 if (( $+commands[eza] )); then
   alias ls='eza --hyperlink --icons=auto'
-  alias l='eza -l --hyperlink --icons=auto --group-directories-first --git'
-  alias la='eza -la --hyperlink --icons=auto --group-directories-first --git'
+  alias l='eza -l --hyperlink --icons=auto --group-directories-first'
+  alias la='eza -la --hyperlink --icons=auto --group-directories-first'
   alias lsd='eza -l --only-dirs --hyperlink --icons=auto'
-  alias ll='ls -l --group-directories-first --git'
+  alias ll='eza -l --hyperlink --icons=auto --group-directories-first'
   alias lt='ls --tree'
   alias llt='ll --tree'
 fi
@@ -50,7 +50,8 @@ alias pr='axiom ai pr'
 
 # git status and history
 alias gs='git status -sb'
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s%Creset %Cgreen(%cr)%Creset%C(yellow)%d%Creset' --abbrev-commit --date=relative"
+alias gll="git log --graph --pretty=format:'%Cred%h%Creset %an: %s%Creset %Cgreen(%cr)%Creset%C(yellow)%d%Creset' --abbrev-commit --date=relative"
+alias gl='gll -10'
 alias gd='git diff --color | sed "s/^\([^-+ ]*\)[-+ ]/\\1/" | less -r'
 
 # git changes and branches
