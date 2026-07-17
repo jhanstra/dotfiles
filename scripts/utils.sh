@@ -66,7 +66,7 @@ update_xcode() {
 install_app_bundle() (
   local brewfile="$1"
   local timeout="${2:-1h}"
-  local cask metadata outdated_metadata outdated_casks pkg_casks pkg_cask_list
+  local cask metadata="" outdated_metadata="" outdated_casks="" pkg_casks="" pkg_cask_list=""
   local -a casks=()
 
   while IFS= read -r cask; do
@@ -93,7 +93,7 @@ print("\n".join(
     step "defer casks that require administrator access: $pkg_cask_list"
     export HOMEBREW_BUNDLE_CASK_SKIP="${HOMEBREW_BUNDLE_CASK_SKIP:+$HOMEBREW_BUNDLE_CASK_SKIP }$pkg_cask_list"
 
-    if [[ -n "${DOTFILES_SUDO_BREWFILE:-}" ]]; then
+    if [[ -n "${SUDO_BREWFILE:-}" ]]; then
       outdated_metadata="$(brew outdated --cask --json=v2)" || return
       outdated_casks="$(/usr/bin/python3 -c '
 import json
@@ -105,7 +105,7 @@ print("\n".join(cask["name"] for cask in json.load(sys.stdin)["casks"]))
       while IFS= read -r cask; do
         if ! brew list --cask "$cask" >/dev/null 2>&1 ||
            [[ $'\n'"$outdated_casks"$'\n' == *$'\n'"$cask"$'\n'* ]]; then
-          printf "cask '%s'\n" "$cask" >> "$DOTFILES_SUDO_BREWFILE"
+          printf "cask '%s'\n" "$cask" >> "$SUDO_BREWFILE"
         fi
       done <<< "$pkg_casks"
     fi
