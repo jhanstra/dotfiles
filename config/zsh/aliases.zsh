@@ -22,12 +22,11 @@ alias ...='cd ../.. && la'
 alias ....='cd ../../.. && la'
 alias .....='cd ../../../.. && la'
 alias o='open .'
-alias cow='cowsay'
 
 
 # projects
 alias c='cursor ~/coprime'
-alias eieio='open ~/coprime'
+# dot is a function in axiom - don't add it here
 
 # axiom
 alias b='cd ~/coprime && axiom bootstrap'
