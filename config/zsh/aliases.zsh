@@ -22,16 +22,19 @@ alias ...='cd ../.. && la'
 alias ....='cd ../../.. && la'
 alias .....='cd ../../../.. && la'
 alias o='open .'
+alias cow='cowsay'
 
 
 # projects
 alias c='cursor ~/coprime'
+alias eieio='open ~/coprime'
 
 # axiom
 alias b='cd ~/coprime && axiom bootstrap'
 alias checks='cd ~/coprime && axiom check'
 alias a='axiom ai'
 alias ai='axiom ai'
+alias dot='axiom dot'
 alias commit='axiom ai commit'
 alias fastcommit='axiom ai fastcommit'
 alias cursorcommit='axiom ai cursorcommit'
