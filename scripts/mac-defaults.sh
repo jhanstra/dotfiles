@@ -128,6 +128,7 @@ defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM HH:mm:ss"
 # Messages: disable automatic emoji substitution
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
 
-# Restart Finder and Dock so changes take effect
-killall Dock 2>/dev/null || true
+# Restart Finder and Dock so changes take effect. Explicitly ask launchd to
+# relaunch Dock because Spaces gestures do not work while Dock is absent.
+launchctl kickstart -k "gui/$(id -u)/com.apple.Dock.agent"
 killall Finder 2>/dev/null || true
