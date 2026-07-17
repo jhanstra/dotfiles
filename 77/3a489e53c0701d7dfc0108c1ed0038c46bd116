@@ -1,0 +1,19 @@
+config/ide/settings.json
+  s_3b4e8176feb64c::t_2f5b96380b2492 92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "773a489e53c0701d7dfc0108c1ed0038c46bd116",
+  "prompts": {},
+  "sessions": {
+    "s_3b4e8176feb64c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3152f58a-b2bd-422f-9f7f-38384756c6df",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
