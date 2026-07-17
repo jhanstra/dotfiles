@@ -1,0 +1,1 @@
+export NO_FANCY_SHELL=1
