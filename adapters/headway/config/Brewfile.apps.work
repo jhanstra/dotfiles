@@ -1,2 +1,6 @@
 # Work-only GUI apps for Headway Macs
 # Add casks or Mac App Store entries here when they should not install on personal Macs.
+cask 'docker-desktop' # local containers and Docker tooling
+cask 'pycharm' # Python IDE
+cask 'tableplus' # database client
+cask 'temurin' # OpenJDK distribution

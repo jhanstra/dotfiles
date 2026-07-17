@@ -1,4 +1,6 @@
 # Brewfile.cli: all other cli tools i might want on all machines
+tap 'withgraphite/tap'
+
 brew 'ack' # grep-like search optimized for source code
 brew 'actionlint' # static checker for GitHub Actions workflows
 brew 'awk' # text processing language
@@ -14,8 +16,8 @@ brew 'deno' # js runtime, node alternative
 brew 'docker-compose' # define and run multi-container Docker apps
 brew 'emojify' # emoji on the command line
 brew 'ffmpeg' # record, convert, and stream audio and video
-brew 'geoip' # GeoIP legacy library and tools
 brew 'graphviz' # graph visualization software
+brew 'withgraphite/tap/graphite' # stacked changes and GitHub pull requests
 brew 'grep' # GNU grep
 brew 'guile' # GNU Ubiquitous Intelligent Language for Extensions
 brew 'htop' # terminal process monitor
@@ -67,9 +69,6 @@ brew 'wget' # internet file retriever
 brew 'yarn' # js package manager, alternative to npm
 brew 'zsh' # UNIX shell
 brew 'zsh-completions' # additional completion definitions for zsh
-
-# Google Cloud distributes its CLI as a cask
-cask 'gcloud-cli'
 
 # Intentionally not added:
 # - nvm, pipenv, rbenv (mise replaces)

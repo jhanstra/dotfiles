@@ -1,5 +1,8 @@
 # Default language runtimes. Homebrew owns all other CLI tools
 # Projects can override these versions in their own mise.toml files
+[settings.ruby]
+compile = false
+
 [tools]
 node = "24.18.0"
 ruby = "4.0.5"

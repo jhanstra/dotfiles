@@ -103,6 +103,7 @@ timed 15m brew update
 timed 2m brew trust --formula puma/puma/puma-dev
 timed 2m brew trust --formula stripe/stripe-cli/stripe
 timed 2m brew trust --formula supabase/tap/supabase
+timed 2m brew trust --formula withgraphite/tap/graphite
 timed 10m brew bundle install --file="$DOT_CFG/homebrew/Brewfile.bootstrap"
 
 # Xcode installation and updates can require password
@@ -170,7 +171,8 @@ mise install
 
 # Install everything with homebrew
 step "install cli homebrew packages"
-timed 30m brew bundle install --file="$DOT_CFG/homebrew/Brewfile.cli"
+# Do not apply user pip policies to Homebrew-managed Python environments.
+PIP_CONFIG_FILE=/dev/null timed 30m brew bundle install --file="$DOT_CFG/homebrew/Brewfile.cli"
 
 step "install homebrew apps"
 install_app_bundle "$DOT_CFG/homebrew/Brewfile.apps"
