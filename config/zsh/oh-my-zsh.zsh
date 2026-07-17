@@ -34,6 +34,7 @@ source "$ZSH/lib/git.zsh"
 source "$ZSH/plugins/git/git.plugin.zsh"
 source "$ZSH/plugins/colored-man-pages/colored-man-pages.plugin.zsh"
 source "$ZSH/plugins/last-working-dir/last-working-dir.plugin.zsh"
+source "$ZSH/lib/termsupport.zsh"
 source "$ZSH/themes/robbyrussell.zsh-theme"
 
 # Keep Ghostty tab titles concise: folder at the prompt, command + folder while running
