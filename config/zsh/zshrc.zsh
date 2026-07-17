@@ -11,25 +11,27 @@ path+=(
   "$HOME/.antigravity-ide/antigravity-ide/bin" # antigravity ide
 )
 
-# Add Homebrew paths
-ZSH_HOMEBREW_PREFIX=""
-if (( $+commands[brew] )); then # check that brew is installed
-  ZSH_HOMEBREW_PREFIX="${HOMEBREW_PREFIX:-$(brew --prefix)}"
-  path+=(
-    "$ZSH_HOMEBREW_PREFIX/opt/mysql-client/bin" # mysql client binaries
-    "$ZSH_HOMEBREW_PREFIX/opt/libpq/bin" # postgresql client binaries
-    "$ZSH_HOMEBREW_PREFIX/share/google-cloud-sdk/bin" # optional gcloud components
-  )
-fi
+# Homebrew lives at /opt/homebrew on Apple Silicon Macs
+BREW_DIR="/opt/homebrew"
+path=(
+  "$BREW_DIR/bin"
+  "$BREW_DIR/sbin"
+  # enable these if you need them
+  # "$BREW_DIR/opt/mysql-client/bin" # mysql client binaries
+  # "$BREW_DIR/opt/libpq/bin" # postgresql client binaries
+  # "$BREW_DIR/share/google-cloud-sdk/bin" # optional gcloud components
+  $path
+)
 
-# Enable mise-managed language versions
-if command -v mise >/dev/null 2>&1 && [[ -z "${MISE_SHELL:-}" ]]; then
-  eval "$(mise activate zsh)"
-fi
+# Enable mise-managed language versions through its directory-aware shims.
+# This is equivalent to `mise activate zsh --shims` without spawning mise.
+[[ -d "$HOME/.local/share/mise/shims" ]] &&
+  path=("$HOME/.local/share/mise/shims" $path)
 
 # Load private environment variables from our dotfiles .env
-if [[ -r "$DOTFILES/.env" ]]; then
+if [[ -z "${DOTFILES_ENV_LOADED:-}" && -r "$DOTFILES/.env" ]]; then
   set -a; source "$DOTFILES/.env"; set +a
+  export DOTFILES_ENV_LOADED=1
 fi
 
 # General zsh settings
@@ -64,23 +66,32 @@ export TZ="UTC"
 
 # Register homebrew's completion functions before oh-my-zsh initializes compinit
 typeset -U fpath FPATH
-if [[ -n "$ZSH_HOMEBREW_PREFIX" ]]; then
-  fpath=("$ZSH_HOMEBREW_PREFIX/share/zsh/site-functions" $fpath)
-fi
+fpath=("$BREW_DIR/share/zsh/site-functions" $fpath)
 
 # Load other configuration files
 source "$DOTFILES/config/zsh/oh-my-zsh.zsh"
 source "$DOTFILES/config/zsh/aliases.zsh"
 source "$DOTFILES/config/zsh/functions.zsh"
 
-# Load lightweight interactive plugins directly from Homebrew. Syntax
-# highlighting must load last so it can wrap every existing line-editor widget.
-if [[ -n "$ZSH_HOMEBREW_PREFIX" ]]; then
-  [[ -r "$ZSH_HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]] &&
-    source "$ZSH_HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-  [[ -r "$ZSH_HOMEBREW_PREFIX/share/zsh-autopair/autopair.zsh" ]] &&
-    source "$ZSH_HOMEBREW_PREFIX/share/zsh-autopair/autopair.zsh"
-  [[ -r "$ZSH_HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]] &&
-    source "$ZSH_HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# Replace zsh's reverse-history search with Atuin's contextual fuzzy search
+if command -v atuin >/dev/null 2>&1; then
+  eval "$(atuin init zsh)"
 fi
-unset ZSH_HOMEBREW_PREFIX
+
+# Load interactive plugins through Antidote. Syntax highlighting is listed last
+# so it can wrap every existing line-editor widget.
+ANTIDOTE_ROOT="$BREW_DIR/opt/antidote/share/antidote"
+if [[ -r "$ANTIDOTE_ROOT/antidote.zsh" ]]; then
+  ANTIDOTE_STATIC="${XDG_CACHE_HOME:-$HOME/.cache}/antidote/plugins.zsh"
+  if [[ -r "$ANTIDOTE_STATIC" &&
+        "$ANTIDOTE_STATIC" -nt "$DOTFILES/config/zsh/plugins.txt" ]]; then
+    source "$ANTIDOTE_STATIC"
+  else
+    source "$ANTIDOTE_ROOT/antidote.zsh"
+    mkdir -p "${ANTIDOTE_STATIC:h}"
+    antidote load "$DOTFILES/config/zsh/plugins.txt" "$ANTIDOTE_STATIC"
+  fi
+  unset ANTIDOTE_STATIC
+fi
+unset ANTIDOTE_ROOT
+unset BREW_DIR

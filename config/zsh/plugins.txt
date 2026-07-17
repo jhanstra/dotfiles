@@ -1,0 +1,6 @@
+# Antidote reads this manifest, downloads each plugin, and generates a static
+# loader under ~/.cache/antidote. Edit this file; do not edit the generated loader.
+
+zsh-users/zsh-autosuggestions
+hlissner/zsh-autopair
+zsh-users/zsh-syntax-highlighting

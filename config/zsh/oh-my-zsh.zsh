@@ -8,22 +8,33 @@ fi
 
 # Tell oh-my-zsh where it is installed
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"
+mkdir -p "$ZSH_CACHE_DIR"
 
-# Enable Git aliases and repository-aware shell helpers
-plugins=(
-  git
-  colored-man-pages # Add colors to man-page headings and examples
-  last-working-dir # Reopen new shells in the last directory used by the previous shell
-  thefuck # Enable aliases and correction support for thefuck command
-)
-
-# Use oh-my-zsh's built-in robbyrussell prompt theme
-ZSH_THEME="robbyrussell"
-
-# Load oh-my-zsh after all configuration above has been declared
-if [[ -r "$ZSH/oh-my-zsh.sh" ]]; then
-  source "$ZSH/oh-my-zsh.sh"
+# Load the completion dump without repeating compaudit and fpath discovery.
+autoload -Uz compinit
+ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump-${ZSH_VERSION}"
+mkdir -p "${ZSH_COMPDUMP:h}"
+if [[ -r "$ZSH_COMPDUMP" ]]; then
+  compinit -C -d "$ZSH_COMPDUMP"
+else
+  compinit -d "$ZSH_COMPDUMP"
 fi
+
+autoload -Uz colors && colors
+setopt PROMPT_SUBST
+
+# Calculate repository status after the first prompt is usable. Large
+# repositories can otherwise block prompt rendering for hundreds of milliseconds.
+source "$ZSH/lib/async_prompt.zsh"
+zstyle ':omz:alpha:lib:git' async-prompt yes
+DISABLE_UNTRACKED_FILES_DIRTY=true
+
+source "$ZSH/lib/git.zsh"
+source "$ZSH/plugins/git/git.plugin.zsh"
+source "$ZSH/plugins/colored-man-pages/colored-man-pages.plugin.zsh"
+source "$ZSH/plugins/last-working-dir/last-working-dir.plugin.zsh"
+source "$ZSH/themes/robbyrussell.zsh-theme"
 
 # Keep Ghostty tab titles concise: folder at the prompt, command + folder while running
 if [[ "$TERM" == xterm-ghostty ]]; then
