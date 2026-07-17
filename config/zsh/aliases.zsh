@@ -25,12 +25,24 @@ alias o='open .'
 
 
 # projects
-alias dot='cursor "$DOTFILES"'
 alias c='cursor ~/coprime'
 
 # axiom
 alias b='cd ~/coprime && axiom bootstrap'
 alias checks='cd ~/coprime && axiom check'
+alias a='axiom ai'
+alias ai='axiom ai'
+alias cursorcommit='axiom ai cursorcommit'
+alias task='axiom ai task'
+alias plan='axiom ai plan'
+alias explain='axiom ai explain'
+alias fix='axiom ai fix'
+alias review='axiom ai review'
+alias verify='axiom ai verify'
+alias simplify='axiom ai simplify'
+alias docs='axiom ai docs'
+alias recap='axiom ai recap'
+alias pr='axiom ai pr'
 
 # git status and history
 alias gs='git status -sb'

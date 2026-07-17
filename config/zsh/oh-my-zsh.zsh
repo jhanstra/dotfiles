@@ -24,3 +24,18 @@ ZSH_THEME="robbyrussell"
 if [[ -r "$ZSH/oh-my-zsh.sh" ]]; then
   source "$ZSH/oh-my-zsh.sh"
 fi
+
+# Keep Ghostty tab titles concise: folder at the prompt, command + folder while running
+if [[ "$TERM" == xterm-ghostty ]]; then
+  ZSH_THEME_TERM_TAB_TITLE_IDLE="%1~"
+  ZSH_THEME_TERM_TITLE_IDLE="%1~"
+
+  _ghostty_tab_title_preexec() {
+    emulate -L zsh
+    local command_name="${1[(wr)^(*=*|sudo|ssh|mosh|rake|-*)]:gs/%/%%}"
+    title "$command_name · %1~"
+  }
+
+  autoload -Uz add-zsh-hook
+  add-zsh-hook preexec _ghostty_tab_title_preexec
+fi

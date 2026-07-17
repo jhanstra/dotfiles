@@ -20,6 +20,7 @@ background-opacity = 1
 # macOS behavior
 window-save-state = always
 macos-option-as-alt = left
+macos-titlebar-style = tabs
 
 # Global drop-down terminal
 keybind = global:ctrl+backquote=toggle_quick_terminal

@@ -72,7 +72,6 @@ fi
 source "$DOTFILES/config/zsh/oh-my-zsh.zsh"
 source "$DOTFILES/config/zsh/aliases.zsh"
 source "$DOTFILES/config/zsh/functions.zsh"
-source "$DOTFILES/config/zsh/ai-functions.zsh"
 
 # Load lightweight interactive plugins directly from Homebrew. Syntax
 # highlighting must load last so it can wrap every existing line-editor widget.
