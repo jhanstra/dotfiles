@@ -30,6 +30,7 @@ source "$ZSH/lib/async_prompt.zsh"
 zstyle ':omz:alpha:lib:git' async-prompt yes
 DISABLE_UNTRACKED_FILES_DIRTY=true
 
+source "$ZSH/lib/functions.zsh"
 source "$ZSH/lib/git.zsh"
 source "$ZSH/plugins/git/git.plugin.zsh"
 source "$ZSH/plugins/colored-man-pages/colored-man-pages.plugin.zsh"
