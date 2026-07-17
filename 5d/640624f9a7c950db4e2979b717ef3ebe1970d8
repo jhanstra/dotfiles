@@ -1,0 +1,19 @@
+config/zsh/aliases.zsh
+  s_3b4e8176feb64c::t_b05ce56b6942c9 12-13,15,54-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "5d640624f9a7c950db4e2979b717ef3ebe1970d8",
+  "prompts": {},
+  "sessions": {
+    "s_3b4e8176feb64c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3152f58a-b2bd-422f-9f7f-38384756c6df",
+        "model": "unknown"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}

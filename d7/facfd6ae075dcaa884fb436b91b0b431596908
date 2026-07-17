@@ -1,0 +1,19 @@
+doctor.sh
+  s_3b4e8176feb64c::t_775d86f21aa00b 1-302
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d7facfd6ae075dcaa884fb436b91b0b431596908",
+  "prompts": {},
+  "sessions": {
+    "s_3b4e8176feb64c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3152f58a-b2bd-422f-9f7f-38384756c6df",
+        "model": "unknown"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
