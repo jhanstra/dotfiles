@@ -1,4 +1,13 @@
 keybind = shift+enter=text:\n
+keybind = cmd+digit_1=esc:1
+keybind = cmd+digit_2=esc:2
+keybind = cmd+digit_3=esc:3
+keybind = cmd+digit_4=esc:4
+keybind = cmd+digit_5=esc:5
+keybind = cmd+digit_6=esc:6
+keybind = cmd+digit_7=esc:7
+keybind = cmd+digit_8=esc:8
+keybind = cmd+digit_9=esc:9
 
 # Typography
 font-family = Fira Code
@@ -16,6 +25,7 @@ theme = light:GitHub Light High Contrast,dark:GitHub Dark High Contrast
 mouse-hide-while-typing = true
 cursor-style-blink = false
 background-opacity = 1
+scrollback-limit = 100000000
 
 # macOS behavior
 window-save-state = always
