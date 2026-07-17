@@ -1,0 +1,19 @@
+config/ghostty/config
+  s_3b4e8176feb64c::t_f4982004fbd4be 2-10,28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "62a173d6c131cdf2872b3f63cd03eb1131c982c4",
+  "prompts": {},
+  "sessions": {
+    "s_3b4e8176feb64c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3152f58a-b2bd-422f-9f7f-38384756c6df",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+adapters/headway/config/Brewfile.apps.work
+  s_3b4e8176feb64c::t_2831074f65b711 3-6
+config/homebrew/Brewfile.cli
+  s_3b4e8176feb64c::t_2c5c1f70abecd8 2-3,20
+config/mise/config.toml
+  s_3b4e8176feb64c::t_87e2a4f36ec7f7 3-5
+mac.sh
+  s_3b4e8176feb64c::t_0230b867eb3782 106,174-175
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "d4d67d09b5a65d7f1641d2026372775d521aa04e",
+  "prompts": {},
+  "sessions": {
+    "s_3b4e8176feb64c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "3152f58a-b2bd-422f-9f7f-38384756c6df",
+        "model": "unknown"
+      },
+      "human_author": "jhanstra <jared.hanstra@findheadway.com>"
+    }
+  }
+}
