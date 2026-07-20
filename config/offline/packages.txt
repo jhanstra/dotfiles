@@ -1,4 +1,4 @@
-# Packages cached by the optional personal offline setup
+# Packages cached by the optional offline setup
 # One package name per line
 
 react

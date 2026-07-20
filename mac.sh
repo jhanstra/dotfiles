@@ -8,11 +8,13 @@ source "$SCRIPT_DIR/scripts/utils.sh"
 
 RUN_INTERACTIVE=false # skip interactive steps by default unless -i or first-time run
 DOTFILES_FORCE_LINKS=0 # use safe_link to not replace existing files unless -f
+RUN_OFFLINE=false # skip large offline caches unless explicitly requested
 while (($# > 0)); do
   case "$1" in
     -i) RUN_INTERACTIVE=true ;;
     -f|--force) DOTFILES_FORCE_LINKS=1 ;;
-    *) echo "usage: ${0##*/} [-i] [-f|--force]" >&2; exit 2 ;;
+    --offline) RUN_OFFLINE=true ;;
+    *) echo "usage: ${0##*/} [-i] [-f|--force] [--offline]" >&2; exit 2 ;;
   esac
   shift
 done
@@ -187,6 +189,11 @@ timed 30m brew bundle install --file="$DOT_CFG/homebrew/Brewfile.fonts"
 
 step "install other things homebrew doesn't do"
 bash "$DOTFILES/scripts/install.sh"
+
+if $RUN_OFFLINE; then
+  step "cache packages and repositories for offline use"
+  bash "$DOTFILES/scripts/offline.sh"
+fi
 
 # Install extensions after vscode and cursor are available
 step "install ide extensions"
