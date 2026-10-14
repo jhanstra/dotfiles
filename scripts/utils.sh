@@ -167,6 +167,33 @@ safe_link() {
   ln -s "$source_path" "$target_path"
 }
 
+# Synchronize a managed directory without exposing Cursor to external symlinks
+sync_managed_dir() {
+  local source_dir="$1"
+  local target_dir="$2"
+
+  if [[ ! -d "$source_dir" ]]; then
+    echo "Refusing to sync missing directory: $source_dir" >&2
+    return 1
+  fi
+
+  if [[ -L "$target_dir" ]]; then
+    if [[ "$(readlink "$target_dir")" == "$source_dir" || "${DOTFILES_FORCE_LINKS:-0}" == "1" ]]; then
+      rm "$target_dir"
+    else
+      echo "Refusing to replace unknown symlink: $target_dir" >&2
+      echo "Current target: $(readlink "$target_dir")" >&2
+      return 1
+    fi
+  elif [[ -e "$target_dir" && ! -d "$target_dir" ]]; then
+    echo "Refusing to replace non-directory path: $target_dir" >&2
+    return 1
+  fi
+
+  mkdir -p "$target_dir"
+  rsync -a --delete "$source_dir/" "$target_dir/"
+}
+
 # Link every child in a directory without replacing unknown targets
 link_dir() (
   local source_dir="$1"
@@ -182,6 +209,36 @@ link_dir() (
   for source_path in "$source_dir"/*; do
     safe_link "$source_path" "$target_dir/${source_path##*/}"
   done
+)
+
+# Install only managed AI guidance; leave unrelated user skills untouched
+sync_ai() (
+  set -e
+  local generated="$1"
+  local skills_dir link target
+  [[ -f "$generated/shared/universal.md" ]] || {
+    echo "Missing universal guidance; run bun run ai-export in Coprime first" >&2
+    return 1
+  }
+  mkdir -p "$HOME"/{.cursor/plugins/local,.claude/skills,.codex,.agents/skills,.config/opencode}
+  shopt -s nullglob
+  for skills_dir in "$HOME/.agents/skills" "$HOME/.claude/skills"; do
+    for link in "$skills_dir"/*; do
+      [[ -L "$link" ]] || continue
+      target="$(readlink "$link")"
+      case "$target" in
+        "$generated/skills/"*)
+          [[ -d "$target" ]] || rm "$link"
+          ;;
+      esac
+    done
+    link_dir "$generated/skills" "$skills_dir"
+  done
+  safe_link "$generated/shared" "$HOME/.agents/guidance"
+  safe_link "$generated/shared/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+  safe_link "$generated/shared/AGENTS.md" "$HOME/.codex/AGENTS.md"
+  safe_link "$generated/shared/AGENTS.md" "$HOME/.config/opencode/AGENTS.md"
+  sync_managed_dir "$generated/cursor" "$HOME/.cursor/plugins/local/jth"
 )
 
 # Download a remote installer completely, run it, clean up, and return its exit code

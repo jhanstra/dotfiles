@@ -6,19 +6,26 @@ set -uo pipefail # continue setup so all failures can be reported together
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/scripts/utils.sh"
 
+AI_ONLY=false
 RUN_INTERACTIVE=false # skip interactive steps by default unless -i or first-time run
 DOTFILES_FORCE_LINKS=0 # use safe_link to not replace existing files unless -f
 RUN_OFFLINE=false # skip large offline caches unless explicitly requested
 while (($# > 0)); do
   case "$1" in
+    --ai-only) AI_ONLY=true ;;
     -i) RUN_INTERACTIVE=true ;;
     -f|--force) DOTFILES_FORCE_LINKS=1 ;;
-    --offline) RUN_OFFLINE=true ;;
-    *) echo "usage: ${0##*/} [-i] [-f|--force] [--offline]" >&2; exit 2 ;;
+    *) echo "usage: ${0##*/} [-i] [-f|--force] [--ai-only]" >&2; exit 2 ;;
   esac
   shift
 done
 export DOTFILES_FORCE_LINKS
+
+if $AI_ONLY; then
+  source "$HOME/.dotfileconfig"
+  sync_ai "$DOTFILES/config/ai/generated"
+  exit $?
+fi
 
 ERRORS=()
 record_error() {
@@ -160,12 +167,7 @@ safe_link "$DOT_CFG/zed/settings.json" "$MAC_CFG/zed/settings.json"
 safe_link "$DOT_CFG/ghostty/config" "$APP_SUP/com.mitchellh.ghostty/config"
 safe_link "$DOT_CFG/iterm2/profiles.json" "$APP_SUP/iTerm2/DynamicProfiles/jth.json"
 # Link AI configuration
-safe_link "$DOT_CFG/ai/generated/cursor" "$HOME/.cursor/plugins/local/jth"
-safe_link "$DOT_CFG/ai/generated/shared/AGENTS.md" "$HOME/.claude/CLAUDE.md"
-safe_link "$DOT_CFG/ai/generated/shared/AGENTS.md" "$HOME/.codex/AGENTS.md"
-safe_link "$DOT_CFG/ai/generated/shared/AGENTS.md" "$MAC_CFG/opencode/AGENTS.md"
-link_dir "$DOT_CFG/ai/generated/skills" "$HOME/.claude/skills"
-link_dir "$DOT_CFG/ai/generated/skills" "$HOME/.agents/skills"
+sync_ai "$DOT_CFG/ai/generated"
 
 # Install the rest of the languages with mise
 step "install language runtimes with mise"

@@ -68,6 +68,11 @@ check_link_dir() {
   done
 }
 
+check_synced_dir() {
+  local source_dir="$1" target_dir="$2"
+  [[ -d "$target_dir" && ! -L "$target_dir" ]] && diff -qr "$source_dir" "$target_dir" >/dev/null
+}
+
 check_brewfile() {
   brew bundle check --file="$1"
 }
@@ -203,14 +208,22 @@ if check_link_set \
   "$DOTFILES/config/zed/settings.json" "$MAC_CFG/zed/settings.json" \
   "$DOTFILES/config/ghostty/config" "$APP_SUP/com.mitchellh.ghostty/config" \
   "$DOTFILES/config/iterm2/profiles.json" "$APP_SUP/iTerm2/DynamicProfiles/jth.json" \
-  "$DOTFILES/config/ai/generated/cursor" "$HOME/.cursor/plugins/local/jth" \
   "$DOTFILES/config/ai/generated/shared/AGENTS.md" "$HOME/.claude/CLAUDE.md" \
   "$DOTFILES/config/ai/generated/shared/AGENTS.md" "$HOME/.codex/AGENTS.md" \
+  "$DOTFILES/config/ai/generated/shared" "$HOME/.agents/guidance" \
   "$DOTFILES/config/ai/generated/shared/AGENTS.md" "$MAC_CFG/opencode/AGENTS.md"; then
   pass "Shared config links" "all correct"
 else
   fail "Shared config links" "${#BROKEN_LINKS[@]} incorrect; run ./mac.sh"
 fi
+
+run_check \
+  "Cursor plugin" \
+  "synced without symlinks" \
+  "differs from generated config; run ./mac.sh" \
+  check_synced_dir \
+  "$DOTFILES/config/ai/generated/cursor" \
+  "$HOME/.cursor/plugins/local/jth"
 
 if check_link_dir "$DOTFILES/config/ai/generated/skills" "$HOME/.claude/skills" &&
    check_link_dir "$DOTFILES/config/ai/generated/skills" "$HOME/.agents/skills" &&
