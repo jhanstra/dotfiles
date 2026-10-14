@@ -160,14 +160,20 @@ is-clam() {
   fi
 }
 
-# never sleep, even with the lid closed and no display
+# never sleep, even with the lid closed and no display, until the battery is low
 clam() {
-  _clam_on || sudo pmset -a disablesleep 1 || return
+  local watcher="$DOTFILES/scripts/clam-watch.sh"
+
+  if ! _clam_on || ! pgrep -qf "$watcher"; then
+    sudo /bin/sh -c 'pmset -a disablesleep 1 && { nohup /bin/sh "$1" >/dev/null 2>&1 & }' \
+      sh "$watcher" || return
+  fi
   if ! _clam_on; then
     print -u2 "clam: couldn't turn on clamshell mode"
     return 1
   fi
   echo "Yep we're in clamshell mode - you can disconnect from the display"
+  echo "It turns off automatically at 20% battery when unplugged"
   echo "Run unclam before closing the lid to travel"
 }
 
