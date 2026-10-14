@@ -6,23 +6,29 @@ Do not edit `generated/` directly. From the Coprime repository, run:
 
 ```sh
 bun run ai-export
+bash "$DOTFILES/mac.sh" --ai-only
 ```
 
-Tag portable source sections in Coprime with `ai:universal` markers. Authoring instructions live there under `ai/`.
-Whole portable files and directories are listed in Coprime's `ai/universal.json`.
+Tag portable sections in Coprime's `AGENTS.md` and skills with `ai:universal` markers.
+Cursor commands are authored directly in Coprime's `.agents/commands/` directory and exported automatically.
 
 ## Installed Targets
 
 `mac.sh` installs the generated guidance for:
 
-- Cursor: `generated/cursor` → `~/.cursor/plugins/local/jth`
+- Cursor: copies rule entrypoints and commands from `generated/cursor` → `~/.cursor/plugins/local/jth`; skills come from the shared user skill directories
+- Shared on-demand guidance: `generated/shared` → `~/.agents/guidance`
 - Claude Code instructions: `generated/shared/AGENTS.md` → `~/.claude/CLAUDE.md`
 - Codex instructions: `generated/shared/AGENTS.md` → `~/.codex/AGENTS.md`
 - OpenCode instructions: `generated/shared/AGENTS.md` → `~/.config/opencode/AGENTS.md`
 - Claude Code skills: `generated/skills/*` → `~/.claude/skills/*`
 - Codex skills: `generated/skills/*` → `~/.agents/skills/*`
 
-Cursor agents, commands, hooks, and MCP configuration belong inside `generated/cursor/` so the local plugin carries them. Add an explicit `safe_link` or `link_dir` call in `mac.sh` when introducing another tool-native generated target. Tool-specific formats are not interchangeable.
+Global instruction entrypoints load `~/.agents/guidance/universal.md` only outside repositories already providing `ai:universal` sections. Skills use `portable-*` names to avoid shadowing full project skills; their entrypoints load portable content only outside Coprime. Cursor receives no extra skill copies in its plugin.
+
+Coprime owns each instruction once in `AGENTS.md` or `.agents/skills`; its `.claude/skills` compatibility symlink exposes the same skills to Claude. Codex and Cursor discover `.agents/skills` directly. Generated snapshots keep this dotfiles repository portable to machines without Coprime. Never author changes in generated output.
+
+Run `mac.sh --ai-only` after each export. It updates only AI configuration, removes obsolete links owned by this export, and preserves unrelated skills. Cursor rejects plugin content reached through external symlinks, so its thin rule entrypoint and commands are installed as generated copies.
 
 Restart the relevant agent after the first install. For Cursor, run **Developer: Reload Window** or restart the application.
 

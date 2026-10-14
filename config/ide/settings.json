@@ -10,7 +10,7 @@
   "workbench.tree.indent": 15,
   "workbench.tree.renderIndentGuides": "always",
   "workbench.colorCustomizations": {
-    "tree.indentGuidesStroke": "#05ef3c88"
+    "tree.indentGuidesStroke": "#05ef3c88",
   },
   // Terminal
   "workbench.panel.defaultLocation": "right",
@@ -24,7 +24,7 @@
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "window.newWindowDimensions": "inherit",
   "files.associations": {
-    "Brewfile.*": "ruby"
+    "Brewfile.*": "ruby",
   },
   "editor.tabSize": 2,
   "editor.rulers": [100],
@@ -37,14 +37,14 @@
   "editor.quickSuggestions": {
     "other": true,
     "comments": false,
-    "strings": false
+    "strings": false,
   },
   "[markdown]": {
     "editor.quickSuggestions": {
       "comments": "off",
       "strings": "off",
-      "other": "off"
-    }
+      "other": "off",
+    },
   },
   "editor.formatOnSave": true,
   "editor.snippetSuggestions": "top",
@@ -58,7 +58,7 @@
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true
+    "**/.DS_Store": true,
   },
   // Vim settings
   "editor.lineNumbers": "relative",
@@ -68,7 +68,7 @@
   // Number of lines to scroll with CTRL-U and CTRL-D commands
   "vim.scroll": 20,
   "vim.handleKeys": {
-    "<C-k>": false
+    "<C-k>": false,
   },
   "vim.insertModeKeyBindingsNonRecursive": [],
   // Auto-editing functionality
@@ -89,23 +89,23 @@
   // this *needs* to be set to false for js and ts
   "[css]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "vscode.css-language-features"
+    "editor.defaultFormatter": "vscode.css-language-features",
   },
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"]
+    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"],
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"]
+    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"],
   },
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"]
+    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"],
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"]
+    "editor.codeActionsOnSave": ["source.sortImports", "source.fixAll.eslint"],
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   // Emmet config
@@ -113,15 +113,15 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact",
     "vue-html": "html",
-    "plaintext": "jade"
+    "plaintext": "jade",
   },
   "emmet.syntaxProfiles": {
     "html": {
-      "attr_quotes": "single"
+      "attr_quotes": "single",
     },
     "jsx": {
-      "self_closing_tag": true
-    }
+      "self_closing_tag": true,
+    },
   },
   // Etc
   "editor.acceptSuggestionOnEnter": "smart",
@@ -141,40 +141,40 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["j"],
-      "after": ["g", "j"]
+      "after": ["g", "j"],
     },
     {
       "before": ["k"],
-      "after": ["g", "k"]
+      "after": ["g", "k"],
     },
     {
       "before": ["J"],
-      "after": ["5", "j"]
+      "after": ["5", "j"],
     },
     {
       "before": ["K"],
-      "after": ["5", "k"]
+      "after": ["5", "k"],
     },
     {
       "before": ["H"],
-      "after": ["g", "T"]
+      "after": ["g", "T"],
     },
     {
       "before": ["L"],
-      "after": ["g", "t"]
+      "after": ["g", "t"],
     },
     {
       "before": ["U"],
-      "after": ["<C-r>"]
+      "after": ["<C-r>"],
     },
     {
       "before": ["U"],
-      "after": ["<C-r>"]
+      "after": ["<C-r>"],
     },
     {
       "before": ["0"],
-      "after": ["^"]
-    }
+      "after": ["^"],
+    },
   ],
   "editor.foldingStrategy": "indentation",
   "typescript.disableAutomaticTypeAcquisition": true,
@@ -194,7 +194,7 @@
     "markdown": true,
     "scminput": false,
     "yaml": false,
-    "javascript": true
+    "javascript": true,
   },
   "workbench.activityBar.location": "hidden",
   "prisma.showPrismaDataPlatformNotification": false,
@@ -203,7 +203,7 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "makefile.configureOnOpen": true,
   "chat.hookFilesLocations": {
-    "~/.github/hooks": true
+    "~/.github/hooks": true,
   },
   "chat.useHooks": true,
   "cursor.composer.editorConversationDensity": "detailed",
@@ -216,6 +216,8 @@
     "**/.gitea/workflows/*.yml",
     "**/.gitea/workflows/*.yaml",
     "**/.forgejo/workflows/*.yml",
-    "**/.forgejo/workflows/*.yaml"
-  ]
+    "**/.forgejo/workflows/*.yaml",
+  ],
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  "cursor.general.disableHttp2": true,
 }
