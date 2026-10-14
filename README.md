@@ -28,7 +28,7 @@ config and setup for:
    cd ~/code/dotfiles
    ```
 
-4. run `bash mac.sh`
+4. run `bash mac.sh` (or `bash mac.sh --offline` to also build the optional offline cache)
 5. choose `personal` or `work` and confirm the code and dotfiles paths
 6. stick around for setup steps that may request input near the beginning:
    - xcode update and initialization
@@ -92,7 +92,15 @@ interactive setup always runs on the initial setup and is skipped on later runs.
 
 use `bash mac.sh -f` to replace existing regular files or symlinks at
 repository-owned configuration targets. real directories are still refused.
-`-i` and `-f` can be combined in either order.
+
+use `bash mac.sh --offline` to opt in to downloading every Bun package and
+public Git repository listed in `config/offline/`. packages are installed into
+`${DOTFILES_OFFLINE_ROOT:-${CODE:-$HOME/code}/offline}/bun`, and repositories
+are cloned under its `repositories` directory. set `DOTFILES_OFFLINE_ROOT` to
+override the destination. existing repositories are skipped, and individual
+download failures are collected so the rest of the cache can continue.
+
+`-i`, `-f`/`--force`, and `--offline` can be combined in any order.
 
 xcode, homebrew bundles, mise, defaults, fonts, and editor extensions still run
 their checks in both contexts. company-managed files are not replaced.
@@ -117,11 +125,13 @@ unknown files, different symlinks, and partial installs are refused unless
 - app settings: `config/{alfred,ghostty,iterm2,rectangle,zed}/`
 - optional ollama models: `config/ollama/models.txt`
 - repositories to clone: `config/repos.tsv`
+- optional offline packages and repositories: `config/offline/`
 - apps and brew services started at login: `config/startup.tsv`
 - custom background processes: `config/launchd/`
 - portable ai rules and skills: `config/ai/`
 - interactive setup: `scripts/interactive.sh`
 - other non-homebrew setup: `scripts/install.sh`
+- optional offline cache installer: `scripts/offline.sh`
 
 Startup entries use `all`, `personal`, or `work` in the first TSV column and
 `app` or `service` in the second. App rows can include a file or folder to open
