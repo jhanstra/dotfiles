@@ -104,21 +104,20 @@ sup() { # 'save + up'
 
   if git diff --cached --quiet; then
     print "✓ nothing to commit"
-    return 0
+  else
+    git commit --quiet -m "$message" || return
+
+    commit_hash=$(git rev-parse --short HEAD)
+    stats=$(git show --numstat --format= HEAD | awk '
+      NF >= 3 {
+        files++
+        if ($1 ~ /^[0-9]+$/) additions += $1
+        if ($2 ~ /^[0-9]+$/) deletions += $2
+      }
+      END { printf "%d file%s, +%d/-%d", files, (files == 1 ? "" : "s"), additions, deletions }
+    ')
+    print -r -- "✓ committed $commit_hash: $message ($stats)"
   fi
-
-  git commit --quiet -m "$message" || return
-
-  commit_hash=$(git rev-parse --short HEAD)
-  stats=$(git show --numstat --format= HEAD | awk '
-    NF >= 3 {
-      files++
-      if ($1 ~ /^[0-9]+$/) additions += $1
-      if ($2 ~ /^[0-9]+$/) deletions += $2
-    }
-    END { printf "%d file%s, +%d/-%d", files, (files == 1 ? "" : "s"), additions, deletions }
-  ')
-  print -r -- "✓ committed $commit_hash: $message ($stats)"
 
   push_current_branch
 }
